@@ -1,0 +1,125 @@
+$bg: #f4efe4;
+$ink: #111111;
+$muted: #5c574d;
+$line: rgba(17, 17, 17, 0.12);
+$line-strong: rgba(17, 17, 17, 0.18);
+$surface: rgba(255, 252, 246, 0.92);
+$surface-strong: rgba(255, 255, 255, 0.97);
+$lime: #b9ff66;
+$coral: #ff7f61;
+$cyan: #89e7ff;
+$gold: #ffd66b;
+$shadow-lg: 0 28px 70px rgba(17, 17, 17, 0.12);
+$shadow-md: 0 16px 34px rgba(17, 17, 17, 0.08);
+$shadow-sm: 0 10px 22px rgba(17, 17, 17, 0.05);
+
+@mixin panel {
+  border: 1px solid $line;
+  background: $surface;
+  box-shadow: $shadow-md;
+  backdrop-filter: blur(14px);
+}
+
+@mixin label {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+:root {
+  color: $ink;
+  font-family: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(185, 255, 102, 0.26), transparent 32%),
+    radial-gradient(circle at top right, rgba(255, 127, 97, 0.16), transparent 28%),
+    linear-gradient(180deg, #f9f3e7 0%, #efe8d9 100%);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: $ink;
+  background: transparent;
+
+  &::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(17, 17, 17, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(17, 17, 17, 0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.3), transparent 80%);
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+#app {
+  position: relative;
+  z-index: 1;
+}
+
+.shell {
+  width: min(1320px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 24px 0 48px;
+}
+
+.kicker,
+.answer-label,
+.visual-eyebrow,
+.quiz-stage__eyebrow,
+.quiz-stage__count,
+.meta-pill span {
+  @include label;
+  margin: 0;
+  color: $muted;
+}
+
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.92rem 1.24rem;
+  border-radius: 999px;
+  border: 1px solid $line;
+  font-weight: 700;
+  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-sm;
+  }
+
+  &--primary {
+    background: $ink;
+    color: #fff8ef;
+  }
+
+  &--secondary {
+    background: rgba(255, 255, 255, 0.78);
+  }
+}

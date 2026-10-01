@@ -1,0 +1,485 @@
+@use "./mock-theme" as mock;
+
+.kit-button-row,
+.kit-chip-row,
+.kit-toolbar {
+  @include mock.mock-inline-group(mock.$mock-gap-md);
+}
+
+.kit-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0.35rem 0.68rem;
+  border: 1px solid mock.$mock-line-strong;
+  border-radius: mock.$mock-radius-pill;
+  background: mock.$mock-surface-tint;
+  color: mock.$mock-text;
+  font-size: 0.78rem;
+  font-weight: 700;
+
+  &--positive {
+    background: mock.$mock-tone-lime;
+  }
+
+  &--warning {
+    background: mock.$mock-tone-gold;
+  }
+
+  &--danger {
+    background: mock.$mock-tone-coral;
+  }
+}
+
+.kit-field-stack,
+.kit-choice-list {
+  @include mock.mock-stack(mock.$mock-gap-lg);
+}
+
+.kit-field {
+  width: 100%;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  border: 1px solid rgba(17, 17, 17, 0.09);
+  border-radius: mock.$mock-radius-lg;
+  background: mock.$mock-surface-strong;
+  color: mock.$mock-text;
+  overflow: hidden;
+
+  &:focus-within {
+    border-color: rgba(17, 17, 17, 0.18);
+    box-shadow: 0 0 0 3px rgba(17, 17, 17, 0.06);
+  }
+
+  &.is-error {
+    border-color: rgba(186, 28, 28, 0.72);
+    background: rgba(255, 241, 240, 0.92);
+    box-shadow:
+      inset 0 0 0 1px rgba(186, 28, 28, 0.12),
+      0 0 0 2px rgba(186, 28, 28, 0.08);
+  }
+
+  &.is-disabled {
+    background: rgba(17, 17, 17, 0.04);
+    color: rgba(17, 17, 17, 0.36);
+  }
+
+  &.has-animation {
+    position: relative;
+  }
+
+  &--search::before {
+    content: "⌕";
+    position: absolute;
+    left: 0.9rem;
+    color: rgba(17, 17, 17, 0.34);
+    pointer-events: none;
+  }
+
+  &--select::after {
+    content: "▾";
+    position: absolute;
+    right: 0.9rem;
+    color: rgba(17, 17, 17, 0.36);
+    pointer-events: none;
+  }
+
+  &--textarea {
+    align-items: flex-start;
+    min-height: 92px;
+  }
+
+  &--search,
+  &--select,
+  &--password {
+    position: relative;
+  }
+}
+
+.kit-field__control {
+  width: 100%;
+  min-height: 44px;
+  padding: 0.7rem 0.9rem;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+
+  &::placeholder {
+    color: inherit;
+    opacity: 1;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+}
+
+.kit-field__typing {
+  position: absolute;
+  top: 50%;
+  left: 0.9rem;
+  display: inline-block;
+  max-width: calc(100% - 1.8rem);
+  overflow: hidden;
+  color: inherit;
+  white-space: nowrap;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.kit-field__typing-copy {
+  display: inline-block;
+  font: inherit;
+  font-family: ui-monospace, "SFMono-Regular", "SF Mono", Consolas, monospace;
+}
+
+.kit-field__static {
+  width: 100%;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  padding: 0.7rem 0.9rem;
+  color: inherit;
+  font: inherit;
+}
+
+.kit-field.is-readonly {
+  cursor: default;
+}
+
+.kit-field--search.is-readonly .kit-field__static {
+  padding-left: 2.15rem;
+}
+
+.kit-field.has-animation--typing-email {
+  .kit-field__control {
+    color: transparent;
+    caret-color: transparent;
+  }
+
+  .kit-field__typing {
+    width: 0;
+    border-right: 1px solid rgba(17, 17, 17, 0.62);
+    animation:
+      typing-email 3s steps(var(--typing-chars), end) infinite,
+      typing-caret 0.7s step-end infinite;
+  }
+}
+
+.kit-field--search .kit-field__control {
+  padding-left: 2.15rem;
+}
+
+.kit-field--select .kit-field__control {
+  padding-right: 2rem;
+  appearance: none;
+}
+
+.kit-field--password .kit-field__control {
+  padding-right: 2.4rem;
+}
+
+.kit-field--textarea .kit-field__control {
+  min-height: 92px;
+  resize: none;
+  padding-top: 0.82rem;
+}
+
+.kit-field__eye {
+  position: absolute;
+  right: 0.9rem;
+  top: 50%;
+  width: 18px;
+  height: 12px;
+  border: 1.5px solid rgba(17, 17, 17, 0.34);
+  border-radius: 12px / 8px;
+  transform: translateY(-50%);
+  pointer-events: none;
+
+  span {
+    position: absolute;
+    inset: 50% auto auto 50%;
+    width: 4px;
+    height: 4px;
+    border-radius: 999px;
+    background: rgba(17, 17, 17, 0.42);
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes typing-email {
+  0%,
+  10% {
+    width: 0;
+  }
+
+  72%,
+  86% {
+    width: calc(var(--typing-chars) * 1ch);
+  }
+
+  100% {
+    width: 0;
+  }
+}
+
+@keyframes typing-caret {
+  50% {
+    border-right-color: transparent;
+  }
+}
+
+.kit-segmented {
+  display: inline-grid;
+  grid-auto-flow: column;
+  gap: mock.$mock-gap-xs;
+  padding: 4px;
+  border-radius: mock.$mock-radius-pill;
+  background: mock.$mock-surface-segmented;
+}
+
+.kit-segmented__item {
+  padding: 0.5rem 0.8rem;
+  border-radius: mock.$mock-radius-pill;
+  color: rgba(17, 17, 17, 0.62);
+  font-size: 0.82rem;
+  font-weight: 700;
+
+  &.is-active {
+    background: mock.$mock-surface-strong;
+    color: mock.$mock-ink;
+    box-shadow: 0 2px 8px rgba(17, 17, 17, 0.08);
+  }
+}
+
+.kit-switch-row,
+.kit-choice-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  @include mock.mock-panel(10px 12px, mock.$mock-radius-lg, mock.$mock-surface-soft, mock.$mock-line);
+}
+
+.kit-switch-row {
+  justify-content: space-between;
+}
+
+.kit-switch-row__copy,
+.kit-choice-row__copy {
+  @include mock.mock-stack(mock.$mock-gap-xs);
+  min-width: 0;
+
+  strong {
+    font-size: 0.92rem;
+    line-height: 1.2;
+  }
+
+  span {
+    color: rgba(17, 17, 17, 0.56);
+    font-size: 0.82rem;
+    line-height: 1.3;
+  }
+}
+
+.kit-choice-row__copy {
+  flex: 1 1 auto;
+}
+
+.kit-switch {
+  width: 46px;
+  height: 28px;
+  padding: 3px;
+  border-radius: mock.$mock-radius-pill;
+  background: mock.$mock-control-off;
+
+  span {
+    display: block;
+    width: 22px;
+    height: 22px;
+    border-radius: mock.$mock-radius-pill;
+    background: mock.$mock-surface-strong;
+    box-shadow: mock.$mock-shadow-knob;
+    transition: transform 140ms ease;
+  }
+
+  &.is-on {
+    background: mock.$mock-ink;
+
+    span {
+      transform: translateX(18px);
+    }
+  }
+
+  &.is-subtle {
+    background: mock.$mock-control-off;
+    opacity: 0.85;
+
+    span {
+      background: rgba(255, 255, 255, 0.94);
+    }
+  }
+
+  &.is-on.is-subtle {
+    background: mock.$mock-control-off;
+  }
+}
+
+.kit-choice-box,
+.kit-radio {
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(17, 17, 17, 0.18);
+  background: mock.$mock-surface-strong;
+}
+
+.kit-choice-box {
+  border-radius: 6px;
+
+  &.is-checked {
+    background: mock.$mock-ink;
+    box-shadow: inset 0 0 0 4px mock.$mock-surface-strong;
+  }
+}
+
+.kit-radio {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+
+  span {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: transparent;
+  }
+
+  &.is-selected span {
+    background: mock.$mock-ink;
+  }
+}
+
+.kit-toolbar {
+  justify-content: space-between;
+  @include mock.mock-panel(8px 10px, mock.$mock-radius-lg, rgba(255, 255, 255, 0.78), mock.$mock-line);
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.kit-toolbar__item {
+  color: rgba(17, 17, 17, 0.62);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.kit-form-section {
+  @include mock.mock-stack(mock.$mock-gap-lg);
+}
+
+.kit-inline-field-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: mock.$mock-gap-lg;
+}
+
+.kit-slider {
+  @include mock.mock-stack(mock.$mock-gap-md);
+}
+
+.kit-slider__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: rgba(17, 17, 17, 0.64);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.kit-slider__track {
+  position: relative;
+  height: 10px;
+  border-radius: mock.$mock-radius-pill;
+  background: mock.$mock-progress-bg;
+}
+
+.kit-slider__fill,
+.kit-slider__thumb {
+  position: absolute;
+  top: 0;
+}
+
+.kit-slider__fill {
+  left: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: mock.$mock-ink;
+}
+
+.kit-slider__thumb {
+  width: 16px;
+  height: 16px;
+  margin-top: -3px;
+  margin-left: -8px;
+  border: 2px solid mock.$mock-surface-strong;
+  border-radius: mock.$mock-radius-pill;
+  background: mock.$mock-ink;
+  box-shadow: mock.$mock-shadow-thumb;
+}
+
+.kit-date-field,
+.kit-upload-zone,
+.kit-rating {
+  @include mock.mock-stack(mock.$mock-gap-md);
+  @include mock.mock-panel(12px, mock.$mock-radius-lg, mock.$mock-surface-soft, mock.$mock-line);
+}
+
+.kit-date-field {
+  grid-template-columns: 1fr auto;
+  align-items: center;
+
+  span {
+    color: rgba(17, 17, 17, 0.54);
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+
+  strong {
+    font-size: 0.88rem;
+  }
+}
+
+.kit-upload-zone {
+  place-items: center;
+  padding: 18px 14px;
+  border-style: dashed;
+  text-align: center;
+
+  span {
+    color: rgba(17, 17, 17, 0.52);
+    font-size: 0.8rem;
+  }
+}
+
+.kit-rating {
+  align-items: center;
+}
+
+.kit-rating__stars {
+  display: flex;
+  gap: 4px;
+}
+
+.kit-rating__star {
+  color: rgba(17, 17, 17, 0.18);
+  font-size: 1rem;
+
+  &.is-active {
+    color: #111111;
+  }
+}
