@@ -5,41 +5,56 @@ temporary artifacts:
 
 **ALWAYS use `/tmp/` for test files and folders**
 
-* Create isolated test environments in `/tmp/` (e.g., `/tmp/test-$$` or `/tmp/test-$(date +%s)`)
-* Never create test artifacts in the project directory
-* Clean up `/tmp/` directories after testing completes
+- Create isolated test environments in `/tmp/` (e.g., `/tmp/test-$$` or `/tmp/test-$(date +%s)`)
+- Never create test artifacts in the project directory
+- Clean up `/tmp/` directories after testing completes
 
 **Examples:**
 
-* ❌ Creating test folders like `.lefthook/` or `test-data/` in the project
-* ❌ Creating temporary config files for testing in the project root
-* ✅ Using `/tmp/test-myfeature/` for all test artifacts
-* ✅ Copying files to `/tmp/` before running tests on them
+- ❌ Creating test folders like `.lefthook/` or `test-data/` in the project
+- ❌ Creating temporary config files for testing in the project root
+- ✅ Using `/tmp/test-myfeature/` for all test artifacts
+- ✅ Copying files to `/tmp/` before running tests on them
 
 **Exception:** Only write to the project directory for actual deliverables
 or when explicitly requested by the user.
 
 **Testing frequency:**
 
-* Testing is NOT required after every change
-* Only test when:
+- Testing is NOT required after every change
+- Only test when:
 
-  * Making significant or complex changes
-  * Explicitly requested by the user
-  * The change could break existing functionality
-* Trust simple refactoring and straightforward changes without always testing
+  - Making significant or complex changes
+  - Explicitly requested by the user
+  - The change could break existing functionality
+
+- Trust simple refactoring and straightforward changes without always testing
 
 ## Build Frequency
 
-* Do NOT run `npm run build` after every small visual tweak
-* Run a build only when:
+- Do NOT run `npm run build` after every small visual tweak
+- Run a build only when:
 
-  * A significant layout or rendering change is complete
-  * A structural refactor could have broken the app
-  * The user explicitly asks for verification
+  - A significant layout or rendering change is complete
+  - A structural refactor could have broken the app
+  - The user explicitly asks for verification
 
 ## Refactoring Standard
 
-* Never do a quick patch when a refactor is needed
-* If the current structure is causing repeated UI or layout regressions, refactor it instead of layering another workaround
-* Prefer fixing spacing, alignment, and component structure at the system level rather than patching one screenshot-specific symptom
+- Never do a quick patch when a refactor is needed
+- If the current structure is causing repeated UI or layout regressions, refactor it instead of layering another workaround
+- Prefer fixing spacing, alignment, and component structure at the system level rather than patching one screenshot-specific symptom
+
+## Formatting
+
+- Never format code by hand; Prettier (with `prettier-plugin-svelte`) owns all formatting
+- After any change, run `pnpm format` (or `pnpm exec prettier --write <files>` for the touched files)
+- Config lives in `.prettierrc.json`; change it there instead of working around it
+
+## Code Structure and Linting
+
+- `pnpm lint` (ESLint, typescript-eslint strict + stylistic type-checked, eslint-plugin-svelte) must pass; it runs as part of `pnpm build`
+- Strong typing is mandatory: explicit return types, an explicit type on every variable, constant and class field (`const RING_LENGTH: number = 2`), no `any`, no non-null assertions, no truthy checks on non-booleans
+- Split code by kind into per-layer folders: `<layer>/types/<domain>.types.ts`, `<layer>/const/<domain>.const.ts`, `<layer>/utils/<domain>.utils.ts`
+- No `interface` or `type` declarations inside `.svelte` files: component props live in `<layer>/types/<component>.types.ts` as `<Component>Props`
+- No explanatory comments in TS/Svelte code; only functional directives (`svelte-ignore`, `/// <reference>`)

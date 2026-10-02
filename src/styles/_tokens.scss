@@ -1,0 +1,281 @@
+:root {
+  color-scheme: light;
+
+  --font-display: "Anek Latin", "Mulish", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-display);
+  --font-mock: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-sans: "Mulish", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  --card-border: 2px;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 999px;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-md: 1rem;
+  --text-lg: 1.125rem;
+  --text-2xl: 1.75rem;
+  --text-display: clamp(2.25rem, 5vw, 3.75rem);
+
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --duration: 160ms;
+  --duration-slow: 400ms;
+  --duration-slower: 800ms;
+
+  --container-max: 1280px;
+  --header-height: 64px;
+  --band-height: calc(var(--header-height) + var(--space-5));
+
+  --z-header: 10;
+  --z-skip-link: 20;
+
+  --bg: #faf9ff;
+  --surface: #ffffff;
+  --surface-2: #f1eeff;
+  --border: #e7e7ec;
+  --border-strong: #d2c9ff;
+  --text: #11113f;
+  --text-muted: #414165;
+  --text-subtle: #60607e;
+  --control-border: #7f7f99;
+
+  --primary: #6f52ff;
+  --primary-hover: #654be8;
+  --primary-soft: #f1eeff;
+  --on-primary: #ffffff;
+  --primary-ink: #5f45f0;
+  --brand-violet: #6f52ff;
+  --brand-yellow: #ffd500;
+  --brand-yellow-hover: #ffe354;
+  --brand-navy: #11113f;
+  --pill-bg: #11113f;
+  --pill-text: #ffffff;
+  --pill-line: #5b5f86;
+  --pill-accent: #ffd500;
+  --hint-bg: var(--surface-2);
+  --kbd-bg: var(--surface);
+  --kbd-border: var(--border-strong);
+  --brand-lavender: #d2c9ff;
+  --on-brand: #ffffff;
+  --on-brand-muted: #e3ddff;
+  --on-accent: #11113f;
+  --brand-navy-ink: #11113f;
+  --badge-single: #d2c9ff;
+  --badge-multiple: #d08dff;
+  --badge-hotspot: #c4ecff;
+  --badge-compare: #ffd500;
+  --brand-gradient: linear-gradient(180deg, #6f52ff 0%, #4f3ab5 55%, #11113f 100%);
+  --brand-gradient-deep: linear-gradient(160deg, #4f3ab5 0%, #3a2b8f 55%, #11113f 100%);
+  --header-surface: #ffffff;
+  --shadow-md: 0 8px 24px rgb(17 17 63 / 0.12);
+  --shadow-card: 0 2px 4px rgb(17 17 63 / 0.04), 0 8px 20px rgb(17 17 63 / 0.07);
+  --accent-2: #d08dff;
+
+  --success: #15803d;
+  --success-soft: #e8f7ee;
+  --danger: #c62828;
+  --danger-soft: #fdecec;
+  --on-success: #ffffff;
+  --on-danger: #ffffff;
+
+  --multi: #944aba;
+  --multi-soft: #faf2ff;
+  --on-multi: #ffffff;
+  --hotspot: #1f6f8b;
+  --hotspot-soft: #eaf7fd;
+  --compare: #11113f;
+  --compare-soft: #fff2b0;
+  --compare-edge: #ffd500;
+
+  --shadow-sm: 0 1px 2px rgb(17 17 63 / 0.06);
+  --shadow-lg: 0 2px 4px rgb(17 17 63 / 0.04), 0 24px 48px rgb(17 17 63 / 0.1);
+
+  --stage-dot: rgb(111 82 255 / 0.2);
+
+  --ring-hover: var(--brand-yellow);
+  --ring-select: var(--brand-yellow);
+  --ring-focus: #6f52ff;
+  --ring-correct: #15803d;
+  --ring-wrong: #dc2626;
+  --ring-band-light: #ffffff;
+  --ring-hover-dark: var(--brand-yellow);
+  --ring-select-dark: var(--brand-yellow);
+  --ring-correct-dark: #4ade80;
+  --ring-wrong-dark: #f87171;
+  --ring-icon-light: #ffffff;
+  --ring-icon-dark: #0c0c2d;
+
+  --mock-bg: #f7f8fa;
+  --mock-surface: #ffffff;
+  --mock-border: #e2e5ea;
+  --mock-text: #1b2030;
+  --mock-muted: #6b7280;
+  --mock-primary: #2563eb;
+  --mock-primary-text: #ffffff;
+  --mock-success: #15803d;
+  --mock-danger: #dc2626;
+  --mock-warning: #d97706;
+  --mock-info: #0284c7;
+  --mock-radius: 8px;
+  --mock-radius-card: 12px;
+  --mock-radius-pill: 999px;
+  --mock-radius-check: 4px;
+  --mock-border-width: 1px;
+  --mock-tone-ink: #000000;
+  --mock-font: var(--font-mock);
+  --mock-heading-font: var(--mock-font);
+  --mock-heading-weight: 600;
+  --mock-heading-tracking: -0.01em;
+  --mock-button-weight: 500;
+  --mock-button-transform: none;
+  --mock-button-tracking: normal;
+  --mock-button-shadow: none;
+  --mock-surface-2: #f8f9fb;
+  --mock-fill: #eef0f3;
+  --mock-track: #e5e7eb;
+  --mock-control-border: #b8bdc7;
+  --mock-control-track: #d3d7de;
+  --mock-on-accent: #ffffff;
+  --mock-primary-soft: #e8efff;
+  --mock-primary-strong: #1d4ed8;
+  --mock-accent-2: #7c3aed;
+  --mock-focus: rgb(37 99 235 / 0.15);
+  --mock-chrome: #eceef2;
+  --mock-chrome-dot: #d4d7de;
+  --mock-device: #1b1d23;
+  --mock-overlay: rgb(17 20 28 / 0.42);
+  --mock-code-bg: #1f2230;
+  --mock-code-chrome: #171923;
+  --mock-code-text: #e6e8ef;
+  --mock-code-muted: #9aa1b5;
+  --mock-code-tag: #ff8fa3;
+  --mock-code-attr: #ffd27a;
+  --mock-code-value: #9be59b;
+  --mock-shadow-sm: 0 1px 1px rgb(15 18 32 / 0.04);
+  --mock-shadow-md: 0 10px 30px rgb(15 18 32 / 0.14);
+  --mock-shadow-lg: 0 24px 48px rgb(15 18 32 / 0.2);
+  --mock-retro-face: #c0c0c0;
+  --mock-retro-light: #ffffff;
+  --mock-retro-soft: #dfdfdf;
+  --mock-retro-shade: #808080;
+  --mock-retro-dark: #000000;
+  --mock-retro-title: linear-gradient(90deg, #000080, #1084d0);
+  --mock-retro-title-text: #ffffff;
+  --mock-retro-select: #000080;
+  --mock-retro-link: #0000ee;
+  --mock-retro-font: Tahoma, Verdana, "MS Sans Serif", Geneva, sans-serif;
+  --mock-retro-serif: "Times New Roman", Times, serif;
+  --mock-terminal-bg: #050a06;
+  --mock-terminal-text: #3dff7a;
+  --mock-terminal-bright: #c4ffd6;
+  --mock-terminal-dim: #23a24d;
+  --mock-terminal-font: "Courier New", Courier, monospace;
+  --mock-fold-hinge: linear-gradient(90deg, #1d1f25 0%, #6b707c 30%, #c3c7d0 50%, #6b707c 70%, #1d1f25 100%);
+  --mock-fold-ridge: repeating-linear-gradient(180deg, rgb(0 0 0 / 0.35) 0 1px, transparent 1px 4px);
+  --mock-fold-crease: linear-gradient(
+    90deg,
+    transparent,
+    rgb(0 0 0 / 0.08) 25%,
+    rgb(0 0 0 / 0.32) 46%,
+    rgb(255 255 255 / 0.35) 50%,
+    rgb(0 0 0 / 0.3) 54%,
+    rgb(0 0 0 / 0.08) 75%,
+    transparent
+  );
+  --mock-fold-light: linear-gradient(
+    90deg,
+    rgb(255 255 255 / 0.05) 0%,
+    transparent 50%,
+    rgb(0 0 0 / 0.09) 50%,
+    rgb(0 0 0 / 0.02) 100%
+  );
+  --mock-crt-case: linear-gradient(160deg, #e6e0cf 0%, #d3ccb7 55%, #b9b19a 100%);
+  --mock-crt-case-edge: #a59d86;
+  --mock-crt-case-light: rgb(255 255 255 / 0.55);
+  --mock-crt-bezel: linear-gradient(180deg, #34332e, #1f1e1b);
+  --mock-crt-label: #6f6857;
+  --mock-crt-led: #45ff7a;
+  --mock-crt-knob: radial-gradient(circle at 35% 30%, #f1ecdc, #a39b84);
+  --mock-crt-glare: radial-gradient(ellipse at 28% 18%, rgb(255 255 255 / 0.1), transparent 45%);
+  --mock-terminal-glow: 0 0 6px rgb(61 255 122 / 0.45);
+  --mock-terminal-vignette: inset 0 0 40px rgb(0 0 0 / 0.8);
+  --mock-terminal-scanline: rgb(255 255 255 / 0.025);
+}
+
+@mixin dark-palette {
+  color-scheme: dark;
+  --bg: #0c0c2d;
+  --surface: #11113f;
+  --surface-2: #191950;
+  --border: #26265e;
+  --border-strong: #363672;
+  --text: #f1eeff;
+  --text-muted: #b5b5c3;
+  --text-subtle: #9292a7;
+  --control-border: #7f7f99;
+
+  --primary: #9d8aff;
+  --primary-hover: #bcadff;
+  --primary-soft: #221d66;
+  --on-primary: #0c0c2d;
+  --primary-ink: #bcadff;
+  --brand-navy: #f1eeff;
+  --pill-bg: #f1eeff;
+  --pill-text: #11113f;
+  --pill-line: #9d97c9;
+  --pill-accent: #6e4a00;
+  --hint-bg: #22226a;
+  --kbd-bg: #34348a;
+  --kbd-border: #6a6ac2;
+  --brand-lavender: #363672;
+  --brand-gradient: linear-gradient(180deg, #4f3ab5 0%, #2a2170 55%, #0c0c2d 100%);
+  --brand-gradient-deep: linear-gradient(160deg, #3d2d9c 0%, #221b66 55%, #0c0c2d 100%);
+  --header-surface: #11113f;
+  --shadow-md: 0 8px 24px rgb(0 0 0 / 0.4);
+  --shadow-card: 0 2px 4px rgb(0 0 0 / 0.2), 0 8px 20px rgb(0 0 0 / 0.25);
+  --accent-2: #d08dff;
+
+  --success: #4ade80;
+  --success-soft: #11291b;
+  --danger: #f87171;
+  --danger-soft: #2f1517;
+  --on-success: #0b0d12;
+  --on-danger: #0b0d12;
+
+  --multi: #d08dff;
+  --multi-soft: #2a1846;
+  --on-multi: #0b0d12;
+  --hotspot: #c4ecff;
+  --hotspot-soft: #10283a;
+  --compare: #ffd500;
+  --compare-soft: #26245a;
+  --compare-edge: #ffd500;
+
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.3);
+  --shadow-lg: 0 2px 4px rgb(0 0 0 / 0.3), 0 24px 48px rgb(0 0 0 / 0.4);
+
+  --stage-dot: rgb(157 138 255 / 0.16);
+}
+
+:root[data-theme="dark"] {
+  @include dark-palette;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    @include dark-palette;
+  }
+}

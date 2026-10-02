@@ -5,12 +5,32 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0 --port 4201",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
+    "build": "svelte-check && eslint . && node scripts/validate-quizzes.ts && vite build",
+    "check": "svelte-check",
+    "preview": "vite preview",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "validate:quizzes": "node scripts/validate-quizzes.ts",
+    "lint": "eslint ."
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@sveltejs/vite-plugin-svelte": "^7.3.1",
+    "@tsconfig/svelte": "^5.0.8",
+    "@types/node": "^26.6.3",
+    "eslint": "^10.11.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-svelte": "^3.23.0",
+    "globals": "^17.12.0",
+    "prettier": "^3.9.9",
+    "prettier-plugin-svelte": "^4.1.1",
     "sass": "^1.94.0",
+    "svelte": "^5.57.1",
+    "svelte-check": "^4.7.6",
+    "svelte-eslint-parser": "^1.8.1",
     "typescript": "^6.0.3",
+    "typescript-eslint": "^8.71.0",
     "vite": "^8.0.8"
-  }
+  },
+  "packageManager": "pnpm@12.8.1"
 }
