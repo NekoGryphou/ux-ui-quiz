@@ -1,0 +1,6 @@
+{
+  "extends": ["stylelint-config-recommended-scss", "stylelint-config-html/svelte"],
+  "rules": {
+    "selector-pseudo-class-no-unknown": [true, { "ignorePseudoClasses": ["global"] }]
+  }
+}
