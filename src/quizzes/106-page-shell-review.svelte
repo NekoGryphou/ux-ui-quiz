@@ -1,7 +1,7 @@
 <script lang="ts">
-    import {CodeEditor, CodeLines, Hotspot} from "../mock";
+  import { CodeEditor, CodeLines, Hotspot } from "../mock";
 
-    const html: string = "<html>";
+  const html: string = "<html>";
   const head: string = '<head>\n  <meta charset="utf-8">\n  <title>Your orders – Order portal</title>\n</head>';
   const body: string = "<body>";
   const nav: string =

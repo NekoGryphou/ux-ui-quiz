@@ -1,7 +1,7 @@
 <script lang="ts">
-    import {Avatar, BrandTheme, BrowserShell, Icon, TopBar} from "../mock";
+  import { Avatar, BrandTheme, BrowserShell, Icon, TopBar } from "../mock";
 
-    const items: string[] = ["Rename", "Duplicate", "Delete", "Move to…", "Download"];
+  const items: string[] = ["Rename", "Duplicate", "Delete", "Move to…", "Download"];
 </script>
 
 <BrandTheme brand="playful">

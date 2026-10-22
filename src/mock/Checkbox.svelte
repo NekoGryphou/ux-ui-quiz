@@ -1,8 +1,8 @@
 <script lang="ts">
-    import Icon from "../components/Icon.svelte";
-    import type {CheckboxProps} from "./types/checkbox.types";
+  import Icon from "../components/Icon.svelte";
+  import type { CheckboxProps } from "./types/checkbox.types";
 
-    let { label, checked = false, radio = false, hint }: CheckboxProps = $props();
+  let { label, checked = false, radio = false, hint }: CheckboxProps = $props();
 </script>
 
 <div class="check">

@@ -1,8 +1,8 @@
 <script lang="ts">
-    import Icon from "../components/Icon.svelte";
-    import type {TabBarProps} from "./types/tab-bar.types";
+  import Icon from "../components/Icon.svelte";
+  import type { TabBarProps } from "./types/tab-bar.types";
 
-    let { tabs, iconsOnly = false }: TabBarProps = $props();
+  let { tabs, iconsOnly = false }: TabBarProps = $props();
 </script>
 
 <div class="tabbar" style="--count: {tabs.length}">

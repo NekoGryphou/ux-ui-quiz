@@ -1,7 +1,7 @@
 <script lang="ts">
-    import type {SwitchProps} from "./types/switch.types";
+  import type { SwitchProps } from "./types/switch.types";
 
-    let { label, checked = false, hint, subtle = false }: SwitchProps = $props();
+  let { label, checked = false, hint, subtle = false }: SwitchProps = $props();
 </script>
 
 <div class="switch-row">

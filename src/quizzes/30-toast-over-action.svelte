@@ -1,6 +1,6 @@
 <script lang="ts">
-    import {AppBar, BrandTheme, Icon, MockButton, PhoneShell, Photo} from "../mock";
-    import {PHOTO_SHOE_MIZUNO} from "./const/photo.const";
+  import { AppBar, BrandTheme, Icon, MockButton, PhoneShell, Photo } from "../mock";
+  import { PHOTO_SHOE_MIZUNO } from "./const/photo.const";
 </script>
 
 <BrandTheme brand="luxury">

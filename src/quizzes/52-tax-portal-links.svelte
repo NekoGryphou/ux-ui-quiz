@@ -1,7 +1,7 @@
 <script lang="ts">
-    import type {PortalSection} from "./types/quiz-mocks.types";
+  import type { PortalSection } from "./types/quiz-mocks.types";
 
-    const services: PortalSection[] = [
+  const services: PortalSection[] = [
     { title: "Consult", links: ["Tax account [+]", "Property notices"] },
     {
       title: "Declare",

@@ -1,7 +1,7 @@
 <script lang="ts">
-    import {AppBar, BrandTheme, PhoneShell} from "../mock";
+  import { AppBar, BrandTheme, PhoneShell } from "../mock";
 
-    const rows: string[][] = [
+  const rows: string[][] = [
     ["#48211", "12 May 2025", "3", "Shipped", "€84.90"],
     ["#47930", "28 Apr 2025", "1", "Delivered", "€19.00"],
     ["#47112", "03 Apr 2025", "5", "Delivered", "€212.40"],

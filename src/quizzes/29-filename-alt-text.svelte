@@ -1,7 +1,7 @@
 <script lang="ts">
-    import {CodeEditor, CodeLines, Hotspot} from "../mock";
+  import { CodeEditor, CodeLines, Hotspot } from "../mock";
 
-    const opening: string = '<article class="product-card">';
+  const opening: string = '<article class="product-card">';
   const image: string = '  <img src="/img/trail-runner-blue.jpg" alt="IMG_2041.jpg">';
   const name: string = "  <h3>Trail Runner 2</h3>";
   const price: string = '  <p class="price">€79.90</p>';

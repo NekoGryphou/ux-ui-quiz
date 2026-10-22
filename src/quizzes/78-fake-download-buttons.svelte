@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {Hotspot, RetroBrowser} from "../mock";
+  import { Hotspot, RetroBrowser } from "../mock";
 </script>
 
 <!--suppress HttpUrlsUsage -->

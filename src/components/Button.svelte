@@ -1,8 +1,8 @@
 <script lang="ts">
-    import Icon from "./Icon.svelte";
-    import type {ButtonProps} from "./types/button.types";
+  import Icon from "./Icon.svelte";
+  import type { ButtonProps } from "./types/button.types";
 
-    let {
+  let {
     variant = "secondary",
     size = "md",
     href,

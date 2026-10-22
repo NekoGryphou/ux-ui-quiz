@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {RetroBrowser} from "../mock";
+  import { RetroBrowser } from "../mock";
 </script>
 
 <!--suppress HttpUrlsUsage -->

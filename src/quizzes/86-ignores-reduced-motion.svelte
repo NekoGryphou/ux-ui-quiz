@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {BrandTheme, PhoneShell} from "../mock";
+  import { BrandTheme, PhoneShell } from "../mock";
 </script>
 
 <BrandTheme brand="eco">

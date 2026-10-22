@@ -1,8 +1,8 @@
 <script lang="ts">
-    import {BrandTheme, BrowserShell, MockButton} from "../mock";
-    import type {TrainOption} from "./types/quiz-mocks.types";
+  import { BrandTheme, BrowserShell, MockButton } from "../mock";
+  import type { TrainOption } from "./types/quiz-mocks.types";
 
-    const trains: TrainOption[] = [
+  const trains: TrainOption[] = [
     { depart: "7:45 AM", arrive: "9:41 AM", price: "$89.50", tag: "Direct" },
     { depart: "1:12 PM", arrive: "3:20 PM", price: "$64.00", tag: "Direct" },
     { depart: "7:45 PM", arrive: "10:02 PM", price: "$42.90", tag: "1 correspondance" }

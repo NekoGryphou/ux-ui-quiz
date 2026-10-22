@@ -1,11 +1,11 @@
 <script lang="ts">
-    import IconButton from "../components/IconButton.svelte";
-    import {APP_NAME} from "./const/app.const";
-    import {theme} from "./theme.svelte";
-    import type {AppHeaderProps} from "./types/app-header.types";
-    import {href} from "./utils/router.utils";
+  import IconButton from "../components/IconButton.svelte";
+  import { APP_NAME } from "./const/app.const";
+  import { theme } from "./theme.svelte";
+  import type { AppHeaderProps } from "./types/app-header.types";
+  import { href } from "./utils/router.utils";
 
-    let { run, target }: AppHeaderProps = $props();
+  let { run, target }: AppHeaderProps = $props();
 
   const percent: number = $derived(
     run === null || run.total === 0 ? 0 : Math.round((run.answeredCount / run.total) * 100)

@@ -1,8 +1,8 @@
 <script lang="ts">
-    import {BrandTheme, PhoneShell} from "../mock";
-    import type {MailItem} from "./types/quiz-mocks.types";
+  import { BrandTheme, PhoneShell } from "../mock";
+  import type { MailItem } from "./types/quiz-mocks.types";
 
-    const mails: MailItem[] = [
+  const mails: MailItem[] = [
     { from: "Landlord", subject: "Rent receipt — November", preview: "Please find attached your receipt…" },
     { from: "Mum", subject: "Sunday lunch?", preview: "Are you coming this weekend? Dad’s…" },
     { from: "Bank", subject: "Your statement is ready", preview: "Your monthly statement for…" },

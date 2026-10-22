@@ -1,8 +1,8 @@
 <script lang="ts">
-    import type {VisualProps} from "../engine/types/quiz.types";
-    import {BrandTheme, BrowserShell, ViewportBadge} from "../mock";
+  import type { VisualProps } from "../engine/types/quiz.types";
+  import { BrandTheme, BrowserShell, ViewportBadge } from "../mock";
 
-    let { variant = "a" }: VisualProps = $props();
+  let { variant = "a" }: VisualProps = $props();
 </script>
 
 <BrandTheme brand="corporate">

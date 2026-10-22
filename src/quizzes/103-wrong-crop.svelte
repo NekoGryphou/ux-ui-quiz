@@ -1,9 +1,9 @@
 <script lang="ts">
-    import type {VisualProps} from "../engine/types/quiz.types";
-    import {BrandTheme, PhoneShell, Photo} from "../mock";
-    import sculpture from "./assets/wall-sculpture.jpg";
+  import type { VisualProps } from "../engine/types/quiz.types";
+  import { BrandTheme, PhoneShell, Photo } from "../mock";
+  import sculpture from "./assets/wall-sculpture.jpg";
 
-    let { variant = "a" }: VisualProps = $props();
+  let { variant = "a" }: VisualProps = $props();
 </script>
 
 <BrandTheme brand="editorial">

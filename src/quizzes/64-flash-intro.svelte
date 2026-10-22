@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {Hotspot} from "../mock";
+  import { Hotspot } from "../mock";
 </script>
 
 <div class="intro">

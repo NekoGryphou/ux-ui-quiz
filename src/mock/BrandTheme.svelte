@@ -1,8 +1,8 @@
 <script lang="ts">
-    import type {BrandThemeProps} from "./types/brand-theme.types";
-    import {brandStyle} from "./utils/brand.utils";
+  import type { BrandThemeProps } from "./types/brand-theme.types";
+  import { brandStyle } from "./utils/brand.utils";
 
-    let { brand, children }: BrandThemeProps = $props();
+  let { brand, children }: BrandThemeProps = $props();
 </script>
 
 <div class="brand" style={brandStyle(brand)}>{@render children()}</div>

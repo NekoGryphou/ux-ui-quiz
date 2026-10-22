@@ -1,7 +1,7 @@
 <script lang="ts">
-    import type {CaptchaGlyph} from "./types/quiz-mocks.types";
+  import type { CaptchaGlyph } from "./types/quiz-mocks.types";
 
-    const glyphs: CaptchaGlyph[] = [
+  const glyphs: CaptchaGlyph[] = [
     { char: "q", rotate: -18, dy: 4 },
     { char: "8", rotate: 12, dy: -3 },
     { char: "G", rotate: -6, dy: 2 },

@@ -1,9 +1,9 @@
 <script lang="ts">
-    import {AppBar, BrandTheme, Icon, PhoneShell, Photo} from "../mock";
-    import {PHOTO_SHOE_CRYSTA, PHOTO_SHOE_ECCO, PHOTO_SHOE_MIZUNO, PHOTO_SHOE_TRAIL} from "./const/photo.const";
-    import type {ShoeCard} from "./types/quiz-mocks.types";
+  import { AppBar, BrandTheme, Icon, PhoneShell, Photo } from "../mock";
+  import { PHOTO_SHOE_CRYSTA, PHOTO_SHOE_ECCO, PHOTO_SHOE_MIZUNO, PHOTO_SHOE_TRAIL } from "./const/photo.const";
+  import type { ShoeCard } from "./types/quiz-mocks.types";
 
-    const shoes: ShoeCard[] = [
+  const shoes: ShoeCard[] = [
     { name: "Trail Runner 2", price: "€89", photo: PHOTO_SHOE_TRAIL.url },
     { name: "City Knit", price: "€74", photo: PHOTO_SHOE_CRYSTA.url },
     { name: "Court Classic", price: "€65", photo: PHOTO_SHOE_ECCO.url },

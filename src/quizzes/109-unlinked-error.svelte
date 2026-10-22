@@ -1,8 +1,8 @@
 <script lang="ts">
-    import type {VisualProps} from "../engine/types/quiz.types";
-    import {CodeEditor, CodeLines, Field} from "../mock";
+  import type { VisualProps } from "../engine/types/quiz.types";
+  import { CodeEditor, CodeLines, Field } from "../mock";
 
-    let { variant = "a" }: VisualProps = $props();
+  let { variant = "a" }: VisualProps = $props();
 
   const message: string = "Add the part after @, like camille@example.com.";
   const unlinkedVersion: string =

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {Breadcrumbs, BrowserShell, Card, MockButton, Modal, Skeleton, TopBar} from "../mock";
+  import { Breadcrumbs, BrowserShell, Card, MockButton, Modal, Skeleton, TopBar } from "../mock";
 </script>
 
 <BrowserShell url="app.orbit.io/projects/atlas/settings">

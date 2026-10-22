@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {BrowserShell, Card, Switch, Tabs, Title} from "../mock";
+  import { BrowserShell, Card, Switch, Tabs, Title } from "../mock";
 </script>
 
 <BrowserShell url="app.relay.chat/settings/notifications">

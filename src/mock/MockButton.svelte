@@ -1,8 +1,8 @@
 <script lang="ts">
-    import Icon from "../components/Icon.svelte";
-    import type {MockButtonProps} from "./types/mock-button.types";
+  import Icon from "../components/Icon.svelte";
+  import type { MockButtonProps } from "./types/mock-button.types";
 
-    let {
+  let {
     variant = "secondary",
     size = "md",
     icon,

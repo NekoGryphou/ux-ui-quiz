@@ -1,7 +1,7 @@
 <script lang="ts">
-    import type {ProgressProps} from "./types/progress.types";
+  import type { ProgressProps } from "./types/progress.types";
 
-    let { value, label, showValue = false }: ProgressProps = $props();
+  let { value, label, showValue = false }: ProgressProps = $props();
   const clamped: number = $derived(Math.max(0, Math.min(100, value)));
 </script>
 

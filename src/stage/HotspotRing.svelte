@@ -1,10 +1,10 @@
 <script lang="ts">
-    import Icon from "../components/Icon.svelte";
-    import {RING_GAP, RING_LINE, RING_RIM, RING_STYLES, RING_TAG_SIZE} from "./const/hotspot-ring.const";
-    import type {HotspotRingProps, RingStyle} from "./types/hotspot-ring.types";
-    import {cornerList, lineRadius, mapCorners, tagInset} from "./utils/hotspot-ring.utils";
+  import Icon from "../components/Icon.svelte";
+  import { RING_GAP, RING_LINE, RING_RIM, RING_STYLES, RING_TAG_SIZE } from "./const/hotspot-ring.const";
+  import type { HotspotRingProps, RingStyle } from "./types/hotspot-ring.types";
+  import { cornerList, lineRadius, mapCorners, tagInset } from "./utils/hotspot-ring.utils";
 
-    let { geometry, state, focused }: HotspotRingProps = $props();
+  let { geometry, state, focused }: HotspotRingProps = $props();
 
   const style: RingStyle | null = $derived(state === null ? null : RING_STYLES[state]);
 </script>

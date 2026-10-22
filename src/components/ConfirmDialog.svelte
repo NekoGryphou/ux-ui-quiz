@@ -1,8 +1,8 @@
 <script lang="ts">
-    import Button from "./Button.svelte";
-    import type {ConfirmDialogProps} from "./types/confirm-dialog.types";
+  import Button from "./Button.svelte";
+  import type { ConfirmDialogProps } from "./types/confirm-dialog.types";
 
-    let { title, body, confirmLabel, open = $bindable(false), onconfirm }: ConfirmDialogProps = $props();
+  let { title, body, confirmLabel, open = $bindable(false), onconfirm }: ConfirmDialogProps = $props();
 
   const uid: string = $props.id();
 

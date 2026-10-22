@@ -1,9 +1,9 @@
 <script lang="ts">
-    import Icon from "./Icon.svelte";
-    import type {KindBadgeLook, KindBadgeProps} from "./types/kind-badge.types";
-    import {kindBadgeLook} from "./utils/kind-badge.utils";
+  import Icon from "./Icon.svelte";
+  import type { KindBadgeLook, KindBadgeProps } from "./types/kind-badge.types";
+  import { kindBadgeLook } from "./utils/kind-badge.utils";
 
-    let { kind, several }: KindBadgeProps = $props();
+  let { kind, several }: KindBadgeProps = $props();
 
   const look: KindBadgeLook = $derived(kindBadgeLook(kind, several));
 </script>

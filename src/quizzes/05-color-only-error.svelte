@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {BrowserShell, Field, Icon, MockButton, Title} from "../mock";
+  import { BrowserShell, Field, Icon, MockButton, Title } from "../mock";
 </script>
 
 <BrowserShell url="checkout.plantly.shop/payment">

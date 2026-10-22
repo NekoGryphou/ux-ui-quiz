@@ -1,8 +1,8 @@
 <script lang="ts">
-    import {TerminalScreen} from "../mock";
-    import type {TerminalLine} from "../mock/types/terminal-screen.types";
+  import { TerminalScreen } from "../mock";
+  import type { TerminalLine } from "../mock/types/terminal-screen.types";
 
-    const lines: TerminalLine[] = [
+  const lines: TerminalLine[] = [
     { text: "ORDR100            ACME DISTRIBUTION          MON 12 MAY  09:41", bright: true },
     { text: "                      OPEN ORDERS - WAREHOUSE 02" },
     { text: "" },

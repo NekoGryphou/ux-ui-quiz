@@ -1,7 +1,7 @@
 <script lang="ts">
-    import type {ViewportBadgeProps} from "./types/viewport-badge.types";
+  import type { ViewportBadgeProps } from "./types/viewport-badge.types";
 
-    let { label }: ViewportBadgeProps = $props();
+  let { label }: ViewportBadgeProps = $props();
 </script>
 
 <span class="viewport">{label}</span>

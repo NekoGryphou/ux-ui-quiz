@@ -1,7 +1,7 @@
 <script lang="ts">
-    import {RetroButton, RetroWindow} from "../mock";
+  import { RetroButton, RetroWindow } from "../mock";
 
-    const extras: string[] = [
+  const extras: string[] = [
     "Install SearchMaster Pro toolbar (recommended)",
     "Set SearchMaster as my homepage",
     "Make SearchMaster my default search engine"

@@ -1,7 +1,7 @@
 <script lang="ts">
-    import {Hotspot, RetroField, RetroWindow} from "../mock";
+  import { Hotspot, RetroField, RetroWindow } from "../mock";
 
-    const toolbars: string[] = ["AskBar", "SearchMaster Pro", "FunTunes Toolbar", "ShopSaver"];
+  const toolbars: string[] = ["AskBar", "SearchMaster Pro", "FunTunes Toolbar", "ShopSaver"];
 </script>
 
 <div class="frame">

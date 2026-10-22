@@ -1,18 +1,18 @@
 <script lang="ts">
-    import RestartButton from "../app/RestartButton.svelte";
-    import {router} from "../app/router.svelte";
-    import {RunGuard} from "../app/run-guard.svelte";
-    import RunGuardDialog from "../app/RunGuardDialog.svelte";
-    import {session} from "../app/session";
-    import {href} from "../app/utils/router.utils";
-    import {resumeLabel} from "../app/utils/run-label.utils";
-    import Button from "../components/Button.svelte";
-    import type {Run} from "../engine/run.svelte";
-    import {HOME_STEPS} from "./const/home.const";
-    import type {HistorySegment} from "./types/home.types";
-    import {historyLine} from "./utils/home.utils";
+  import RestartButton from "../app/RestartButton.svelte";
+  import { router } from "../app/router.svelte";
+  import { RunGuard } from "../app/run-guard.svelte";
+  import RunGuardDialog from "../app/RunGuardDialog.svelte";
+  import { session } from "../app/session";
+  import { href } from "../app/utils/router.utils";
+  import { resumeLabel } from "../app/utils/run-label.utils";
+  import Button from "../components/Button.svelte";
+  import type { Run } from "../engine/run.svelte";
+  import { HOME_STEPS } from "./const/home.const";
+  import type { HistorySegment } from "./types/home.types";
+  import { historyLine } from "./utils/home.utils";
 
-    const guard: RunGuard = new RunGuard();
+  const guard: RunGuard = new RunGuard();
 
   const history: HistorySegment[] | null = $derived(historyLine(session.bestFull, session.lastFull));
   const practice: Run | null = $derived(session.activeRun === session.main ? null : session.activeRun);

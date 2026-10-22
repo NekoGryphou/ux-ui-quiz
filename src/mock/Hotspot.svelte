@@ -1,10 +1,10 @@
 <script lang="ts">
-    import type {HotspotLayer} from "../stage/hotspot-layer.svelte";
-    import type {HotspotContext} from "../stage/types/hotspot-context.types";
-    import {readHotspotContext, readHotspotLayer} from "../stage/utils/hotspot.utils";
-    import type {HotspotProps} from "./types/hotspot.types";
+  import type { HotspotLayer } from "../stage/hotspot-layer.svelte";
+  import type { HotspotContext } from "../stage/types/hotspot-context.types";
+  import { readHotspotContext, readHotspotLayer } from "../stage/utils/hotspot.utils";
+  import type { HotspotProps } from "./types/hotspot.types";
 
-    let { id, inline = false, children }: HotspotProps = $props();
+  let { id, inline = false, children }: HotspotProps = $props();
 
   const context: HotspotContext | undefined = readHotspotContext();
   const layer: HotspotLayer | undefined = readHotspotLayer();

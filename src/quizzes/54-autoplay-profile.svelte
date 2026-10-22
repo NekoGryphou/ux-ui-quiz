@@ -1,8 +1,8 @@
 <script lang="ts">
-    import {Hotspot, Photo} from "../mock";
-    import {pixelAvatar} from "./utils/avatar.utils";
+  import { Hotspot, Photo } from "../mock";
+  import { pixelAvatar } from "./utils/avatar.utils";
 
-    const friends: string[] = ["Tom", "Kiki", "Max", "Jade", "Leo", "Nina", "Sam", "Zoé"];
+  const friends: string[] = ["Tom", "Kiki", "Max", "Jade", "Leo", "Nina", "Sam", "Zoé"];
 </script>
 
 <div class="space">

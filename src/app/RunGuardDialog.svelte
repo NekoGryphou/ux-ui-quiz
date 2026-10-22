@@ -1,11 +1,11 @@
 <script lang="ts">
-    import ConfirmDialog from "../components/ConfirmDialog.svelte";
-    import type {RunKind} from "../engine/types/run.types";
-    import {session} from "./session";
-    import type {RunGuardDialogProps} from "./types/run-guard-dialog.types";
-    import {abandonBody, abandonTitle} from "./utils/run-label.utils";
+  import ConfirmDialog from "../components/ConfirmDialog.svelte";
+  import type { RunKind } from "../engine/types/run.types";
+  import { session } from "./session";
+  import type { RunGuardDialogProps } from "./types/run-guard-dialog.types";
+  import { abandonBody, abandonTitle } from "./utils/run-label.utils";
 
-    let { guard }: RunGuardDialogProps = $props();
+  let { guard }: RunGuardDialogProps = $props();
 
   const kind: RunKind = $derived(session.activeRun?.kind ?? "full");
   const answered: number = $derived(session.activeRun?.answeredCount ?? 0);

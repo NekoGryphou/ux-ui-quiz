@@ -1,13 +1,13 @@
 <script lang="ts">
-    import {HotspotLayer} from "./hotspot-layer.svelte";
-    import HotspotRing from "./HotspotRing.svelte";
-    import type {HotspotContext} from "./types/hotspot-context.types";
-    import type {RingItem} from "./types/hotspot-ring.types";
-    import type {MockFrameProps} from "./types/mock-frame.types";
-    import {provideHotspotLayer, readHotspotContext} from "./utils/hotspot.utils";
-    import {measureRings, ringState} from "./utils/hotspot-ring.utils";
+  import { HotspotLayer } from "./hotspot-layer.svelte";
+  import HotspotRing from "./HotspotRing.svelte";
+  import type { HotspotContext } from "./types/hotspot-context.types";
+  import type { RingItem } from "./types/hotspot-ring.types";
+  import type { MockFrameProps } from "./types/mock-frame.types";
+  import { provideHotspotLayer, readHotspotContext } from "./utils/hotspot.utils";
+  import { measureRings, ringState } from "./utils/hotspot-ring.utils";
 
-    let { visual: Visual, variant }: MockFrameProps = $props();
+  let { visual: Visual, variant }: MockFrameProps = $props();
 
   const layer: HotspotLayer = new HotspotLayer();
   const hotspot: HotspotContext | undefined = readHotspotContext();

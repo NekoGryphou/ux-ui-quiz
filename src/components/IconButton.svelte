@@ -1,8 +1,8 @@
 <script lang="ts">
-    import Icon from "./Icon.svelte";
-    import type {IconButtonProps} from "./types/icon-button.types";
+  import Icon from "./Icon.svelte";
+  import type { IconButtonProps } from "./types/icon-button.types";
 
-    let { icon, label, variant = "outline", onclick }: IconButtonProps = $props();
+  let { icon, label, variant = "outline", onclick }: IconButtonProps = $props();
 </script>
 
 <button class="icon-button icon-button--{variant}" type="button" aria-label={label} title={label} {onclick}>

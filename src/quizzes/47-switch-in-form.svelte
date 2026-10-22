@@ -1,9 +1,9 @@
 <script lang="ts">
-    import type {VisualProps} from "../engine/types/quiz.types";
-    import {BrandTheme, Checkbox, MockButton, Switch} from "../mock";
-    import type {NotificationOption} from "./types/quiz-mocks.types";
+  import type { VisualProps } from "../engine/types/quiz.types";
+  import { BrandTheme, Checkbox, MockButton, Switch } from "../mock";
+  import type { NotificationOption } from "./types/quiz-mocks.types";
 
-    let { variant = "a" }: VisualProps = $props();
+  let { variant = "a" }: VisualProps = $props();
 
   const options: NotificationOption[] = [
     { label: "New sign-ups", checked: true },

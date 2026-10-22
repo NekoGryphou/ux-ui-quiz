@@ -1,7 +1,7 @@
 <script lang="ts">
-    import type {TitleProps} from "./types/title.types";
+  import type { TitleProps } from "./types/title.types";
 
-    let { size = "md", children }: TitleProps = $props();
+  let { size = "md", children }: TitleProps = $props();
 </script>
 
 <p class="title title--{size}">{@render children()}</p>

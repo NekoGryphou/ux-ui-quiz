@@ -1,7 +1,7 @@
 <script lang="ts">
-    import {RetroButton, RetroField, RetroWindow} from "../mock";
+  import { RetroButton, RetroField, RetroWindow } from "../mock";
 
-    const days: string[] = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+  const days: string[] = ["Mon", "Tue", "Wed", "Thu", "Fri"];
   const hours: string[] = ["7.5", "8", "7.5", "8", "6"];
 </script>
 

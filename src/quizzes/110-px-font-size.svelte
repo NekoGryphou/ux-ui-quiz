@@ -1,8 +1,8 @@
 <script lang="ts">
-    import type {VisualProps} from "../engine/types/quiz.types";
-    import {CodeEditor, CodeLines, Icon} from "../mock";
+  import type { VisualProps } from "../engine/types/quiz.types";
+  import { CodeEditor, CodeLines, Icon } from "../mock";
 
-    let { variant = "a" }: VisualProps = $props();
+  let { variant = "a" }: VisualProps = $props();
 
   const remVersion: string =
     ".recipe-title {\n  font-size: 1.25rem;\n  line-height: 1.25;\n}\n\n.recipe-text {\n  font-size: 1rem;\n  line-height: 1.5;\n}";

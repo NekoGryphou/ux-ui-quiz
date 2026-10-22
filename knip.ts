@@ -18,12 +18,7 @@ const cssImports = (text: string): string =>
  * @desc Knip configuration: entry points reached through globs or dynamic imports, and accepted exceptions.
  */
 const config: KnipConfig = {
-  entry: [
-    "src/quizzes/[0-9]*.svelte",
-    "src/quizzes/meta/*.meta.ts",
-    "src/screens/Kit.svelte",
-    "src/app/DebugPanel.svelte"
-  ],
+  entry: ["src/quizzes/[0-9]*.svelte", "src/quizzes/meta/*.meta.ts", "src/screens/Kit.svelte"],
   project: ["src/**/*.{ts,svelte,css}", "scripts/**/*.ts", "e2e/**/*.ts"],
   compilers: { css: cssImports },
   ignoreExportsUsedInFile: { interface: true, type: true },

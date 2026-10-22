@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {Alert, BrandTheme, Field, MockButton} from "../mock";
+  import { Alert, BrandTheme, Field, MockButton } from "../mock";
 </script>
 
 <BrandTheme brand="fintech">

@@ -1,8 +1,8 @@
 <script lang="ts">
-    import {BrandTheme, BrowserShell, Spinner} from "../mock";
-    import type {FilterGroup} from "./types/quiz-mocks.types";
+  import { BrandTheme, BrowserShell, Spinner } from "../mock";
+  import type { FilterGroup } from "./types/quiz-mocks.types";
 
-    const hues: number[] = [200, 140, 20, 260, 45, 330];
+  const hues: number[] = [200, 140, 20, 260, 45, 330];
   const groups: FilterGroup[] = [
     {
       title: "Size",

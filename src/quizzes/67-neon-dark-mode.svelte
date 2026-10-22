@@ -1,7 +1,7 @@
 <script lang="ts">
-    import type {NeonMetric} from "./types/quiz-mocks.types";
+  import type { NeonMetric } from "./types/quiz-mocks.types";
 
-    const metrics: NeonMetric[] = [
+  const metrics: NeonMetric[] = [
     { label: "ERROR RATE", value: "2.4%", tone: "#ff0000", points: "0,18 10,16 20,17 30,9 40,12 50,4 60,6" },
     { label: "LATENCY P95", value: "812 ms", tone: "#0000ff", points: "0,12 10,14 20,8 30,10 40,6 50,9 60,5" },
     { label: "UPTIME", value: "99.97%", tone: "#00ff00", points: "0,6 10,6 20,5 30,6 40,5 50,5 60,4" },

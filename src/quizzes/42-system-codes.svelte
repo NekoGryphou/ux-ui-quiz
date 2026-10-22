@@ -1,7 +1,7 @@
 <script lang="ts">
-    import {RetroButton, RetroField, RetroWindow} from "../mock";
+  import { RetroButton, RetroField, RetroWindow } from "../mock";
 
-    const columns: string[] = ["ORD_NO", "CUST_REF", "ST", "SHP_DT", "CRR", "FLG"];
+  const columns: string[] = ["ORD_NO", "CUST_REF", "ST", "SHP_DT", "CRR", "FLG"];
   const rows: string[][] = [
     ["100477", "C-20931", "5", "20250509", "UPS1", "N"],
     ["100479", "C-11872", "5", "20250510", "DHL2", "N"],

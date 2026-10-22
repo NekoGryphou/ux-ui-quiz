@@ -1,12 +1,12 @@
 <script lang="ts">
-    import {outcomeLabel} from "../components/utils/choice.utils";
-    import type {ChoiceOutcome} from "../engine/types/quiz.types";
-    import {choiceOutcome} from "../engine/utils/scoring.utils";
-    import type {CompareStageProps} from "./types/compare-stage.types";
-    import {isFromControl, positionLetter} from "./utils/compare.utils";
-    import VisualStage from "./VisualStage.svelte";
+  import { outcomeLabel } from "../components/utils/choice.utils";
+  import type { ChoiceOutcome } from "../engine/types/quiz.types";
+  import { choiceOutcome } from "../engine/utils/scoring.utils";
+  import type { CompareStageProps } from "./types/compare-stage.types";
+  import { isFromControl, positionLetter } from "./utils/compare.utils";
+  import VisualStage from "./VisualStage.svelte";
 
-    let { quiz, visual, options, answer, onselect }: CompareStageProps = $props();
+  let { quiz, visual, options, answer, onselect }: CompareStageProps = $props();
 
   /**
    * @private

@@ -1,11 +1,11 @@
 <script lang="ts">
-    import type {ChoiceOutcome} from "../engine/types/quiz.types";
-    import {choiceOutcome} from "../engine/utils/scoring.utils";
-    import Icon from "./Icon.svelte";
-    import type {ChoiceListProps} from "./types/choice-list.types";
-    import {outcomeLabel} from "./utils/choice.utils";
+  import type { ChoiceOutcome } from "../engine/types/quiz.types";
+  import { choiceOutcome } from "../engine/utils/scoring.utils";
+  import Icon from "./Icon.svelte";
+  import type { ChoiceListProps } from "./types/choice-list.types";
+  import { outcomeLabel } from "./utils/choice.utils";
 
-    let { quiz, choices, answer, ontoggle }: ChoiceListProps = $props();
+  let { quiz, choices, answer, ontoggle }: ChoiceListProps = $props();
 
   const isMultiple: boolean = $derived(quiz.kind === "multiple");
 </script>

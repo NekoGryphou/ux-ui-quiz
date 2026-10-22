@@ -1,7 +1,7 @@
 <script lang="ts">
-    import {BrandTheme, Field, MockButton} from "../mock";
+  import { BrandTheme, Field, MockButton } from "../mock";
 
-    const years: number[] = Array.from({ length: 7 }, (_, i) => 1900 + i);
+  const years: number[] = Array.from({ length: 7 }, (_, i) => 1900 + i);
 </script>
 
 <BrandTheme brand="corporate">

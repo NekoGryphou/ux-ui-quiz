@@ -1,7 +1,7 @@
 <script lang="ts">
-    import type {RetroButtonProps} from "./types/retro-button.types";
+  import type { RetroButtonProps } from "./types/retro-button.types";
 
-    let { primary = false, children }: RetroButtonProps = $props();
+  let { primary = false, children }: RetroButtonProps = $props();
 </script>
 
 <span class="button" class:button--primary={primary}>{@render children()}</span>

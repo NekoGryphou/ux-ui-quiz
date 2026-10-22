@@ -1,7 +1,7 @@
 <script lang="ts">
-    import {AppBar, BrandTheme, Field, PhoneShell} from "../mock";
+  import { AppBar, BrandTheme, Field, PhoneShell } from "../mock";
 
-    const rows: string[] = ["qwertyuiop", "asdfghjkl", "zxcvbnm"];
+  const rows: string[] = ["qwertyuiop", "asdfghjkl", "zxcvbnm"];
 </script>
 
 <BrandTheme brand="fintech">

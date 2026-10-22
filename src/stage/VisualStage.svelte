@@ -1,11 +1,11 @@
 <script lang="ts">
-    import Button from "../components/Button.svelte";
-    import IconButton from "../components/IconButton.svelte";
-    import {ENLARGE_BELOW_SCALE} from "./const/stage.const";
-    import MockFrame from "./MockFrame.svelte";
-    import type {VisualStageProps} from "./types/visual-stage.types";
+  import Button from "../components/Button.svelte";
+  import IconButton from "../components/IconButton.svelte";
+  import { ENLARGE_BELOW_SCALE } from "./const/stage.const";
+  import MockFrame from "./MockFrame.svelte";
+  import type { VisualStageProps } from "./types/visual-stage.types";
 
-    let { visual: Visual, label, variant = "a", compact = false }: VisualStageProps = $props();
+  let { visual: Visual, label, variant = "a", compact = false }: VisualStageProps = $props();
 
   let available: number = $state(0);
   let naturalWidth: number = $state(0);

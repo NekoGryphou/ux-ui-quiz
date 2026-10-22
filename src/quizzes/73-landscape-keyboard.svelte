@@ -1,7 +1,7 @@
 <script lang="ts">
-    import {BrandTheme} from "../mock";
+  import { BrandTheme } from "../mock";
 
-    const rows: string[] = ["qwertyuiop", "asdfghjkl", "zxcvbnm"];
+  const rows: string[] = ["qwertyuiop", "asdfghjkl", "zxcvbnm"];
 </script>
 
 <BrandTheme brand="playful">

@@ -1,6 +1,6 @@
 <script lang="ts">
-    import {BrandTheme, Checkbox, Field, MockButton, Photo} from "../mock";
-    import {PHOTO_CANDLES} from "./const/photo.const";
+  import { BrandTheme, Checkbox, Field, MockButton, Photo } from "../mock";
+  import { PHOTO_CANDLES } from "./const/photo.const";
 </script>
 
 <BrandTheme brand="luxury">

@@ -6,9 +6,9 @@ for (const file of [".env.local", ".env"]) if (existsSync(file)) process.loadEnv
 
 /**
  * @private
- * @desc Port of the dev server started for the browser tests, from E2E_PORT.
+ * @desc Port of the dev server started for the browser tests, from E2E_PORT or the default 4202.
  */
-const PORT: number = portFrom(process.env, "E2E_PORT");
+const PORT: number = portFrom({ ...process.env, E2E_PORT: process.env["E2E_PORT"] ?? "4202" }, "E2E_PORT");
 
 // used by playwright test
 // noinspection JSUnusedGlobalSymbols

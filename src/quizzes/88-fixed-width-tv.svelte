@@ -1,6 +1,6 @@
 <script lang="ts">
-    import {Photo, ViewportBadge} from "../mock";
-    import {PHOTO_RISOTTO} from "./const/photo.const";
+  import { Photo, ViewportBadge } from "../mock";
+  import { PHOTO_RISOTTO } from "./const/photo.const";
 </script>
 
 <div class="room">

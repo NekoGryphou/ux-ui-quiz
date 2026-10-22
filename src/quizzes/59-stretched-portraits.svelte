@@ -1,8 +1,8 @@
 <script lang="ts">
-    import {BrandTheme} from "../mock";
-    import type {TeamMember} from "./types/quiz-mocks.types";
+  import { BrandTheme } from "../mock";
+  import type { TeamMember } from "./types/quiz-mocks.types";
 
-    const team: TeamMember[] = [
+  const team: TeamMember[] = [
     { name: "Inès Morel", role: "Creative director", skin: "#f1c7a5", hair: "#3b2416", stretch: "none" },
     { name: "Tomás Ruiz", role: "Product designer", skin: "#c98e63", hair: "#1c1410", stretch: "wide" },
     { name: "Aiko Tanaka", role: "UX researcher", skin: "#f3d2b3", hair: "#111111", stretch: "none" },

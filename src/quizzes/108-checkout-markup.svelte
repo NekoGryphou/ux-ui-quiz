@@ -1,7 +1,7 @@
 <script lang="ts">
-    import {CodeEditor, CodeLines} from "../mock";
+  import { CodeEditor, CodeLines } from "../mock";
 
-    const code: string = [
+  const code: string = [
     '<form action="/checkout/address" method="post">',
     '  <label for="name">Full name</label>',
     '  <input id="name" name="name" type="text" required>',

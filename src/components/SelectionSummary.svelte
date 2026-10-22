@@ -1,8 +1,8 @@
 <script lang="ts">
-    import Icon from "./Icon.svelte";
-    import type {SelectionSummaryProps} from "./types/selection-summary.types";
+  import Icon from "./Icon.svelte";
+  import type { SelectionSummaryProps } from "./types/selection-summary.types";
 
-    let { prompt, labels, several }: SelectionSummaryProps = $props();
+  let { prompt, labels, several }: SelectionSummaryProps = $props();
 </script>
 
 <div class="summary">

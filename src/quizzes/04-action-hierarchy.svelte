@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {Badge, BrandTheme, BrowserShell, MockButton, Skeleton, Title, TopBar} from "../mock";
+  import { Badge, BrandTheme, BrowserShell, MockButton, Skeleton, Title, TopBar } from "../mock";
 </script>
 
 <BrandTheme brand="corporate">

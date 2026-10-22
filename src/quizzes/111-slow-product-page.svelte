@@ -1,8 +1,8 @@
 <script lang="ts">
-    import {CodeEditor, CodeLines} from "../mock";
-    import {PHOTO_ARMCHAIR} from "./const/photo.const";
+  import { CodeEditor, CodeLines } from "../mock";
+  import { PHOTO_ARMCHAIR } from "./const/photo.const";
 
-    const frameTimes: string[] = ["0.5 s", "1.2 s", "3.1 s"];
+  const frameTimes: string[] = ["0.5 s", "1.2 s", "3.1 s"];
   const photo: string = `url('${PHOTO_ARMCHAIR.url}')`;
   const markup: string = [
     '<link rel="preconnect" href="https://cdn.maisonoak.com" crossorigin>',

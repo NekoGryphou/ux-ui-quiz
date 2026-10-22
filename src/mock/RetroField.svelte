@@ -1,7 +1,7 @@
 <script lang="ts">
-    import type {RetroFieldProps} from "./types/retro-field.types";
+  import type { RetroFieldProps } from "./types/retro-field.types";
 
-    let { value = "", width = 140, grow = false }: RetroFieldProps = $props();
+  let { value = "", width = 140, grow = false }: RetroFieldProps = $props();
 </script>
 
 <span class="field" class:field--grow={grow} style:width={grow ? undefined : `${String(width)}px`}>{value}</span>

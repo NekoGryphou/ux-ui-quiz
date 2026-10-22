@@ -1,18 +1,18 @@
 <script lang="ts">
-    import {
-        BrandTheme,
-        BrowserShell,
-        Field,
-        KeyboardSandbox,
-        KeyTarget,
-        MockButton,
-        Modal,
-        Skeleton,
-        TopBar
-    } from "../mock";
-    import type {KeyStop} from "../mock/types/keyboard.types";
+  import {
+    BrandTheme,
+    BrowserShell,
+    Field,
+    KeyboardSandbox,
+    KeyTarget,
+    MockButton,
+    Modal,
+    Skeleton,
+    TopBar
+  } from "../mock";
+  import type { KeyStop } from "../mock/types/keyboard.types";
 
-    const stops: KeyStop[] = [
+  const stops: KeyStop[] = [
     { id: "name", label: "File name field, in the dialog" },
     { id: "cancel", label: "Cancel button, in the dialog" },
     { id: "rename", label: "Rename button, in the dialog" },

@@ -71,14 +71,15 @@ describe("resolveScreen", (): void => {
 
   it("only reviews submitted answers", (): void => {
     const main: Run = fixedRun();
-    expect(resolveScreen({ name: "review", index: 0 }, main, null)).toEqual({
+    const index: number = main.order.findIndex((quiz) => quiz.id === "single");
+    expect(resolveScreen({ name: "review", index }, main, null)).toEqual({
       name: "redirect",
       to: href.results("main")
     });
 
     main.toggle(quizById("single"), "b");
     main.submit(quizById("single"));
-    expect(resolveScreen({ name: "review", index: 0 }, main, null)).toMatchObject({
+    expect(resolveScreen({ name: "review", index }, main, null)).toMatchObject({
       name: "quiz",
       mode: "review",
       run: main

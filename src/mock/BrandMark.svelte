@@ -1,9 +1,9 @@
 <script lang="ts">
-    import {MARK_PATHS} from "./const/brand-mark.const";
-    import type {BrandMarkProps, MarkStyle} from "./types/brand-mark.types";
-    import {markStyle} from "./utils/brand-mark.utils";
+  import { MARK_PATHS } from "./const/brand-mark.const";
+  import type { BrandMarkProps, MarkStyle } from "./types/brand-mark.types";
+  import { markStyle } from "./utils/brand-mark.utils";
 
-    let { name, size = 22 }: BrandMarkProps = $props();
+  let { name, size = 22 }: BrandMarkProps = $props();
 
   const id: string = $props.id();
 

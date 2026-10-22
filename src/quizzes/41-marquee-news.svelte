@@ -1,6 +1,6 @@
 <script lang="ts">
-    import {Hotspot, RetroBrowser, RetroButton} from "../mock";
-    import {CLUB_MASCOT_GIF_URL} from "./const/media.const";
+  import { Hotspot, RetroBrowser, RetroButton } from "../mock";
+  import { CLUB_MASCOT_GIF_URL } from "./const/media.const";
 </script>
 
 <!--suppress HttpUrlsUsage -->

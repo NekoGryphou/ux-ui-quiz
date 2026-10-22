@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {BrandTheme, BrowserShell, SideNav, Spinner, TopBar} from "../mock";
+  import { BrandTheme, BrowserShell, SideNav, Spinner, TopBar } from "../mock";
 </script>
 
 <BrandTheme brand="eco">

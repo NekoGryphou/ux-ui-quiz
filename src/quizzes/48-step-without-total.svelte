@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {AppBar, BrandTheme, Checkbox, Field, MockButton, PhoneShell} from "../mock";
+  import { AppBar, BrandTheme, Checkbox, Field, MockButton, PhoneShell } from "../mock";
 </script>
 
 <BrandTheme brand="playful">

@@ -1,7 +1,7 @@
 <script lang="ts">
-    import {Badge, BrandTheme, BrowserShell, Hotspot, MockButton, Title, TopBar} from "../mock";
+  import { Badge, BrandTheme, BrowserShell, Hotspot, MockButton, Title, TopBar } from "../mock";
 
-    const customers: string[] = ["North Peak", "Acme Dental", "River Labs", "Blue Harbor", "Kite & Co"];
+  const customers: string[] = ["North Peak", "Acme Dental", "River Labs", "Blue Harbor", "Kite & Co"];
   const dates: string[] = ["Oct 02", "Oct 05", "Oct 09", "Oct 14", "Oct 21"];
   const amounts: string[] = ["€1,240.5", "€89", "€12,000.00", "€430.10", "€2,315"];
 </script>

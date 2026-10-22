@@ -1,7 +1,7 @@
 <script lang="ts">
-    import {Card, CodeEditor, CodeLines, Field, MockButton} from "../mock";
+  import { Card, CodeEditor, CodeLines, Field, MockButton } from "../mock";
 
-    const code: string =
+  const code: string =
     'function showSaved() {\n  const toast = document.createElement("div");\n  toast.className = "toast";\n  toast.textContent = "Address saved";\n  document.body.append(toast);\n  setTimeout(() => toast.remove(), 5000);\n}\n\nsaveButton.addEventListener("click", async () => {\n  await saveAddress(form);\n  showSaved();\n});';
 </script>
 

@@ -1,6 +1,6 @@
 <script lang="ts">
-    import {BrandTheme, BrowserShell, Checkbox, Field, Icon, MockButton, Photo, Stepper} from "../mock";
-    import {PHOTO_SHOE_TRAIL} from "./const/photo.const";
+  import { BrandTheme, BrowserShell, Checkbox, Field, Icon, MockButton, Photo, Stepper } from "../mock";
+  import { PHOTO_SHOE_TRAIL } from "./const/photo.const";
 </script>
 
 <BrandTheme brand="luxury">

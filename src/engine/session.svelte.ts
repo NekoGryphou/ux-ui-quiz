@@ -154,10 +154,7 @@ export class Session {
    * @returns New run data.
    */
   private newRun(kind: RunKind, ids?: readonly string[]): RunData {
-    return createRun(
-      this.catalog,
-      ids === undefined ? { kind } : { kind, ids }
-    );
+    return createRun(this.catalog, ids === undefined ? { kind } : { kind, ids });
   }
 
   /**

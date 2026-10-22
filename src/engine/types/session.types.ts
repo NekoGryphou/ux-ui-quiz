@@ -33,5 +33,4 @@ export interface SessionOptions {
 
   /** Persistence backend. */
   store: SessionStore;
-
 }

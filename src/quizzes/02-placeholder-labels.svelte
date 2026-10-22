@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {BrandMark, BrowserShell, MockButton, Title} from "../mock";
+  import { BrandMark, BrowserShell, MockButton, Title } from "../mock";
 </script>
 
 <BrowserShell url="app.ledgerly.com/sign-in">

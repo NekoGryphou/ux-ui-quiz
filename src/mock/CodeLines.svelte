@@ -1,9 +1,9 @@
 <script lang="ts">
-    import {codeHighlighter} from "./code-highlighter.svelte";
-    import type {CodeContext, CodeLinesProps, CodeToken} from "./types/code.types";
-    import {readCodeContext} from "./utils/code.utils";
+  import { codeHighlighter } from "./code-highlighter.svelte";
+  import type { CodeContext, CodeLinesProps, CodeToken } from "./types/code.types";
+  import { readCodeContext } from "./utils/code.utils";
 
-    let { code, start }: CodeLinesProps = $props();
+  let { code, start }: CodeLinesProps = $props();
 
   const context: CodeContext | undefined = readCodeContext();
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {BrandTheme, BrowserShell, Metric, SideNav, Tabs, Title} from "../mock";
+  import { BrandTheme, BrowserShell, Metric, SideNav, Tabs, Title } from "../mock";
 </script>
 
 <BrandTheme brand="fintech">

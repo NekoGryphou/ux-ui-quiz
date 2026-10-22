@@ -1,8 +1,8 @@
 <script lang="ts">
-    import {BrowserShell, MockButton, Photo, TopBar} from "../mock";
-    import {PHOTO_SHOE_TRAIL} from "./const/photo.const";
+  import { BrowserShell, MockButton, Photo, TopBar } from "../mock";
+  import { PHOTO_SHOE_TRAIL } from "./const/photo.const";
 
-    const sizes: string[] = ["40", "41", "42", "43", "44", "45"];
+  const sizes: string[] = ["40", "41", "42", "43", "44", "45"];
 </script>
 
 <BrowserShell url="shop.trailgear.eu/trail-runner-2">

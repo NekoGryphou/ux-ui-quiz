@@ -1,10 +1,10 @@
 <script lang="ts">
-    import {RETRO_BROWSER_BUTTONS, RETRO_BROWSER_MENU, RETRO_BROWSER_STATUS} from "./const/retro.const";
-    import RetroField from "./RetroField.svelte";
-    import RetroWindow from "./RetroWindow.svelte";
-    import type {RetroBrowserProps} from "./types/retro-browser.types";
+  import { RETRO_BROWSER_BUTTONS, RETRO_BROWSER_MENU, RETRO_BROWSER_STATUS } from "./const/retro.const";
+  import RetroField from "./RetroField.svelte";
+  import RetroWindow from "./RetroWindow.svelte";
+  import type { RetroBrowserProps } from "./types/retro-browser.types";
 
-    let { title, url, width = 640, children }: RetroBrowserProps = $props();
+  let { title, url, width = 640, children }: RetroBrowserProps = $props();
 </script>
 
 <RetroWindow

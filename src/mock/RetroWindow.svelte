@@ -1,7 +1,7 @@
 <script lang="ts">
-    import type {RetroWindowProps} from "./types/retro-window.types";
+  import type { RetroWindowProps } from "./types/retro-window.types";
 
-    let { title, menu = [], status = [], width = 560, toolbar, children }: RetroWindowProps = $props();
+  let { title, menu = [], status = [], width = 560, toolbar, children }: RetroWindowProps = $props();
 </script>
 
 <div class="window" style:width="{width}px">

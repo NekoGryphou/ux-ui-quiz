@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {RetroButton, RetroWindow} from "../mock";
+  import { RetroButton, RetroWindow } from "../mock";
 </script>
 
 <div class="desk">

@@ -1,7 +1,7 @@
 <script lang="ts">
-    import type {DashboardTile} from "./types/quiz-mocks.types";
+  import type { DashboardTile } from "./types/quiz-mocks.types";
 
-    const bars: number[] = [62, 74, 55, 80, 68, 90, 72];
+  const bars: number[] = [62, 74, 55, 80, 68, 90, 72];
   const ticker: string = "EU +2.1% · US −0.4% · APAC +5.7% · LATAM +1.2% · MEA −1.9% · ONLINE +3.3% · RETAIL −0.8%";
   const tiles: DashboardTile[] = [
     { label: "Sessions", value: "1,284,331" },

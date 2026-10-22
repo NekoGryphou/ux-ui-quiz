@@ -1,9 +1,9 @@
 <script lang="ts">
-    import Icon from "../components/Icon.svelte";
-    import type {KeyboardSandboxProps, KeyStop} from "./types/keyboard.types";
-    import {nextStop, provideKeyboardContext} from "./utils/keyboard.utils";
+  import Icon from "../components/Icon.svelte";
+  import type { KeyboardSandboxProps, KeyStop } from "./types/keyboard.types";
+  import { nextStop, provideKeyboardContext } from "./utils/keyboard.utils";
 
-    let { stops, children }: KeyboardSandboxProps = $props();
+  let { stops, children }: KeyboardSandboxProps = $props();
 
   const uid: string = $props.id();
 

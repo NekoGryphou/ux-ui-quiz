@@ -1,9 +1,9 @@
 <script lang="ts">
-    import type {VisualProps} from "../engine/types/quiz.types";
-    import {FoldableShell} from "../mock";
-    import type {MailItem} from "./types/quiz-mocks.types";
+  import type { VisualProps } from "../engine/types/quiz.types";
+  import { FoldableShell } from "../mock";
+  import type { MailItem } from "./types/quiz-mocks.types";
 
-    let { variant = "a" }: VisualProps = $props();
+  let { variant = "a" }: VisualProps = $props();
 
   const mails: MailItem[] = [
     { from: "Priya", subject: "Budget Q3 — final numbers", preview: "Here are the figures we agreed on yesterday…" },

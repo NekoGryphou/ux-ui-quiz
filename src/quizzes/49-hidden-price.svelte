@@ -1,8 +1,8 @@
 <script lang="ts">
-    import {BrandTheme, BrowserShell, Icon, MockButton, Title} from "../mock";
-    import type {PricingPlan} from "./types/quiz-mocks.types";
+  import { BrandTheme, BrowserShell, Icon, MockButton, Title } from "../mock";
+  import type { PricingPlan } from "./types/quiz-mocks.types";
 
-    const plans: PricingPlan[] = [
+  const plans: PricingPlan[] = [
     {
       name: "Starter",
       price: "€9",

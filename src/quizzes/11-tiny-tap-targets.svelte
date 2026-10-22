@@ -1,9 +1,9 @@
 <script lang="ts">
-    import {AppBar, BrandTheme, Icon, MockButton, PhoneShell, Photo} from "../mock";
-    import {PHOTO_COLD_BREW, PHOTO_GRANOLA, PHOTO_HONEY} from "./const/photo.const";
-    import type {CartItem} from "./types/quiz-mocks.types";
+  import { AppBar, BrandTheme, Icon, MockButton, PhoneShell, Photo } from "../mock";
+  import { PHOTO_COLD_BREW, PHOTO_GRANOLA, PHOTO_HONEY } from "./const/photo.const";
+  import type { CartItem } from "./types/quiz-mocks.types";
 
-    const items: CartItem[] = [
+  const items: CartItem[] = [
     { name: "Wildflower honey", detail: "250 g jar", price: "€6.90", qty: 1 },
     { name: "Oat granola", detail: "500 g bag", price: "€4.50", qty: 2 },
     { name: "Cold brew coffee", detail: "1 L bottle", price: "€7.20", qty: 1 }

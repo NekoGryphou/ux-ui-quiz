@@ -1,7 +1,7 @@
 <script lang="ts">
-    import {BrandTheme, BrowserShell, Icon} from "../mock";
+  import { BrandTheme, BrowserShell, Icon } from "../mock";
 
-    const speech: string[] = [
+  const speech: string[] = [
     "Inbox, heading level 1",
     "button",
     "button",

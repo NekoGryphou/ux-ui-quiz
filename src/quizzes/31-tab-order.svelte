@@ -1,8 +1,8 @@
 <script lang="ts">
-    import {BrandTheme, BrowserShell, KeyboardSandbox, KeyTarget, MockButton} from "../mock";
-    import type {KeyStop} from "../mock/types/keyboard.types";
+  import { BrandTheme, BrowserShell, KeyboardSandbox, KeyTarget, MockButton } from "../mock";
+  import type { KeyStop } from "../mock/types/keyboard.types";
 
-    const links: string[] = [
+  const links: string[] = [
     "Product",
     "Features",
     "Pricing",

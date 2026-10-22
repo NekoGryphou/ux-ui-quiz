@@ -1,8 +1,8 @@
 <script lang="ts">
-    import {BrandTheme, Hotspot, Icon, MockButton} from "../mock";
-    import type {QuarterBar} from "./types/quiz-mocks.types";
+  import { BrandTheme, Hotspot, Icon, MockButton } from "../mock";
+  import type { QuarterBar } from "./types/quiz-mocks.types";
 
-    const ticks: string[] = ["€102k", "€100k", "€98k", "€96k"];
+  const ticks: string[] = ["€102k", "€100k", "€98k", "€96k"];
   const AXIS_MIN: number = 96;
   const AXIS_MAX: number = 102;
   const bars: QuarterBar[] = [

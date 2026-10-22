@@ -1,8 +1,8 @@
 <script lang="ts">
-    import Icon from "../components/Icon.svelte";
-    import type {ModalProps} from "./types/modal.types";
+  import Icon from "../components/Icon.svelte";
+  import type { ModalProps } from "./types/modal.types";
 
-    let { title, closable = true, floating = false, children, actions }: ModalProps = $props();
+  let { title, closable = true, floating = false, children, actions }: ModalProps = $props();
 </script>
 
 <div class="overlay" class:overlay--floating={floating}>

@@ -1,12 +1,12 @@
 <script lang="ts">
-    import {prefersReducedMotion} from "svelte/motion";
-    import {HINT_DISMISS_MS} from "./const/shortcut-hint.const";
-    import IconButton from "./IconButton.svelte";
-    import type {ShortcutHintProps} from "./types/shortcut-hint.types";
-    import {collapse} from "./utils/collapse.utils";
-    import {readHintDismissed, storeHintDismissed} from "./utils/shortcut-hint.utils";
+  import { prefersReducedMotion } from "svelte/motion";
+  import { HINT_DISMISS_MS } from "./const/shortcut-hint.const";
+  import IconButton from "./IconButton.svelte";
+  import type { ShortcutHintProps } from "./types/shortcut-hint.types";
+  import { collapse } from "./utils/collapse.utils";
+  import { readHintDismissed, storeHintDismissed } from "./utils/shortcut-hint.utils";
 
-    let { optionCount, ondismiss }: ShortcutHintProps = $props();
+  let { optionCount, ondismiss }: ShortcutHintProps = $props();
 
   let dismissed: boolean = $state(readHintDismissed());
 

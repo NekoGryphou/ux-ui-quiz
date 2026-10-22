@@ -1,9 +1,9 @@
 <script lang="ts">
-    import type {VisualProps} from "../engine/types/quiz.types";
-    import {BrandTheme, PhoneShell} from "../mock";
-    import type {ChatMessage} from "./types/quiz-mocks.types";
+  import type { VisualProps } from "../engine/types/quiz.types";
+  import { BrandTheme, PhoneShell } from "../mock";
+  import type { ChatMessage } from "./types/quiz-mocks.types";
 
-    let { variant = "a" }: VisualProps = $props();
+  let { variant = "a" }: VisualProps = $props();
 
   const authors: string[] = ["Inès", "Tom", "Aiko", "Dev"];
   const lines: string[] = [

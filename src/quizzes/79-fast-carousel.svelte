@@ -1,9 +1,9 @@
 <script lang="ts">
-    import {BrandTheme, BrowserShell} from "../mock";
-    import {PHOTO_CINEMA_SCREEN, PHOTO_CINEMA_SEATS, PHOTO_POPCORN} from "./const/photo.const";
-    import type {HeroSlide} from "./types/quiz-mocks.types";
+  import { BrandTheme, BrowserShell } from "../mock";
+  import { PHOTO_CINEMA_SCREEN, PHOTO_CINEMA_SEATS, PHOTO_POPCORN } from "./const/photo.const";
+  import type { HeroSlide } from "./types/quiz-mocks.types";
 
-    const slides: HeroSlide[] = [
+  const slides: HeroSlide[] = [
     {
       title: "Students: €6 every Tuesday",
       body: "Show your student card at the box office. Not valid on 3D or premieres.",

@@ -1,7 +1,7 @@
 <script lang="ts">
-    import type {PhoneShellProps} from "./types/phone-shell.types";
+  import type { PhoneShellProps } from "./types/phone-shell.types";
 
-    let { time = "9:41", children }: PhoneShellProps = $props();
+  let { time = "9:41", children }: PhoneShellProps = $props();
 </script>
 
 <div class="phone">

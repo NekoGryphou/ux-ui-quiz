@@ -1,7 +1,7 @@
 <script lang="ts">
-    import type {PhotoProps} from "./types/photo.types";
+  import type { PhotoProps } from "./types/photo.types";
 
-    let { src, hue = 0, position = "center", fit = "cover" }: PhotoProps = $props();
+  let { src, hue = 0, position = "center", fit = "cover" }: PhotoProps = $props();
 </script>
 
 <img

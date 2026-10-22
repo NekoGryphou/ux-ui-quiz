@@ -1,29 +1,29 @@
 <script lang="ts">
-    import {onDestroy, tick} from "svelte";
-    import {prefersReducedMotion} from "svelte/motion";
-    import {router} from "../app/router.svelte";
-    import {Settle} from "../app/settle.svelte";
-    import AnswerReveal from "../components/AnswerReveal.svelte";
-    import Button from "../components/Button.svelte";
-    import ChoiceList from "../components/ChoiceList.svelte";
-    import KindBadge from "../components/KindBadge.svelte";
-    import SelectionSummary from "../components/SelectionSummary.svelte";
-    import ShortcutHint from "../components/ShortcutHint.svelte";
-    import type {Answer, Choice, HotspotResults} from "../engine/types/quiz.types";
-    import {allowsSeveral, optionsOf} from "../engine/utils/quiz.utils";
-    import {choiceOutcome, hotspotResults, isCorrect} from "../engine/utils/scoring.utils";
-    import {PRELOAD_AHEAD} from "../stage/const/visual-cache.const";
-    import MotionToggle from "../stage/MotionToggle.svelte";
-    import QuizStage from "../stage/QuizStage.svelte";
-    import {provideHotspotContext} from "../stage/utils/hotspot.utils";
-    import {visualCache} from "../stage/visual-cache.svelte";
-    import {QUESTION_HEADINGS} from "./const/quiz.const";
-    import type {QuizNav, QuizScreenProps} from "./types/quiz-screen.types";
-    import type {ShortcutAction} from "./types/shortcuts.types";
-    import {checkButtonLabel, quizNav} from "./utils/quiz.utils";
-    import {shortcutFor} from "./utils/shortcuts.utils";
+  import { onDestroy, tick } from "svelte";
+  import { prefersReducedMotion } from "svelte/motion";
+  import { router } from "../app/router.svelte";
+  import { Settle } from "../app/settle.svelte";
+  import AnswerReveal from "../components/AnswerReveal.svelte";
+  import Button from "../components/Button.svelte";
+  import ChoiceList from "../components/ChoiceList.svelte";
+  import KindBadge from "../components/KindBadge.svelte";
+  import SelectionSummary from "../components/SelectionSummary.svelte";
+  import ShortcutHint from "../components/ShortcutHint.svelte";
+  import type { Answer, Choice, HotspotResults } from "../engine/types/quiz.types";
+  import { allowsSeveral, optionsOf } from "../engine/utils/quiz.utils";
+  import { choiceOutcome, hotspotResults, isCorrect } from "../engine/utils/scoring.utils";
+  import { PRELOAD_AHEAD } from "../stage/const/visual-cache.const";
+  import MotionToggle from "../stage/MotionToggle.svelte";
+  import QuizStage from "../stage/QuizStage.svelte";
+  import { provideHotspotContext } from "../stage/utils/hotspot.utils";
+  import { visualCache } from "../stage/visual-cache.svelte";
+  import { QUESTION_HEADINGS } from "./const/quiz.const";
+  import type { QuizNav, QuizScreenProps } from "./types/quiz-screen.types";
+  import type { ShortcutAction } from "./types/shortcuts.types";
+  import { checkButtonLabel, quizNav } from "./utils/quiz.utils";
+  import { shortcutFor } from "./utils/shortcuts.utils";
 
-    let { quiz, index, run, target, mode }: QuizScreenProps = $props();
+  let { quiz, index, run, target, mode }: QuizScreenProps = $props();
 
   const actionsSettle: Settle = new Settle();
 

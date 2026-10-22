@@ -1,12 +1,12 @@
 <script lang="ts">
-    import Button from "../components/Button.svelte";
-    import ConfirmDialog from "../components/ConfirmDialog.svelte";
-    import {router} from "./router.svelte";
-    import {session} from "./session";
-    import type {RestartButtonProps} from "./types/restart-button.types";
-    import {href} from "./utils/router.utils";
+  import Button from "../components/Button.svelte";
+  import ConfirmDialog from "../components/ConfirmDialog.svelte";
+  import { router } from "./router.svelte";
+  import { session } from "./session";
+  import type { RestartButtonProps } from "./types/restart-button.types";
+  import { href } from "./utils/router.utils";
 
-    let { variant = "secondary", size = "md" }: RestartButtonProps = $props();
+  let { variant = "secondary", size = "md" }: RestartButtonProps = $props();
 
   let confirming: boolean = $state(false);
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {BrandTheme, BrowserShell, Card, MockButton, Modal, Skeleton, Tabs, Title} from "../mock";
+  import { BrandTheme, BrowserShell, Card, MockButton, Modal, Skeleton, Tabs, Title } from "../mock";
 </script>
 
 <BrandTheme brand="brutalist">

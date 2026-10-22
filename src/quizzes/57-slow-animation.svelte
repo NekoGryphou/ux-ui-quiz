@@ -1,8 +1,8 @@
 <script lang="ts">
-    import type {VisualProps} from "../engine/types/quiz.types";
-    import {Icon, PhoneShell} from "../mock";
+  import type { VisualProps } from "../engine/types/quiz.types";
+  import { Icon, PhoneShell } from "../mock";
 
-    let { variant = "a" }: VisualProps = $props();
+  let { variant = "a" }: VisualProps = $props();
 
   const items: string[] = ["Home", "Timetables", "My tickets", "Saved trips", "Settings"];
 </script>

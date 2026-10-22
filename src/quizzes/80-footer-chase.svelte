@@ -1,17 +1,17 @@
 <script lang="ts">
-    import {BrandTheme, BrowserShell, Photo} from "../mock";
-    import {
-        PHOTO_AMARYLLIS,
-        PHOTO_ARMCHAIR,
-        PHOTO_CANDLES,
-        PHOTO_LAMP,
-        PHOTO_MUG,
-        PHOTO_SIDE_TABLE,
-        PHOTO_VASE,
-        PHOTO_VASE_FLORAL
-    } from "./const/photo.const";
+  import { BrandTheme, BrowserShell, Photo } from "../mock";
+  import {
+    PHOTO_AMARYLLIS,
+    PHOTO_ARMCHAIR,
+    PHOTO_CANDLES,
+    PHOTO_LAMP,
+    PHOTO_MUG,
+    PHOTO_SIDE_TABLE,
+    PHOTO_VASE,
+    PHOTO_VASE_FLORAL
+  } from "./const/photo.const";
 
-    const items: string[] = [
+  const items: string[] = [
     PHOTO_ARMCHAIR.url,
     PHOTO_LAMP.url,
     PHOTO_VASE.url,

@@ -1,8 +1,8 @@
 <script lang="ts">
-    import {Alert, Avatar, BrandTheme, Breadcrumbs, BrowserShell, Icon, MockButton, TopBar} from "../mock";
-    import type {DriveFile} from "./types/quiz-mocks.types";
+  import { Alert, Avatar, BrandTheme, Breadcrumbs, BrowserShell, Icon, MockButton, TopBar } from "../mock";
+  import type { DriveFile } from "./types/quiz-mocks.types";
 
-    const files: DriveFile[] = [
+  const files: DriveFile[] = [
     { name: "Homepage — final.fig", owner: "Ana Silva", edited: "2 h ago" },
     { name: "Pricing page v4.fig", owner: "Tom Becker", edited: "Yesterday" },
     { name: "Brand guidelines.pdf", owner: "Léa Moreau", edited: "Mar 12" }

@@ -1,7 +1,7 @@
 <script lang="ts">
-    import {BrandMark, BrowserShell, Hotspot, Icon} from "../mock";
+  import { BrandMark, BrowserShell, Hotspot, Icon } from "../mock";
 
-    const rows: string[][] = [
+  const rows: string[][] = [
     ["INV-1042", "Northwind", "1,250.00", "PAID"],
     ["INV-1043", "Bloomyard", "480.00", "OPEN"],
     ["INV-1044", "Tallybooks", "2,010.50", "OPEN"]

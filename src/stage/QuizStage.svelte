@@ -1,14 +1,14 @@
 <script lang="ts">
-    import Button from "../components/Button.svelte";
-    import type {CompareChoice} from "../engine/types/quiz.types";
-    import {isCompareChoice} from "../engine/utils/quiz.utils";
-    import CompareStage from "./CompareStage.svelte";
-    import type {QuizStageProps} from "./types/quiz-stage.types";
-    import type {VisualState} from "./types/visual-cache.types";
-    import {visualCache} from "./visual-cache.svelte";
-    import VisualStage from "./VisualStage.svelte";
+  import Button from "../components/Button.svelte";
+  import type { CompareChoice } from "../engine/types/quiz.types";
+  import { isCompareChoice } from "../engine/utils/quiz.utils";
+  import CompareStage from "./CompareStage.svelte";
+  import type { QuizStageProps } from "./types/quiz-stage.types";
+  import type { VisualState } from "./types/visual-cache.types";
+  import { visualCache } from "./visual-cache.svelte";
+  import VisualStage from "./VisualStage.svelte";
 
-    let { quiz, options, answer, label, onselect }: QuizStageProps = $props();
+  let { quiz, options, answer, label, onselect }: QuizStageProps = $props();
 
   const loaded: VisualState = $derived(visualCache.stateOf(quiz));
 

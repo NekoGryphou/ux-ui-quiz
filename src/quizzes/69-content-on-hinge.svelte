@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {BrandTheme, FoldableShell, Hotspot, Icon} from "../mock";
+  import { BrandTheme, FoldableShell, Hotspot, Icon } from "../mock";
 </script>
 
 <BrandTheme brand="fintech">

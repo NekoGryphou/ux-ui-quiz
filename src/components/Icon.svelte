@@ -1,8 +1,8 @@
 <script lang="ts">
-    import {ICONS} from "./const/icons.const";
-    import type {IconProps} from "./types/icon.types";
+  import { ICONS } from "./const/icons.const";
+  import type { IconProps } from "./types/icon.types";
 
-    let { name, size = 18, strokeWidth = 2, label }: IconProps = $props();
+  let { name, size = 18, strokeWidth = 2, label }: IconProps = $props();
 </script>
 
 <svg

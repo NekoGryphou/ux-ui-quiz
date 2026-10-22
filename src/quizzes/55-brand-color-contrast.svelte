@@ -1,7 +1,7 @@
 <script lang="ts">
-    import type {VisualProps} from "../engine/types/quiz.types";
+  import type { VisualProps } from "../engine/types/quiz.types";
 
-    let { variant = "a" }: VisualProps = $props();
+  let { variant = "a" }: VisualProps = $props();
 </script>
 
 <div class="card">

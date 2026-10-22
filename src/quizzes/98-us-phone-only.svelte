@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {BrandTheme, Field, MockButton} from "../mock";
+  import { BrandTheme, Field, MockButton } from "../mock";
 </script>
 
 <BrandTheme brand="corporate">

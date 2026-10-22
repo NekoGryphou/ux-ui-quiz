@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {Avatar, Badge, BrandTheme, BrowserShell, Card, MockButton, Table, Tabs, Title, TopBar} from "../mock";
+  import { Avatar, Badge, BrandTheme, BrowserShell, Card, MockButton, Table, Tabs, Title, TopBar } from "../mock";
 </script>
 
 <BrandTheme brand="fintech">

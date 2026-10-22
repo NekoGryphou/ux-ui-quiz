@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {Avatar, BrowserShell, Field, SideNav} from "../mock";
+  import { Avatar, BrowserShell, Field, SideNav } from "../mock";
 </script>
 
 <BrowserShell url="desk.supportly.io/tickets/open">

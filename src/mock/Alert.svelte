@@ -1,9 +1,9 @@
 <script lang="ts">
-    import Icon from "../components/Icon.svelte";
-    import {ALERT_ICONS} from "./const/alert.const";
-    import type {AlertProps} from "./types/alert.types";
+  import Icon from "../components/Icon.svelte";
+  import { ALERT_ICONS } from "./const/alert.const";
+  import type { AlertProps } from "./types/alert.types";
 
-    let { tone = "info", title, body, toast = false, action }: AlertProps = $props();
+  let { tone = "info", title, body, toast = false, action }: AlertProps = $props();
 </script>
 
 <div class="alert alert--{tone}" class:alert--toast={toast}>

@@ -1,8 +1,8 @@
 <script lang="ts">
-    import Button from "../components/Button.svelte";
-    import type {MotionToggleProps} from "./types/motion-toggle.types";
+  import Button from "../components/Button.svelte";
+  import type { MotionToggleProps } from "./types/motion-toggle.types";
 
-    let { playing, ontoggle }: MotionToggleProps = $props();
+  let { playing, ontoggle }: MotionToggleProps = $props();
 </script>
 
 <div class="motion">

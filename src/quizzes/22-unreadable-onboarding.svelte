@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {Hotspot, MockButton, PhoneShell} from "../mock";
+  import { Hotspot, MockButton, PhoneShell } from "../mock";
 </script>
 
 <PhoneShell>

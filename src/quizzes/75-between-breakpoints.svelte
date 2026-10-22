@@ -1,6 +1,6 @@
 <script lang="ts">
-    import {BrandMark, BrandTheme, Hotspot, Icon, Photo, TabletShell, ViewportBadge} from "../mock";
-    import {PHOTO_ARMCHAIR, PHOTO_LAMP, PHOTO_LIVING_ROOM, PHOTO_SIDE_TABLE} from "./const/photo.const";
+  import { BrandMark, BrandTheme, Hotspot, Icon, Photo, TabletShell, ViewportBadge } from "../mock";
+  import { PHOTO_ARMCHAIR, PHOTO_LAMP, PHOTO_LIVING_ROOM, PHOTO_SIDE_TABLE } from "./const/photo.const";
 </script>
 
 <BrandTheme brand="luxury">

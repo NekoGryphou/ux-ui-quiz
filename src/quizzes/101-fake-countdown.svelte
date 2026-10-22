@@ -1,7 +1,7 @@
 <script lang="ts">
-    import {BrandTheme, MockButton} from "../mock";
+  import { BrandTheme, MockButton } from "../mock";
 
-    const visits: string[] = ["Monday · 09:14", "Tuesday · 19:42"];
+  const visits: string[] = ["Monday · 09:14", "Tuesday · 19:42"];
 </script>
 
 <BrandTheme brand="brutalist">

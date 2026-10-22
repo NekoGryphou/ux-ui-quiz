@@ -1,19 +1,19 @@
 <script lang="ts">
-    import RestartButton from "../app/RestartButton.svelte";
-    import {router} from "../app/router.svelte";
-    import {RunGuard} from "../app/run-guard.svelte";
-    import RunGuardDialog from "../app/RunGuardDialog.svelte";
-    import {session} from "../app/session";
-    import {href} from "../app/utils/router.utils";
-    import Button from "../components/Button.svelte";
-    import Icon from "../components/Icon.svelte";
-    import type {Attempt} from "../engine/types/run.types";
-    import {RING_LENGTH, RING_RADIUS, RUN_EYEBROWS} from "./const/results.const";
-    import type {ReviewRow, RingState} from "./types/results.types";
-    import type {ResultsScreenProps} from "./types/results-screen.types";
-    import {deltaText, previousFullAttempt, reviewStatus, ringState, verdict} from "./utils/results.utils";
+  import RestartButton from "../app/RestartButton.svelte";
+  import { router } from "../app/router.svelte";
+  import { RunGuard } from "../app/run-guard.svelte";
+  import RunGuardDialog from "../app/RunGuardDialog.svelte";
+  import { session } from "../app/session";
+  import { href } from "../app/utils/router.utils";
+  import Button from "../components/Button.svelte";
+  import Icon from "../components/Icon.svelte";
+  import type { Attempt } from "../engine/types/run.types";
+  import { RING_LENGTH, RING_RADIUS, RUN_EYEBROWS } from "./const/results.const";
+  import type { ReviewRow, RingState } from "./types/results.types";
+  import type { ResultsScreenProps } from "./types/results-screen.types";
+  import { deltaText, previousFullAttempt, reviewStatus, ringState, verdict } from "./utils/results.utils";
 
-    let { run, target }: ResultsScreenProps = $props();
+  let { run, target }: ResultsScreenProps = $props();
 
   const guard: RunGuard = new RunGuard();
 

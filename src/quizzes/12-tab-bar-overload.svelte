@@ -1,9 +1,9 @@
 <script lang="ts">
-    import {AppBar, BrandTheme, PhoneShell, Photo, TabBar} from "../mock";
-    import {PHOTO_PASTA, PHOTO_SALMON, PHOTO_SHAKSHUKA} from "./const/photo.const";
-    import type {Recipe} from "./types/quiz-mocks.types";
+  import { AppBar, BrandTheme, PhoneShell, Photo, TabBar } from "../mock";
+  import { PHOTO_PASTA, PHOTO_SALMON, PHOTO_SHAKSHUKA } from "./const/photo.const";
+  import type { Recipe } from "./types/quiz-mocks.types";
 
-    const recipes: Recipe[] = [
+  const recipes: Recipe[] = [
     { name: "Lemon ricotta pasta", meta: "20 min · 4.8 ★" },
     { name: "Miso glazed salmon", meta: "25 min · 4.6 ★" },
     { name: "Green shakshuka", meta: "30 min · 4.7 ★" }
