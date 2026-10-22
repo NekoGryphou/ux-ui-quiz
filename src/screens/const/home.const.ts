@@ -1,5 +1,9 @@
 import type { HomeStep } from "../types/home.types";
 
+/**
+ * @export
+ * @desc How-it-works steps shown on the home screen.
+ */
 export const HOME_STEPS: readonly HomeStep[] = [
   { title: "Inspect", body: "Each question shows a realistic product screen with one or more UX/UI problems." },
   { title: "Decide", body: "Pick the issue, or select every issue when the question allows several answers." },

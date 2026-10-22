@@ -1,29 +1,5 @@
-<script module lang="ts">
-  import type { QuizMeta } from "../engine/types/quiz.types";
-
-  export const meta: QuizMeta = {
-    id: "hidden-volume",
-    title: "Volume, disguised as an air vent",
-    principle: "Give interactive elements visible signifiers",
-    scenario: "A listener wants to turn the music down quickly before taking a phone call.",
-    prompt: "What is the main issue with this player?",
-    kind: "single",
-    choices: [
-      { id: "a", text: "The volume slider looks like a row of air vents, so nothing says it can be dragged." },
-      { id: "b", text: "The track title scrolls across the display, where a static title would read at once." },
-      { id: "c", text: "Play and pause are separate buttons, where one toggle would save room on the skin." },
-      { id: "d", text: "The timer counts up from zero, where a countdown to the end would be more useful." }
-    ],
-    correct: ["a"],
-    explanation: [
-      "The volume control is drawn as ribbed grooves with no handle, no track and no speaker icon: it reads as decoration, so the listener hunts for volume while the phone rings.",
-      "Controls need signifiers: a visible thumb on a track, an icon or a value. A hover cursor helps, but it can’t be the only cue, and it doesn’t exist on touch screens.",
-      "The scrolling title, separate play and pause buttons and count-up timer were conventions that players of the time used consistently."
-    ]
-  };
-</script>
-
 <script lang="ts">
+  const bars: number[] = [62, 88, 45, 70, 95, 58, 76, 40, 66, 84, 52, 73, 90, 48, 60, 80];
   const TRANSPORT_ICONS: string[] = [
     "M3 3h2v10H3zM13 3v10L6 8z",
     "M5 3v10l8-5z",
@@ -31,7 +7,6 @@
     "M4 4h8v8H4z",
     "M3 3v10l7-5zM11 3h2v10h-2z"
   ];
-  const bars: number[] = [62, 88, 45, 70, 95, 58, 76, 40, 66, 84, 52, 73, 90, 48, 60, 80];
 </script>
 
 <div class="player">
@@ -77,6 +52,7 @@
 <style lang="scss">
   .player {
     padding: 18px;
+    // noinspection CssNoGenericFontName
     font-family: var(--mock-retro-font);
   }
 

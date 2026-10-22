@@ -1,8 +1,8 @@
 <script lang="ts">
-  import BrandMark from "./BrandMark.svelte";
-  import type { TopBarProps } from "./types/top-bar.types";
+    import BrandMark from "./BrandMark.svelte";
+    import type {TopBarProps} from "./types/top-bar.types";
 
-  let { brand, children }: TopBarProps = $props();
+    let { brand, children }: TopBarProps = $props();
 </script>
 
 <div class="topbar">

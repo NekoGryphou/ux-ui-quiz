@@ -1,17 +1,18 @@
+import { readStorage, writeStorage } from "../../shared/utils/storage.utils";
 import { SHORTCUT_HINT_STORAGE_KEY } from "../const/shortcut-hint.const";
 
-export const readHintDismissed = (): boolean => {
-  try {
-    return localStorage.getItem(SHORTCUT_HINT_STORAGE_KEY) === "1";
-  } catch {
-    return false;
-  }
-};
+/**
+ * @export
+ * @desc Whether the shortcut hint was dismissed before.
+ *
+ * @returns True once dismissed.
+ */
+export const readHintDismissed = (): boolean => readStorage(SHORTCUT_HINT_STORAGE_KEY) === "1";
 
+/**
+ * @export
+ * @desc Persists the shortcut hint dismissal in storage.
+ */
 export const storeHintDismissed = (): void => {
-  try {
-    localStorage.setItem(SHORTCUT_HINT_STORAGE_KEY, "1");
-  } catch {
-    return;
-  }
+  writeStorage(SHORTCUT_HINT_STORAGE_KEY, "1");
 };

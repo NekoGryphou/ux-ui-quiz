@@ -1,7 +1,7 @@
 <script lang="ts">
-  import type { TabletShellProps } from "./types/tablet-shell.types";
+    import type {TabletShellProps} from "./types/tablet-shell.types";
 
-  let { width = 600, height = 440, children }: TabletShellProps = $props();
+    let { width = 600, height = 440, children }: TabletShellProps = $props();
 </script>
 
 <div class="tablet" style:width="{width}px">

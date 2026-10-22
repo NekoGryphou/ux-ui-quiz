@@ -1,27 +1,8 @@
-<script module lang="ts">
-  import type { QuizMeta } from "../engine/types/quiz.types";
-
-  export const meta: QuizMeta = {
-    id: "skeleton-or-spinner",
-    title: "Waiting for the feed",
-    principle: "Preview the layout while content loads",
-    scenario: "A commuter opens a news app on a slow train connection. The feed takes about two seconds to load.",
-    prompt: "Which loading state works better here?",
-    kind: "compare",
-    correct: ["a"],
-    explanation: [
-      "For content with a known layout, a skeleton shows where things will appear: the wait feels shorter and nothing jumps when the content arrives.",
-      "A centered spinner on an empty screen gives no sense of what is coming or how long it takes, and the whole layout shifts once the feed loads.",
-      "Spinners still suit short, unpredictable actions such as submitting a form."
-    ]
-  };
-</script>
-
 <script lang="ts">
-  import type { VisualProps } from "../engine/types/quiz.types";
-  import { AppBar, BrandTheme, PhoneShell, Skeleton, Spinner, TabBar } from "../mock";
+    import type {VisualProps} from "../engine/types/quiz.types";
+    import {AppBar, BrandTheme, PhoneShell, Skeleton, Spinner, TabBar} from "../mock";
 
-  let { variant = "a" }: VisualProps = $props();
+    let { variant = "a" }: VisualProps = $props();
 </script>
 
 <BrandTheme brand="playful">

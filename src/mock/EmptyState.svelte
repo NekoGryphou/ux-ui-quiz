@@ -1,8 +1,8 @@
 <script lang="ts">
-  import type { EmptyStateProps } from "./types/empty-state.types";
-  import Icon from "../components/Icon.svelte";
+    import Icon from "../components/Icon.svelte";
+    import type {EmptyStateProps} from "./types/empty-state.types";
 
-  let { icon = "inbox", title, body, children }: EmptyStateProps = $props();
+    let { icon = "inbox", title, body, children }: EmptyStateProps = $props();
 </script>
 
 <div class="empty">

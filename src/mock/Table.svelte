@@ -1,8 +1,8 @@
 <script lang="ts">
-  import type { TableProps } from "./types/table.types";
-  import Icon from "../components/Icon.svelte";
+    import Icon from "../components/Icon.svelte";
+    import type {TableProps} from "./types/table.types";
 
-  let { columns, rows, sortable = false }: TableProps = $props();
+    let { columns, rows, sortable = false }: TableProps = $props();
 </script>
 
 <div class="table" style="--cols: {columns.length}">

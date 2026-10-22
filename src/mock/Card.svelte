@@ -1,7 +1,7 @@
 <script lang="ts">
-  import type { CardProps } from "./types/card.types";
+    import type {CardProps} from "./types/card.types";
 
-  let { title, subtitle, children, actions }: CardProps = $props();
+    let { title, subtitle, children, actions }: CardProps = $props();
 </script>
 
 <section class="card">
@@ -38,6 +38,7 @@
       }
 
       strong {
+        // noinspection CssNoGenericFontName
         font-family: var(--mock-heading-font);
         font-size: 15px;
         font-weight: var(--mock-heading-weight);

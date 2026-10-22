@@ -1,8 +1,8 @@
 <script lang="ts">
-  import type { AppBarProps } from "./types/app-bar.types";
-  import Icon from "../components/Icon.svelte";
+    import Icon from "../components/Icon.svelte";
+    import type {AppBarProps} from "./types/app-bar.types";
 
-  let { title, back = false, large = false, actions }: AppBarProps = $props();
+    let { title, back = false, large = false, actions }: AppBarProps = $props();
 </script>
 
 <div class="appbar" class:appbar--large={large}>

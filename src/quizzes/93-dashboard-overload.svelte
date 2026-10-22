@@ -1,32 +1,8 @@
-<script module lang="ts">
-  import type { QuizMeta } from "../engine/types/quiz.types";
-
-  export const meta: QuizMeta = {
-    id: "dashboard-overload",
-    title: "Everything, everywhere, all at once",
-    principle: "Show the few numbers that answer the question",
-    scenario:
-      "The CEO opens the company dashboard five minutes before a meeting to answer one question: are sales up this month?",
-    prompt: "Which issues make this dashboard hard to read?",
-    kind: "multiple",
-    choices: [
-      { id: "a", text: "Sixteen widgets compete for attention, so the one sales figure the CEO needs is buried." },
-      { id: "b", text: "The pie chart splits into twelve similar slices, so no share can be compared at a glance." },
-      { id: "c", text: "Several charts use 3D and gauges, so values are hard to read and compare accurately." },
-      { id: "d", text: "Numbers use thousands separators, where raw digits would fit more data in each card." }
-    ],
-    correct: ["a", "b", "c"],
-    explanation: [
-      "Every metric the company tracks sits on one screen with equal weight: sixteen widgets, three gauges, a 3D bar chart and a twelve-slice pie. The month-on-month sales change exists, but it is a small number in the corner.",
-      "Start from the questions people bring to a dashboard and lead with those answers (“Sales: €1.2M, +8% vs last month”). Use few, flat charts: bars or lines over pies, no 3D, and move detail into drill-downs.",
-      "Thousands separators make large numbers readable; keep them."
-    ]
-  };
-</script>
-
 <script lang="ts">
-  import type { DashboardTile } from "./types/quiz-mocks.types";
+    import type {DashboardTile} from "./types/quiz-mocks.types";
 
+    const bars: number[] = [62, 74, 55, 80, 68, 90, 72];
+  const ticker: string = "EU +2.1% · US −0.4% · APAC +5.7% · LATAM +1.2% · MEA −1.9% · ONLINE +3.3% · RETAIL −0.8%";
   const tiles: DashboardTile[] = [
     { label: "Sessions", value: "1,284,331" },
     { label: "Bounce", value: "41.2%" },
@@ -56,8 +32,6 @@
   const gradient: string = slices
     .map((color: string, i: number): string => `${color} ${String(i * 30)}deg ${String((i + 1) * 30)}deg`)
     .join(", ");
-  const bars: number[] = [62, 74, 55, 80, 68, 90, 72];
-  const ticker: string = "EU +2.1% · US −0.4% · APAC +5.7% · LATAM +1.2% · MEA −1.9% · ONLINE +3.3% · RETAIL −0.8%";
 </script>
 
 <div class="dash">

@@ -1,42 +1,13 @@
-<script module lang="ts">
-  import type { QuizMeta } from "../engine/types/quiz.types";
-  import { wcag } from "./utils/wcag.utils";
-
-  export const meta: QuizMeta = {
-    id: "marquee-news",
-    title: "News that won’t sit still",
-    principle: "Let users pause, stop or hide moving content",
-    scenario: "A club member opens the chess club’s website to check when this week’s tournament starts.",
-    prompt: "Click the part of the page that keeps this member from getting the information.",
-    kind: "hotspot",
-    regions: [
-      { id: "banner", text: "Site title" },
-      { id: "menu", text: "Menu buttons" },
-      { id: "ticker", text: "News ticker" },
-      { id: "welcome", text: "Welcome text" },
-      { id: "mascot", text: "Animated picture" },
-      { id: "counter", text: "Visitor counter" },
-      { id: "guestbook", text: "Guestbook link" }
-    ],
-    correct: ["ticker"],
-    links: [wcag("2.2.2", "Pause, Stop, Hide", "pause-stop-hide")],
-    explanation: [
-      "The only mention of the new tournament time scrolls past in a marquee: by the time you’ve read “moves to”, the day has already slid out of view, and nothing lets you stop it (WCAG 2.2.2 Pause, Stop, Hide).",
-      "Moving text is hard for slow readers, people with attention or vision impairments, and anyone zoomed in. Put key information in static text; if something must move, give it a pause control or stop it within five seconds.",
-      "The animated picture, visitor counter and busy decoration look dated, but they don’t stop anyone from finding the time."
-    ]
-  };
-</script>
-
 <script lang="ts">
-  import { Hotspot, RetroBrowser, RetroButton } from "../mock";
-  import { CLUB_MASCOT_GIF_URL } from "./const/media.const";
+    import {Hotspot, RetroBrowser, RetroButton} from "../mock";
+    import {CLUB_MASCOT_GIF_URL} from "./const/media.const";
 </script>
 
+<!--suppress HttpUrlsUsage -->
 <RetroBrowser title="~*~ Riverside Chess Club ~*~" url="http://www.geocities.com/riverside_chess/">
   <div class="site">
     <Hotspot id="banner">
-      <h1 class="banner">♞ Welcome to the Riverside Chess Club!!! ♞</h1>
+      <p class="banner">♞ Welcome to the Riverside Chess Club!!! ♞</p>
     </Hotspot>
     <Hotspot id="menu">
       <div class="menu">
@@ -94,12 +65,17 @@
     padding: 14px;
     background: repeating-conic-gradient(#1b2a5c 0% 25%, #22346e 0% 50%) 0 0 / 24px 24px;
     color: #ffffff;
+    // noinspection CssNoGenericFontName
     font-family: var(--mock-retro-serif);
   }
 
   .banner {
     margin: 0;
     color: #ffef5a;
+    // noinspection CssNoGenericFontName
+    font-family: var(--font-heading);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
     font-size: 24px;
     font-weight: 700;
     text-align: center;
@@ -159,6 +135,7 @@
     align-items: center;
     gap: 8px;
     color: #5a3d00;
+    // noinspection CssNoGenericFontName
     font-family: var(--mock-retro-font);
     font-size: 12px;
     font-weight: 700;

@@ -1,8 +1,8 @@
 <script lang="ts">
-  import type { SideNavProps } from "./types/side-nav.types";
-  import Icon from "../components/Icon.svelte";
+    import Icon from "../components/Icon.svelte";
+    import type {SideNavProps} from "./types/side-nav.types";
 
-  let { items, activeStyle = "default" }: SideNavProps = $props();
+    let { items, activeStyle = "default" }: SideNavProps = $props();
 </script>
 
 <div class="sidenav sidenav--{activeStyle}">

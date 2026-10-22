@@ -1,7 +1,7 @@
 <script lang="ts">
-  import type { FoldableShellProps } from "./types/foldable-shell.types";
+    import type {FoldableShellProps} from "./types/foldable-shell.types";
 
-  let { width = 560, height = 500, time = "9:41", label, children }: FoldableShellProps = $props();
+    let { width = 560, height = 500, time = "9:41", label, children }: FoldableShellProps = $props();
 </script>
 
 <div class="fold-wrap">

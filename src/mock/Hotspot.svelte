@@ -1,16 +1,60 @@
 <script lang="ts">
-  import type { HotspotLayer } from "../components/hotspot-layer.svelte";
-  import type { HotspotContext } from "../components/types/hotspot-context.types";
-  import { readHotspotContext, readHotspotLayer } from "../components/utils/hotspot.utils";
-  import type { HotspotProps } from "./types/hotspot.types";
+    import type {HotspotLayer} from "../stage/hotspot-layer.svelte";
+    import type {HotspotContext} from "../stage/types/hotspot-context.types";
+    import {readHotspotContext, readHotspotLayer} from "../stage/utils/hotspot.utils";
+    import type {HotspotProps} from "./types/hotspot.types";
 
-  let { id, inline = false, children }: HotspotProps = $props();
+    let { id, inline = false, children }: HotspotProps = $props();
 
   const context: HotspotContext | undefined = readHotspotContext();
   const layer: HotspotLayer | undefined = readHotspotLayer();
-  const selected: boolean = $derived(context?.isSelected(id) ?? false);
 
   let element: HTMLElement | undefined = $state();
+
+  const selected: boolean = $derived(context?.isSelected(id) ?? false);
+
+  /**
+   * @private
+   * @desc Toggles this region as a selected answer.
+   */
+  const select = (): void => {
+    context?.toggle(id);
+  };
+
+  /**
+   * @private
+   * @desc Shows the hover ring for this region while answering.
+   */
+  const enter = (): void => {
+    if (context?.interactive !== true) return;
+    layer?.hover(id);
+  };
+
+  /**
+   * @private
+   * @desc Clears the hover ring.
+   */
+  const leave = (): void => {
+    layer?.hover(null);
+  };
+
+  /**
+   * @private
+   * @desc Shows the focus ring when focus came from the keyboard.
+   *
+   * @param event - Focus event on the target button.
+   */
+  const focus = (event: FocusEvent & { currentTarget: HTMLButtonElement }): void => {
+    layer?.focus(event.currentTarget.matches(":focus-visible") ? id : null);
+  };
+
+  /**
+   * @private
+   * @desc Clears the focus ring.
+   */
+  const blur = (): void => {
+    layer?.focus(null);
+  };
 
   $effect(() => {
     if (element === undefined || layer === undefined) return;
@@ -19,27 +63,6 @@
       layer.unregister(id);
     };
   });
-
-  const select = (): void => {
-    context?.toggle(id);
-  };
-
-  const enter = (): void => {
-    if (context?.interactive !== true) return;
-    layer?.hover(id);
-  };
-
-  const leave = (): void => {
-    layer?.hover(null);
-  };
-
-  const focus = (event: FocusEvent & { currentTarget: HTMLButtonElement }): void => {
-    layer?.focus(event.currentTarget.matches(":focus-visible") ? id : null);
-  };
-
-  const blur = (): void => {
-    layer?.focus(null);
-  };
 </script>
 
 <svelte:element
@@ -84,10 +107,6 @@
       border: 0;
       background: transparent;
       cursor: pointer;
-
-      &:focus-visible {
-        outline: none;
-      }
 
       &:disabled {
         cursor: default;

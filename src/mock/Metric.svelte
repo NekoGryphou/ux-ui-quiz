@@ -1,7 +1,7 @@
 <script lang="ts">
-  import type { MetricProps } from "./types/metric.types";
+    import type {MetricProps} from "./types/metric.types";
 
-  let { label, value, delta, trend = "flat", featured = false }: MetricProps = $props();
+    let { label, value, delta, trend = "flat", featured = false }: MetricProps = $props();
 </script>
 
 <div class="metric" class:metric--featured={featured}>

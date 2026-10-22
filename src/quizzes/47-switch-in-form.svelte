@@ -1,28 +1,9 @@
-<script module lang="ts">
-  import type { QuizMeta } from "../engine/types/quiz.types";
-
-  export const meta: QuizMeta = {
-    id: "switch-in-form",
-    title: "Applied now, or on Save?",
-    principle: "Use switches for instant changes and checkboxes in forms you save",
-    scenario: "An admin reviews the team’s email notifications and plans to save every change at once.",
-    prompt: "Which version fits this form better?",
-    kind: "compare",
-    correct: ["b"],
-    explanation: [
-      "A switch reads like a light switch: flip it and the change is done. Next to a Save button, users can’t tell whether a flipped switch already applied, and some leave without saving.",
-      "Use checkboxes when changes wait for a Save or Submit button. Keep switches for settings that take effect immediately, with no button to press.",
-      "Both versions offer the same options, states and buttons; only the control type differs."
-    ]
-  };
-</script>
-
 <script lang="ts">
-  import type { VisualProps } from "../engine/types/quiz.types";
-  import { BrandTheme, Checkbox, MockButton, Switch } from "../mock";
-  import type { NotificationOption } from "./types/quiz-mocks.types";
+    import type {VisualProps} from "../engine/types/quiz.types";
+    import {BrandTheme, Checkbox, MockButton, Switch} from "../mock";
+    import type {NotificationOption} from "./types/quiz-mocks.types";
 
-  let { variant = "a" }: VisualProps = $props();
+    let { variant = "a" }: VisualProps = $props();
 
   const options: NotificationOption[] = [
     { label: "New sign-ups", checked: true },

@@ -1,46 +1,90 @@
 import { flushSync } from "svelte";
-import { DARK_SCHEME_QUERY, REDUCED_MOTION_QUERY } from "./const/theme.const";
+import { subscribeStorage } from "../shared/utils/storage.utils";
+import { DARK_SCHEME_QUERY, THEME_STORAGE_KEY } from "./const/theme.const";
 import type { Point, ThemeChoice } from "./types/theme.types";
-import { animateReveal, readStoredTheme, storeTheme } from "./utils/theme.utils";
+import { animateReveal, applyThemeAttribute, parseTheme, readStoredTheme, storeTheme } from "./utils/theme.utils";
+import { runViewTransition } from "./utils/transition.utils";
 
+/**
+ * @private
+ * @desc System dark color scheme media query.
+ */
 const darkScheme: MediaQueryList = window.matchMedia(DARK_SCHEME_QUERY);
-const reducedMotion: MediaQueryList = window.matchMedia(REDUCED_MOTION_QUERY);
 
+/**
+ * @private
+ * @desc Color theme state, synced with storage and the system preference.
+ */
 class Theme {
-  choice: ThemeChoice | null = $state(readStoredTheme());
-  systemDark: boolean = $state(darkScheme.matches);
+  /**
+   * @private
+   * @desc Stored theme choice; null follows the system.
+   */
+  private choice: ThemeChoice | null = $state(readStoredTheme());
+  /**
+   * @private
+   * @desc Whether the system prefers dark.
+   */
+  private systemDark: boolean = $state(darkScheme.matches);
 
-  current: ThemeChoice = $derived(this.choice ?? (this.systemDark ? "dark" : "light"));
+  /**
+   * @public
+   * @desc Theme in effect.
+   */
+  public readonly current: ThemeChoice = $derived(this.choice ?? (this.systemDark ? "dark" : "light"));
 
-  constructor() {
+  /**
+   * @public
+   * @desc Starts following system and cross-tab theme changes.
+   */
+  public constructor() {
     darkScheme.addEventListener("change", (event) => {
       this.systemDark = event.matches;
     });
+    subscribeStorage((key, value) => {
+      if (key === null) this.sync(readStoredTheme());
+      else if (key === THEME_STORAGE_KEY) this.sync(parseTheme(value));
+    });
   }
 
-  toggle(origin?: Point): void {
+  /**
+   * @public
+   * @desc Switches and stores the theme with a circular reveal.
+   *
+   * @param origin - Reveal center, top center by default.
+   */
+  public toggle(origin?: Point): void {
     const next: ThemeChoice = this.current === "dark" ? "light" : "dark";
-    const apply = (): void => {
+    storeTheme(next);
+
+    const transition: ViewTransition | null = runViewTransition((): void => {
       flushSync(() => {
         this.choice = next;
       });
-      document.documentElement.dataset["theme"] = next;
-    };
+      applyThemeAttribute(next);
+    });
 
-    storeTheme(next);
-
-    if (!("startViewTransition" in document) || reducedMotion.matches) {
-      apply();
-      return;
-    }
-
-    const transition: ViewTransition = document.startViewTransition(apply);
-    transition.ready
+    transition?.ready
       .then(() => {
         animateReveal(origin ?? { x: window.innerWidth / 2, y: 0 });
       })
       .catch(() => undefined);
   }
+
+  /**
+   * @private
+   * @desc Applies a theme choice made in another tab.
+   *
+   * @param choice - New choice, or null for system.
+   */
+  private sync(choice: ThemeChoice | null): void {
+    this.choice = choice;
+    applyThemeAttribute(choice);
+  }
 }
 
+/**
+ * @export
+ * @desc App-wide theme.
+ */
 export const theme: Theme = new Theme();

@@ -1,7 +1,7 @@
 <script lang="ts">
-  import type { TitleProps } from "./types/title.types";
+    import type {TitleProps} from "./types/title.types";
 
-  let { size = "md", children }: TitleProps = $props();
+    let { size = "md", children }: TitleProps = $props();
 </script>
 
 <p class="title title--{size}">{@render children()}</p>
@@ -9,6 +9,7 @@
 <style lang="scss">
   .title {
     margin: 0;
+    // noinspection CssNoGenericFontName
     font-family: var(--mock-heading-font);
     font-weight: var(--mock-heading-weight);
     letter-spacing: var(--mock-heading-tracking);

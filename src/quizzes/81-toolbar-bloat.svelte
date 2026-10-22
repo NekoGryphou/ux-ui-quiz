@@ -1,35 +1,7 @@
-<script module lang="ts">
-  import type { QuizMeta } from "../engine/types/quiz.types";
-
-  export const meta: QuizMeta = {
-    id: "toolbar-bloat",
-    title: "Five search bars and a sliver of web",
-    principle: "Protect the content area from chrome and add-ons",
-    scenario: "A retiree opens their browser to read the local news, on the family computer in 2007.",
-    prompt: "Click every part of the window that eats into the page.",
-    kind: "hotspot",
-    regions: [
-      { id: "title", text: "Window title bar" },
-      { id: "menu", text: "Menu bar" },
-      { id: "address", text: "Address bar" },
-      { id: "toolbars", text: "Add-on toolbars" },
-      { id: "weather", text: "Weather ticker" },
-      { id: "page", text: "News page" },
-      { id: "status", text: "Status bar" }
-    ],
-    correct: ["toolbars", "weather"],
-    explanation: [
-      "Four bundled search toolbars and a scrolling weather ticker, installed alongside free downloads, stack on top of the page. The news itself is left with a thin strip at the bottom, and every search box does the same thing.",
-      "Chrome should take as little room as possible: one address bar that also searches, add-ons that ask before installing and stay small, and a content area that gets most of the screen.",
-      "The title, menu, address and status bars are standard browser chrome of the time."
-    ]
-  };
-</script>
-
 <script lang="ts">
-  import { Hotspot, RetroField, RetroWindow } from "../mock";
+    import {Hotspot, RetroField, RetroWindow} from "../mock";
 
-  const toolbars: string[] = ["AskBar", "SearchMaster Pro", "FunTunes Toolbar", "ShopSaver"];
+    const toolbars: string[] = ["AskBar", "SearchMaster Pro", "FunTunes Toolbar", "ShopSaver"];
 </script>
 
 <div class="frame">
@@ -39,7 +11,9 @@
       <div class="menu"><u>F</u>ile <u>E</u>dit <u>V</u>iew <u>F</u>avorites <u>T</u>ools <u>H</u>elp</div>
     </Hotspot>
     <Hotspot id="address">
-      <div class="bar">Address <RetroField value="http://www.riversidegazette.com/" grow /></div>
+      <div class="bar">
+        Address <!--suppress HttpUrlsUsage --><RetroField value="http://www.riversidegazette.com/" grow />
+      </div>
     </Hotspot>
     <Hotspot id="toolbars">
       <div class="toolbars">
@@ -67,7 +41,7 @@
 </div>
 
 <style lang="scss">
-  @use "$styles/mixins" as *;
+  @use "$styles/mock-mixins" as *;
 
   .frame {
     display: grid;

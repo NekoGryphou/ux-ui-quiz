@@ -1,8 +1,8 @@
 <script lang="ts">
-  import type { BreadcrumbsProps } from "./types/breadcrumbs.types";
-  import Icon from "../components/Icon.svelte";
+    import Icon from "../components/Icon.svelte";
+    import type {BreadcrumbsProps} from "./types/breadcrumbs.types";
 
-  let { items }: BreadcrumbsProps = $props();
+    let { items }: BreadcrumbsProps = $props();
 </script>
 
 <div class="crumbs">

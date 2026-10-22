@@ -1,6 +1,15 @@
 import type { QuizKind } from "../../engine/types/quiz.types";
 import type { KindBadgeLook } from "../types/kind-badge.types";
 
+/**
+ * @export
+ * @desc Badge look for a quiz kind.
+ *
+ * @param kind - Quiz kind.
+ * @param several - Whether several answers are expected.
+ *
+ * @returns The badge look.
+ */
 export const kindBadgeLook = (kind: QuizKind, several: boolean): KindBadgeLook => {
   switch (kind) {
     case "single":

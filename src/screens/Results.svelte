@@ -1,16 +1,21 @@
 <script lang="ts">
-  import { href, navigate } from "../app/utils/router.utils";
-  import Button from "../components/Button.svelte";
-  import Icon from "../components/Icon.svelte";
-  import RestartButton from "../components/RestartButton.svelte";
-  import { session } from "../engine/session.svelte";
-  import type { Attempt } from "../engine/types/run.types";
-  import { RING_LENGTH, RING_RADIUS, RUN_EYEBROWS } from "./const/results.const";
-  import type { ResultsScreenProps } from "./types/results-screen.types";
-  import type { ReviewRow, RingState } from "./types/results.types";
-  import { deltaText, previousFullAttempt, reviewStatus, ringState, verdict } from "./utils/results.utils";
+    import RestartButton from "../app/RestartButton.svelte";
+    import {router} from "../app/router.svelte";
+    import {RunGuard} from "../app/run-guard.svelte";
+    import RunGuardDialog from "../app/RunGuardDialog.svelte";
+    import {session} from "../app/session";
+    import {href} from "../app/utils/router.utils";
+    import Button from "../components/Button.svelte";
+    import Icon from "../components/Icon.svelte";
+    import type {Attempt} from "../engine/types/run.types";
+    import {RING_LENGTH, RING_RADIUS, RUN_EYEBROWS} from "./const/results.const";
+    import type {ReviewRow, RingState} from "./types/results.types";
+    import type {ResultsScreenProps} from "./types/results-screen.types";
+    import {deltaText, previousFullAttempt, reviewStatus, ringState, verdict} from "./utils/results.utils";
 
-  let { run, target }: ResultsScreenProps = $props();
+    let { run, target }: ResultsScreenProps = $props();
+
+  const guard: RunGuard = new RunGuard();
 
   const ring: RingState = $derived(ringState(run.score, run.answeredCount, run.total, run.isComplete));
   const summary: string = $derived(verdict(run.score, run.answeredCount, run.total, run.isComplete));
@@ -24,24 +29,48 @@
   );
   const missed: ReviewRow[] = $derived(rows.filter((row) => row.status !== "correct"));
 
+  /**
+   * @private
+   * @desc Link opened by a review row.
+   *
+   * @param row - Review row.
+   *
+   * @returns Review href for wrong answers, question href otherwise.
+   */
   const rowHref = (row: ReviewRow): string => {
     if (target === "practice") return href.quiz("practice", row.index);
     return row.status === "wrong" ? href.review(row.index) : href.quiz("main", row.index);
   };
 
+  /**
+   * @private
+   * @desc Starts a practice run of the missed questions.
+   */
   const retryMissed = (): void => {
-    session.startRetry();
-    navigate(href.quiz("practice", 0));
+    guard.start((): void => {
+      session.startRetry();
+      router.navigate(href.quiz("practice", 0));
+    });
   };
 
+  /**
+   * @private
+   * @desc Starts a new quick practice run.
+   */
   const quickAgain = (): void => {
-    session.startQuick();
-    navigate(href.quiz("practice", 0));
+    guard.start((): void => {
+      session.startQuick();
+      router.navigate(href.quiz("practice", 0));
+    });
   };
 
+  /**
+   * @private
+   * @desc Ends the practice run and returns home.
+   */
   const finishPractice = (): void => {
     session.endPractice();
-    navigate(href.home);
+    router.navigate(href.home);
   };
 </script>
 
@@ -94,12 +123,14 @@
         {:else}
           <Button variant="accent" onclick={finishPractice} iconEnd="arrow-right">Back to home</Button>
           {#if run.kind === "quick"}
-            <Button onclick={quickAgain} iconStart="refresh">Another Quick 10</Button>
+            <Button onclick={quickAgain} iconStart="zap">Another Quick 10</Button>
           {/if}
         {/if}
       </div>
     </div>
   </section>
+
+  <RunGuardDialog {guard} />
 
   <section class="panel" aria-labelledby="review-heading">
     <h2 id="review-heading" class="panel__title">To review <span>{missed.length}</span></h2>
@@ -137,6 +168,7 @@
   }
 
   .summary {
+    --focus-ring: var(--brand-yellow);
     display: grid;
     justify-items: center;
     gap: var(--space-5);
@@ -182,6 +214,7 @@
 
     &__percent {
       fill: var(--on-brand);
+      // noinspection CssNoGenericFontName
       font-family: var(--font-display);
       font-size: 28px;
       font-weight: 700;

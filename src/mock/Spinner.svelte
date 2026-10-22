@@ -1,7 +1,7 @@
 <script lang="ts">
-  import type { SpinnerProps } from "./types/spinner.types";
+    import type {SpinnerProps} from "./types/spinner.types";
 
-  let { size = 28 }: SpinnerProps = $props();
+    let { size = 28 }: SpinnerProps = $props();
 </script>
 
 <span class="spinner" style="--size: {size}px" aria-hidden="true"></span>

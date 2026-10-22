@@ -1,8 +1,8 @@
 <script lang="ts">
-  import type { KeyboardContext, KeyTargetProps } from "./types/keyboard.types";
-  import { readKeyboardContext } from "./utils/keyboard.utils";
+    import type {KeyboardContext, KeyTargetProps} from "./types/keyboard.types";
+    import {readKeyboardContext} from "./utils/keyboard.utils";
 
-  let { id, inline = false, children }: KeyTargetProps = $props();
+    let { id, inline = false, children }: KeyTargetProps = $props();
 
   const keyboard: KeyboardContext | undefined = readKeyboardContext();
   const focused: boolean = $derived(keyboard?.focusedId === id);

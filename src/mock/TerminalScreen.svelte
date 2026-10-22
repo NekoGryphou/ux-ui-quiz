@@ -1,7 +1,7 @@
 <script lang="ts">
-  import type { TerminalScreenProps } from "./types/terminal-screen.types";
+    import type {TerminalScreenProps} from "./types/terminal-screen.types";
 
-  let { lines, prompt, model = "DISPLAY STATION 3180", width = 640 }: TerminalScreenProps = $props();
+    let { lines, prompt, model = "DISPLAY STATION 3180", width = 640 }: TerminalScreenProps = $props();
 </script>
 
 <div class="crt" style:width="{width}px">

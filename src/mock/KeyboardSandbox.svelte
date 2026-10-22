@@ -1,11 +1,14 @@
 <script lang="ts">
-  import Icon from "../components/Icon.svelte";
-  import type { KeyboardSandboxProps, KeyStop } from "./types/keyboard.types";
-  import { nextStop, provideKeyboardContext } from "./utils/keyboard.utils";
+    import Icon from "../components/Icon.svelte";
+    import type {KeyboardSandboxProps, KeyStop} from "./types/keyboard.types";
+    import {nextStop, provideKeyboardContext} from "./utils/keyboard.utils";
 
-  let { stops, children }: KeyboardSandboxProps = $props();
+    let { stops, children }: KeyboardSandboxProps = $props();
 
   const uid: string = $props.id();
+
+  let released: boolean = false;
+
   let index: number = $state(-1);
   let active: boolean = $state(false);
 
@@ -17,13 +20,20 @@
     }
   });
 
+  /**
+   * @private
+   * @desc Moves the simulated focus on Tab and Shift+Tab.
+   * Escape restores native Tab until the sandbox is refocused.
+   *
+   * @param event - Keyboard event on the sandbox.
+   */
   const onkeydown = (event: KeyboardEvent & { currentTarget: HTMLDivElement }): void => {
     if (event.key === "Escape") {
       index = -1;
-      event.currentTarget.blur();
+      released = true;
       return;
     }
-    if (event.key !== "Tab") return;
+    if (event.key !== "Tab" || released) return;
     const next: number | null = nextStop(index, stops.length, event.shiftKey);
     if (next === null) {
       index = -1;
@@ -33,10 +43,19 @@
     index = next;
   };
 
+  /**
+   * @private
+   * @desc Activates the sandbox when it gains focus.
+   */
   const onfocus = (): void => {
     active = true;
+    released = false;
   };
 
+  /**
+   * @private
+   * @desc Deactivates the sandbox and clears the simulated focus.
+   */
   const onblur = (): void => {
     active = false;
     index = -1;
@@ -119,7 +138,7 @@
       width: 1px;
       height: 1px;
       overflow: hidden;
-      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
       white-space: nowrap;
     }
   }

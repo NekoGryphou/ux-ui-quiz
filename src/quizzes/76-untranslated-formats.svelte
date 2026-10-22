@@ -1,33 +1,8 @@
-<script module lang="ts">
-  import type { QuizMeta } from "../engine/types/quiz.types";
-
-  export const meta: QuizMeta = {
-    id: "untranslated-formats",
-    title: "Translated, not localized",
-    principle: "Localize dates, numbers and times, not just words",
-    scenario: "A traveller in Lyon books a train on the French version of an international rail site.",
-    prompt: "Which issues will confuse this French customer?",
-    kind: "multiple",
-    choices: [
-      { id: "a", text: "The date reads 04/05/2025 in US order, so a French reader takes it for 4 May, not 5 April." },
-      { id: "b", text: "Prices use a decimal point and a leading $, where French readers expect “89,50 €”." },
-      { id: "c", text: "Times use AM and PM, where French users read the 24-hour clock with “h” as a separator." },
-      { id: "d", text: "The page is written in French, where English would be safer for an international site." }
-    ],
-    correct: ["a", "b", "c"],
-    explanation: [
-      "Every word is translated, but the formats still come from the US template: 04/05/2025 means 4 May to a French reader (it’s 5 April), “$89.50” looks like dollars, and “7:45 PM” isn’t how departures are written in France.",
-      "Localize formats with the locale, not by hand: Intl.DateTimeFormat and Intl.NumberFormat with fr-FR give “5 avril 2025”, “89,50 €” and “19 h 45”. Writing the month as a word removes date ambiguity for everyone.",
-      "Translating the page into the customer’s language is exactly right; the problem is only what was left behind."
-    ]
-  };
-</script>
-
 <script lang="ts">
-  import { BrandTheme, BrowserShell, MockButton } from "../mock";
-  import type { TrainOption } from "./types/quiz-mocks.types";
+    import {BrandTheme, BrowserShell, MockButton} from "../mock";
+    import type {TrainOption} from "./types/quiz-mocks.types";
 
-  const trains: TrainOption[] = [
+    const trains: TrainOption[] = [
     { depart: "7:45 AM", arrive: "9:41 AM", price: "$89.50", tag: "Direct" },
     { depart: "1:12 PM", arrive: "3:20 PM", price: "$64.00", tag: "Direct" },
     { depart: "7:45 PM", arrive: "10:02 PM", price: "$42.90", tag: "1 correspondance" }

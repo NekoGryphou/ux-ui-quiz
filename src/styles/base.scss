@@ -1,4 +1,5 @@
 @use "./tokens";
+@use "./mock-tokens";
 @use "./mixins" as *;
 
 *,
@@ -18,8 +19,8 @@ body {
   isolation: isolate;
   margin: 0;
   overflow-x: clip;
-  min-height: 100vh;
   min-height: 100dvh;
+  // noinspection CssNoGenericFontName
   font-family: var(--font-sans);
   font-size: var(--text-md);
   line-height: 1.5;
@@ -39,6 +40,7 @@ p {
 h1,
 h2,
 h3 {
+  // noinspection CssNoGenericFontName
   font-family: var(--font-heading);
   letter-spacing: -0.01em;
   line-height: 1.15;
@@ -135,10 +137,12 @@ input {
   }
 }
 
+$motion-free: ":not([data-motion='play'] *)";
+
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *#{$motion-free},
+  *#{$motion-free}::before,
+  *#{$motion-free}::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;

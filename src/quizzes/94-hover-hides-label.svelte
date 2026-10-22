@@ -1,27 +1,8 @@
-<script module lang="ts">
-  import type { QuizMeta } from "../engine/types/quiz.types";
-
-  export const meta: QuizMeta = {
-    id: "hover-hides-label",
-    title: "Hover to make it disappear",
-    principle: "Check every interactive state, not just the default one",
-    scenario: "A visitor moves the mouse onto the main button of a concert ticket page to buy tickets.",
-    prompt: "Which version of the hovered button works better?",
-    kind: "compare",
-    correct: ["b"],
-    explanation: [
-      "On hover, the gradient slides to its light end, exactly the colour of the white label: the text vanishes at the very moment the visitor is about to click, and they hesitate.",
-      "Design and check every state of a control (default, hover, focus, active, disabled) for contrast, not just the resting one. A hover state should reinforce the button, for example by darkening it.",
-      "Both versions show the same button, gradient and label while hovered; only the hover colours differ."
-    ]
-  };
-</script>
-
 <script lang="ts">
-  import type { VisualProps } from "../engine/types/quiz.types";
-  import { BrandTheme } from "../mock";
+    import type {VisualProps} from "../engine/types/quiz.types";
+    import {BrandTheme} from "../mock";
 
-  let { variant = "a" }: VisualProps = $props();
+    let { variant = "a" }: VisualProps = $props();
 </script>
 
 <BrandTheme brand="playful">

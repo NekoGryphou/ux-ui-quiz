@@ -1,117 +1,254 @@
+import amaryllisPhoto from "../assets/photos/amaryllis.jpg";
+import armchairPhoto from "../assets/photos/armchair.jpg";
+import candlesPhoto from "../assets/photos/candles.jpg";
+import cinemaScreenPhoto from "../assets/photos/cinema-screen.jpg";
+import cinemaSeatsPhoto from "../assets/photos/cinema-seats.jpg";
+import coldBrewPhoto from "../assets/photos/cold-brew.jpg";
+import granolaPhoto from "../assets/photos/granola.jpg";
+import honeyPhoto from "../assets/photos/honey.jpg";
+import lampPhoto from "../assets/photos/lamp.jpg";
+import livingRoomPhoto from "../assets/photos/living-room.jpg";
+import mugPhoto from "../assets/photos/mug.jpg";
+import pastaPhoto from "../assets/photos/pasta.jpg";
+import popcornPhoto from "../assets/photos/popcorn.jpg";
+import risottoPhoto from "../assets/photos/risotto.jpg";
+import salmonPhoto from "../assets/photos/salmon.jpg";
+import shakshukaPhoto from "../assets/photos/shakshuka.jpg";
+import shoeCrystaPhoto from "../assets/photos/shoe-crysta.jpg";
+import shoeEccoPhoto from "../assets/photos/shoe-ecco.jpg";
+import shoeMizunoPhoto from "../assets/photos/shoe-mizuno.jpg";
+import shoeTrailPhoto from "../assets/photos/shoe-trail.jpg";
+import sideTablePhoto from "../assets/photos/side-table.png";
+import vasePhoto from "../assets/photos/vase.jpg";
+import vaseFloralPhoto from "../assets/photos/vase-floral.jpg";
 import type { StockPhoto } from "../types/quiz-mocks.types";
 
+/**
+ * @export
+ * @desc Trail running shoe photo for quizzes 08, 39 and 72.
+ */
 export const PHOTO_SHOE_TRAIL: StockPhoto = {
-  url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Altra_trail_running_shoe%2C_Lone_Peak%2C_side_view.jpg/500px-Altra_trail_running_shoe%2C_Lone_Peak%2C_side_view.jpg",
+  url: shoeTrailPhoto,
   title: "Altra trail running shoe",
   license: "CC BY-SA 4.0"
 };
+
+/**
+ * @export
+ * @desc ECCO running shoe photo for quiz 72.
+ */
 export const PHOTO_SHOE_ECCO: StockPhoto = {
-  url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/ECCO_BIOM_running_shoe_-_Trail.jpg/500px-ECCO_BIOM_running_shoe_-_Trail.jpg",
+  url: shoeEccoPhoto,
   title: "ECCO BIOM running shoe",
   license: "CC BY-SA 4.0"
 };
+
+/**
+ * @export
+ * @desc Mizuno running shoe photo for quizzes 30 and 72.
+ */
 export const PHOTO_SHOE_MIZUNO: StockPhoto = {
-  url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Mizuno_Wave_Ibuki_2.jpg/500px-Mizuno_Wave_Ibuki_2.jpg",
+  url: shoeMizunoPhoto,
   title: "Mizuno Wave Ibuki 2",
   license: "CC BY-SA 4.0"
 };
+
+/**
+ * @export
+ * @desc Crysta running shoe photo for quiz 72.
+ */
 export const PHOTO_SHOE_CRYSTA: StockPhoto = {
-  url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/CrystaRunning.jpg/500px-CrystaRunning.jpg",
+  url: shoeCrystaPhoto,
   title: "Crysta running shoes",
   license: "CC BY-SA 4.0"
 };
+
+/**
+ * @export
+ * @desc Honey jar photo for quiz 11.
+ */
 export const PHOTO_HONEY: StockPhoto = {
-  url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/Dipper_stick_and_honey_in_a_jar.jpg/500px-Dipper_stick_and_honey_in_a_jar.jpg",
+  url: honeyPhoto,
   title: "Dipper stick and honey in a jar",
   license: "CC BY 2.0"
 };
+
+/**
+ * @export
+ * @desc Granola photo for quiz 11.
+ */
 export const PHOTO_GRANOLA: StockPhoto = {
-  url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Granola_Blueberry_Top.jpg/500px-Granola_Blueberry_Top.jpg",
+  url: granolaPhoto,
   title: "Granola Blueberry",
   license: "CC0"
 };
+
+/**
+ * @export
+ * @desc Cold brew coffee photo for quiz 11.
+ */
 export const PHOTO_COLD_BREW: StockPhoto = {
-  url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Cold_Brew_Coffee.jpg/500px-Cold_Brew_Coffee.jpg",
+  url: coldBrewPhoto,
   title: "Cold Brew Coffee",
   license: "CC BY-SA 4.0"
 };
+
+/**
+ * @export
+ * @desc Broccoli pasta photo for quiz 12.
+ */
 export const PHOTO_PASTA: StockPhoto = {
-  url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/BroccoliPasta.jpg/500px-BroccoliPasta.jpg",
+  url: pastaPhoto,
   title: "Broccoli pasta",
   license: "CC BY-SA 4.0"
 };
+
+/**
+ * @export
+ * @desc Cajun salmon photo for quiz 12.
+ */
 export const PHOTO_SALMON: StockPhoto = {
-  url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/2022-01-29_20_53_20_Blackened_Cajun_Salmon_%286_oz._blackened_and_grilled_salmon_fillet_with_garlic_mashed_potatoes_and_steamed_broccoli%29_at_the_Applebee%27s_in_Fair_Lakes%2C_Fairfax_County%2C_Virginia.jpg/500px-thumbnail.jpg",
+  url: salmonPhoto,
   title: "Blackened Cajun salmon",
   license: "CC BY-SA 4.0"
 };
+
+/**
+ * @export
+ * @desc Shakshuka photo for quiz 12.
+ */
 export const PHOTO_SHAKSHUKA: StockPhoto = {
-  url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/Shakshuka1.jpg/500px-Shakshuka1.jpg",
+  url: shakshukaPhoto,
   title: "Shakshuka",
   license: "CC BY 2.0"
 };
+
+/**
+ * @export
+ * @desc Candle jars photo for quizzes 66 and 80.
+ */
 export const PHOTO_CANDLES: StockPhoto = {
-  url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2b/Candle_Jars_%2842157602332%29.jpg/500px-Candle_Jars_%2842157602332%29.jpg",
+  url: candlesPhoto,
   title: "Candle jars",
   license: "CC BY-SA 2.0"
 };
+
+/**
+ * @export
+ * @desc Lounge chair photo for quizzes 75, 80 and 111.
+ */
 export const PHOTO_ARMCHAIR: StockPhoto = {
-  url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/27/Chair%2C_Lounge%2C_Mount_Washington_Hotel%2C_Bretton_Woods%2C_NH.jpg/500px-Chair%2C_Lounge%2C_Mount_Washington_Hotel%2C_Bretton_Woods%2C_NH.jpg",
+  url: armchairPhoto,
   title: "Lounge chair, Mount Washington Hotel",
   license: "CC BY-SA 2.0"
 };
+
+/**
+ * @export
+ * @desc Table lamp photo for quizzes 75 and 80.
+ */
 export const PHOTO_LAMP: StockPhoto = {
-  url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/2026.06.05_USSR_Milk_Glass_Table_Lamp_01.jpg/500px-2026.06.05_USSR_Milk_Glass_Table_Lamp_01.jpg",
+  url: lampPhoto,
   title: "Milk glass table lamp",
   license: "CC BY-SA 4.0"
 };
+
+/**
+ * @export
+ * @desc Side table photo for quizzes 75 and 80.
+ */
 export const PHOTO_SIDE_TABLE: StockPhoto = {
-  url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/Back_side_table_pine_top_with_mango_wood_legs_front.png/500px-Back_side_table_pine_top_with_mango_wood_legs_front.png",
+  url: sideTablePhoto,
   title: "Pine side table",
   license: "CC0"
 };
+
+/**
+ * @export
+ * @desc Ceramic vase photo for quiz 80.
+ */
 export const PHOTO_VASE: StockPhoto = {
-  url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1f/A_Ceramic_Vase_in_Kanazawa.jpg/500px-A_Ceramic_Vase_in_Kanazawa.jpg",
+  url: vasePhoto,
   title: "Ceramic vase in Kanazawa",
   license: "CC BY-SA 4.0"
 };
+
+/**
+ * @export
+ * @desc Floral ceramic vase photo for quiz 80.
+ */
 export const PHOTO_VASE_FLORAL: StockPhoto = {
-  url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Ceramic_vase_%282024-02-06%29_01.jpg/500px-Ceramic_vase_%282024-02-06%29_01.jpg",
+  url: vaseFloralPhoto,
   title: "Ceramic vase",
   license: "CC BY-SA 4.0"
 };
+
+/**
+ * @export
+ * @desc Ceramic mug photo for quiz 80.
+ */
 export const PHOTO_MUG: StockPhoto = {
-  url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Ceramic_a_mug.jpg/500px-Ceramic_a_mug.jpg",
+  url: mugPhoto,
   title: "Ceramic mug",
   license: "CC BY-SA 4.0"
 };
+
+/**
+ * @export
+ * @desc Amaryllis photo for quiz 80.
+ */
 export const PHOTO_AMARYLLIS: StockPhoto = {
-  url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Amaryllis_%28Hippeastrum%29_18-01-2025._%28actm.%29_02.jpg/500px-Amaryllis_%28Hippeastrum%29_18-01-2025._%28actm.%29_02.jpg",
+  url: amaryllisPhoto,
   title: "Amaryllis",
   license: "CC BY-SA 4.0"
 };
+
+/**
+ * @export
+ * @desc Cinema auditorium photo for quiz 79.
+ */
 export const PHOTO_CINEMA_SEATS: StockPhoto = {
-  url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/75/Auditorium_at_Maxim_in_May_2024.jpg/960px-Auditorium_at_Maxim_in_May_2024.jpg",
+  url: cinemaSeatsPhoto,
   title: "Maxim auditorium",
   license: "CC BY-SA 4.0"
 };
+
+/**
+ * @export
+ * @desc Cinema screen photo for quiz 79.
+ */
 export const PHOTO_CINEMA_SCREEN: StockPhoto = {
-  url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/Piccadilly_Cinema_screen%2C_Perth.jpg/960px-Piccadilly_Cinema_screen%2C_Perth.jpg",
+  url: cinemaScreenPhoto,
   title: "Piccadilly Cinema screen, Perth",
   license: "CC BY 2.0"
 };
+
+/**
+ * @export
+ * @desc Popcorn photo for quiz 79.
+ */
 export const PHOTO_POPCORN: StockPhoto = {
-  url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/Popcorn%21%21_%282521342015%29.jpg/960px-Popcorn%21%21_%282521342015%29.jpg",
+  url: popcornPhoto,
   title: "Popcorn!!",
   license: "CC BY 2.0"
 };
+
+/**
+ * @export
+ * @desc Living room photo for quiz 75.
+ */
 export const PHOTO_LIVING_ROOM: StockPhoto = {
-  url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Cozy_living_room_with_a_gray_sofa.jpg/960px-Cozy_living_room_with_a_gray_sofa.jpg",
+  url: livingRoomPhoto,
   title: "Cozy living room with a gray sofa",
   license: "CC BY 2.0"
 };
+
+/**
+ * @export
+ * @desc Mushroom risotto photo for quiz 88.
+ */
 export const PHOTO_RISOTTO: StockPhoto = {
-  url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/58/Mushroom_Risotto_%284789409441%29.jpg/500px-Mushroom_Risotto_%284789409441%29.jpg",
+  url: risottoPhoto,
   title: "Mushroom risotto",
   license: "CC BY-SA 2.0"
 };

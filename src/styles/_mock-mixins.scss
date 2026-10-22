@@ -1,0 +1,17 @@
+@mixin retro-raised {
+  background: var(--mock-retro-face);
+  box-shadow:
+    inset -1px -1px var(--mock-retro-dark),
+    inset 1px 1px var(--mock-retro-light),
+    inset -2px -2px var(--mock-retro-shade),
+    inset 2px 2px var(--mock-retro-soft);
+}
+
+@mixin retro-sunken {
+  background: var(--mock-retro-light);
+  box-shadow:
+    inset -1px -1px var(--mock-retro-light),
+    inset 1px 1px var(--mock-retro-shade),
+    inset -2px -2px var(--mock-retro-soft),
+    inset 2px 2px var(--mock-retro-dark);
+}

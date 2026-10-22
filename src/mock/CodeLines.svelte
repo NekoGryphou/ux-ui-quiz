@@ -1,10 +1,17 @@
 <script lang="ts">
-  import type { CodeLinesProps } from "./types/code.types";
-  import { tokenizeHtml } from "./utils/code.utils";
+    import {codeHighlighter} from "./code-highlighter.svelte";
+    import type {CodeContext, CodeLinesProps, CodeToken} from "./types/code.types";
+    import {readCodeContext} from "./utils/code.utils";
 
-  let { code, start }: CodeLinesProps = $props();
+    let { code, start }: CodeLinesProps = $props();
 
-  const lines: string[] = $derived(code.split("\n"));
+  const context: CodeContext | undefined = readCodeContext();
+
+  const lines: CodeToken[][] = $derived(codeHighlighter.lines(code, context?.language ?? "html"));
+
+  $effect(() => {
+    codeHighlighter.load();
+  });
 </script>
 
 <div class="lines">
@@ -12,8 +19,8 @@
     <div class="line">
       <span class="line__number">{start + index}</span>
       <code class="line__code">
-        {#each tokenizeHtml(line) as token, tokenIndex (tokenIndex)}<span class="token token--{token.kind}"
-            >{token.text}</span
+        {#each line as token, tokenIndex (tokenIndex)}<span style:color={token.color} class:italic={token.italic}
+            >{token.content}</span
           >{/each}
       </code>
     </div>
@@ -42,21 +49,7 @@
     }
   }
 
-  .token {
-    &--tag {
-      color: var(--mock-code-tag);
-    }
-
-    &--attr {
-      color: var(--mock-code-attr);
-    }
-
-    &--value {
-      color: var(--mock-code-value);
-    }
-
-    &--punct {
-      color: var(--mock-code-muted);
-    }
+  .italic {
+    font-style: italic;
   }
 </style>

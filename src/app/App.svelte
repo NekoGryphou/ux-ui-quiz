@@ -1,95 +1,113 @@
 <script lang="ts">
-  import { tick } from "svelte";
-  import AppHeader from "../components/AppHeader.svelte";
+  import { tick, untrack } from "svelte";
   import type { Run } from "../engine/run.svelte";
-  import { session } from "../engine/session.svelte";
-  import type { Quiz } from "../engine/types/quiz.types";
   import Home from "../screens/Home.svelte";
   import QuizScreen from "../screens/Quiz.svelte";
   import Results from "../screens/Results.svelte";
+  import AppHeader from "./AppHeader.svelte";
   import { router } from "./router.svelte";
+  import { debugRun, session } from "./session";
   import { Settle } from "./settle.svelte";
   import type { Route, RunTarget } from "./types/router.types";
-  import { href } from "./utils/router.utils";
+  import type { Screen } from "./types/screen.types";
+  import { resolveScreen } from "./utils/screen.utils";
   import { pageTitle } from "./utils/title.utils";
 
-  const route: Route = $derived(router.route);
-  const target: RunTarget = $derived(
-    (route.name === "quiz" || route.name === "results") && route.run === "practice" ? "practice" : "main"
-  );
-  const run: Run | null = $derived(target === "practice" ? session.practice : session.main);
-  const quiz: Quiz | undefined = $derived(
-    route.name === "quiz" || route.name === "review" ? run?.order[route.index] : undefined
-  );
-  const isMissing: boolean = $derived(
-    run === null || ((route.name === "quiz" || route.name === "review") && quiz === undefined)
-  );
-
-  $effect(() => {
-    if (isMissing) router.replace(href.home);
-  });
-
   const screenSettle: Settle = new Settle();
-  let mainEl: HTMLElement | undefined = $state();
-  let isFirstRoute: boolean = true;
+  let previousRoute: Route | null = null;
 
+  let mainEl: HTMLElement | undefined = $state();
+
+  const screen: Screen = $derived(resolveScreen(router.route, session.main, session.practice, debugRun));
+  const headerRun: Run | null = $derived(screen.name === "quiz" || screen.name === "results" ? screen.run : null);
+  const target: RunTarget = $derived(screen.name === "quiz" || screen.name === "results" ? screen.target : "main");
+
+  /**
+   * @private
+   * @desc Moves focus to the new screen's heading, or the main region.
+   */
   const focusScreen = async (): Promise<void> => {
     await tick();
     (mainEl?.querySelector<HTMLElement>("h1") ?? mainEl)?.focus({ preventScroll: true });
   };
 
-  $effect(() => {
-    document.title = pageTitle(route, run?.total ?? 0);
+  /**
+   * @private
+   * @desc Arms the click guard and moves focus after a route change.
+   * Focus is left alone on the first route.
+   *
+   * @param route - New route.
+   */
+  const onRouteChange = (route: Route): void => {
     screenSettle.trigger();
+    const isFirstRoute: boolean = previousRoute === null;
+    previousRoute = route;
+    if (!isFirstRoute) void focusScreen();
+  };
 
-    if (isFirstRoute) {
-      isFirstRoute = false;
-      return;
-    }
-    void focusScreen();
-  });
-
+  /**
+   * @private
+   * @desc Skip link handler that focuses the main region.
+   *
+   * @param event - Link click.
+   */
   const skipToContent = (event: MouseEvent): void => {
     event.preventDefault();
     mainEl?.focus();
   };
+
+  $effect(() => {
+    if (screen.name === "redirect") router.replace(screen.to);
+  });
+
+  $effect(() => {
+    document.title = pageTitle(screen);
+  });
+
+  $effect(() => {
+    const route: Route = router.route;
+    untrack(() => {
+      onRouteChange(route);
+    });
+  });
 </script>
 
 <a class="skip-link" href="#main" onclick={skipToContent}>Skip to content</a>
 
 <div class="app-band" aria-hidden="true"></div>
 
-<AppHeader run={route.name === "home" || route.name === "kit" ? null : run} {target} />
+<AppHeader run={headerRun} {target} />
 
+{#if import.meta.env.DEV}
+  {#await import("./DebugMenu.svelte") then { default: DebugMenu }}
+    <DebugMenu />
+  {/await}
+{/if}
+
+<!--suppress HtmlUnknownAttribute -->
 <main
   id="main"
   class="app-main"
-  class:app-main--flush={route.name === "home"}
+  class:app-main--flush={screen.name === "home"}
   tabindex="-1"
   bind:this={mainEl}
   onclickcapture={screenSettle.guard}
   onmousedowncapture={screenSettle.guard}
 >
-  {#if route.name === "home"}
+  {#if screen.name === "home"}
     <Home />
-  {:else if (route.name === "quiz" || route.name === "review") && quiz !== undefined && run !== null}
-    {#key `${target}-${route.name}-${quiz.id}`}
-      <QuizScreen {quiz} index={route.index} {run} {target} mode={route.name === "review" ? "review" : "answer"} />
+  {:else if screen.name === "quiz"}
+    {#key `${screen.run.id}-${screen.mode}-${screen.quiz.id}`}
+      <QuizScreen quiz={screen.quiz} index={screen.index} run={screen.run} target={screen.target} mode={screen.mode} />
     {/key}
-  {:else if route.name === "results" && run !== null}
-    <Results {run} {target} />
-  {:else if route.name === "kit" && import.meta.env.DEV}
+  {:else if screen.name === "results"}
+    <Results run={screen.run} target={screen.target} />
+  {:else if screen.name === "kit" && import.meta.env.DEV}
     {#await import("../screens/Kit.svelte") then { default: Kit }}
       <Kit />
     {/await}
   {/if}
 </main>
-
-{#if import.meta.env.DEV}
-  {#await import("../components/DebugPanel.svelte") then { default: DebugPanel }}
-    <DebugPanel />
-  {/await}
-{/if}
 
 <style lang="scss">
   @use "$styles/mixins" as *;

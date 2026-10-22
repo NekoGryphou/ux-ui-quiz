@@ -1,8 +1,8 @@
 <script lang="ts">
-  import type { MockButtonProps } from "./types/mock-button.types";
-  import Icon from "../components/Icon.svelte";
+    import Icon from "../components/Icon.svelte";
+    import type {MockButtonProps} from "./types/mock-button.types";
 
-  let {
+    let {
     variant = "secondary",
     size = "md",
     icon,
@@ -59,6 +59,7 @@
       width: 34px;
       padding: 0;
 
+      // noinspection CssUnusedSymbol
       &.btn--sm {
         width: 28px;
       }

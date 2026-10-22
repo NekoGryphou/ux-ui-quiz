@@ -1,5 +1,9 @@
 import type { BrandName, BrandTokens } from "../types/brand-theme.types";
 
+/**
+ * @export
+ * @desc Mock CSS custom properties overridden by each brand theme.
+ */
 export const BRAND_TOKENS: Record<BrandName, BrandTokens> = {
   fintech: {
     "--mock-bg": "#0e1621",

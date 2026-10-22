@@ -1,0 +1,94 @@
+:root {
+  --mock-bg: #f7f8fa;
+  --mock-surface: #ffffff;
+  --mock-border: #e2e5ea;
+  --mock-text: #1b2030;
+  --mock-muted: #6b7280;
+  --mock-primary: #2563eb;
+  --mock-primary-text: #ffffff;
+  --mock-success: #15803d;
+  --mock-danger: #dc2626;
+  --mock-warning: #d97706;
+  --mock-info: #0284c7;
+  --mock-radius: 8px;
+  --mock-radius-card: 12px;
+  --mock-radius-pill: 999px;
+  --mock-radius-check: 4px;
+  --mock-border-width: 1px;
+  --mock-tone-ink: #000000;
+  --mock-font: var(--font-mock);
+  --mock-heading-font: var(--mock-font);
+  --mock-heading-weight: 600;
+  --mock-heading-tracking: -0.01em;
+  --mock-button-weight: 500;
+  --mock-button-transform: none;
+  --mock-button-tracking: normal;
+  --mock-button-shadow: none;
+  --mock-surface-2: #f8f9fb;
+  --mock-fill: #eef0f3;
+  --mock-track: #e5e7eb;
+  --mock-control-border: #b8bdc7;
+  --mock-control-track: #d3d7de;
+  --mock-on-accent: #ffffff;
+  --mock-primary-soft: #e8efff;
+  --mock-primary-strong: #1d4ed8;
+  --mock-accent-2: #7c3aed;
+  --mock-focus: rgb(37 99 235 / 0.15);
+  --mock-chrome: #eceef2;
+  --mock-chrome-dot: #d4d7de;
+  --mock-device: #1b1d23;
+  --mock-overlay: rgb(17 20 28 / 0.42);
+  --mock-code-bg: #1f2230;
+  --mock-code-chrome: #171923;
+  --mock-code-text: #e6e8ef;
+  --mock-code-muted: #9aa1b5;
+  --mock-shadow-sm: 0 1px 1px rgb(15 18 32 / 0.04);
+  --mock-shadow-md: 0 10px 30px rgb(15 18 32 / 0.14);
+  --mock-shadow-lg: 0 24px 48px rgb(15 18 32 / 0.2);
+  --mock-retro-face: #c0c0c0;
+  --mock-retro-light: #ffffff;
+  --mock-retro-soft: #dfdfdf;
+  --mock-retro-shade: #808080;
+  --mock-retro-dark: #000000;
+  --mock-retro-title: linear-gradient(90deg, #000080, #1084d0);
+  --mock-retro-title-text: #ffffff;
+  --mock-retro-select: #000080;
+  --mock-retro-link: #0000ee;
+  --mock-retro-font: Tahoma, Verdana, "MS Sans Serif", Geneva, sans-serif;
+  --mock-retro-serif: "Times New Roman", Times, serif;
+  --mock-terminal-bg: #050a06;
+  --mock-terminal-text: #3dff7a;
+  --mock-terminal-bright: #c4ffd6;
+  --mock-terminal-dim: #23a24d;
+  --mock-terminal-font: "Courier New", Courier, monospace;
+  --mock-fold-hinge: linear-gradient(90deg, #1d1f25 0%, #6b707c 30%, #c3c7d0 50%, #6b707c 70%, #1d1f25 100%);
+  --mock-fold-ridge: repeating-linear-gradient(180deg, rgb(0 0 0 / 0.35) 0 1px, transparent 1px 4px);
+  --mock-fold-crease: linear-gradient(
+    90deg,
+    transparent,
+    rgb(0 0 0 / 0.08) 25%,
+    rgb(0 0 0 / 0.32) 46%,
+    rgb(255 255 255 / 0.35) 50%,
+    rgb(0 0 0 / 0.3) 54%,
+    rgb(0 0 0 / 0.08) 75%,
+    transparent
+  );
+  --mock-fold-light: linear-gradient(
+    90deg,
+    rgb(255 255 255 / 0.05) 0%,
+    transparent 50%,
+    rgb(0 0 0 / 0.09) 50%,
+    rgb(0 0 0 / 0.02) 100%
+  );
+  --mock-crt-case: linear-gradient(160deg, #e6e0cf 0%, #d3ccb7 55%, #b9b19a 100%);
+  --mock-crt-case-edge: #a59d86;
+  --mock-crt-case-light: rgb(255 255 255 / 0.55);
+  --mock-crt-bezel: linear-gradient(180deg, #34332e, #1f1e1b);
+  --mock-crt-label: #6f6857;
+  --mock-crt-led: #45ff7a;
+  --mock-crt-knob: radial-gradient(circle at 35% 30%, #f1ecdc, #a39b84);
+  --mock-crt-glare: radial-gradient(ellipse at 28% 18%, rgb(255 255 255 / 0.1), transparent 45%);
+  --mock-terminal-glow: 0 0 6px rgb(61 255 122 / 0.45);
+  --mock-terminal-vignette: inset 0 0 40px rgb(0 0 0 / 0.8);
+  --mock-terminal-scanline: rgb(255 255 255 / 0.025);
+}

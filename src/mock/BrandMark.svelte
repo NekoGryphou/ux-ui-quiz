@@ -1,12 +1,13 @@
 <script lang="ts">
-  import { MARK_PATHS } from "./const/brand-mark.const";
-  import type { BrandMarkProps, MarkStyle } from "./types/brand-mark.types";
-  import { markStyle } from "./utils/brand-mark.utils";
+    import {MARK_PATHS} from "./const/brand-mark.const";
+    import type {BrandMarkProps, MarkStyle} from "./types/brand-mark.types";
+    import {markStyle} from "./utils/brand-mark.utils";
 
-  let { name, size = 22 }: BrandMarkProps = $props();
+    let { name, size = 22 }: BrandMarkProps = $props();
+
+  const id: string = $props.id();
 
   const style: MarkStyle = $derived(markStyle(name));
-  const id: string = $props.id();
 </script>
 
 <svg class="mark" width={size} height={size} viewBox="0 0 32 32" aria-hidden="true">
@@ -24,6 +25,7 @@
 <style lang="scss">
   .mark {
     flex: none;
+    // noinspection CssNoGenericFontName
     font-family: var(--mock-font);
   }
 </style>

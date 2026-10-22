@@ -1,30 +1,8 @@
-<script module lang="ts">
-  import type { QuizMeta } from "../engine/types/quiz.types";
-  import { wcag } from "./utils/wcag.utils";
-
-  export const meta: QuizMeta = {
-    id: "focus-indicator",
-    title: "Where is the keyboard?",
-    principle: "Make keyboard focus clearly visible",
-    scenario:
-      "A keyboard user tabs through a settings dialog. In both versions, keyboard focus is currently on the Save button.",
-    prompt: "Which version shows keyboard focus better?",
-    kind: "compare",
-    correct: ["b"],
-    links: [wcag("2.4.7", "Focus Visible", "focus-visible"), wcag("2.4.13", "Focus Appearance", "focus-appearance")],
-    explanation: [
-      "A slightly darker button is almost impossible to spot, so keyboard users lose track of where they are (WCAG 2.4.7 Focus Visible).",
-      "A solid ring with a gap around the control stands out on any background. Aim for at least 3:1 contrast against its surroundings, as WCAG 2.4.13 Focus Appearance recommends.",
-      "Never remove the browser outline without putting a stronger indicator in its place."
-    ]
-  };
-</script>
-
 <script lang="ts">
-  import type { VisualProps } from "../engine/types/quiz.types";
-  import { Switch } from "../mock";
+    import type {VisualProps} from "../engine/types/quiz.types";
+    import {Switch} from "../mock";
 
-  let { variant = "a" }: VisualProps = $props();
+    let { variant = "a" }: VisualProps = $props();
 </script>
 
 <div class="card">

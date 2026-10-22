@@ -1,5 +1,9 @@
 import type { IconName, IconShape } from "../types/icons.types";
 
+/**
+ * @export
+ * @desc SVG shapes of each icon, keyed by icon name.
+ */
 export const ICONS: Readonly<Record<IconName, readonly IconShape[]>> = {
   "alert-triangle": [
     { tag: "path", attrs: { d: "M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z" } },
@@ -163,6 +167,11 @@ export const ICONS: Readonly<Record<IconName, readonly IconShape[]>> = {
     { tag: "path", attrs: { d: "M5 10a7 7 0 0 0 14 0" } },
     { tag: "path", attrs: { d: "M12 17v4" } }
   ],
+  pause: [
+    { tag: "rect", attrs: { x: "6", y: "5", width: "4", height: "14", rx: "1" } },
+    { tag: "rect", attrs: { x: "14", y: "5", width: "4", height: "14", rx: "1" } }
+  ],
+  play: [{ tag: "path", attrs: { d: "M7 4.5v15a1 1 0 0 0 1.5.86l12-7.5a1 1 0 0 0 0-1.72l-12-7.5A1 1 0 0 0 7 4.5z" } }],
   phone: [
     {
       tag: "path",
@@ -214,5 +223,6 @@ export const ICONS: Readonly<Record<IconName, readonly IconShape[]>> = {
   x: [
     { tag: "path", attrs: { d: "M18 6 6 18" } },
     { tag: "path", attrs: { d: "m6 6 12 12" } }
-  ]
+  ],
+  zap: [{ tag: "path", attrs: { d: "M13 2 3 14h9l-1 8 10-12h-9l1-8z" } }]
 };

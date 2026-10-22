@@ -1,37 +1,37 @@
 <script lang="ts">
-  import {
-    Alert,
-    AppBar,
-    Avatar,
-    Badge,
-    Breadcrumbs,
-    BrowserShell,
-    Card,
-    Checkbox,
-    CodeEditor,
-    CodeLines,
-    EmptyState,
-    Field,
-    Hotspot,
-    KeyboardSandbox,
-    KeyTarget,
-    Metric,
-    MockButton,
-    Modal,
-    PhoneShell,
-    Progress,
-    SideNav,
-    Skeleton,
-    Spinner,
-    Stepper,
-    Switch,
-    TabBar,
-    Table,
-    Tabs,
-    Title,
-    TopBar
-  } from "../mock";
-  import { KIT_CODE_SAMPLE, KIT_KEY_STOPS } from "./const/kit.const";
+    import {
+        Alert,
+        AppBar,
+        Avatar,
+        Badge,
+        Breadcrumbs,
+        BrowserShell,
+        Card,
+        Checkbox,
+        CodeEditor,
+        CodeLines,
+        EmptyState,
+        Field,
+        Hotspot,
+        KeyboardSandbox,
+        KeyTarget,
+        Metric,
+        MockButton,
+        Modal,
+        PhoneShell,
+        Progress,
+        SideNav,
+        Skeleton,
+        Spinner,
+        Stepper,
+        Switch,
+        TabBar,
+        Table,
+        Tabs,
+        Title,
+        TopBar
+    } from "../mock";
+    import {KIT_CODE_SAMPLE, KIT_KEY_STOPS} from "./const/kit.const";
 </script>
 
 <div class="kit">
@@ -253,6 +253,7 @@
     &__panel {
       --font-heading: var(--font-mock);
       display: grid;
+      // noinspection CssNoGenericFontName
       font-family: var(--font-mock);
       gap: var(--space-4);
       padding: var(--space-5);

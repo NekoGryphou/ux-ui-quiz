@@ -1,28 +1,8 @@
-<script module lang="ts">
-  import type { QuizMeta } from "../engine/types/quiz.types";
-
-  export const meta: QuizMeta = {
-    id: "wide-line-length",
-    title: "One line, one head turn",
-    principle: "Keep line length readable on wide screens",
-    scenario: "A reader opens a long help article on a 27-inch monitor to follow a setup guide.",
-    prompt: "Which version reads better on this screen?",
-    kind: "compare",
-    layout: "stacked",
-    correct: ["b"],
-    explanation: [
-      "When text fills the whole width of a large monitor, each line runs over 200 characters: the eye loses its place jumping back to the start of the next line, and long guides become tiring.",
-      "Cap the reading column at around 60–80 characters (max-width in ch or rem) and use the extra space for margins, a table of contents or a side panel.",
-      "Both versions show the same article, font and size; only the width of the text column differs."
-    ]
-  };
-</script>
-
 <script lang="ts">
-  import type { VisualProps } from "../engine/types/quiz.types";
-  import { BrandTheme, BrowserShell, ViewportBadge } from "../mock";
+    import type {VisualProps} from "../engine/types/quiz.types";
+    import {BrandTheme, BrowserShell, ViewportBadge} from "../mock";
 
-  let { variant = "a" }: VisualProps = $props();
+    let { variant = "a" }: VisualProps = $props();
 </script>
 
 <BrandTheme brand="corporate">

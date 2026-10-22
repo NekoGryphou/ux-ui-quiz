@@ -1,9 +1,10 @@
 <script lang="ts">
-  import type { AvatarProps } from "./types/avatar.types";
-  import { AVATAR_FALLBACK_COLOR, AVATAR_PALETTE } from "./const/mock.const";
+    import {AVATAR_FALLBACK_COLOR, AVATAR_PALETTE} from "./const/mock.const";
+    import type {AvatarProps} from "./types/avatar.types";
 
-  let { name, size = 28 }: AvatarProps = $props();
+    let { name, size = 28 }: AvatarProps = $props();
 
+  const color: string = $derived(AVATAR_PALETTE[name.length % AVATAR_PALETTE.length] ?? AVATAR_FALLBACK_COLOR);
   const initials: string = $derived(
     name
       .split(" ")
@@ -12,7 +13,6 @@
       .join("")
       .toUpperCase()
   );
-  const color: string = $derived(AVATAR_PALETTE[name.length % AVATAR_PALETTE.length] ?? AVATAR_FALLBACK_COLOR);
 </script>
 
 <span class="avatar" style="--size: {size}px; --color: {color}">{initials}</span>

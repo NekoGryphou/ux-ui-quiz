@@ -1,7 +1,14 @@
 <script lang="ts">
-  import type { CodeEditorProps } from "./types/code.types";
+    import type {CodeEditorProps, CodeLanguage} from "./types/code.types";
+    import {languageOf, provideCodeContext} from "./utils/code.utils";
 
-  let { filename, compact = false, children }: CodeEditorProps = $props();
+    let { filename, compact = false, children }: CodeEditorProps = $props();
+
+  provideCodeContext({
+    get language(): CodeLanguage {
+      return languageOf(filename);
+    }
+  });
 </script>
 
 <div class="editor" class:editor--compact={compact}>

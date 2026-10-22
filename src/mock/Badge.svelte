@@ -1,8 +1,8 @@
 <script lang="ts">
-  import type { BadgeProps } from "./types/badge.types";
-  import Icon from "../components/Icon.svelte";
+    import Icon from "../components/Icon.svelte";
+    import type {BadgeProps} from "./types/badge.types";
 
-  let { tone = "neutral", removable = false, children }: BadgeProps = $props();
+    let { tone = "neutral", removable = false, children }: BadgeProps = $props();
 </script>
 
 <span class="badge badge--{tone}">

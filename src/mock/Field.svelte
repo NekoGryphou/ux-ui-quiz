@@ -1,8 +1,8 @@
 <script lang="ts">
-  import type { FieldProps } from "./types/field.types";
-  import Icon from "../components/Icon.svelte";
+    import Icon from "../components/Icon.svelte";
+    import type {FieldProps} from "./types/field.types";
 
-  let {
+    let {
     label,
     value,
     placeholder,

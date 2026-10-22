@@ -1,7 +1,15 @@
 import type { MarkShape } from "../types/brand-mark.types";
 
+/**
+ * @export
+ * @desc Logo shapes a generated brand mark can take.
+ */
 export const MARK_SHAPES: readonly MarkShape[] = ["circle", "square", "hex", "leaf", "spark"];
 
+/**
+ * @export
+ * @desc SVG path of each brand mark shape, on a 32 by 32 grid.
+ */
 export const MARK_PATHS: Record<MarkShape, string> = {
   circle: "M16 2a14 14 0 1 1 0 28a14 14 0 1 1 0-28z",
   square: "M9 2h14a7 7 0 0 1 7 7v14a7 7 0 0 1-7 7H9a7 7 0 0 1-7-7V9a7 7 0 0 1 7-7z",

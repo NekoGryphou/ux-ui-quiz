@@ -1,9 +1,9 @@
 <script lang="ts">
-  import type { AnswerRevealProps, RevealSegment } from "./types/answer-reveal.types";
-  import { outcomeSentence } from "./utils/answer-reveal.utils";
-  import Icon from "./Icon.svelte";
+    import Icon from "./Icon.svelte";
+    import type {AnswerRevealProps, RevealSegment} from "./types/answer-reveal.types";
+    import {outcomeSentence} from "./utils/answer-reveal.utils";
 
-  let { quiz, correct, results, several }: AnswerRevealProps = $props();
+    let { quiz, correct, results, several }: AnswerRevealProps = $props();
 
   const sentence: RevealSegment[] = $derived(results === null ? [] : outcomeSentence(results, several));
 </script>
@@ -62,6 +62,7 @@
 
     &__links-title {
       color: var(--text-muted);
+      // noinspection CssNoGenericFontName
       font-family: var(--font-sans);
       font-size: var(--text-sm);
       font-weight: 600;

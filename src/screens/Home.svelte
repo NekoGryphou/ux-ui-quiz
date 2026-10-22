@@ -1,16 +1,41 @@
 <script lang="ts">
-  import { href, navigate } from "../app/utils/router.utils";
-  import Button from "../components/Button.svelte";
-  import RestartButton from "../components/RestartButton.svelte";
-  import { session } from "../engine/session.svelte";
-  import { HOME_STEPS } from "./const/home.const";
-  import { historyLine } from "./utils/home.utils";
+    import RestartButton from "../app/RestartButton.svelte";
+    import {router} from "../app/router.svelte";
+    import {RunGuard} from "../app/run-guard.svelte";
+    import RunGuardDialog from "../app/RunGuardDialog.svelte";
+    import {session} from "../app/session";
+    import {href} from "../app/utils/router.utils";
+    import {resumeLabel} from "../app/utils/run-label.utils";
+    import Button from "../components/Button.svelte";
+    import type {Run} from "../engine/run.svelte";
+    import {HOME_STEPS} from "./const/home.const";
+    import type {HistorySegment} from "./types/home.types";
+    import {historyLine} from "./utils/home.utils";
 
-  const history: string | null = $derived(historyLine(session.bestFull, session.lastFull));
+    const guard: RunGuard = new RunGuard();
 
+  const history: HistorySegment[] | null = $derived(historyLine(session.bestFull, session.lastFull));
+  const practice: Run | null = $derived(session.activeRun === session.main ? null : session.activeRun);
+
+  /**
+   * @private
+   * @desc Starts a new Quick 10, after confirming if another run is active.
+   */
   const quick = (): void => {
-    if (session.practice === null || session.practice.isComplete) session.startQuick();
-    navigate(href.quiz("practice", session.practice?.resumeIndex ?? 0));
+    guard.start((): void => {
+      session.startQuick();
+      router.navigate(href.quiz("practice", 0));
+    });
+  };
+
+  /**
+   * @private
+   * @desc Opens the main quiz where it stopped, after confirming if a practice run is active.
+   */
+  const startQuiz = (): void => {
+    guard.start((): void => {
+      router.navigate(href.quiz("main", session.main.hasStarted ? session.main.resumeIndex : 0));
+    });
   };
 </script>
 
@@ -23,24 +48,60 @@
     </p>
 
     <div class="hero__actions">
-      {#if session.main.isComplete}
-        <Button variant="accent" size="lg" href={href.results("main")} iconEnd="arrow-right">View results</Button>
-        <RestartButton size="lg" />
-      {:else if session.main.hasStarted}
-        <Button variant="accent" size="lg" href={href.quiz("main", session.main.resumeIndex)} iconEnd="arrow-right">
-          Resume at question {session.main.resumeIndex + 1}
-        </Button>
-        <RestartButton size="lg" />
-      {:else}
-        <Button variant="accent" size="lg" href={href.quiz("main", 0)} iconEnd="arrow-right">Start the quiz</Button>
-      {/if}
-      <Button size="lg" onclick={quick} iconStart="refresh">
-        {session.practice !== null && !session.practice.isComplete ? "Resume practice" : "Quick 10"}
-      </Button>
+      <div class="hero__group">
+        {#if session.main.isComplete}
+          <Button
+            variant={practice === null ? "accent" : "secondary"}
+            size="lg"
+            href={href.results("main")}
+            iconEnd="arrow-right"
+          >
+            View results
+          </Button>
+          <RestartButton size="lg" />
+        {:else if session.main.hasStarted && practice === null}
+          <Button variant="accent" size="lg" href={href.quiz("main", session.main.resumeIndex)} iconEnd="arrow-right">
+            {resumeLabel("full", session.main.answeredCount, session.main.total)}
+          </Button>
+          <RestartButton size="lg" />
+        {:else}
+          <Button
+            variant={practice === null ? "accent" : "secondary"}
+            size="lg"
+            onclick={startQuiz}
+            iconEnd="arrow-right"
+          >
+            {session.main.hasStarted
+              ? resumeLabel("full", session.main.answeredCount, session.main.total)
+              : "Start the quiz"}
+          </Button>
+        {/if}
+      </div>
+      <span class="hero__or" aria-hidden="true">or</span>
+      <div class="hero__group">
+        {#if practice !== null}
+          <Button variant="accent" size="lg" href={href.quiz("practice", practice.resumeIndex)} iconEnd="arrow-right">
+            {resumeLabel(practice.kind, practice.answeredCount, practice.total)}
+          </Button>
+          {#if practice.kind === "quick"}
+            <Button size="lg" onclick={quick} iconStart="refresh">Restart Quick 10</Button>
+          {:else}
+            <Button size="lg" onclick={quick} iconStart="zap">Quick 10</Button>
+          {/if}
+        {:else}
+          <Button size="lg" onclick={quick} iconStart="zap">Quick 10</Button>
+        {/if}
+      </div>
     </div>
 
+    <RunGuardDialog {guard} />
+
     {#if history !== null}
-      <p class="hero__history">{history}</p>
+      <p class="hero__history">
+        {#each history as segment, index (index)}
+          {#if segment.score}<strong class="hero__score">{segment.text}</strong>{:else}<span>{segment.text}</span>{/if}
+        {/each}
+      </p>
     {/if}
   </section>
 
@@ -67,6 +128,7 @@
   }
 
   .hero {
+    --focus-ring: var(--brand-yellow);
     display: grid;
     justify-items: center;
     gap: var(--space-5);
@@ -85,6 +147,7 @@
 
     &__eyebrow {
       color: var(--brand-yellow);
+      // noinspection CssNoGenericFontName
       font-family: var(--font-display);
       font-size: 1.5rem;
       font-weight: 600;
@@ -114,16 +177,81 @@
     }
 
     &__history {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: center;
+      gap: 0 0.35em;
       color: var(--on-brand-muted);
       font-size: var(--text-sm);
+    }
+
+    &__score {
+      color: var(--brand-yellow);
+      font-size: var(--text-md);
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
     }
 
     &__actions {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: var(--space-3);
+      gap: var(--space-3) var(--space-5);
       margin-top: var(--space-2);
+    }
+
+    &__group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-3);
+    }
+
+    &__or {
+      --or-line: color-mix(in srgb, var(--on-brand) 60%, transparent);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-1);
+      color: var(--on-brand-muted);
+      // noinspection CssNoGenericFontName
+      font-family: var(--font-display);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      user-select: none;
+
+      &::before,
+      &::after {
+        content: "";
+        width: 1px;
+        height: 14px;
+        background: linear-gradient(transparent, var(--or-line));
+      }
+
+      &::after {
+        background: linear-gradient(var(--or-line), transparent);
+      }
+
+      @include down(sm) {
+        flex-basis: 100%;
+        flex-direction: row;
+        gap: var(--space-2);
+
+        &::before,
+        &::after {
+          width: 40px;
+          height: 1px;
+          background: linear-gradient(90deg, transparent, var(--or-line));
+        }
+
+        &::after {
+          background: linear-gradient(90deg, var(--or-line), transparent);
+        }
+      }
     }
   }
 
@@ -178,6 +306,7 @@
       @include chip;
       background: var(--brand-yellow);
       color: var(--on-accent);
+      // noinspection CssNoGenericFontName
       font-family: var(--font-display);
       font-size: var(--text-md);
       font-weight: 700;

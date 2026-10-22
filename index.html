@@ -3,22 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UI Quiz Lab</title>
+    <title>Kanom’UI</title>
     <meta name="description" content="Self-training quiz: spot the UX/UI issues in realistic interfaces." />
     <script>
       try {
-        const theme = localStorage.getItem("ui-quiz-lab:theme");
+        const theme = localStorage.getItem("kanom-ui:theme");
         if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
       } catch {}
     </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="theme-color" content="#6f52ff" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Anek+Latin:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Mulish:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=Playfair+Display:wght@500;700&family=Space+Grotesk:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
   </head>
   <body>
     <div id="app"></div>

@@ -1,8 +1,8 @@
 <script lang="ts">
-  import type { ModalProps } from "./types/modal.types";
-  import Icon from "../components/Icon.svelte";
+    import Icon from "../components/Icon.svelte";
+    import type {ModalProps} from "./types/modal.types";
 
-  let { title, closable = true, floating = false, children, actions }: ModalProps = $props();
+    let { title, closable = true, floating = false, children, actions }: ModalProps = $props();
 </script>
 
 <div class="overlay" class:overlay--floating={floating}>
@@ -50,6 +50,7 @@
 
       strong {
         color: var(--mock-text);
+        // noinspection CssNoGenericFontName
         font-family: var(--mock-heading-font);
         font-size: 16px;
         font-weight: var(--mock-heading-weight);

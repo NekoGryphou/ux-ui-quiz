@@ -1,42 +1,12 @@
-<script module lang="ts">
-  import type { QuizMeta } from "../engine/types/quiz.types";
-  import { wcag } from "./utils/wcag.utils";
-
-  export const meta: QuizMeta = {
-    id: "autoplay-profile",
-    title: "Surprise soundtrack",
-    principle: "Never start sound the user didn’t ask for",
-    scenario:
-      "A friend opens this profile from the office, in an open-plan room, to check the date of Saturday’s party.",
-    prompt: "Click the part of the page that will cause the most trouble.",
-    kind: "hotspot",
-    regions: [
-      { id: "name", text: "Profile name" },
-      { id: "photo", text: "Profile photo" },
-      { id: "player", text: "Music player" },
-      { id: "about", text: "About me" },
-      { id: "friends", text: "Top friends" },
-      { id: "comments", text: "Comments" }
-    ],
-    correct: ["player"],
-    links: [wcag("1.4.2", "Audio Control", "audio-control")],
-    explanation: [
-      "The song starts by itself the moment the page opens, at full volume, with no visible pause or volume control: the whole office hears it, and a screen reader user can no longer hear their reader over the music (WCAG 1.4.2 Audio Control).",
-      "Never autoplay sound. Let people press play, and always give a visible pause and volume control near the player.",
-      "Glitter, a busy wall and a Top 8 are a matter of taste on a personal page; they don’t take control away from the visitor."
-    ]
-  };
-</script>
-
 <script lang="ts">
-  import { Hotspot, Photo } from "../mock";
-  import { pixelAvatar } from "./utils/avatar.utils";
+    import {Hotspot, Photo} from "../mock";
+    import {pixelAvatar} from "./utils/avatar.utils";
 
-  const friends: string[] = ["Tom", "Kiki", "Max", "Jade", "Leo", "Nina", "Sam", "Zoé"];
+    const friends: string[] = ["Tom", "Kiki", "Max", "Jade", "Leo", "Nina", "Sam", "Zoé"];
 </script>
 
 <div class="space">
-  <Hotspot id="name"><h1 class="space__name">✧ ~*~ xX_StarLite_Xx ~*~ ✧</h1></Hotspot>
+  <Hotspot id="name"><p class="space__name">✧ ~*~ xX_StarLite_Xx ~*~ ✧</p></Hotspot>
   <div class="space__grid">
     <div class="space__left">
       <Hotspot id="photo"><div class="photo"><Photo src={pixelAvatar("StarLite")} /></div></Hotspot>
@@ -109,6 +79,7 @@
       font:
         700 24px/1.2 "Comic Sans MS",
         cursive;
+      letter-spacing: -0.01em;
       text-align: center;
     }
 
@@ -169,6 +140,7 @@
     }
 
     &__time {
+      // noinspection CssNoGenericFontName
       font-family: var(--mock-terminal-font);
     }
   }

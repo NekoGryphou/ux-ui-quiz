@@ -1,33 +1,8 @@
-<script module lang="ts">
-  import type { QuizMeta } from "../engine/types/quiz.types";
-
-  export const meta: QuizMeta = {
-    id: "stretched-portraits",
-    title: "The funhouse team page",
-    principle: "Keep images in proportion",
-    scenario: "A candidate visits a design studio’s team page before a job interview, to put faces to names.",
-    prompt: "What is the main issue with this page?",
-    kind: "single",
-    choices: [
-      { id: "a", text: "Two portraits are stretched to fill their frames, so those faces look squashed and odd." },
-      { id: "b", text: "The portraits are round, where square photos would show a little more of each person." },
-      { id: "c", text: "Job titles sit under the names in grey, where matching colors would make them pop more." },
-      { id: "d", text: "The grid shows four people per row, where three per row would give each photo more room." }
-    ],
-    correct: ["a"],
-    explanation: [
-      "Two photos were forced into the square frame by stretching instead of cropping: one face is squashed flat, the other pulled tall. Distorted images look careless and, on a team page, a little disrespectful.",
-      "Keep the original aspect ratio and crop to fit (object-fit: cover, with a sensible focal point), or prepare images at the right ratio before upload.",
-      "Round crops are a common portrait style, grey job titles create a useful hierarchy, and four per row is a normal grid at this width."
-    ]
-  };
-</script>
-
 <script lang="ts">
-  import { BrandTheme } from "../mock";
-  import type { TeamMember } from "./types/quiz-mocks.types";
+    import {BrandTheme} from "../mock";
+    import type {TeamMember} from "./types/quiz-mocks.types";
 
-  const team: TeamMember[] = [
+    const team: TeamMember[] = [
     { name: "Inès Morel", role: "Creative director", skin: "#f1c7a5", hair: "#3b2416", stretch: "none" },
     { name: "Tomás Ruiz", role: "Product designer", skin: "#c98e63", hair: "#1c1410", stretch: "wide" },
     { name: "Aiko Tanaka", role: "UX researcher", skin: "#f3d2b3", hair: "#111111", stretch: "none" },

@@ -1,7 +1,7 @@
 <script lang="ts">
-  import type { SkeletonProps } from "./types/skeleton.types";
+    import type {SkeletonProps} from "./types/skeleton.types";
 
-  let { lines = 3 }: SkeletonProps = $props();
+    let { lines = 3 }: SkeletonProps = $props();
 </script>
 
 <div class="skeleton" aria-hidden="true">

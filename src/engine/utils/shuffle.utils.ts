@@ -1,3 +1,11 @@
+/**
+ * @private
+ * @desc Creates a seeded pseudo-random generator (mulberry32).
+ *
+ * @param seed - Initial state.
+ *
+ * @returns Generator of numbers in [0, 1).
+ */
 const mulberry32 =
   (seed: number): (() => number) =>
   (): number => {
@@ -7,6 +15,14 @@ const mulberry32 =
     return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
   };
 
+/**
+ * @private
+ * @desc Hashes a string to an unsigned 32-bit integer (FNV-1a).
+ *
+ * @param value - String to hash.
+ *
+ * @returns The hash.
+ */
 const hashString = (value: string): number => {
   let hash: number = 2166136261;
   for (let i: number = 0; i < value.length; i++) {
@@ -15,8 +31,27 @@ const hashString = (value: string): number => {
   return hash >>> 0;
 };
 
+/**
+ * @export
+ * @desc Returns a random unsigned 32-bit seed.
+ *
+ * @returns The seed.
+ */
 export const randomSeed = (): number => Math.floor(Math.random() * 2 ** 32);
 
+/**
+ * @export
+ * @desc Returns a shuffled copy, deterministic for a given seed and key.
+ * The key lets one seed give independent orders (questions, each quiz's options).
+ *
+ * @template T - Item type.
+ *
+ * @param items - Items to shuffle.
+ * @param seed - Run seed.
+ * @param key - Shuffle purpose.
+ *
+ * @returns Shuffled copy.
+ */
 export const seededShuffle = <T>(items: readonly T[], seed: number, key: string): T[] => {
   const random: () => number = mulberry32(seed ^ hashString(key));
   const result: T[] = [...items];

@@ -1,32 +1,7 @@
-<script module lang="ts">
-  import type { QuizMeta } from "../engine/types/quiz.types";
-
-  export const meta: QuizMeta = {
-    id: "wrong-keyboard",
-    title: "Letters for a number",
-    principle: "Match the keyboard to the expected input",
-    scenario: "A customer is paying for concert tickets on their phone and taps the card number field.",
-    prompt: "What is the main issue on this screen?",
-    kind: "single",
-    choices: [
-      { id: "a", text: "The card number field shows no card network logo to confirm the type of card." },
-      { id: "b", text: "Tapping the card number opens a full letter keyboard instead of a number pad." },
-      { id: "c", text: "The keyboard covers the lower half of the screen, hiding the Pay button below." },
-      { id: "d", text: "The field label sits above the input, where a floating label would save space." }
-    ],
-    correct: ["b"],
-    explanation: [
-      "A card number is digits only, yet the user gets a letter keyboard and has to switch layouts for every group of digits.",
-      'On the web, set inputmode="numeric" and autocomplete="cc-number": phones then show a number pad and can offer saved cards.',
-      "A keyboard covering part of the screen is normal: the page should scroll so the Pay button stays reachable."
-    ]
-  };
-</script>
-
 <script lang="ts">
-  import { AppBar, BrandTheme, Field, PhoneShell } from "../mock";
+    import {AppBar, BrandTheme, Field, PhoneShell} from "../mock";
 
-  const rows: string[] = ["qwertyuiop", "asdfghjkl", "zxcvbnm"];
+    const rows: string[] = ["qwertyuiop", "asdfghjkl", "zxcvbnm"];
 </script>
 
 <BrandTheme brand="fintech">

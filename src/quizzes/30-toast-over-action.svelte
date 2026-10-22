@@ -1,34 +1,6 @@
-<script module lang="ts">
-  import { PHOTO_SHOE_MIZUNO } from "./const/photo.const";
-  import { photoCredits } from "./utils/photo.utils";
-  import type { QuizMeta } from "../engine/types/quiz.types";
-
-  export const meta: QuizMeta = {
-    id: "toast-over-action",
-    title: "A confirmation in the way",
-    principle: "Never cover the next action with feedback",
-    scenario:
-      "A shopper taps “Add to cart” and wants to check out right away. The confirmation stays on screen for six seconds.",
-    prompt: "What is the main issue on this screen?",
-    kind: "single",
-    choices: [
-      { id: "a", text: "The confirmation toast sits over the buy bar, hiding the button users need next." },
-      { id: "b", text: "The toast confirms the action without a thumbnail of the item that was added." },
-      { id: "c", text: "The toast offers “View cart” as plain text, where a button style would stand out." },
-      { id: "d", text: "The toast stays for six seconds, where three seconds would feel more responsive." }
-    ],
-    correct: ["a"],
-    explanation: [
-      "The feedback lands exactly where the next action lives: for six seconds the shopper can’t reach Checkout, or has to wait.",
-      "Show confirmations where they don’t block anything: above the action bar, inline next to the button (“Added ✓”), or as a cart badge.",
-      "Six seconds is a reasonable duration for a toast with an action; the placement is the problem.",
-      photoCredits([PHOTO_SHOE_MIZUNO])
-    ]
-  };
-</script>
-
 <script lang="ts">
-  import { AppBar, BrandTheme, Icon, MockButton, PhoneShell, Photo } from "../mock";
+    import {AppBar, BrandTheme, Icon, MockButton, PhoneShell, Photo} from "../mock";
+    import {PHOTO_SHOE_MIZUNO} from "./const/photo.const";
 </script>
 
 <BrandTheme brand="luxury">

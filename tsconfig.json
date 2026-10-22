@@ -6,6 +6,7 @@
     "types": ["vite/client"],
     "isolatedModules": true,
     "noEmit": true,
+    "allowImportingTsExtensions": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "paths": {
@@ -17,5 +18,5 @@
     "noFallthroughCasesInSwitch": true,
     "noPropertyAccessFromIndexSignature": true
   },
-  "include": ["src/**/*.ts", "src/**/*.svelte", "scripts/**/*.ts"]
+  "include": ["src/**/*.ts", "src/**/*.svelte", "scripts/**/*.ts", "e2e/**/*.ts", "playwright.config.ts", "knip.ts"]
 }

@@ -1,34 +1,7 @@
-<script module lang="ts">
-  import type { QuizMeta } from "../engine/types/quiz.types";
-
-  export const meta: QuizMeta = {
-    id: "misaligned-amounts",
-    title: "Numbers you can’t compare",
-    principle: "Right-align numbers and format them consistently",
-    scenario: "A finance manager scans this month’s invoices to spot the largest payments.",
-    prompt: "Click the part of the table that makes this task hard.",
-    kind: "hotspot",
-    regions: [
-      { id: "page-header", text: "Page title and export" },
-      { id: "filters", text: "Date filters" },
-      { id: "customer-column", text: "Customer column" },
-      { id: "date-column", text: "Date column" },
-      { id: "amount-column", text: "Amount column" },
-      { id: "pagination", text: "Pagination" }
-    ],
-    correct: ["amount-column"],
-    explanation: [
-      "Amounts are left-aligned and use different decimal formats, so digits of the same magnitude never line up: €12,000.00 looks shorter than €1,240.5.",
-      "Right-align numeric columns, use the same number of decimals, and use tabular (fixed-width) figures so values can be compared at a glance.",
-      "Text columns such as customer names are correctly left-aligned."
-    ]
-  };
-</script>
-
 <script lang="ts">
-  import { Badge, BrandTheme, BrowserShell, Hotspot, MockButton, Title, TopBar } from "../mock";
+    import {Badge, BrandTheme, BrowserShell, Hotspot, MockButton, Title, TopBar} from "../mock";
 
-  const customers: string[] = ["North Peak", "Acme Dental", "River Labs", "Blue Harbor", "Kite & Co"];
+    const customers: string[] = ["North Peak", "Acme Dental", "River Labs", "Blue Harbor", "Kite & Co"];
   const dates: string[] = ["Oct 02", "Oct 05", "Oct 09", "Oct 14", "Oct 21"];
   const amounts: string[] = ["€1,240.5", "€89", "€12,000.00", "€430.10", "€2,315"];
 </script>

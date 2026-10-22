@@ -1,11 +1,11 @@
 <script lang="ts">
-  import type { ChoiceListProps } from "./types/choice-list.types";
-  import type { ChoiceOutcome } from "../engine/types/quiz.types";
-  import { choiceOutcome } from "../engine/utils/scoring.utils";
-  import { outcomeLabel } from "./utils/choice.utils";
-  import Icon from "./Icon.svelte";
+    import type {ChoiceOutcome} from "../engine/types/quiz.types";
+    import {choiceOutcome} from "../engine/utils/scoring.utils";
+    import Icon from "./Icon.svelte";
+    import type {ChoiceListProps} from "./types/choice-list.types";
+    import {outcomeLabel} from "./utils/choice.utils";
 
-  let { quiz, choices, answer, ontoggle }: ChoiceListProps = $props();
+    let { quiz, choices, answer, ontoggle }: ChoiceListProps = $props();
 
   const isMultiple: boolean = $derived(quiz.kind === "multiple");
 </script>
@@ -105,11 +105,7 @@
     }
 
     &:has(:focus-visible) {
-      @include focus-ring;
-    }
-
-    &__input:focus-visible + .control {
-      @include focus-ring;
+      @include card-focus-ring;
     }
 
     &__input {
@@ -173,6 +169,7 @@
       --on-accent: var(--on-danger);
     }
 
+    // noinspection CssUnusedSymbol
     &--locked.choice--neutral {
       border-color: var(--border);
       background: var(--surface-2);

@@ -1,20 +1,28 @@
 <script lang="ts">
-  import { readHintDismissed, storeHintDismissed } from "./utils/shortcut-hint.utils";
-  import IconButton from "./IconButton.svelte";
-  import type { ShortcutHintProps } from "./types/shortcut-hint.types";
+    import {prefersReducedMotion} from "svelte/motion";
+    import {HINT_DISMISS_MS} from "./const/shortcut-hint.const";
+    import IconButton from "./IconButton.svelte";
+    import type {ShortcutHintProps} from "./types/shortcut-hint.types";
+    import {collapse} from "./utils/collapse.utils";
+    import {readHintDismissed, storeHintDismissed} from "./utils/shortcut-hint.utils";
 
-  let { optionCount }: ShortcutHintProps = $props();
+    let { optionCount, ondismiss }: ShortcutHintProps = $props();
 
   let dismissed: boolean = $state(readHintDismissed());
 
+  /**
+   * @private
+   * @desc Hides the hint for good and notifies the parent.
+   */
   const dismiss = (): void => {
     dismissed = true;
+    ondismiss();
     storeHintDismissed();
   };
 </script>
 
 {#if !dismissed}
-  <div class="hint">
+  <div class="hint" out:collapse={{ duration: prefersReducedMotion.current ? 0 : HINT_DISMISS_MS }}>
     <div class="hint__keys">
       <span class="hint__label">Shortcuts</span>
       {#if optionCount > 0}
@@ -33,6 +41,7 @@
 
   .hint {
     display: none;
+    margin-top: var(--space-3);
     align-items: center;
     gap: var(--space-2);
     padding: var(--space-1) var(--space-1) var(--space-1) var(--space-3);

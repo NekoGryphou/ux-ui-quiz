@@ -1,7 +1,7 @@
 <script lang="ts">
-  import type { TabsProps } from "./types/tabs.types";
+    import type {TabsProps} from "./types/tabs.types";
 
-  let { items, active = 0 }: TabsProps = $props();
+    let { items, active = 0 }: TabsProps = $props();
 </script>
 
 <div class="tabs">

@@ -1,7 +1,52 @@
-import type { Quiz, QuizModule } from "../engine/types/quiz.types";
+import type { Quiz, QuizMeta, QuizVisual, QuizVisualLoader } from "../engine/types/quiz.types";
+import { byFileOrder, visualPathFor } from "./utils/registry.utils";
 
-const modules: Record<string, QuizModule> = import.meta.glob<QuizModule>("./*.svelte", { eager: true });
+/**
+ * @private
+ * @desc Lazy quiz visual loaders, keyed by file path.
+ */
+const visuals: Record<string, QuizVisualLoader> = import.meta.glob<QuizVisual>("./*.svelte", { import: "default" });
 
-export const quizzes: Quiz[] = Object.entries(modules)
-  .sort(([a], [b]) => a.localeCompare(b, undefined, { numeric: true }))
-  .map(([, module]) => ({ ...module.meta, visual: module.default }));
+/**
+ * @private
+ * @desc Quiz metas, keyed by file path.
+ */
+const metas: Record<string, QuizMeta> = import.meta.glob<QuizMeta>("./meta/*.meta.ts", {
+  eager: true,
+  import: "meta"
+});
+
+/**
+ * @private
+ * @desc Quiz metas with their paths, in file order.
+ */
+const entries: [string, QuizMeta][] = Object.entries(metas).sort(byFileOrder);
+
+/**
+ * @private
+ * @desc Visual paths that have no matching meta.
+ */
+const orphans: string[] = Object.keys(visuals).filter(
+  (path: string): boolean => !entries.some(([metaPath]) => visualPathFor(metaPath) === path)
+);
+if (orphans.length > 0) throw new Error(`Quiz visuals without meta: ${orphans.join(", ")}.`);
+
+/**
+ * @export
+ * @desc All quizzes in file order, each paired with its lazy visual loader.
+ */
+export const quizzes: Quiz[] = entries.map(([path, meta]): Quiz => {
+  const loadVisual: QuizVisualLoader | undefined = visuals[visualPathFor(path)];
+  if (loadVisual === undefined) throw new Error(`Quiz "${meta.id}" has no visual at ${visualPathFor(path)}.`);
+  return { ...meta, loadVisual };
+});
+
+// used by scripts/validate-quizzes.ts
+// noinspection JSUnusedGlobalSymbols
+/**
+ * @export
+ * @desc Visual file path of each quiz, keyed by quiz id.
+ */
+export const quizFiles: ReadonlyMap<string, string> = new Map(
+  entries.map(([path, meta]): [string, string] => [meta.id, visualPathFor(path)])
+);

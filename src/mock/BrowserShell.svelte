@@ -1,7 +1,7 @@
 <script lang="ts">
-  import type { BrowserShellProps } from "./types/browser-shell.types";
+    import type {BrowserShellProps} from "./types/browser-shell.types";
 
-  let { url, children }: BrowserShellProps = $props();
+    let { url, children }: BrowserShellProps = $props();
 </script>
 
 <div class="browser">

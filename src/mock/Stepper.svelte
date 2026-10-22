@@ -1,8 +1,8 @@
 <script lang="ts">
-  import type { StepperProps } from "./types/stepper.types";
-  import Icon from "../components/Icon.svelte";
+    import Icon from "../components/Icon.svelte";
+    import type {StepperProps} from "./types/stepper.types";
 
-  let { steps }: StepperProps = $props();
+    let { steps }: StepperProps = $props();
 </script>
 
 <ol class="stepper">

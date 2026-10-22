@@ -1,8 +1,8 @@
 <script lang="ts">
-  import type { ButtonProps } from "./types/button.types";
-  import Icon from "./Icon.svelte";
+    import Icon from "./Icon.svelte";
+    import type {ButtonProps} from "./types/button.types";
 
-  let {
+    let {
     variant = "secondary",
     size = "md",
     href,
@@ -10,21 +10,22 @@
     iconEnd,
     disabled = false,
     onclick,
-    children
+    children,
+    element = $bindable()
   }: ButtonProps = $props();
 </script>
 
-{#if href}
-  <a class="button button--{variant} button--{size}" {href}>
-    {#if iconStart}<Icon name={iconStart} size={16} />{/if}
+{#if href !== undefined}
+  <a class="button button--{variant} button--{size}" {href} bind:this={element}>
+    {#if iconStart !== undefined}<Icon name={iconStart} size={16} />{/if}
     {@render children()}
-    {#if iconEnd}<Icon name={iconEnd} size={16} />{/if}
+    {#if iconEnd !== undefined}<Icon name={iconEnd} size={16} />{/if}
   </a>
 {:else}
-  <button class="button button--{variant} button--{size}" type="button" {disabled} {onclick}>
-    {#if iconStart}<Icon name={iconStart} size={16} />{/if}
+  <button class="button button--{variant} button--{size}" type="button" {disabled} {onclick} bind:this={element}>
+    {#if iconStart !== undefined}<Icon name={iconStart} size={16} />{/if}
     {@render children()}
-    {#if iconEnd}<Icon name={iconEnd} size={16} />{/if}
+    {#if iconEnd !== undefined}<Icon name={iconEnd} size={16} />{/if}
   </button>
 {/if}
 
@@ -36,8 +37,8 @@
     align-items: center;
     justify-content: center;
     gap: var(--space-2);
-    height: 40px;
-    padding: 0 var(--space-4);
+    min-height: 40px;
+    padding: var(--space-2) var(--space-4);
     border: 1px solid transparent;
     border-radius: var(--radius-full);
     font-size: var(--text-sm);
@@ -62,8 +63,8 @@
     }
 
     &--lg {
-      height: 48px;
-      padding: 0 var(--space-5);
+      min-height: 48px;
+      padding-inline: var(--space-5);
       font-size: var(--text-md);
     }
 

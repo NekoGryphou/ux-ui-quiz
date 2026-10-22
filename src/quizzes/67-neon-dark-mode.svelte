@@ -1,32 +1,7 @@
-<script module lang="ts">
-  import type { QuizMeta } from "../engine/types/quiz.types";
-
-  export const meta: QuizMeta = {
-    id: "neon-dark-mode",
-    title: "Dark mode, bright headache",
-    principle: "Soften colors in dark themes instead of using pure black and full saturation",
-    scenario: "An on-call engineer checks the monitoring dashboard several times a night, in a dark room.",
-    prompt: "What is the main issue with this dashboard?",
-    kind: "single",
-    choices: [
-      { id: "a", text: "Saturated red, blue and green text on pure black vibrates, so the numbers tire the eyes." },
-      { id: "b", text: "The dashboard uses a dark theme, where a light theme would suit a monitoring screen better." },
-      { id: "c", text: "Each card shows a small sparkline, where the numbers alone would keep the cards cleaner." },
-      { id: "d", text: "The cards are separated by thin borders, where soft shadows would set them apart better." }
-    ],
-    correct: ["a"],
-    explanation: [
-      "Fully saturated red, blue and green on pure black seem to shimmer and float at different depths (chromostereopsis), and pure blue barely contrasts with black at all. Glanced at in a dark room at 3 a.m., the numbers smear and tire the eyes.",
-      "In dark themes, use dark grey surfaces rather than #000, off-white text rather than pure white, and desaturated, lighter tints for colors, checking each one for contrast.",
-      "A dark theme suits a night-time monitoring screen, sparklines add useful trend context, and thin borders are a fine way to separate cards on dark backgrounds."
-    ]
-  };
-</script>
-
 <script lang="ts">
-  import type { NeonMetric } from "./types/quiz-mocks.types";
+    import type {NeonMetric} from "./types/quiz-mocks.types";
 
-  const metrics: NeonMetric[] = [
+    const metrics: NeonMetric[] = [
     { label: "ERROR RATE", value: "2.4%", tone: "#ff0000", points: "0,18 10,16 20,17 30,9 40,12 50,4 60,6" },
     { label: "LATENCY P95", value: "812 ms", tone: "#0000ff", points: "0,12 10,14 20,8 30,10 40,6 50,9 60,5" },
     { label: "UPTIME", value: "99.97%", tone: "#00ff00", points: "0,6 10,6 20,5 30,6 40,5 50,5 60,4" },
