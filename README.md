@@ -6,7 +6,7 @@ A button that disappears when you need it. A form that seems determined to make 
 
 Welcome to **Kanom’UI**, a UX/UI quiz where the interfaces have problems and you're the one who has to find them.
 
-Made for curious minds at **Kanoma** who like asking, *“Wait, why is it like that?”*
+Made for curious minds at **Kanoma** who like asking, _“Wait, why is it like that?”_
 
 ## So, what's the game?
 
@@ -23,7 +23,7 @@ There are **111 questions** to explore, with a **30-question selection** in a fu
 - **Point at the problem.** Click directly on the part of the interface that's causing trouble.
 - **Choose your fighter.** Two versions enter. One makes more sense. Pick the better design.
 
-Expect a mix of usability, accessibility, interaction patterns, visual hierarchy, and those tiny details that make the difference between *“this feels right”* and *“why won't this work?”*
+Expect a mix of usability, accessibility, interaction patterns, visual hierarchy, and those tiny details that make the difference between _“this feels right”_ and _“why won't this work?”_
 
 ## Play, learn, repeat
 
@@ -39,7 +39,7 @@ Your progress and scores are saved in your browser, so you can come back for ano
 
 The goal isn't to memorize a list of UX commandments or declare every unusual design choice a crime against usability.
 
-It's to get better at noticing problems, thinking about the people using an interface, and explaining *why* one choice works better than another.
+It's to get better at noticing problems, thinking about the people using an interface, and explaining _why_ one choice works better than another.
 
 Behind every question is a practical lesson. And behind every questionable interface is a reminder that even small decisions can have a big impact.
 
@@ -55,8 +55,6 @@ pnpm dev
 ```
 
 Open the local address shown in your terminal and start spotting problems.
-
-For contributors, the project uses **Svelte 5, TypeScript, and SCSS**. The question bank lives in `src/quizzes/`, and the project's coding conventions are in [CLAUDE.md](./CLAUDE.md).
 
 ## A little note
 
