@@ -1,6 +1,5 @@
 import { expect, type Page, test } from "@playwright/test";
-import { SINGLE_QUIZ } from "./const/e2e.const";
-import { openQuiz, openScreen, selectFirstChoice } from "./utils/app.utils";
+import { answerCurrent, openScreen } from "./utils/app.utils";
 
 test.describe("cross-tab sync", (): void => {
   test("follows a theme change made in another tab", async ({ context }): Promise<void> => {
@@ -18,8 +17,8 @@ test.describe("cross-tab sync", (): void => {
 
   test("starts over when another tab clears storage", async ({ context }): Promise<void> => {
     const first: Page = await context.newPage();
-    await openQuiz(first, SINGLE_QUIZ);
-    await selectFirstChoice(first);
+    await first.goto("/#/quiz/1");
+    await answerCurrent(first);
     await first.goto("/#/");
     await expect(first.getByRole("link", { name: /^Resume quiz/ })).toBeVisible();
 

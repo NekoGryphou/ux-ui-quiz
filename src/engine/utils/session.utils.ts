@@ -196,7 +196,8 @@ export const finishedNow = (): string => new Date().toISOString();
  */
 export const createRun = (catalog: QuizCatalog<QuizMeta>, plan: RunPlan): RunData => {
   const seed: number = randomSeed();
-  const order: string[] = plan.ids === undefined ? fullRunOrder(catalog, seed) : shuffledOrder(plan.ids, seed);
+  let order: string[] = fullRunOrder(catalog, seed);
+  if (plan.ids !== undefined) order = plan.ordered === true ? [...plan.ids] : shuffledOrder(plan.ids, seed);
   return { id: newRunId(), kind: plan.kind, seed, answers: {}, order };
 };
 

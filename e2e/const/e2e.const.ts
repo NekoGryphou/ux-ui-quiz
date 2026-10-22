@@ -2,12 +2,6 @@ import type { ViewportSize } from "@playwright/test";
 
 /**
  * @export
- * @desc Storage key that enables the fixed quiz order.
- */
-export const FIXED_ORDER_STORAGE_KEY: string = "kanom-ui:debug-fixed-order";
-
-/**
- * @export
  * @desc Number of a single-answer quiz.
  */
 export const SINGLE_QUIZ: number = 1;

@@ -70,6 +70,7 @@ export interface Attempt {
  *
  * @property kind - Run kind.
  * @property ids - Explicit quiz ids to ask.
+ * @property ordered - Keeps ids in the given order.
  */
 export interface RunPlan {
   /** Run kind. */
@@ -77,4 +78,7 @@ export interface RunPlan {
 
   /** Explicit quiz ids to ask; omitted for a full run draw. */
   ids?: readonly string[];
+
+  /** Whether explicit ids keep their order instead of being shuffled. */
+  ordered?: boolean;
 }

@@ -15,6 +15,12 @@ describe("createRun", (): void => {
     const run: RunData = createRun(CATALOG, { kind: "retry", ids: ["single", "compare"] });
     expect([...run.order].sort()).toEqual(["compare", "single"]);
   });
+
+  it("keeps the requested ids in order when asked", (): void => {
+    const ids: string[] = [...CATALOG.order].reverse();
+    const run: RunData = createRun(CATALOG, { kind: "full", ids, ordered: true });
+    expect(run.order).toEqual(ids);
+  });
 });
 
 describe("parseRun", (): void => {

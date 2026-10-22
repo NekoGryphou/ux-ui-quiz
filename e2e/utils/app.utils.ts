@@ -1,38 +1,18 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, type Locator, type Page } from "@playwright/test";
 import { RING_GAP } from "../../src/stage/const/hotspot-ring.const";
-import {
-  A11Y_TAGS,
-  ANSWER_TARGETS,
-  FIXED_ORDER_STORAGE_KEY,
-  PREVIEW_SELECTOR,
-  RETRY_TIMEOUT_MS,
-  RING_VIOLATIONS_KEY
-} from "../const/e2e.const";
+import { A11Y_TAGS, ANSWER_TARGETS, PREVIEW_SELECTOR, RETRY_TIMEOUT_MS, RING_VIOLATIONS_KEY } from "../const/e2e.const";
 import type { RingCheck } from "../types/e2e.types";
 
 /**
- * @private
- * @desc Makes the page use the fixed quiz order on every load.
- *
- * @param page - Playwright page.
- */
-const useFileOrder = async (page: Page): Promise<void> => {
-  await page.addInitScript((key: string): void => {
-    localStorage.setItem(key, "1");
-  }, FIXED_ORDER_STORAGE_KEY);
-};
-
-/**
  * @export
- * @desc Opens a main run question in fixed order and waits for its preview.
+ * @desc Opens a question of the file-ordered debug run and waits for its preview.
  *
  * @param page - Playwright page.
- * @param position - One-based question position.
+ * @param position - Quiz file number.
  */
 export const openQuiz = async (page: Page, position: number): Promise<void> => {
-  await useFileOrder(page);
-  await page.goto(`/#/quiz/${String(position)}`);
+  await page.goto(`/#/debug/${String(position)}`);
   await page.locator(".frame").first().waitFor();
 };
 
@@ -157,13 +137,12 @@ export const appA11yViolations = async (page: Page): Promise<string[]> => {
 
 /**
  * @export
- * @desc Opens a screen in file order and waits for its heading.
+ * @desc Opens a screen and waits for its heading.
  *
  * @param page - Page to use.
  * @param hash - Route hash, such as "/#/results".
  */
 export const openScreen = async (page: Page, hash: string): Promise<void> => {
-  await useFileOrder(page);
   await page.goto(hash);
   await page.getByRole("heading", { level: 1 }).waitFor();
 };
@@ -183,12 +162,12 @@ export const clickUntil = async (target: Locator, settled: (timeout: number) => 
 };
 
 /**
- * @export
+ * @private
  * @desc Selects the first answer choice.
  *
  * @param page - Page showing a choice question.
  */
-export const selectFirstChoice = async (page: Page): Promise<void> => {
+const selectFirstChoice = async (page: Page): Promise<void> => {
   const choice: Locator = page.locator("label.choice").first();
   await clickUntil(choice, (timeout: number): Promise<void> =>
     expect(choice).toHaveClass(/choice--selected/, { timeout })

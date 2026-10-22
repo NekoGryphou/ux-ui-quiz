@@ -16,12 +16,12 @@ export const session: Session = new Session({
 
 /**
  * @export
- * @desc Temporary development run containing every question.
+ * @desc Temporary development run containing every question in file order.
  */
 export const debugRun: Run | null = import.meta.env.DEV
   ? new Run(
       createCatalog(quizzes),
-      createRun(createCatalog(quizzes), { kind: "full", ids: quizzes.map((quiz) => quiz.id) }),
+      createRun(createCatalog(quizzes), { kind: "full", ids: quizzes.map((quiz) => quiz.id), ordered: true }),
       (): void => undefined
     )
   : null;
