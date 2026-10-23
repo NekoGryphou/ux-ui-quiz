@@ -1,10 +1,21 @@
 <script lang="ts">
   import { RetroButton, RetroWindow } from "../mock";
+  import { t } from "../shared/locale.svelte";
 </script>
 
 <div class="desk">
   <div class="desk__app">
-    <RetroWindow title="StockMaster 97 - INVENTORY.XLS" menu={["File", "Edit", "View", "Data", "Help"]} width={520}>
+    <RetroWindow
+      title="StockMaster 97 - INVENTORY.XLS"
+      menu={[
+        t("File", "Fichier"),
+        t("Edit", "Édition"),
+        t("View", "Affichage"),
+        t("Data", "Données"),
+        t("Help", "Aide")
+      ]}
+      width={520}
+    >
       <div class="sheet">
         {#each Array.from({ length: 8 }, (_, i) => i) as row (row)}
           <div class="sheet__row">
@@ -20,27 +31,33 @@
     <RetroWindow title="StockMaster 97" width={300}>
       <div class="dialog__body">
         <span class="dialog__icon">!</span>
-        <p>Are you sure you want to exit StockMaster?</p>
+        <p>{t("Are you sure you want to exit StockMaster?", "Voulez-vous vraiment quitter StockMaster ?")}</p>
       </div>
-      <div class="dialog__actions"><RetroButton primary>Yes</RetroButton><RetroButton>No</RetroButton></div>
+      <div class="dialog__actions">
+        <RetroButton primary>{t("Yes", "Oui")}</RetroButton><RetroButton>{t("No", "Non")}</RetroButton>
+      </div>
     </RetroWindow>
   </div>
   <div class="dialog dialog--2">
     <RetroWindow title="StockMaster 97" width={300}>
       <div class="dialog__body">
         <span class="dialog__icon">!</span>
-        <p>All windows will be closed. Continue?</p>
+        <p>{t("All windows will be closed. Continue?", "Toutes les fenêtres vont être fermées. Continuer ?")}</p>
       </div>
-      <div class="dialog__actions"><RetroButton primary>Yes</RetroButton><RetroButton>No</RetroButton></div>
+      <div class="dialog__actions">
+        <RetroButton primary>{t("Yes", "Oui")}</RetroButton><RetroButton>{t("No", "Non")}</RetroButton>
+      </div>
     </RetroWindow>
   </div>
   <div class="dialog dialog--3">
     <RetroWindow title="StockMaster 97" width={300}>
       <div class="dialog__body">
         <span class="dialog__icon">!</span>
-        <p>Really exit? Your work has been saved.</p>
+        <p>{t("Really exit? Your work has been saved.", "Vraiment quitter ? Votre travail a été enregistré.")}</p>
       </div>
-      <div class="dialog__actions"><RetroButton primary>Yes</RetroButton><RetroButton>No</RetroButton></div>
+      <div class="dialog__actions">
+        <RetroButton primary>{t("Yes", "Oui")}</RetroButton><RetroButton>{t("No", "Non")}</RetroButton>
+      </div>
     </RetroWindow>
   </div>
 </div>

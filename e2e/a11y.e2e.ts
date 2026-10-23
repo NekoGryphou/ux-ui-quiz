@@ -16,7 +16,11 @@ for (const colorScheme of COLOR_SCHEMES) {
       expect(await appA11yViolations(page)).toEqual([]);
 
       await checkFirstChoice(page);
-      await page.getByRole("region", { name: "Explanation" }).waitFor();
+      await page
+        .getByRole("region", { name: "Explanation" })
+        .evaluate((reveal: Element): Promise<unknown> =>
+          Promise.all(reveal.getAnimations().map((animation) => animation.finished))
+        );
       expect(await appA11yViolations(page)).toEqual([]);
     });
 

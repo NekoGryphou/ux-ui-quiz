@@ -1,21 +1,31 @@
+<script lang="ts">
+  import { t } from "../shared/locale.svelte";
+</script>
+
 <div class="menu">
   <p class="menu__name">Chez Margot</p>
-  <p class="menu__tag">BISTRO · SINCE 1987</p>
-  <p class="menu__title">Tonight’s Set Menu</p>
-  <p class="menu__price">3 courses — €38 per person, wine pairing +€18</p>
+  <p class="menu__tag">{t("BISTRO · SINCE 1987", "BISTROT · DEPUIS 1987")}</p>
+  <p class="menu__title">{t("Tonight’s Set Menu", "Le menu du soir")}</p>
+  <p class="menu__price">
+    {t("3 courses — €38 per person, wine pairing +€18", "3 plats — 38 € par personne, accord mets-vins +18 €")}
+  </p>
   <div class="menu__dish">
-    <span class="menu__course">STARTER</span>
-    <span class="menu__item">Leek & potato velouté, chive oil</span>
+    <span class="menu__course">{t("STARTER", "ENTRÉE")}</span>
+    <span class="menu__item"
+      >{t("Leek & potato velouté, chive oil", "Velouté poireaux-pommes de terre, huile de ciboulette")}</span
+    >
   </div>
   <div class="menu__dish">
-    <span class="menu__course">MAIN</span>
-    <span class="menu__item">Duck confit, Puy lentils, red wine jus</span>
+    <span class="menu__course">{t("MAIN", "PLAT")}</span>
+    <span class="menu__item"
+      >{t("Duck confit, Puy lentils, red wine jus", "Confit de canard, lentilles du Puy, jus au vin rouge")}</span
+    >
   </div>
   <div class="menu__dish">
     <span class="menu__course">DESSERT</span>
     <span class="menu__item">Tarte Tatin, crème fraîche</span>
   </div>
-  <p class="menu__book">Book a table → 01 42 00 00 00</p>
+  <p class="menu__book">{t("Book a table → 01 42 00 00 00", "Réserver une table → 01 42 00 00 00")}</p>
 </div>
 
 <style lang="scss">

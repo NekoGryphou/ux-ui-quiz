@@ -1,5 +1,6 @@
 <script lang="ts">
   import { BrandTheme, BrowserShell, Photo } from "../mock";
+  import { t } from "../shared/locale.svelte";
   import {
     PHOTO_AMARYLLIS,
     PHOTO_ARMCHAIR,
@@ -41,7 +42,9 @@
           </div>
         {/each}
         <footer class="footer">
-          <span>Returns policy</span><span>Contact us</span><span>Delivery</span><span>Terms</span>
+          <span>{t("Returns policy", "Politique de retour")}</span><span>{t("Contact us", "Nous contacter")}</span><span
+            >{t("Delivery", "Livraison")}</span
+          ><span>{t("Terms", "CGV")}</span>
         </footer>
       </div>
     </div>

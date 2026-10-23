@@ -1,19 +1,27 @@
 <script lang="ts">
   import type { VisualProps } from "../engine/types/quiz.types";
+  import { t } from "../shared/locale.svelte";
 
   let { variant = "a" }: VisualProps = $props();
 </script>
 
 <article class="article" class:article--plain={variant === "b"}>
-  <p class="article__kicker">SLOW TRAVEL</p>
-  <p class="article__title">Three weeks by train, one backpack</p>
+  <p class="article__kicker">{t("SLOW TRAVEL", "VOYAGE LENT")}</p>
+  <p class="article__title">{t("Three weeks by train, one backpack", "Trois semaines en train, un seul sac à dos")}</p>
   <p>
-    We started in Lisbon with the <span class="link">rail pass guide</span> open on our phones, then followed the coast
-    north. Booking the night trains early mattered more than anything; the
-    <span class="link">seat reservation tips</span> saved us twice.
+    {t("We started in Lisbon with the", "Nous sommes partis de Lisbonne avec le")}
+    <span class="link">{t("rail pass guide", "guide du pass ferroviaire")}</span>
+    {t(
+      "open on our phones, then followed the coast north. Booking the night trains early mattered more than anything; the",
+      "ouvert sur nos téléphones, puis nous avons longé la côte vers le nord. Réserver tôt les trains de nuit a compté plus que tout ; les"
+    )}
+    <span class="link">{t("seat reservation tips", "conseils de réservation de places")}</span>
+    {t("saved us twice.", "nous ont sauvés deux fois.")}
   </p>
   <p>
-    For packing, we stuck to the <span class="link">one-bag checklist</span> and never regretted it.
+    {t("For packing, we stuck to the", "Pour les bagages, nous avons suivi la")}
+    <span class="link">{t("one-bag checklist", "checklist « un seul sac »")}</span>
+    {t("and never regretted it.", "sans jamais le regretter.")}
   </p>
 </article>
 

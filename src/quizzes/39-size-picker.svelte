@@ -1,5 +1,6 @@
 <script lang="ts">
   import { BrowserShell, MockButton, Photo, TopBar } from "../mock";
+  import { t } from "../shared/locale.svelte";
   import { PHOTO_SHOE_TRAIL } from "./const/photo.const";
 
   const sizes: string[] = ["40", "41", "42", "43", "44", "45"];
@@ -11,14 +12,16 @@
     <span class="photo"><Photo src={PHOTO_SHOE_TRAIL.url} fit="contain" /></span>
     <div class="info">
       <p class="name">Trail Runner 2</p>
-      <p class="price">€79.90</p>
-      <div class="label"><span>Size (EU)</span><span class="guide">Size guide</span></div>
+      <p class="price">{t("€79.90", "79,90 €")}</p>
+      <div class="label">
+        <span>{t("Size (EU)", "Pointure (EU)")}</span><span class="guide">{t("Size guide", "Guide des tailles")}</span>
+      </div>
       <div class="sizes">
         {#each sizes as size (size)}
           <span class="size" class:size--on={size === "44"}>{size}</span>
         {/each}
       </div>
-      <MockButton variant="primary" size="lg" block disabled>Add to cart</MockButton>
+      <MockButton variant="primary" size="lg" block disabled>{t("Add to cart", "Ajouter au panier")}</MockButton>
     </div>
   </div>
 </BrowserShell>

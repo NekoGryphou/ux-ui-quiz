@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t } from "../shared/locale.svelte";
   import type { HotspotLayer } from "../stage/hotspot-layer.svelte";
   import type { HotspotContext } from "../stage/types/hotspot-context.types";
   import { readHotspotContext, readHotspotLayer } from "../stage/utils/hotspot.utils";
@@ -77,7 +78,7 @@
     <button
       class="hotspot__target"
       type="button"
-      aria-label="Area: {context.labelOf(id)}"
+      aria-label={t(`Area: ${context.labelOf(id)}`, `Zone : ${context.labelOf(id)}`)}
       aria-pressed={selected}
       disabled={!context.interactive}
       onclick={select}

@@ -1,5 +1,6 @@
 <script lang="ts">
   import { BrandTheme, PhoneShell } from "../mock";
+  import { t } from "../shared/locale.svelte";
 </script>
 
 <BrandTheme brand="eco">
@@ -11,12 +12,22 @@
     <div class="dim" aria-hidden="true"></div>
     <div class="alert">
       <div class="alert__copy">
-        <strong>“Basketly” Would Like to Send You Notifications</strong>
-        <span>Notifications may include alerts, sounds, and icon badges. These can be configured in Settings.</span>
+        <strong
+          >{t(
+            "“Basketly” Would Like to Send You Notifications",
+            "« Basketly » souhaite vous envoyer des notifications"
+          )}</strong
+        >
+        <span
+          >{t(
+            "Notifications may include alerts, sounds, and icon badges. These can be configured in Settings.",
+            "Les notifications peuvent inclure des alertes, des sons et des pastilles d’icônes. Vous pouvez les configurer dans Réglages."
+          )}</span
+        >
       </div>
       <div class="alert__actions">
-        <span>Don’t Allow</span>
-        <span class="alert__allow">Allow</span>
+        <span>{t("Don’t Allow", "Ne pas autoriser")}</span>
+        <span class="alert__allow">{t("Allow", "Autoriser")}</span>
       </div>
     </div>
   </PhoneShell>

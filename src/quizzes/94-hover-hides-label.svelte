@@ -1,17 +1,20 @@
 <script lang="ts">
   import type { VisualProps } from "../engine/types/quiz.types";
   import { BrandTheme } from "../mock";
+  import { t } from "../shared/locale.svelte";
 
   let { variant = "a" }: VisualProps = $props();
 </script>
 
 <BrandTheme brand="playful">
   <div class="card">
-    <span class="card__kicker">LIVE · 14 JUNE</span>
-    <p class="card__title">Neon Harbour — Summer tour</p>
-    <p class="card__meta">Arena du Port · doors 19:00 · from €39</p>
+    <span class="card__kicker">{t("LIVE · 14 JUNE", "EN CONCERT · 14 JUIN")}</span>
+    <p class="card__title">{t("Neon Harbour — Summer tour", "Neon Harbour — Tournée d’été")}</p>
+    <p class="card__meta">
+      {t("Arena du Port · doors 19:00 · from €39", "Arena du Port · ouverture 19:00 · dès 39 €")}
+    </p>
     <span class="cta" class:cta--good={variant === "b"}>
-      Get tickets
+      {t("Get tickets", "Acheter des billets")}
       <svg class="cta__cursor" viewBox="0 0 20 24" aria-hidden="true">
         <path
           d="M3 2.5 L16.5 14 L10.4 14.6 L13.6 21 L10.8 22.3 L7.7 15.9 L3 20 Z"

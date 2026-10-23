@@ -1,45 +1,61 @@
 <script lang="ts">
   import { BrandTheme, BrowserShell, Icon, MockButton, Title } from "../mock";
+  import { t } from "../shared/locale.svelte";
   import type { PricingPlan } from "./types/quiz-mocks.types";
 
-  const plans: PricingPlan[] = [
+  const plans: PricingPlan[] = $derived([
     {
       name: "Starter",
-      price: "€9",
-      features: ["3 projects", "Export to PNG and PDF", "Email support"],
+      price: t("€9", "9 €"),
+      features: [
+        t("3 projects", "3 projets"),
+        t("Export to PNG and PDF", "Export PNG et PDF"),
+        t("Email support", "Support par e-mail")
+      ],
       primary: false
     },
     {
       name: "Pro",
-      price: "€19",
-      features: ["Unlimited projects", "Shared libraries", "Priority support"],
+      price: t("€19", "19 €"),
+      features: [
+        t("Unlimited projects", "Projets illimités"),
+        t("Shared libraries", "Bibliothèques partagées"),
+        t("Priority support", "Support prioritaire")
+      ],
       primary: true
     }
-  ];
+  ]);
 </script>
 
 <BrandTheme brand="luxury">
   <BrowserShell url="pixelkit.app/pricing">
     <div class="page">
       <div class="intro">
-        <Title>Choose your plan</Title>
-        <p>Everything you need to design faster.</p>
+        <Title>{t("Choose your plan", "Choisissez votre offre")}</Title>
+        <p>{t("Everything you need to design faster.", "Tout ce qu’il faut pour concevoir plus vite.")}</p>
       </div>
       <div class="plans">
         {#each plans as plan (plan.name)}
           <div class="plan" class:plan--primary={plan.primary}>
             <strong class="plan__name">{plan.name}</strong>
-            <p class="plan__price"><span>{plan.price}</span>/month*</p>
+            <p class="plan__price"><span>{plan.price}</span>{t("/month*", "/mois*")}</p>
             <ul>
               {#each plan.features as feature (feature)}
                 <li><Icon name="check" size={14} /> {feature}</li>
               {/each}
             </ul>
-            <MockButton variant={plan.primary ? "primary" : "secondary"} block>Choose {plan.name}</MockButton>
+            <MockButton variant={plan.primary ? "primary" : "secondary"} block
+              >{t(`Choose ${plan.name}`, `Choisir ${plan.name}`)}</MockButton
+            >
           </div>
         {/each}
       </div>
-      <p class="note">*Billed annually. A one-time setup fee applies at checkout.</p>
+      <p class="note">
+        {t(
+          "*Billed annually. A one-time setup fee applies at checkout.",
+          "*Facturé annuellement. Des frais de mise en service uniques s’appliquent au paiement."
+        )}
+      </p>
     </div>
   </BrowserShell>
 </BrandTheme>

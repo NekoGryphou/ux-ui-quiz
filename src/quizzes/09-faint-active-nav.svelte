@@ -1,5 +1,6 @@
 <script lang="ts">
   import { Avatar, BrowserShell, Field, SideNav } from "../mock";
+  import { t } from "../shared/locale.svelte";
 </script>
 
 <BrowserShell url="desk.supportly.io/tickets/open">
@@ -9,17 +10,17 @@
       <SideNav
         activeStyle="faint"
         items={[
-          { label: "Inbox", icon: "inbox", badge: "12" },
-          { label: "Open tickets", icon: "message", active: true, badge: "38" },
-          { label: "Assigned to me", icon: "user", badge: "5" },
-          { label: "Reports", icon: "chart" },
-          { label: "Settings", icon: "settings" }
+          { label: t("Inbox", "Réception"), icon: "inbox", badge: "12" },
+          { label: t("Open tickets", "Tickets ouverts"), icon: "message", active: true, badge: "38" },
+          { label: t("Assigned to me", "Assignés à moi"), icon: "user", badge: "5" },
+          { label: t("Reports", "Rapports"), icon: "chart" },
+          { label: t("Settings", "Paramètres"), icon: "settings" }
         ]}
       />
     </aside>
     <div class="content">
-      <Field placeholder="Search tickets" icon="search" />
-      {#each [{ subject: "Refund not received", from: "Léa Moreau", age: "4 min" }, { subject: "Can’t reset password", from: "Tom Becker", age: "12 min" }, { subject: "Invoice shows wrong VAT", from: "Ana Silva", age: "26 min" }, { subject: "App crashes on login", from: "Yuki Sato", age: "41 min" }] as ticket (ticket.subject)}
+      <Field placeholder={t("Search tickets", "Rechercher des tickets")} icon="search" />
+      {#each [{ subject: t("Refund not received", "Remboursement non reçu"), from: "Léa Moreau", age: "4 min" }, { subject: t("Can’t reset password", "Impossible de réinitialiser le mot de passe"), from: "Tom Becker", age: "12 min" }, { subject: t("Invoice shows wrong VAT", "TVA erronée sur la facture"), from: "Ana Silva", age: "26 min" }, { subject: t("App crashes on login", "L’appli plante à la connexion"), from: "Yuki Sato", age: "41 min" }] as ticket (ticket.from)}
         <div class="ticket">
           <Avatar name={ticket.from} />
           <span class="subject">{ticket.subject}</span>

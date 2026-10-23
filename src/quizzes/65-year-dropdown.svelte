@@ -1,21 +1,22 @@
 <script lang="ts">
   import { BrandTheme, Field, MockButton } from "../mock";
+  import { t } from "../shared/locale.svelte";
 
   const years: number[] = Array.from({ length: 7 }, (_, i) => 1900 + i);
 </script>
 
 <BrandTheme brand="corporate">
   <div class="quote">
-    <p class="quote__step">Step 1 of 3 · About you</p>
-    <p class="quote__title">Get your car insurance quote</p>
-    <Field label="Full name" value="Jordan Lefèvre" />
+    <p class="quote__step">{t("Step 1 of 3 · About you", "Étape 1 sur 3 · Vous")}</p>
+    <p class="quote__title">{t("Get your car insurance quote", "Obtenez votre devis d’assurance auto")}</p>
+    <Field label={t("Full name", "Nom complet")} value="Jordan Lefèvre" />
     <div class="dob">
-      <span class="dob__label">Date of birth</span>
+      <span class="dob__label">{t("Date of birth", "Date de naissance")}</span>
       <div class="dob__row">
         <Field type="select" value="14" />
-        <Field type="select" value="March" />
+        <Field type="select" value={t("March", "Mars")} />
         <div class="dob__open">
-          <Field type="select" value="Year" state="focus" />
+          <Field type="select" value={t("Year", "Année")} state="focus" />
           <div class="list">
             {#each years as year (year)}
               <span class="list__item" class:list__item--active={year === 1900}>{year}</span>
@@ -25,7 +26,7 @@
         </div>
       </div>
     </div>
-    <MockButton variant="primary">Continue</MockButton>
+    <MockButton variant="primary">{t("Continue", "Continuer")}</MockButton>
   </div>
 </BrandTheme>
 

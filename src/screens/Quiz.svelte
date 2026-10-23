@@ -12,6 +12,7 @@
   import type { Answer, Choice, HotspotResults } from "../engine/types/quiz.types";
   import { allowsSeveral, optionsOf } from "../engine/utils/quiz.utils";
   import { choiceOutcome, hotspotResults, isCorrect } from "../engine/utils/scoring.utils";
+  import { pick, t } from "../shared/locale.svelte";
   import { PRELOAD_AHEAD } from "../stage/const/visual-cache.const";
   import MotionToggle from "../stage/MotionToggle.svelte";
   import QuizStage from "../stage/QuizStage.svelte";
@@ -45,7 +46,7 @@
       .map((option) => option.text)
   );
   const position: string = $derived(
-    `${mode === "review" ? "Review · " : target === "practice" ? "Practice · " : ""}Question ${String(index + 1)} of ${String(run.total)}`
+    `${mode === "review" ? t("Review · ", "Revue · ") : target === "practice" ? t("Practice · ", "Entraînement · ") : ""}Question ${String(index + 1)} ${t("of", "sur")} ${String(run.total)}`
   );
 
   /**
@@ -93,7 +94,7 @@
     run.submit(quiz);
     actionsSettle.trigger();
     const correct: boolean = isCorrect(quiz, run.answerFor(quiz));
-    announcement = `${correct ? "Correct" : "Not quite"}. ${quiz.title}. ${quiz.explanation.join(" ")}`;
+    announcement = `${correct ? t("Correct", "Bonne réponse") : t("Not quite", "Pas tout à fait")}. ${quiz.title}. ${quiz.explanation.join(" ")}`;
 
     await tick();
     nextButton?.focus({ preventScroll: true });
@@ -150,7 +151,7 @@
         <KindBadge kind={quiz.kind} {several} />
       </div>
       <h1 id="quiz-heading" class="quiz__heading" tabindex="-1" bind:this={heading}>
-        {QUESTION_HEADINGS[quiz.kind]}<span class="visually-hidden"> {position}</span>
+        {pick(QUESTION_HEADINGS[quiz.kind])}<span class="visually-hidden"> {position}</span>
       </h1>
       <p class="quiz__scenario">{quiz.scenario}</p>
     </div>
@@ -166,7 +167,7 @@
     {/if}
   </div>
 
-  <section class="quiz__panel" aria-label="Answer">
+  <section class="quiz__panel" aria-label={t("Answer", "Réponse")}>
     {#if quiz.kind === "hotspot"}
       <SelectionSummary prompt={quiz.prompt} labels={selectedLabels} {several} />
     {:else if quiz.kind === "compare"}
@@ -178,7 +179,7 @@
     <!--suppress HtmlUnknownAttribute -->
     <div class="quiz__actions" onclickcapture={actionsSettle.guard} onmousedowncapture={actionsSettle.guard}>
       {#if nav.previous !== null}
-        <Button variant="ghost" href={nav.previous} iconStart="arrow-left">Previous</Button>
+        <Button variant="ghost" href={nav.previous} iconStart="arrow-left">{t("Previous", "Précédente")}</Button>
       {/if}
       <span class="quiz__spacer"></span>
       {#if !answer.submitted}

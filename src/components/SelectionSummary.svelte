@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t } from "../shared/locale.svelte";
   import Icon from "./Icon.svelte";
   import type { SelectionSummaryProps } from "./types/selection-summary.types";
 
@@ -11,10 +12,16 @@
     <span class="summary__icon"><Icon name="crosshair" size={16} /></span>
     {#if labels.length === 0}
       {several
-        ? "Click every area of the screen that causes a problem."
-        : "Click the area of the screen that causes the problem."}
+        ? t(
+            "Click every area of the screen that causes a problem.",
+            "Cliquez sur chaque zone de l’écran qui pose problème."
+          )
+        : t(
+            "Click the area of the screen that causes the problem.",
+            "Cliquez sur la zone de l’écran qui pose problème."
+          )}
     {:else}
-      <span>Selected: <strong>{labels.join(", ")}</strong></span>
+      <span>{t("Selected:", "Sélection :")} <strong>{labels.join(", ")}</strong></span>
     {/if}
   </p>
 </div>

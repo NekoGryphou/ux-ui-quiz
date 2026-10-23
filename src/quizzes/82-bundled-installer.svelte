@@ -1,32 +1,43 @@
 <script lang="ts">
   import { RetroButton, RetroWindow } from "../mock";
+  import { t } from "../shared/locale.svelte";
 
-  const extras: string[] = [
-    "Install SearchMaster Pro toolbar (recommended)",
-    "Set SearchMaster as my homepage",
-    "Make SearchMaster my default search engine"
-  ];
+  const extras: string[] = $derived([
+    t("Install SearchMaster Pro toolbar (recommended)", "Installer la barre d’outils SearchMaster Pro (recommandé)"),
+    t("Set SearchMaster as my homepage", "Définir SearchMaster comme page d’accueil"),
+    t("Make SearchMaster my default search engine", "Utiliser SearchMaster comme moteur de recherche par défaut")
+  ]);
 </script>
 
-<RetroWindow title="Setup - FreePDF Reader 7.0" width={460}>
+<RetroWindow title={t("Setup - FreePDF Reader 7.0", "Installation - FreePDF Reader 7.0")} width={460}>
   <div class="wizard">
     <div class="wizard__side">
       <span class="wizard__logo">PDF</span>
     </div>
     <div class="wizard__body">
-      <p class="wizard__step">Step 3 of 5</p>
-      <p class="wizard__title">Get the most from FreePDF!</p>
-      <p>Enhance your experience with these great free tools from our partners.</p>
+      <p class="wizard__step">{t("Step 3 of 5", "Étape 3 sur 5")}</p>
+      <p class="wizard__title">{t("Get the most from FreePDF!", "Profitez au maximum de FreePDF !")}</p>
+      <p>
+        {t(
+          "Enhance your experience with these great free tools from our partners.",
+          "Améliorez votre expérience avec ces super outils gratuits de nos partenaires."
+        )}
+      </p>
       {#each extras as extra (extra)}
         <span class="check"><span class="check__box">✓</span>{extra}</span>
       {/each}
-      <small>By clicking Next you accept the partner terms of use.</small>
+      <small
+        >{t(
+          "By clicking Next you accept the partner terms of use.",
+          "En cliquant sur Suivant, vous acceptez les conditions d’utilisation des partenaires."
+        )}</small
+      >
     </div>
   </div>
   <div class="actions">
-    <RetroButton>&lt; Back</RetroButton>
-    <RetroButton primary>Next &gt;</RetroButton>
-    <RetroButton>Cancel</RetroButton>
+    <RetroButton>{t("< Back", "< Précédent")}</RetroButton>
+    <RetroButton primary>{t("Next >", "Suivant >")}</RetroButton>
+    <RetroButton>{t("Cancel", "Annuler")}</RetroButton>
   </div>
 </RetroWindow>
 

@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { VisualProps } from "../engine/types/quiz.types";
   import { BrandTheme, PhoneShell, Photo } from "../mock";
+  import { t } from "../shared/locale.svelte";
   import sculpture from "./assets/wall-sculpture.jpg";
 
   let { variant = "a" }: VisualProps = $props();
@@ -14,10 +15,15 @@
         <Photo src={sculpture} position="50% 40%" />
       </div>
       <div class="museum__copy">
-        <p class="museum__kicker">NEW EXHIBITION</p>
-        <p class="museum__title">Bodies &amp; Walls</p>
-        <p>Monumental sculptures that break through the gallery itself. Until 14 June.</p>
-        <span class="museum__cta">Book tickets</span>
+        <p class="museum__kicker">{t("NEW EXHIBITION", "NOUVELLE EXPOSITION")}</p>
+        <p class="museum__title">{t("Bodies & Walls", "Corps & Murs")}</p>
+        <p>
+          {t(
+            "Monumental sculptures that break through the gallery itself. Until 14 June.",
+            "Des sculptures monumentales qui traversent les murs de la galerie. Jusqu’au 14 juin."
+          )}
+        </p>
+        <span class="museum__cta">{t("Book tickets", "Réserver")}</span>
       </div>
     </div>
   </PhoneShell>

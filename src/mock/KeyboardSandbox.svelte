@@ -1,5 +1,6 @@
 <script lang="ts">
   import Icon from "../components/Icon.svelte";
+  import { t } from "../shared/locale.svelte";
   import type { KeyboardSandboxProps, KeyStop } from "./types/keyboard.types";
   import { nextStop, provideKeyboardContext } from "./utils/keyboard.utils";
 
@@ -68,7 +69,10 @@
   class:sandbox--active={active}
   role="application"
   tabindex="0"
-  aria-label="Interactive preview. Press Tab to move keyboard focus through the page, Escape to leave."
+  aria-label={t(
+    "Interactive preview. Press Tab to move keyboard focus through the page, Escape to leave.",
+    "Aperçu interactif. Appuyez sur Tab pour déplacer le focus clavier dans la page, sur Échap pour en sortir."
+  )}
   aria-describedby="{uid}-status"
   {onkeydown}
   {onfocus}
@@ -77,17 +81,35 @@
   <div class="sandbox__hint" aria-hidden="true">
     <Icon name="arrow-right" size={14} />
     {#if active}
-      <span><kbd>Tab</kbd> next · <kbd>Shift</kbd>+<kbd>Tab</kbd> back · <kbd>Esc</kbd> leave</span>
+      <span
+        ><kbd>Tab</kbd>
+        {t("next", "suivant")} · <kbd>Shift</kbd>+<kbd>Tab</kbd>
+        {t("back", "précédent")} · <kbd>{t("Esc", "Échap")}</kbd>
+        {t("leave", "sortir")}</span
+      >
       <span class="sandbox__count"
-        >{current === undefined ? "Ready" : `Stop ${String(index + 1)} of ${String(stops.length)}`}</span
+        >{current === undefined
+          ? t("Ready", "Prêt")
+          : t(
+              `Stop ${String(index + 1)} of ${String(stops.length)}`,
+              `Arrêt ${String(index + 1)} sur ${String(stops.length)}`
+            )}</span
       >
     {:else}
-      <span>Click here, then press <kbd>Tab</kbd> to try it with your keyboard</span>
+      <span
+        >{t("Click here, then press", "Cliquez ici, puis appuyez sur")} <kbd>Tab</kbd>
+        {t("to try it with your keyboard", "pour essayer au clavier")}</span
+      >
     {/if}
   </div>
   {@render children()}
   <p id="{uid}-status" class="sandbox__status" aria-live="polite">
-    {current === undefined ? "" : `Focus: ${current.label}, stop ${String(index + 1)} of ${String(stops.length)}`}
+    {current === undefined
+      ? ""
+      : t(
+          `Focus: ${current.label}, stop ${String(index + 1)} of ${String(stops.length)}`,
+          `Focus : ${current.label}, arrêt ${String(index + 1)} sur ${String(stops.length)}`
+        )}
   </p>
 </div>
 

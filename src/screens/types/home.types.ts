@@ -1,3 +1,5 @@
+import type { Localized } from "../../shared/types/locale.types";
+
 /**
  * @export
  * @desc One step of the home screen walkthrough.
@@ -7,10 +9,10 @@
  */
 export interface HomeStep {
   /** Step heading. */
-  title: string;
+  title: Localized<string>;
 
   /** Step explanation. */
-  body: string;
+  body: Localized<string>;
 }
 
 /**

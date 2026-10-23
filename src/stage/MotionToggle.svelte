@@ -1,5 +1,6 @@
 <script lang="ts">
   import Button from "../components/Button.svelte";
+  import { t } from "../shared/locale.svelte";
   import type { MotionToggleProps } from "./types/motion-toggle.types";
 
   let { playing, ontoggle }: MotionToggleProps = $props();
@@ -7,7 +8,7 @@
 
 <div class="motion">
   <Button iconStart={playing ? "pause" : "play"} onclick={ontoggle}>
-    {playing ? "Stop animation" : "Play animation"}
+    {playing ? t("Stop animation", "Arrêter l’animation") : t("Play animation", "Lancer l’animation")}
   </Button>
 </div>
 

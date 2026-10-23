@@ -1,17 +1,23 @@
 <script lang="ts">
   import { BrandTheme, Field, MockButton } from "../mock";
+  import { t } from "../shared/locale.svelte";
 </script>
 
 <BrandTheme brand="luxury">
   <div class="card">
-    <p class="card__step">Step 1 of 4 · Personal details</p>
-    <p class="card__title">Welcome to Northwind!</p>
+    <p class="card__step">{t("Step 1 of 4 · Personal details", "Étape 1 sur 4 · Informations personnelles")}</p>
+    <p class="card__title">{t("Welcome to Northwind!", "Bienvenue chez Northwind !")}</p>
     <div class="pair">
-      <Field label="First name" value="Sukarni" required />
-      <Field label="Last name" state="error" required message="Last name is required." />
+      <Field label={t("First name", "Prénom")} value="Sukarni" required />
+      <Field
+        label={t("Last name", "Nom")}
+        state="error"
+        required
+        message={t("Last name is required.", "Le nom est obligatoire.")}
+      />
     </div>
-    <Field label="Preferred name" placeholder="Optional" />
-    <MockButton variant="primary" block>Next</MockButton>
+    <Field label={t("Preferred name", "Prénom d’usage")} placeholder={t("Optional", "Facultatif")} />
+    <MockButton variant="primary" block>{t("Next", "Suivant")}</MockButton>
   </div>
 </BrandTheme>
 

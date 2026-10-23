@@ -1,5 +1,6 @@
 <script lang="ts">
   import { AppBar, BrandTheme, Icon, MockButton, PhoneShell, Photo } from "../mock";
+  import { t } from "../shared/locale.svelte";
   import { PHOTO_SHOE_MIZUNO } from "./const/photo.const";
 </script>
 
@@ -9,8 +10,13 @@
     <div class="product">
       <span class="photo"><Photo src={PHOTO_SHOE_MIZUNO.url} fit="contain" /></span>
       <p class="name">Trail Runner 2</p>
-      <p class="price">€79.90</p>
-      <p class="desc">Light, grippy and made for wet trails. Recycled mesh upper.</p>
+      <p class="price">{t("€79.90", "79,90 €")}</p>
+      <p class="desc">
+        {t(
+          "Light, grippy and made for wet trails. Recycled mesh upper.",
+          "Légère, adhérente et faite pour les sentiers humides. Tige en mesh recyclé."
+        )}
+      </p>
       <div class="sizes">
         {#each ["40", "41", "42", "43"] as size (size)}
           <span class="size" class:size--on={size === "42"}>{size}</span>
@@ -18,13 +24,13 @@
       </div>
     </div>
     <div class="bar">
-      <MockButton>Add to cart</MockButton>
-      <MockButton variant="primary">Checkout</MockButton>
+      <MockButton>{t("Add to cart", "Ajouter au panier")}</MockButton>
+      <MockButton variant="primary">{t("Checkout", "Commander")}</MockButton>
     </div>
     <div class="toast">
       <Icon name="check" size={14} strokeWidth={3} />
-      <span>Added to cart</span>
-      <span class="toast__link">View cart</span>
+      <span>{t("Added to cart", "Ajouté au panier")}</span>
+      <span class="toast__link">{t("View cart", "Voir le panier")}</span>
     </div>
   </PhoneShell>
 </BrandTheme>

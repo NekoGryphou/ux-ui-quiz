@@ -1,18 +1,30 @@
 <script lang="ts">
   import { RetroBrowser } from "../mock";
+  import { t } from "../shared/locale.svelte";
 </script>
 
 <!--suppress HttpUrlsUsage -->
-<RetroBrowser title="Le Petit Four - Welcome" url="http://www.lepetitfour.fr/">
+<RetroBrowser title={t("Le Petit Four - Welcome", "Le Petit Four - Bienvenue")} url="http://www.lepetitfour.fr/">
   <div class="splash">
     <p class="splash__logo">Le Petit Four</p>
-    <p class="splash__tag">~ artisan boulangerie since 1974 ~</p>
-    <p class="splash__ask">Please choose your version:</p>
+    <p class="splash__tag">{t("~ artisan boulangerie since 1974 ~", "~ boulangerie artisanale depuis 1974 ~")}</p>
+    <p class="splash__ask">{t("Please choose your version:", "Veuillez choisir votre version :")}</p>
     <div class="splash__choices">
-      <span class="choice"><b>FLASH</b><small>Broadband (512k+)<br />Flash Player 6 required</small></span>
-      <span class="choice"><b>HTML</b><small>56k modem<br />Lite version</small></span>
+      <span class="choice"
+        ><b>FLASH</b><small
+          >{t("Broadband (512k+)", "Haut débit (512k+)")}<br />{t(
+            "Flash Player 6 required",
+            "Flash Player 6 requis"
+          )}</small
+        ></span
+      >
+      <span class="choice"
+        ><b>HTML</b><small>{t("56k modem", "Modem 56k")}<br />{t("Lite version", "Version allégée")}</small></span
+      >
     </div>
-    <p class="splash__small">Best viewed in 1024×768 with Internet Explorer 6</p>
+    <p class="splash__small">
+      {t("Best viewed in 1024×768 with Internet Explorer 6", "Site optimisé pour 1024×768 avec Internet Explorer 6")}
+    </p>
   </div>
 </RetroBrowser>
 

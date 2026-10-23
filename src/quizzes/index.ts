@@ -1,4 +1,6 @@
-import type { Quiz, QuizMeta, QuizVisual, QuizVisualLoader } from "../engine/types/quiz.types";
+import type { Quiz, QuizVisual, QuizVisualLoader } from "../engine/types/quiz.types";
+import type { QuizSource } from "./types/quiz-source.types";
+import { localizeQuiz } from "./utils/localize.utils";
 import { byFileOrder, visualPathFor } from "./utils/registry.utils";
 
 /**
@@ -9,18 +11,18 @@ const visuals: Record<string, QuizVisualLoader> = import.meta.glob<QuizVisual>("
 
 /**
  * @private
- * @desc Quiz metas, keyed by file path.
+ * @desc Quiz sources, keyed by file path.
  */
-const metas: Record<string, QuizMeta> = import.meta.glob<QuizMeta>("./meta/*.meta.ts", {
+const metas: Record<string, QuizSource> = import.meta.glob<QuizSource>("./meta/*.meta.ts", {
   eager: true,
   import: "meta"
 });
 
 /**
  * @private
- * @desc Quiz metas with their paths, in file order.
+ * @desc Quiz sources with their paths, in file order.
  */
-const entries: [string, QuizMeta][] = Object.entries(metas).sort(byFileOrder);
+const entries: [string, QuizSource][] = Object.entries(metas).sort(byFileOrder);
 
 /**
  * @private
@@ -33,12 +35,12 @@ if (orphans.length > 0) throw new Error(`Quiz visuals without meta: ${orphans.jo
 
 /**
  * @export
- * @desc All quizzes in file order, each paired with its lazy visual loader.
+ * @desc All quizzes in file order, localized and paired with their lazy visual loader.
  */
 export const quizzes: Quiz[] = entries.map(([path, meta]): Quiz => {
   const loadVisual: QuizVisualLoader | undefined = visuals[visualPathFor(path)];
   if (loadVisual === undefined) throw new Error(`Quiz "${meta.id}" has no visual at ${visualPathFor(path)}.`);
-  return { ...meta, loadVisual };
+  return localizeQuiz(meta, loadVisual);
 });
 
 // used by scripts/validate-quizzes.ts

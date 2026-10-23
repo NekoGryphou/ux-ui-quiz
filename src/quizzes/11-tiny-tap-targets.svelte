@@ -1,20 +1,36 @@
 <script lang="ts">
   import { AppBar, BrandTheme, Icon, MockButton, PhoneShell, Photo } from "../mock";
+  import { t } from "../shared/locale.svelte";
   import { PHOTO_COLD_BREW, PHOTO_GRANOLA, PHOTO_HONEY } from "./const/photo.const";
   import type { CartItem } from "./types/quiz-mocks.types";
 
-  const items: CartItem[] = [
-    { name: "Wildflower honey", detail: "250 g jar", price: "€6.90", qty: 1 },
-    { name: "Oat granola", detail: "500 g bag", price: "€4.50", qty: 2 },
-    { name: "Cold brew coffee", detail: "1 L bottle", price: "€7.20", qty: 1 }
-  ];
+  const items: CartItem[] = $derived([
+    {
+      name: t("Wildflower honey", "Miel de fleurs sauvages"),
+      detail: t("250 g jar", "Pot de 250 g"),
+      price: t("€6.90", "6,90 €"),
+      qty: 1
+    },
+    {
+      name: t("Oat granola", "Granola à l’avoine"),
+      detail: t("500 g bag", "Sachet de 500 g"),
+      price: t("€4.50", "4,50 €"),
+      qty: 2
+    },
+    {
+      name: t("Cold brew coffee", "Café cold brew"),
+      detail: t("1 L bottle", "Bouteille de 1 L"),
+      price: t("€7.20", "7,20 €"),
+      qty: 1
+    }
+  ]);
 </script>
 
 <BrandTheme brand="eco">
   <PhoneShell>
-    <AppBar title="Cart" back />
+    <AppBar title={t("Cart", "Panier")} back />
     <div class="list">
-      {#each items as item, i (item.name)}
+      {#each items as item, i (i)}
         <div class="row">
           <span class="thumb"><Photo src={[PHOTO_HONEY, PHOTO_GRANOLA, PHOTO_COLD_BREW][i]?.url ?? ""} /></span>
           <span class="copy">
@@ -31,8 +47,8 @@
       {/each}
     </div>
     <div class="footer">
-      <div class="total"><span>Total</span><strong>€23.10</strong></div>
-      <MockButton variant="primary" size="lg" block>Checkout</MockButton>
+      <div class="total"><span>Total</span><strong>{t("€23.10", "23,10 €")}</strong></div>
+      <MockButton variant="primary" size="lg" block>{t("Checkout", "Commander")}</MockButton>
     </div>
   </PhoneShell>
 </BrandTheme>

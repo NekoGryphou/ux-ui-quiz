@@ -1,5 +1,6 @@
 <script lang="ts">
   import { BrandTheme, BrowserShell, SideNav, Spinner, TopBar } from "../mock";
+  import { t } from "../shared/locale.svelte";
 </script>
 
 <BrandTheme brand="eco">
@@ -9,16 +10,16 @@
       <aside class="side">
         <SideNav
           items={[
-            { label: "Dashboard", icon: "home" },
+            { label: t("Dashboard", "Tableau de bord"), icon: "home" },
             { label: "Transactions", icon: "inbox" },
-            { label: "Reports", icon: "chart", active: true },
-            { label: "Settings", icon: "settings" }
+            { label: t("Reports", "Rapports"), icon: "chart", active: true },
+            { label: t("Settings", "Paramètres"), icon: "settings" }
           ]}
         />
       </aside>
       <div class="loading">
         <Spinner size={36} />
-        <span>Loading…</span>
+        <span>{t("Loading…", "Chargement…")}</span>
       </div>
     </div>
   </BrowserShell>

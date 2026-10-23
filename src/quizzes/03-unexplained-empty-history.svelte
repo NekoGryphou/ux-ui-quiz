@@ -1,5 +1,6 @@
 <script lang="ts">
   import { Avatar, Badge, BrandTheme, BrowserShell, Card, MockButton, Table, Tabs, Title, TopBar } from "../mock";
+  import { t } from "../shared/locale.svelte";
 </script>
 
 <BrandTheme brand="fintech">
@@ -9,26 +10,33 @@
       <Avatar name="Lena Fischer" />
     </TopBar>
     <div class="page">
-      <Title>Settings</Title>
-      <Tabs items={["Profile", "Team", "Billing"]} active={2} />
+      <Title>{t("Settings", "Paramètres")}</Title>
+      <Tabs items={[t("Profile", "Profil"), t("Team", "Équipe"), t("Billing", "Facturation")]} active={2} />
 
       <Card>
         <div class="plan">
           <div class="plan__copy">
-            <span class="plan__name">Pro plan <Badge tone="info">Trial</Badge></span>
-            <small>Trial ends Nov 1, then €12/month</small>
+            <span class="plan__name"
+              >{t("Pro plan", "Forfait Pro")} <Badge tone="info">{t("Trial", "Essai")}</Badge></span
+            >
+            <small>{t("Trial ends Nov 1, then €12/month", "Fin de l’essai le 1er nov., puis 12 €/mois")}</small>
           </div>
-          <MockButton size="sm">Change plan</MockButton>
+          <MockButton size="sm">{t("Change plan", "Changer de forfait")}</MockButton>
         </div>
       </Card>
 
       <div class="history">
-        <Title size="sm">Billing history</Title>
+        <Title size="sm">{t("Billing history", "Historique de facturation")}</Title>
         <Table
-          columns={[{ label: "Invoice" }, { label: "Date" }, { label: "Status" }, { label: "Amount", align: "end" }]}
+          columns={[
+            { label: t("Invoice", "Facture") },
+            { label: "Date" },
+            { label: t("Status", "Statut") },
+            { label: t("Amount", "Montant"), align: "end" }
+          ]}
           rows={[]}
         />
-        <p class="empty">No data</p>
+        <p class="empty">{t("No data", "Aucune donnée")}</p>
       </div>
     </div>
   </BrowserShell>

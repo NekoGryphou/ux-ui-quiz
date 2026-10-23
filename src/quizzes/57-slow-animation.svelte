@@ -1,10 +1,17 @@
 <script lang="ts">
   import type { VisualProps } from "../engine/types/quiz.types";
   import { Icon, PhoneShell } from "../mock";
+  import { t } from "../shared/locale.svelte";
 
   let { variant = "a" }: VisualProps = $props();
 
-  const items: string[] = ["Home", "Timetables", "My tickets", "Saved trips", "Settings"];
+  const items: string[] = $derived([
+    t("Home", "Accueil"),
+    t("Timetables", "Horaires"),
+    t("My tickets", "Mes billets"),
+    t("Saved trips", "Trajets enregistrés"),
+    t("Settings", "Paramètres")
+  ]);
 </script>
 
 <PhoneShell>
@@ -19,7 +26,7 @@
       {/each}
     </div>
     <div class="app__content">
-      <p class="app__title">Next departures</p>
+      <p class="app__title">{t("Next departures", "Prochains départs")}</p>
       {#each ["08:12 · Lyon Part-Dieu", "08:26 · Grenoble", "08:41 · Annecy"] as row (row)}
         <span class="app__row">{row}</span>
       {/each}

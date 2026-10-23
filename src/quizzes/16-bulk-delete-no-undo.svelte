@@ -1,24 +1,25 @@
 <script lang="ts">
   import { Alert, Avatar, BrandTheme, Breadcrumbs, BrowserShell, Icon, MockButton, TopBar } from "../mock";
+  import { t } from "../shared/locale.svelte";
   import type { DriveFile } from "./types/quiz-mocks.types";
 
-  const files: DriveFile[] = [
-    { name: "Homepage — final.fig", owner: "Ana Silva", edited: "2 h ago" },
-    { name: "Pricing page v4.fig", owner: "Tom Becker", edited: "Yesterday" },
-    { name: "Brand guidelines.pdf", owner: "Léa Moreau", edited: "Mar 12" }
-  ];
+  const files: DriveFile[] = $derived([
+    { name: "Homepage — final.fig", owner: "Ana Silva", edited: t("2 h ago", "Il y a 2 h") },
+    { name: "Pricing page v4.fig", owner: "Tom Becker", edited: t("Yesterday", "Hier") },
+    { name: "Brand guidelines.pdf", owner: "Léa Moreau", edited: t("Mar 12", "12 mars") }
+  ]);
 </script>
 
 <BrandTheme brand="corporate">
   <BrowserShell url="drive.northwind.io/projects/website-2025">
     <TopBar brand="Northwind Drive">
-      <Breadcrumbs items={["Projects", "Website 2025"]} />
+      <Breadcrumbs items={[t("Projects", "Projets"), t("Website 2025", "Site web 2025")]} />
       <span class="spacer"></span>
-      <MockButton size="sm" icon="upload">Upload</MockButton>
+      <MockButton size="sm" icon="upload">{t("Upload", "Importer")}</MockButton>
     </TopBar>
     <div class="page">
       <div class="head">
-        <span>Name</span><span>Owner</span><span>Edited</span>
+        <span>{t("Name", "Nom")}</span><span>{t("Owner", "Propriétaire")}</span><span>{t("Edited", "Modifié")}</span>
       </div>
       {#each files as file (file.name)}
         <div class="file">
@@ -28,7 +29,7 @@
         </div>
       {/each}
       <div class="toast">
-        <Alert tone="success" title="24 files deleted" toast />
+        <Alert tone="success" title={t("24 files deleted", "24 fichiers supprimés")} toast />
       </div>
     </div>
   </BrowserShell>

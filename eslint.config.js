@@ -40,6 +40,7 @@ export default defineConfig(
     plugins: { "simple-import-sort": simpleImportSort },
     rules: {
       eqeqeq: "error",
+      "no-irregular-whitespace": ["error", { skipStrings: true, skipTemplates: true }],
       "simple-import-sort/imports": ["error", { groups: [["^\\u0000", "^node:", "^@?\\w", "^\\.\\./", "^\\./"]] }],
       "@typescript-eslint/member-ordering": [
         "error",

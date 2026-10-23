@@ -1,26 +1,49 @@
 <script lang="ts">
   import { BrandTheme, PhoneShell } from "../mock";
+  import { t } from "../shared/locale.svelte";
   import type { MailItem } from "./types/quiz-mocks.types";
 
-  const mails: MailItem[] = [
-    { from: "Landlord", subject: "Rent receipt — November", preview: "Please find attached your receipt…" },
-    { from: "Mum", subject: "Sunday lunch?", preview: "Are you coming this weekend? Dad’s…" },
-    { from: "Bank", subject: "Your statement is ready", preview: "Your monthly statement for…" },
-    { from: "Gym", subject: "New classes in December", preview: "Try our new spin and yoga…" }
-  ];
+  const mails: MailItem[] = $derived([
+    {
+      from: t("Landlord", "Propriétaire"),
+      subject: t("Rent receipt — November", "Quittance de loyer — novembre"),
+      preview: t("Please find attached your receipt…", "Veuillez trouver ci-joint votre quittance…")
+    },
+    {
+      from: t("Mum", "Maman"),
+      subject: t("Sunday lunch?", "Déjeuner dimanche ?"),
+      preview: t("Are you coming this weekend? Dad’s…", "Tu viens ce week-end ? Papa a…")
+    },
+    {
+      from: t("Bank", "Banque"),
+      subject: t("Your statement is ready", "Votre relevé est disponible"),
+      preview: t("Your monthly statement for…", "Votre relevé mensuel de…")
+    },
+    {
+      from: t("Gym", "Salle de sport"),
+      subject: t("New classes in December", "Nouveaux cours en décembre"),
+      preview: t("Try our new spin and yoga…", "Essayez nos nouveaux cours de spinning et de yoga…")
+    }
+  ]);
 </script>
 
 <BrandTheme brand="corporate">
   <PhoneShell>
     <div class="inbox">
-      <p class="inbox__title">Inbox</p>
+      <p class="inbox__title">{t("Inbox", "Boîte de réception")}</p>
       <div class="inbox__swiped">
-        <div class="row row--gone"><strong>HR Team</strong><span>Your contract renewal — please sign</span></div>
+        <div class="row row--gone">
+          <strong>{t("HR Team", "Service RH")}</strong><span
+            >{t("Your contract renewal — please sign", "Renouvellement de votre contrat — à signer")}</span
+          >
+        </div>
       </div>
       {#each mails as mail (mail.subject)}
         <div class="row"><strong>{mail.from}</strong><span>{mail.subject}</span><small>{mail.preview}</small></div>
       {/each}
-      <div class="toast"><span>Conversation archived</span><strong>UNDO</strong></div>
+      <div class="toast">
+        <span>{t("Conversation archived", "Conversation archivée")}</span><strong>{t("UNDO", "ANNULER")}</strong>
+      </div>
     </div>
   </PhoneShell>
 </BrandTheme>

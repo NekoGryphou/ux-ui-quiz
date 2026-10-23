@@ -1,23 +1,26 @@
 <script lang="ts">
   import type { VisualProps } from "../engine/types/quiz.types";
   import { BrandTheme, Checkbox, MockButton, Switch } from "../mock";
+  import { t } from "../shared/locale.svelte";
   import type { NotificationOption } from "./types/quiz-mocks.types";
 
   let { variant = "a" }: VisualProps = $props();
 
-  const options: NotificationOption[] = [
-    { label: "New sign-ups", checked: true },
-    { label: "Failed payments", checked: true },
-    { label: "Weekly summary", checked: false },
-    { label: "Product updates", checked: false }
-  ];
+  const options: NotificationOption[] = $derived([
+    { label: t("New sign-ups", "Nouvelles inscriptions"), checked: true },
+    { label: t("Failed payments", "Paiements échoués"), checked: true },
+    { label: t("Weekly summary", "Résumé hebdomadaire"), checked: false },
+    { label: t("Product updates", "Nouveautés produit"), checked: false }
+  ]);
 </script>
 
 <BrandTheme brand="fintech">
   <div class="card">
     <div>
-      <p class="title">Team notifications</p>
-      <p class="subtitle">Choose which emails your team receives.</p>
+      <p class="title">{t("Team notifications", "Notifications de l’équipe")}</p>
+      <p class="subtitle">
+        {t("Choose which emails your team receives.", "Choisissez les e-mails que reçoit votre équipe.")}
+      </p>
     </div>
     <div class="options">
       {#each options as option (option.label)}
@@ -29,8 +32,8 @@
       {/each}
     </div>
     <div class="actions">
-      <MockButton variant="secondary">Cancel</MockButton>
-      <MockButton variant="primary">Save preferences</MockButton>
+      <MockButton variant="secondary">{t("Cancel", "Annuler")}</MockButton>
+      <MockButton variant="primary">{t("Save preferences", "Enregistrer les préférences")}</MockButton>
     </div>
   </div>
 </BrandTheme>

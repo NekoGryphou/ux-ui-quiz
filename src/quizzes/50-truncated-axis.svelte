@@ -1,16 +1,22 @@
 <script lang="ts">
   import { BrandTheme, Hotspot, Icon, MockButton } from "../mock";
+  import { t } from "../shared/locale.svelte";
   import type { QuarterBar } from "./types/quiz-mocks.types";
 
-  const ticks: string[] = ["€102k", "€100k", "€98k", "€96k"];
   const AXIS_MIN: number = 96;
   const AXIS_MAX: number = 102;
-  const bars: QuarterBar[] = [
-    { label: "Q1", value: 97, display: "€97.0k" },
-    { label: "Q2", value: 98.5, display: "€98.5k" },
-    { label: "Q3", value: 99.2, display: "€99.2k" },
-    { label: "Q4", value: 101, display: "€101.0k" }
-  ];
+  const ticks: string[] = $derived([
+    t("€102k", "102 k€"),
+    t("€100k", "100 k€"),
+    t("€98k", "98 k€"),
+    t("€96k", "96 k€")
+  ]);
+  const bars: QuarterBar[] = $derived([
+    { label: t("Q1", "T1"), value: 97, display: t("€97.0k", "97,0 k€") },
+    { label: t("Q2", "T2"), value: 98.5, display: t("€98.5k", "98,5 k€") },
+    { label: t("Q3", "T3"), value: 99.2, display: t("€99.2k", "99,2 k€") },
+    { label: t("Q4", "T4"), value: 101, display: t("€101.0k", "101,0 k€") }
+  ]);
 
   /**
    * @private
@@ -26,10 +32,10 @@
 <BrandTheme brand="corporate">
   <div class="card">
     <div class="head">
-      <Hotspot id="title"><p class="title">Revenue by quarter</p></Hotspot>
+      <Hotspot id="title"><p class="title">{t("Revenue by quarter", "Chiffre d’affaires par trimestre")}</p></Hotspot>
       <div class="controls">
         <Hotspot id="period"><span class="select">2025 <Icon name="chevron-down" size={14} /></span></Hotspot>
-        <Hotspot id="export"><MockButton size="sm" icon="download">Export</MockButton></Hotspot>
+        <Hotspot id="export"><MockButton size="sm" icon="download">{t("Export", "Exporter")}</MockButton></Hotspot>
       </div>
     </div>
     <div class="chart">
@@ -59,7 +65,7 @@
       </Hotspot>
     </div>
     <Hotspot id="legend">
-      <span class="legend"><i></i> Revenue, excl. VAT</span>
+      <span class="legend"><i></i> {t("Revenue, excl. VAT", "Chiffre d’affaires HT")}</span>
     </Hotspot>
   </div>
 </BrandTheme>

@@ -1,5 +1,6 @@
 <script lang="ts">
   import { BrandTheme, MockButton, PhoneShell } from "../mock";
+  import { t } from "../shared/locale.svelte";
 </script>
 
 <BrandTheme brand="playful">
@@ -51,17 +52,22 @@
         <path d="M118 22 l3 6 6 1 -5 4 2 6 -6 -3 -6 3 2 -6 -5 -4 6 -1 z" fill="#ffd166" />
         <path d="M28 18 l2 4 4 .6 -3 2.8 .8 4 -3.8 -2 -3.8 2 .8 -4 -3 -2.8 4 -.6 z" fill="#ffd166" />
       </svg>
-      <p class="screen__title">Oopsie daisy!</p>
+      <p class="screen__title">{t("Oopsie daisy!", "Oups, la boulette !")}</p>
       <p class="screen__copy">
-        Our hamsters tripped over a cable and your payment kinda didn’t go through, lol. These things happen!
+        {t(
+          "Our hamsters tripped over a cable and your payment kinda didn’t go through, lol. These things happen!",
+          "Nos hamsters se sont pris les pattes dans un câble et votre paiement est un peu passé à la trappe, mdr. Ça arrive !"
+        )}
       </p>
       <div class="screen__details">
-        <span>To <strong>Rivoli Lettings</strong></span>
-        <span>Amount <strong>€1,250.00</strong></span>
-        <span>Reference <strong>Rent November</strong></span>
+        <span>{t("To", "À")} <strong>Rivoli Lettings</strong></span>
+        <span>{t("Amount", "Montant")} <strong>{t("€1,250.00", "1 250,00 €")}</strong></span>
+        <span>{t("Reference", "Référence")} <strong>{t("Rent November", "Loyer novembre")}</strong></span>
       </div>
-      <MockButton variant="primary" block>Try again, pretty please</MockButton>
-      <MockButton variant="ghost" block>Back to accounts</MockButton>
+      <MockButton variant="primary" block
+        >{t("Try again, pretty please", "Réessayer, s’il vous plaît tout plein")}</MockButton
+      >
+      <MockButton variant="ghost" block>{t("Back to accounts", "Retour aux comptes")}</MockButton>
     </div>
   </PhoneShell>
 </BrandTheme>

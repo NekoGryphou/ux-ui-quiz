@@ -4,6 +4,7 @@
   import Home from "../screens/Home.svelte";
   import QuizScreen from "../screens/Quiz.svelte";
   import Results from "../screens/Results.svelte";
+  import { t } from "../shared/locale.svelte";
   import AppHeader from "./AppHeader.svelte";
   import { router } from "./router.svelte";
   import { debugRun, session } from "./session";
@@ -72,7 +73,7 @@
   });
 </script>
 
-<a class="skip-link" href="#main" onclick={skipToContent}>Skip to content</a>
+<a class="skip-link" href="#main" onclick={skipToContent}>{t("Skip to content", "Aller au contenu")}</a>
 
 <div class="app-band" aria-hidden="true"></div>
 

@@ -2,18 +2,23 @@ import type { RunTarget } from "../../app/types/router.types";
 import type { QuizMode } from "../../app/types/screen.types";
 import { href } from "../../app/utils/router.utils";
 import type { QuizKind } from "../../engine/types/quiz.types";
+import { pick, plural, t } from "../../shared/locale.svelte";
+import type { Localized } from "../../shared/types/locale.types";
 import { NAV_LABELS } from "../const/quiz.const";
 import type { NavLabels, QuizNav } from "../types/quiz-screen.types";
 
 /**
  * @private
- * @desc Noun for one selectable item of a quiz kind.
+ * @desc Singular and plural nouns for one selectable item of a quiz kind.
  *
  * @param kind - Quiz kind.
  *
- * @returns Area for hotspots, answer otherwise.
+ * @returns Area forms for hotspots, answer forms otherwise.
  */
-const unitFor = (kind: QuizKind): string => (kind === "hotspot" ? "area" : "answer");
+const unitFor = (kind: QuizKind): Localized<readonly [string, string]> =>
+  kind === "hotspot"
+    ? { en: ["area", "areas"], fr: ["zone", "zones"] }
+    : { en: ["answer", "answers"], fr: ["réponse", "réponses"] };
 
 /**
  * @export
@@ -26,9 +31,8 @@ const unitFor = (kind: QuizKind): string => (kind === "hotspot" ? "area" : "answ
  * @returns Button label.
  */
 export const checkButtonLabel = (kind: QuizKind, several: boolean, selectedCount: number): string => {
-  if (!several || selectedCount === 0) return "Check answer";
-  const unit: string = unitFor(kind);
-  return selectedCount === 1 ? `Check 1 ${unit}` : `Check ${String(selectedCount)} ${unit}s`;
+  if (!several || selectedCount === 0) return t("Check answer", "Valider la réponse");
+  return `${t("Check", "Valider")} ${String(selectedCount)} ${plural(selectedCount, unitFor(kind))}`;
 };
 
 /**
@@ -68,7 +72,7 @@ const endHref = (mode: QuizMode, target: RunTarget): string => href.results(mode
  */
 export const quizNav = (mode: QuizMode, target: RunTarget, index: number, total: number): QuizNav => {
   const isLast: boolean = index >= total - 1;
-  const labels: NavLabels = NAV_LABELS[mode];
+  const labels: NavLabels = pick(NAV_LABELS[mode]);
   return {
     previous: index > 0 ? stepHref(mode, target, index - 1) : null,
     next: isLast ? endHref(mode, target) : stepHref(mode, target, index + 1),

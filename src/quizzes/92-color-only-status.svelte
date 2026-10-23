@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { VisualProps } from "../engine/types/quiz.types";
   import { BrandTheme } from "../mock";
+  import { t } from "../shared/locale.svelte";
   import type { ServerRow } from "./types/quiz-mocks.types";
 
   let { variant = "a" }: VisualProps = $props();
@@ -17,13 +18,15 @@
 
 <BrandTheme brand="corporate">
   <div class="card">
-    <p class="card__title">Servers <small>· simulated deuteranopia</small></p>
+    <p class="card__title">
+      {t("Servers", "Serveurs")} <small>{t("· simulated deuteranopia", "· deutéranopie simulée")}</small>
+    </p>
     {#each servers as server (server.name)}
       <div class="row">
         <span>{server.name}</span>
         <span class="status" class:status--bad={!server.ok}>
           <i></i>
-          {#if variant === "b"}{server.ok ? "✓ Healthy" : "✕ Down"}{/if}
+          {#if variant === "b"}{server.ok ? t("✓ Healthy", "✓ Opérationnel") : t("✕ Down", "✕ En panne")}{/if}
         </span>
       </div>
     {/each}

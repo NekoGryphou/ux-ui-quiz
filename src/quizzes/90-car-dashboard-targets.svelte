@@ -1,11 +1,12 @@
 <script lang="ts">
   import { Hotspot } from "../mock";
+  import { t } from "../shared/locale.svelte";
 </script>
 
 <div class="car">
   <div class="car__screen">
     <div class="car__top">
-      <Hotspot id="clock" inline><span>14:32 · 8°C</span></Hotspot>
+      <Hotspot id="clock" inline><span>{t("14:32 · 8°C", "14:32 · 8 °C")}</span></Hotspot>
       <Hotspot id="drive" inline><span class="car__speed">110 <small>km/h</small></span></Hotspot>
     </div>
     <Hotspot id="map">
@@ -58,21 +59,21 @@
           <text x="20" y="166" fill="#5a86a8" font-size="10">Rhône</text>
           <text x="300" y="94" fill="#c9d6e8" font-size="10" font-weight="700">A7</text>
         </svg>
-        <span class="map__next">↱ 2.4 km · A7 Lyon</span>
-        <span class="map__eta">ETA 15:07 · 38 km</span>
+        <span class="map__next">{t("↱ 2.4 km · A7 Lyon", "↱ 2,4 km · A7 Lyon")}</span>
+        <span class="map__eta">{t("ETA 15:07 · 38 km", "Arrivée 15:07 · 38 km")}</span>
       </div>
     </Hotspot>
     <div class="car__bottom">
       <Hotspot id="media">
         <div class="tiny">
           {#each ["«", "▶", "»", "−", "+", "⇄", "↻"] as k (k)}<span>{k}</span>{/each}
-          <small>Vol 18</small>
+          <small>{t("Vol 18", "Vol. 18")}</small>
         </div>
       </Hotspot>
       <Hotspot id="climate">
         <div class="tiny">
           {#each ["❄", "−", "+", "A", "⇅", "♨", "◐"] as k (k)}<span>{k}</span>{/each}
-          <small>21.5°</small>
+          <small>{t("21.5°", "21,5°")}</small>
         </div>
       </Hotspot>
     </div>

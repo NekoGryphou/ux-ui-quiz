@@ -1,22 +1,28 @@
 <script lang="ts">
   import { Photo, ViewportBadge } from "../mock";
+  import { t } from "../shared/locale.svelte";
   import { PHOTO_RISOTTO } from "./const/photo.const";
 </script>
 
 <div class="room">
-  <ViewportBadge label="3840 px · seen from 3 m" />
+  <ViewportBadge label={t("3840 px · seen from 3 m", "3 840 px · vu à 3 m")} />
   <div class="tv">
     <div class="tv__screen">
       <div class="site">
         <p class="site__logo">CookAlong</p>
         <span class="site__photo"><Photo src={PHOTO_RISOTTO.url} /></span>
-        <p class="site__title">Creamy mushroom risotto</p>
+        <p class="site__title">{t("Creamy mushroom risotto", "Risotto crémeux aux champignons")}</p>
         <ul>
-          <li>300 g arborio rice</li>
-          <li>250 g mushrooms</li>
-          <li>1 l vegetable stock</li>
+          <li>{t("300 g arborio rice", "300 g de riz arborio")}</li>
+          <li>{t("250 g mushrooms", "250 g de champignons")}</li>
+          <li>{t("1 l vegetable stock", "1 l de bouillon de légumes")}</li>
         </ul>
-        <p>1. Fry the onion in butter until soft, then add the rice and stir for 2 minutes.</p>
+        <p>
+          {t(
+            "1. Fry the onion in butter until soft, then add the rice and stir for 2 minutes.",
+            "1. Faites revenir l’oignon dans le beurre jusqu’à ce qu’il soit tendre, puis ajoutez le riz et remuez 2 minutes."
+          )}
+        </p>
       </div>
     </div>
     <span class="tv__stand"></span>

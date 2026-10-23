@@ -1,29 +1,41 @@
 <script lang="ts">
   import { BrandTheme, Checkbox, Field, MockButton, Photo } from "../mock";
+  import { t } from "../shared/locale.svelte";
   import { PHOTO_CANDLES } from "./const/photo.const";
 </script>
 
 <BrandTheme brand="luxury">
   <div class="checkout">
     <div class="form">
-      <p class="form__step">Checkout</p>
-      <p class="form__title">Create your Maison Lune account to continue</p>
-      <Field label="First name" value="Camille" />
-      <Field label="Email" value="camille@example.com" />
-      <Field label="Choose a password" type="password" hint="At least 8 characters" />
-      <Checkbox label="I accept the terms and the Maison Lune newsletter" />
-      <MockButton variant="primary" block>Create account & continue</MockButton>
-      <span class="form__link">Already a member? Sign in</span>
+      <p class="form__step">{t("Checkout", "Commande")}</p>
+      <p class="form__title">
+        {t("Create your Maison Lune account to continue", "Créez votre compte Maison Lune pour continuer")}
+      </p>
+      <Field label={t("First name", "Prénom")} value="Camille" />
+      <Field label={t("Email", "E-mail")} value="camille@example.com" />
+      <Field
+        label={t("Choose a password", "Choisissez un mot de passe")}
+        type="password"
+        hint={t("At least 8 characters", "8 caractères minimum")}
+      />
+      <Checkbox
+        label={t(
+          "I accept the terms and the Maison Lune newsletter",
+          "J’accepte les conditions et la newsletter Maison Lune"
+        )}
+      />
+      <MockButton variant="primary" block>{t("Create account & continue", "S’inscrire et continuer")}</MockButton>
+      <span class="form__link">{t("Already a member? Sign in", "Déjà membre ? Se connecter")}</span>
     </div>
     <aside class="summary">
-      <p class="summary__title">Your order</p>
+      <p class="summary__title">{t("Your order", "Votre commande")}</p>
       <div class="summary__item">
-        <i><Photo src={PHOTO_CANDLES.url} /></i><span>Figue noire candle<br /><small>220 g</small></span><strong
-          >€24</strong
-        >
+        <i><Photo src={PHOTO_CANDLES.url} /></i><span
+          >{t("Figue noire candle", "Bougie Figue noire")}<br /><small>220 g</small></span
+        ><strong>{t("€24", "24 €")}</strong>
       </div>
-      <div class="summary__row"><span>Gift wrap</span><span>€0</span></div>
-      <div class="summary__row summary__row--total"><span>Total</span><span>€24</span></div>
+      <div class="summary__row"><span>{t("Gift wrap", "Emballage cadeau")}</span><span>{t("€0", "0 €")}</span></div>
+      <div class="summary__row summary__row--total"><span>Total</span><span>{t("€24", "24 €")}</span></div>
     </aside>
   </div>
 </BrandTheme>

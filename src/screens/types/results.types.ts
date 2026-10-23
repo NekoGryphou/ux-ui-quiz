@@ -1,4 +1,5 @@
 import type { Quiz } from "../../engine/types/quiz.types";
+import type { Localized } from "../../shared/types/locale.types";
 
 /**
  * @export
@@ -37,7 +38,7 @@ export interface Verdict {
   minRatio: number;
 
   /** Sentence shown. */
-  text: string;
+  text: Localized<string>;
 }
 
 /**

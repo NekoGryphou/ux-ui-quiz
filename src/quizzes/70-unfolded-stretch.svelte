@@ -1,22 +1,39 @@
 <script lang="ts">
   import type { VisualProps } from "../engine/types/quiz.types";
   import { FoldableShell } from "../mock";
+  import { t } from "../shared/locale.svelte";
   import type { MailItem } from "./types/quiz-mocks.types";
 
   let { variant = "a" }: VisualProps = $props();
 
-  const mails: MailItem[] = [
-    { from: "Priya", subject: "Budget Q3 — final numbers", preview: "Here are the figures we agreed on yesterday…" },
-    { from: "Lukas", subject: "Workshop room change", preview: "We moved to room 4B because the projector…" },
-    { from: "Sales", subject: "Weekly pipeline", preview: "Four deals moved to negotiation this week…" },
-    { from: "Ana", subject: "Re: hiring plan", preview: "Sounds good, let’s open the two roles…" }
-  ];
+  const mails: MailItem[] = $derived([
+    {
+      from: "Priya",
+      subject: t("Budget Q3 — final numbers", "Budget T3 — chiffres définitifs"),
+      preview: t("Here are the figures we agreed on yesterday…", "Voici les chiffres validés hier…")
+    },
+    {
+      from: "Lukas",
+      subject: t("Workshop room change", "Changement de salle pour l’atelier"),
+      preview: t("We moved to room 4B because the projector…", "On passe en salle 4B parce que le projecteur…")
+    },
+    {
+      from: t("Sales", "Ventes"),
+      subject: t("Weekly pipeline", "Pipeline hebdo"),
+      preview: t("Four deals moved to negotiation this week…", "Quatre affaires passées en négociation cette semaine…")
+    },
+    {
+      from: "Ana",
+      subject: t("Re: hiring plan", "RE : plan de recrutement"),
+      preview: t("Sounds good, let’s open the two roles…", "Ça me va, ouvrons les deux postes…")
+    }
+  ]);
 </script>
 
-<FoldableShell width={330} height={300} label="Unfolded phone">
+<FoldableShell width={330} height={300} label={t("Unfolded phone", "Téléphone déplié")}>
   <div class="mail" class:mail--split={variant === "b"}>
     <div class="list">
-      <p class="list__title">Inbox</p>
+      <p class="list__title">{t("Inbox", "Boîte de réception")}</p>
       {#each mails as mail, i (mail.subject)}
         <div class="row" class:row--active={variant === "b" && i === 0}>
           <strong>{mail.from}</strong>
@@ -27,10 +44,15 @@
     </div>
     {#if variant === "b"}
       <div class="detail">
-        <p class="detail__subject">Budget Q3 — final numbers</p>
+        <p class="detail__subject">{t("Budget Q3 — final numbers", "Budget T3 — chiffres définitifs")}</p>
         <p class="detail__from">Priya · 09:12</p>
-        <p>Here are the figures we agreed on yesterday. Marketing stays at €40k, events move to Q4.</p>
-        <span class="detail__reply">Reply</span>
+        <p>
+          {t(
+            "Here are the figures we agreed on yesterday. Marketing stays at €40k, events move to Q4.",
+            "Voici les chiffres validés hier. Le marketing reste à 40 k€, les événements passent au T4."
+          )}
+        </p>
+        <span class="detail__reply">{t("Reply", "Répondre")}</span>
       </div>
     {/if}
   </div>

@@ -1,5 +1,6 @@
 <script lang="ts">
   import { Hotspot } from "../mock";
+  import { t } from "../shared/locale.svelte";
 </script>
 
 <div class="intro">
@@ -9,17 +10,19 @@
       <span>ARKITEKT<b>.</b>STUDIO</span>
     </div>
   </Hotspot>
-  <Hotspot id="tagline"><p class="intro__tagline">space · light · emotion</p></Hotspot>
+  <Hotspot id="tagline"
+    ><p class="intro__tagline">{t("space · light · emotion", "espace · lumière · émotion")}</p></Hotspot
+  >
   <Hotspot id="loader">
     <div class="loader">
-      <span class="loader__label">LOADING THE EXPERIENCE</span>
+      <span class="loader__label">{t("LOADING THE EXPERIENCE", "CHARGEMENT DE L’EXPÉRIENCE")}</span>
       <span class="loader__track"><i></i></span>
-      <span class="loader__pct">47%</span>
+      <span class="loader__pct">{t("47%", "47 %")}</span>
     </div>
   </Hotspot>
   <div class="intro__corner">
-    <Hotspot id="sound" inline><span class="intro__sound">♪ SOUND ON</span></Hotspot>
-    <Hotspot id="skip" inline><span class="intro__skip">skip intro »</span></Hotspot>
+    <Hotspot id="sound" inline><span class="intro__sound">{t("♪ SOUND ON", "♪ SON ACTIVÉ")}</span></Hotspot>
+    <Hotspot id="skip" inline><span class="intro__skip">{t("skip intro »", "passer l’intro »")}</span></Hotspot>
   </div>
 </div>
 

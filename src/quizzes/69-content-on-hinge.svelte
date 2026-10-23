@@ -1,12 +1,13 @@
 <script lang="ts">
   import { BrandTheme, FoldableShell, Hotspot, Icon } from "../mock";
+  import { t } from "../shared/locale.svelte";
 </script>
 
 <BrandTheme brand="fintech">
-  <FoldableShell label="Unfolded phone">
+  <FoldableShell label={t("Unfolded phone", "Téléphone déplié")}>
     <div class="call">
       <Hotspot id="bar">
-        <div class="call__bar"><span>● Design review</span><span>12:48</span></div>
+        <div class="call__bar"><span>{t("● Design review", "● Revue design")}</span><span>12:48</span></div>
       </Hotspot>
       <div class="call__stage">
         <Hotspot id="remote">
@@ -17,13 +18,16 @@
         </Hotspot>
         <div class="call__side">
           <Hotspot id="self">
-            <div class="self"><span>You</span></div>
+            <div class="self"><span>{t("You", "Vous")}</span></div>
           </Hotspot>
           <Hotspot id="chat">
             <div class="chat">
-              <p class="chat__title">Chat</p>
-              <p><strong>Mina:</strong> can you share the v3 file?</p>
-              <p><strong>Leo:</strong> on it 👍</p>
+              <p class="chat__title">{t("Chat", "Discussion")}</p>
+              <p>
+                <strong>{t("Mina:", "Mina :")}</strong>
+                {t("can you share the v3 file?", "tu peux partager le fichier v3 ?")}
+              </p>
+              <p><strong>{t("Leo:", "Leo :")}</strong> {t("on it 👍", "je m’en occupe 👍")}</p>
             </div>
           </Hotspot>
         </div>

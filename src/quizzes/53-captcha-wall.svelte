@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t } from "../shared/locale.svelte";
   import type { CaptchaGlyph } from "./types/quiz-mocks.types";
 
   const glyphs: CaptchaGlyph[] = [
@@ -14,17 +15,24 @@
 <div class="forum">
   <div class="forum__banner">
     <span class="forum__logo">RetroGamers<span>.board</span></span>
-    <span class="forum__tag">Since 2003 · 48,211 members</span>
+    <span class="forum__tag">{t("Since 2003 · 48,211 members", "Depuis 2003 · 48 211 membres")}</span>
   </div>
-  <div class="forum__crumbs">Board index » Register</div>
+  <div class="forum__crumbs">{t("Board index » Register", "Index du forum » Inscription")}</div>
   <div class="panel">
-    <p class="panel__title">Registration</p>
-    <p class="panel__error">The confirmation code you entered was incorrect. (Attempt 3 of 5)</p>
-    <div class="row"><span>Username:</span><span class="input">pixel_paul</span></div>
-    <div class="row"><span>E-mail address:</span><span class="input">paul@mailbox.net</span></div>
-    <div class="row"><span>Password:</span><span class="input">••••••••••</span></div>
+    <p class="panel__title">{t("Registration", "Inscription")}</p>
+    <p class="panel__error">
+      {t(
+        "The confirmation code you entered was incorrect. (Attempt 3 of 5)",
+        "Le code de confirmation saisi est incorrect. (Tentative 3 sur 5)"
+      )}
+    </p>
+    <div class="row"><span>{t("Username:", "Pseudo :")}</span><span class="input">pixel_paul</span></div>
+    <div class="row">
+      <span>{t("E-mail address:", "Adresse e-mail :")}</span><span class="input">paul@mailbox.net</span>
+    </div>
+    <div class="row"><span>{t("Password:", "Mot de passe :")}</span><span class="input">••••••••••</span></div>
     <div class="row row--captcha">
-      <span>Confirmation code:</span>
+      <span>{t("Confirmation code:", "Code de confirmation :")}</span>
       <div class="captcha">
         <div class="captcha__image" aria-hidden="true">
           {#each glyphs as glyph, i (i)}
@@ -34,10 +42,15 @@
           {/each}
         </div>
         <span class="input input--short"></span>
-        <small>Enter the characters exactly as shown. The code is case sensitive.</small>
+        <small
+          >{t(
+            "Enter the characters exactly as shown. The code is case sensitive.",
+            "Saisissez les caractères tels qu’ils apparaissent. Le code est sensible à la casse."
+          )}</small
+        >
       </div>
     </div>
-    <div class="actions"><span class="btn">Register</span></div>
+    <div class="actions"><span class="btn">{t("Register", "S’inscrire")}</span></div>
   </div>
 </div>
 

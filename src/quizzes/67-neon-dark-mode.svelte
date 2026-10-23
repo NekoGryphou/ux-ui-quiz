@@ -1,18 +1,39 @@
 <script lang="ts">
+  import { t } from "../shared/locale.svelte";
   import type { NeonMetric } from "./types/quiz-mocks.types";
 
-  const metrics: NeonMetric[] = [
-    { label: "ERROR RATE", value: "2.4%", tone: "#ff0000", points: "0,18 10,16 20,17 30,9 40,12 50,4 60,6" },
-    { label: "LATENCY P95", value: "812 ms", tone: "#0000ff", points: "0,12 10,14 20,8 30,10 40,6 50,9 60,5" },
-    { label: "UPTIME", value: "99.97%", tone: "#00ff00", points: "0,6 10,6 20,5 30,6 40,5 50,5 60,4" },
-    { label: "QUEUE", value: "1,284", tone: "#ff00ff", points: "0,16 10,12 20,14 30,8 40,9 50,6 60,3" }
-  ];
+  const metrics: NeonMetric[] = $derived([
+    {
+      label: t("ERROR RATE", "TAUX D’ERREUR"),
+      value: t("2.4%", "2,4 %"),
+      tone: "#ff0000",
+      points: "0,18 10,16 20,17 30,9 40,12 50,4 60,6"
+    },
+    {
+      label: t("LATENCY P95", "LATENCE P95"),
+      value: "812 ms",
+      tone: "#0000ff",
+      points: "0,12 10,14 20,8 30,10 40,6 50,9 60,5"
+    },
+    {
+      label: t("UPTIME", "DISPONIBILITÉ"),
+      value: t("99.97%", "99,97 %"),
+      tone: "#00ff00",
+      points: "0,6 10,6 20,5 30,6 40,5 50,5 60,4"
+    },
+    {
+      label: t("QUEUE", "FILE D’ATTENTE"),
+      value: t("1,284", "1 284"),
+      tone: "#ff00ff",
+      points: "0,16 10,12 20,14 30,8 40,9 50,6 60,3"
+    }
+  ]);
 </script>
 
 <div class="ops">
   <div class="ops__head">
     <span class="ops__logo">NIGHTOPS</span>
-    <span class="ops__status">● 3 ALERTS · 03:12</span>
+    <span class="ops__status">{t("● 3 ALERTS · 03:12", "● 3 ALERTES · 03:12")}</span>
   </div>
   <div class="ops__grid">
     {#each metrics as metric (metric.label)}

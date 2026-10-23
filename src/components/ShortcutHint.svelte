@@ -1,5 +1,6 @@
 <script lang="ts">
   import { prefersReducedMotion } from "svelte/motion";
+  import { t } from "../shared/locale.svelte";
   import { HINT_DISMISS_MS } from "./const/shortcut-hint.const";
   import IconButton from "./IconButton.svelte";
   import type { ShortcutHintProps } from "./types/shortcut-hint.types";
@@ -24,15 +25,20 @@
 {#if !dismissed}
   <div class="hint" out:collapse={{ duration: prefersReducedMotion.current ? 0 : HINT_DISMISS_MS }}>
     <div class="hint__keys">
-      <span class="hint__label">Shortcuts</span>
+      <span class="hint__label">{t("Shortcuts", "Raccourcis")}</span>
       {#if optionCount > 0}
-        <span><kbd>1</kbd>–<kbd>{optionCount}</kbd> pick</span>
+        <span><kbd>1</kbd>–<kbd>{optionCount}</kbd> {t("pick", "choisir")}</span>
       {/if}
-      <span><kbd>Space</kbd> select</span>
-      <span><kbd>Enter</kbd> check</span>
-      <span><kbd>←</kbd><kbd>→</kbd> move</span>
+      <span><kbd>{t("Space", "Espace")}</kbd> {t("select", "sélectionner")}</span>
+      <span><kbd>{t("Enter", "Entrée")}</kbd> {t("check", "valider")}</span>
+      <span><kbd>←</kbd><kbd>→</kbd> {t("move", "naviguer")}</span>
     </div>
-    <IconButton icon="x" label="Hide keyboard shortcuts" variant="ghost" onclick={dismiss} />
+    <IconButton
+      icon="x"
+      label={t("Hide keyboard shortcuts", "Masquer les raccourcis clavier")}
+      variant="ghost"
+      onclick={dismiss}
+    />
   </div>
 {/if}
 

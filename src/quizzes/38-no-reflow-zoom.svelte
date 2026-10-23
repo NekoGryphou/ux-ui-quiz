@@ -1,33 +1,50 @@
 <script lang="ts">
   import { Hotspot, Icon } from "../mock";
+  import { t } from "../shared/locale.svelte";
 </script>
 
 <div class="window">
-  <div class="chrome"><span>bloomyard.shop</span><strong>400%</strong></div>
+  <div class="chrome"><span>bloomyard.shop</span><strong>{t("400%", "400 %")}</strong></div>
   <div class="page">
     <Hotspot id="header">
       <div class="header"><span class="brand">Bloomyard</span><Icon name="menu" size={22} /></div>
     </Hotspot>
     <Hotspot id="promo">
       <div class="promo">
-        <span>Spring sale: 20% off everything this weekend with code SPRING20</span>
+        <span
+          >{t(
+            "Spring sale: 20% off everything this weekend with code SPRING20",
+            "Soldes de printemps : -20 % sur tout ce week-end avec le code SPRING20"
+          )}</span
+        >
       </div>
     </Hotspot>
-    <Hotspot id="headline"><p class="headline">Grow tomatoes on a balcony</p></Hotspot>
+    <Hotspot id="headline"
+      ><p class="headline">{t("Grow tomatoes on a balcony", "Cultiver des tomates sur un balcon")}</p></Hotspot
+    >
     <Hotspot id="body">
-      <p class="body">Pick a sunny spot, a deep pot and a compact variety. Water at the base, early in the day.</p>
+      <p class="body">
+        {t(
+          "Pick a sunny spot, a deep pot and a compact variety. Water at the base, early in the day.",
+          "Choisissez un endroit ensoleillé, un pot profond et une variété compacte. Arrosez au pied, tôt dans la journée."
+        )}
+      </p>
     </Hotspot>
     <Hotspot id="table">
       <div class="table">
         <div class="table__inner">
-          <span>Zone</span><span>Standard</span><span>Express</span><span>Free from</span>
-          <span>FR</span><span>€4.90</span><span>€9.90</span><span>€40</span>
+          <span>Zone</span><span>Standard</span><span>Express</span><span>{t("Free from", "Offerte dès")}</span>
+          <span>FR</span><span>{t("€4.90", "4,90 €")}</span><span>{t("€9.90", "9,90 €")}</span><span
+            >{t("€40", "40 €")}</span
+          >
         </div>
         <span class="scrollbar" aria-hidden="true"></span>
       </div>
     </Hotspot>
     <Hotspot id="footer">
-      <div class="footer"><span>Help</span><span>Returns</span><span>Contact</span></div>
+      <div class="footer">
+        <span>{t("Help", "Aide")}</span><span>{t("Returns", "Retours")}</span><span>Contact</span>
+      </div>
     </Hotspot>
   </div>
 </div>

@@ -1,5 +1,6 @@
 <script lang="ts">
   import { Badge, BrandTheme, BrowserShell, EmptyState, Field, TopBar } from "../mock";
+  import { t } from "../shared/locale.svelte";
 </script>
 
 <BrandTheme brand="editorial">
@@ -8,13 +9,13 @@
     <div class="page">
       <Field value="acme" icon="search" state="focus" />
       <div class="filters">
-        <span class="filters__label">Filters</span>
-        <Badge tone="info">Plan: Trial</Badge>
-        <Badge tone="info">Region: EU</Badge>
-        <Badge tone="info">Owner: Mia</Badge>
+        <span class="filters__label">{t("Filters", "Filtres")}</span>
+        <Badge tone="info">{t("Plan: Trial", "Offre : Essai")}</Badge>
+        <Badge tone="info">{t("Region: EU", "Région : UE")}</Badge>
+        <Badge tone="info">{t("Owner: Mia", "Responsable : Mia")}</Badge>
       </div>
       <div class="results">
-        <EmptyState icon="search" title="0 results" />
+        <EmptyState icon="search" title={t("0 results", "0 résultat")} />
       </div>
     </div>
   </BrowserShell>

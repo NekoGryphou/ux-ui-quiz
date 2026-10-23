@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t } from "../shared/locale.svelte";
   import Button from "./Button.svelte";
   import type { ConfirmDialogProps } from "./types/confirm-dialog.types";
 
@@ -36,7 +37,7 @@
   <h2 id="{uid}-title">{title}</h2>
   <p id="{uid}-body">{body}</p>
   <div class="confirm__actions">
-    <Button onclick={close}>Cancel</Button>
+    <Button onclick={close}>{t("Cancel", "Annuler")}</Button>
     <Button variant="danger" onclick={confirm}>{confirmLabel}</Button>
   </div>
 </dialog>

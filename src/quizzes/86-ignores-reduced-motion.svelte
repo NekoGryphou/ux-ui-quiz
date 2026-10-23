@@ -1,11 +1,12 @@
 <script lang="ts">
   import { BrandTheme, PhoneShell } from "../mock";
+  import { t } from "../shared/locale.svelte";
 </script>
 
 <BrandTheme brand="eco">
   <PhoneShell>
     <div class="screen">
-      <span class="setting">Reduce motion: ON</span>
+      <span class="setting">{t("Reduce motion: ON", "Réduire les animations : oui")}</span>
       <div class="hero">
         <span class="hero__sky"></span>
         <span class="hero__cloud hero__cloud--a"></span>
@@ -13,8 +14,8 @@
         <span class="hero__far"></span>
         <span class="hero__near"></span>
         <div class="hero__copy">
-          <p class="hero__title">Find your wild</p>
-          <span class="hero__cta">Plan a trip</span>
+          <p class="hero__title">{t("Find your wild", "Partez à l’aventure")}</p>
+          <span class="hero__cta">{t("Plan a trip", "Préparer un voyage")}</span>
         </div>
       </div>
     </div>

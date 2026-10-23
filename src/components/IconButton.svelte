@@ -2,11 +2,15 @@
   import Icon from "./Icon.svelte";
   import type { IconButtonProps } from "./types/icon-button.types";
 
-  let { icon, label, variant = "outline", onclick }: IconButtonProps = $props();
+  let { icon, text, label, variant = "outline", onclick }: IconButtonProps = $props();
 </script>
 
 <button class="icon-button icon-button--{variant}" type="button" aria-label={label} title={label} {onclick}>
-  <Icon name={icon} size={18} />
+  {#if text !== undefined}
+    <span class="icon-button__text">{text}</span>
+  {:else if icon !== undefined}
+    <Icon name={icon} size={18} />
+  {/if}
 </button>
 
 <style lang="scss">
@@ -45,6 +49,12 @@
 
     &--ghost:hover {
       background: var(--surface-2);
+    }
+
+    &__text {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.04em;
     }
   }
 </style>

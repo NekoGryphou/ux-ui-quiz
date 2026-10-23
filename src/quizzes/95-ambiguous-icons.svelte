@@ -1,11 +1,12 @@
 <script lang="ts">
   import { BrandTheme, Icon } from "../mock";
+  import { t } from "../shared/locale.svelte";
 </script>
 
 <BrandTheme brand="editorial">
   <div class="doc">
     <div class="bar">
-      <span class="bar__title">Trip ideas — Portugal</span>
+      <span class="bar__title">{t("Trip ideas — Portugal", "Idées de voyage — Portugal")}</span>
       <div class="bar__icons">
         <span class="ic">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
@@ -30,8 +31,13 @@
       </div>
     </div>
     <div class="doc__body">
-      <p class="doc__h">Lisbon → Porto, 10 days</p>
-      <p>Day 1–3: Alfama, tram 28, pastéis in Belém. Day 4: train to Coimbra. Day 5–7: Douro valley…</p>
+      <p class="doc__h">{t("Lisbon → Porto, 10 days", "Lisbonne → Porto, 10 jours")}</p>
+      <p>
+        {t(
+          "Day 1–3: Alfama, tram 28, pastéis in Belém. Day 4: train to Coimbra. Day 5–7: Douro valley…",
+          "Jours 1 à 3 : Alfama, tram 28, pastéis à Belém. Jour 4 : train pour Coimbra. Jours 5 à 7 : vallée du Douro…"
+        )}
+      </p>
     </div>
   </div>
 </BrandTheme>

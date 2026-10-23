@@ -1,5 +1,6 @@
 <script lang="ts">
   import { Hotspot, RetroField, RetroWindow } from "../mock";
+  import { t } from "../shared/locale.svelte";
 
   const toolbars: string[] = ["AskBar", "SearchMaster Pro", "FunTunes Toolbar", "ShopSaver"];
 </script>
@@ -8,11 +9,17 @@
   <Hotspot id="title"><div class="frame__title">Riverside Gazette - Microsoft Internet Explorer</div></Hotspot>
   <RetroWindow title="" width={600}>
     <Hotspot id="menu">
-      <div class="menu"><u>F</u>ile <u>E</u>dit <u>V</u>iew <u>F</u>avorites <u>T</u>ools <u>H</u>elp</div>
+      <div class="menu">
+        <u>F</u>{t("ile", "ichier")} <u>E</u>{t("dit", "dition")} <u>{t("V", "A")}</u>{t("iew", "ffichage")} <u>F</u>{t(
+          "avorites",
+          "avoris"
+        )} <u>{t("T", "O")}</u>{t("ools", "utils")} <u>{t("H", "?")}</u>{t("elp", "")}
+      </div>
     </Hotspot>
     <Hotspot id="address">
       <div class="bar">
-        Address <!--suppress HttpUrlsUsage --><RetroField value="http://www.riversidegazette.com/" grow />
+        {t("Address", "Adresse")}
+        <!--suppress HttpUrlsUsage --><RetroField value="http://www.riversidegazette.com/" grow />
       </div>
     </Hotspot>
     <Hotspot id="toolbars">
@@ -20,23 +27,40 @@
         {#each toolbars as name, i (name)}
           <div class="bar bar--addon" style:--tint="hsl({[200, 30, 300, 120][i]} 70% 45%)">
             <span class="bar__logo">{name}</span>
-            <RetroField value="Search the web..." width={170} />
-            <span class="bar__btn">Search</span>
-            <span class="bar__extra">{["★ Smileys", "♪ Free ringtones", "☺ Screensavers", "$ Coupons"][i]}</span>
+            <RetroField value={t("Search the web...", "Rechercher sur le Web...")} width={170} />
+            <span class="bar__btn">{t("Search", "Rechercher")}</span>
+            <span class="bar__extra"
+              >{[
+                t("★ Smileys", "★ Smileys"),
+                t("♪ Free ringtones", "♪ Sonneries gratuites"),
+                t("☺ Screensavers", "☺ Écrans de veille"),
+                t("$ Coupons", "€ Bons de réduction")
+              ][i]}</span
+            >
           </div>
         {/each}
       </div>
     </Hotspot>
     <Hotspot id="weather">
-      <div class="weather">☀ 21°C Riverside · Tomorrow 18°C rain · WIN A FREE iPod! Click here ·</div>
+      <div class="weather">
+        {t(
+          "☀ 21°C Riverside · Tomorrow 18°C rain · WIN A FREE iPod! Click here ·",
+          "☀ 21 °C Riverside · Demain 18 °C pluie · GAGNEZ UN iPod ! Cliquez ici ·"
+        )}
+      </div>
     </Hotspot>
     <Hotspot id="page">
       <div class="page">
         <p class="page__title">Riverside Gazette</p>
-        <p>Town hall approves new footbridge over the river…</p>
+        <p>
+          {t(
+            "Town hall approves new footbridge over the river…",
+            "La mairie approuve une nouvelle passerelle sur la rivière…"
+          )}
+        </p>
       </div>
     </Hotspot>
-    <Hotspot id="status"><div class="status">Done</div></Hotspot>
+    <Hotspot id="status"><div class="status">{t("Done", "Terminé")}</div></Hotspot>
   </RetroWindow>
 </div>
 

@@ -1,21 +1,26 @@
 <script lang="ts">
   import { BrandTheme } from "../mock";
+  import { t } from "../shared/locale.svelte";
 </script>
 
 <BrandTheme brand="playful">
   <div class="kiosk">
     <div class="kiosk__screen">
       <p class="kiosk__brand">Station Café</p>
-      <div class="kiosk__done">✓ Payment accepted — enjoy!</div>
+      <div class="kiosk__done">{t("✓ Payment accepted — enjoy!", "✓ Paiement accepté, bonne dégustation !")}</div>
       <div class="receipt">
-        <p class="receipt__who">Thanks, <strong>Hélène M.</strong></p>
-        <p>Loyalty card •••• 4821 · 340 points</p>
-        <div class="receipt__row"><span>Flat white (L)</span><span>€4.20</span></div>
-        <div class="receipt__row"><span>Almond croissant</span><span>€2.80</span></div>
-        <div class="receipt__row receipt__row--total"><span>Total · Visa •••• 0093</span><span>€7.00</span></div>
+        <p class="receipt__who">{t("Thanks,", "Merci,")} <strong>Hélène M.</strong></p>
+        <p>{t("Loyalty card •••• 4821 · 340 points", "Carte de fidélité •••• 4821 · 340 points")}</p>
+        <div class="receipt__row"><span>Flat white (L)</span><span>{t("€4.20", "4,20 €")}</span></div>
+        <div class="receipt__row">
+          <span>{t("Almond croissant", "Croissant aux amandes")}</span><span>{t("€2.80", "2,80 €")}</span>
+        </div>
+        <div class="receipt__row receipt__row--total">
+          <span>Total · Visa •••• 0093</span><span>{t("€7.00", "7,00 €")}</span>
+        </div>
       </div>
-      <span class="kiosk__btn">Order again</span>
-      <span class="kiosk__btn kiosk__btn--alt">Add to my favourites</span>
+      <span class="kiosk__btn">{t("Order again", "Commander à nouveau")}</span>
+      <span class="kiosk__btn kiosk__btn--alt">{t("Add to my favourites", "Ajouter à mes favoris")}</span>
     </div>
     <span class="kiosk__stand"></span>
   </div>

@@ -1,4 +1,5 @@
 import type { ChoiceOutcome } from "../../engine/types/quiz.types";
+import { t } from "../../shared/locale.svelte";
 
 /**
  * @export
@@ -12,11 +13,11 @@ import type { ChoiceOutcome } from "../../engine/types/quiz.types";
 export const outcomeLabel = (outcome: ChoiceOutcome, several: boolean): string => {
   switch (outcome) {
     case "correct":
-      return "Correct";
+      return t("Correct", "Juste");
     case "wrong":
-      return "Incorrect";
+      return t("Incorrect", "Faux");
     case "missed":
-      return several ? "Missed" : "Correct answer";
+      return several ? t("Missed", "Manquée") : t("Correct answer", "Bonne réponse");
     case "neutral":
       return "";
   }

@@ -1,44 +1,49 @@
 <script lang="ts">
   import type { VisualProps } from "../engine/types/quiz.types";
   import { BrandTheme, PhoneShell } from "../mock";
+  import { t } from "../shared/locale.svelte";
   import type { ChatMessage } from "./types/quiz-mocks.types";
 
   let { variant = "a" }: VisualProps = $props();
 
   const authors: string[] = ["Inès", "Tom", "Aiko", "Dev"];
-  const lines: string[] = [
-    "Did anyone check the staging build?",
-    "Yes, looks fine on my side!",
-    "The login page still flickers on Safari",
-    "I’ll take a look after lunch",
-    "Here’s the link to the spec",
-    "Thanks! Reading it now",
-    "Can we move standup to 10?",
-    "Works for me",
-    "Pushed a fix for the date picker",
-    "Nice, merging"
-  ];
-  const messages: ChatMessage[] = Array.from({ length: 36 }, (_, i): ChatMessage => {
-    const author: string = authors[i % authors.length] ?? "Tom";
-    return { author, text: lines[i % lines.length] ?? "", mine: author === "Tom" };
-  });
+  const lines: string[] = $derived([
+    t("Did anyone check the staging build?", "Quelqu’un a vérifié le build de staging ?"),
+    t("Yes, looks fine on my side!", "Oui, tout va bien de mon côté !"),
+    t("The login page still flickers on Safari", "La page de connexion clignote encore sur Safari"),
+    t("I’ll take a look after lunch", "Je regarde ça après le déjeuner"),
+    t("Here’s the link to the spec", "Voici le lien vers les specs"),
+    t("Thanks! Reading it now", "Merci ! Je lis ça tout de suite"),
+    t("Can we move standup to 10?", "On peut décaler le stand-up à 10 h ?"),
+    t("Works for me", "Ça me va"),
+    t("Pushed a fix for the date picker", "J’ai poussé un correctif pour le sélecteur de date"),
+    t("Nice, merging", "Top, je merge")
+  ]);
+  const messages: ChatMessage[] = $derived(
+    Array.from({ length: 36 }, (_, i): ChatMessage => {
+      const author: string = authors[i % authors.length] ?? "Tom";
+      return { author, text: lines[i % lines.length] ?? "", mine: author === "Tom" };
+    })
+  );
 </script>
 
 <BrandTheme brand="corporate">
   <PhoneShell>
     <div class="chat" class:chat--jump={variant === "b"}>
-      <div class="chat__head"><strong># product-team</strong><span>4 members</span></div>
+      <div class="chat__head"><strong># product-team</strong><span>{t("4 members", "4 membres")}</span></div>
       <div class="chat__viewport">
         <div class="chat__list">
           {#each messages as message, i (i)}
-            {#if i === messages.length - 4}<div class="divider"><span>New messages</span></div>{/if}
+            {#if i === messages.length - 4}<div class="divider">
+                <span>{t("New messages", "Nouveaux messages")}</span>
+              </div>{/if}
             <div class="msg" class:msg--mine={message.mine}>
               {#if !message.mine}<span class="msg__author">{message.author}</span>{/if}
               <span class="msg__bubble">{message.text}</span>
             </div>
           {/each}
         </div>
-        <span class="chat__pill">↓ 4 new messages</span>
+        <span class="chat__pill">{t("↓ 4 new messages", "↓ 4 nouveaux messages")}</span>
         <svg class="chat__cursor" viewBox="0 0 20 24" aria-hidden="true">
           <path
             d="M3 2.5 L16.5 14 L10.4 14.6 L13.6 21 L10.8 22.3 L7.7 15.9 L3 20 Z"
@@ -49,7 +54,7 @@
           />
         </svg>
       </div>
-      <div class="chat__composer">Message #product-team</div>
+      <div class="chat__composer">{t("Message #product-team", "Écrire dans #product-team")}</div>
     </div>
   </PhoneShell>
 </BrandTheme>

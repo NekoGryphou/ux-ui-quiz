@@ -1,6 +1,7 @@
 <script lang="ts">
   import ConfirmDialog from "../components/ConfirmDialog.svelte";
   import type { RunKind } from "../engine/types/run.types";
+  import { t } from "../shared/locale.svelte";
   import { session } from "./session";
   import type { RunGuardDialogProps } from "./types/run-guard-dialog.types";
   import { abandonBody, abandonTitle } from "./utils/run-label.utils";
@@ -23,6 +24,6 @@
   bind:open={guard.confirming}
   title={abandonTitle(kind)}
   body={abandonBody(kind, answered)}
-  confirmLabel="Abandon and start"
+  confirmLabel={t("Abandon and start", "Abandonner et commencer")}
   onconfirm={confirm}
 />

@@ -1,5 +1,6 @@
 <script lang="ts">
   import { BrandTheme } from "../mock";
+  import { t } from "../shared/locale.svelte";
 </script>
 
 <BrandTheme brand="playful">
@@ -8,10 +9,10 @@
       <span class="tool tool--active">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
           ><path d="M5 3l14 8-6 2-2 6z" stroke-linejoin="round" /></svg
-        >Select
+        >{t("Select", "Sélection")}
       </span>
       <span class="tool">
-        <svg viewBox="0 0 24 24"><path d="M3 21l3-9L17 1l6 6-11 11z" fill="#111111" /></svg>Pen
+        <svg viewBox="0 0 24 24"><path d="M3 21l3-9L17 1l6 6-11 11z" fill="#111111" /></svg>{t("Pen", "Stylo")}
       </span>
       <span class="tool">
         <svg viewBox="0 0 24 24"
@@ -23,12 +24,12 @@
               /></radialGradient
             ></defs
           ><rect x="3" y="3" width="18" height="18" rx="6" fill="url(#blob)" /></svg
-        >Shape
+        >{t("Shape", "Forme")}
       </span>
       <span class="tool">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="square"
           ><path d="M4 5h16M12 5v15" /></svg
-        >Text
+        >{t("Text", "Texte")}
       </span>
       <span class="tool">
         <svg viewBox="0 0 24 24"
@@ -53,13 +54,13 @@
             stroke-width="1.3"
             fill="none"
           /></svg
-        >Comment
+        >{t("Comment", "Note")}
       </span>
     </nav>
     <div class="canvas">
-      <div class="sticky">Q3 ideas</div>
-      <div class="sticky sticky--pink">Workshop agenda</div>
-      <div class="frame-box">Frame 1</div>
+      <div class="sticky">{t("Q3 ideas", "Idées T3")}</div>
+      <div class="sticky sticky--pink">{t("Workshop agenda", "Programme de l’atelier")}</div>
+      <div class="frame-box">{t("Frame 1", "Cadre 1")}</div>
     </div>
   </div>
 </BrandTheme>

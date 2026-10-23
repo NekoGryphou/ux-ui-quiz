@@ -1,3 +1,7 @@
+<script lang="ts">
+  import { t } from "../shared/locale.svelte";
+</script>
+
 <div class="watch">
   <span class="watch__strap watch__strap--top"></span>
   <div class="watch__case">
@@ -9,10 +13,15 @@
       </div>
       <div class="watch__card">
         <p class="watch__app">ParcelGo</p>
-        <p class="watch__msg">Your courier is approaching your delivery address and will attempt deliv…</p>
+        <p class="watch__msg">
+          {t(
+            "Your courier is approaching your delivery address and will attempt deliv…",
+            "Votre colis approche de votre adresse de livraison et une tentative de livr…"
+          )}
+        </p>
       </div>
       <div class="watch__action">
-        <span class="watch__btn">Leave the parcel with a neighbo…</span>
+        <span class="watch__btn">{t("Leave the parcel with a neighbo…", "Laisser le colis chez un voisi…")}</span>
       </div>
       <span class="watch__dots"><i class="on"></i><i></i><i></i></span>
     </div>

@@ -1,5 +1,6 @@
 <script lang="ts">
   import { BrandMark, BrandTheme, Hotspot, Icon, Photo, TabletShell, ViewportBadge } from "../mock";
+  import { t } from "../shared/locale.svelte";
   import { PHOTO_ARMCHAIR, PHOTO_LAMP, PHOTO_LIVING_ROOM, PHOTO_SIDE_TABLE } from "./const/photo.const";
 </script>
 
@@ -14,7 +15,7 @@
           >
           <Hotspot id="nav">
             <nav class="nav">
-              {#each ["New arrivals", "Living room", "Bedroom", "Lighting", "Outdoor", "Sale"] as item (item)}
+              {#each [t("New arrivals", "Nouveautés"), t("Living room", "Salon"), t("Bedroom", "Chambre"), t("Lighting", "Luminaires"), t("Outdoor", "Extérieur"), t("Sale", "Soldes")] as item (item)}
                 <span>{item}</span>
               {/each}
               <span class="nav__cart"><Icon name="cart" size={16} /></span>
@@ -26,13 +27,13 @@
             class="hero"
             style:background-image="linear-gradient(0deg, rgb(30 22 12 / 0.75), rgb(30 22 12 / 0.05) 70%), url('{PHOTO_LIVING_ROOM.url}')"
           >
-            <p class="hero__title">New arrivals</p>
-            <p>Oak, linen and warm light for the season.</p>
+            <p class="hero__title">{t("New arrivals", "Nouveautés")}</p>
+            <p>{t("Oak, linen and warm light for the season.", "Chêne, lin et lumière chaleureuse pour la saison.")}</p>
           </div>
         </Hotspot>
         <Hotspot id="cards">
           <div class="cards">
-            {#each ["Lune armchair", "Bruma lamp", "Sol side table"] as item, i (item)}
+            {#each [t("Lune armchair", "Fauteuil Lune"), t("Bruma lamp", "Lampe Bruma"), t("Sol side table", "Table d’appoint Sol")] as item, i (item)}
               <div class="card">
                 <span class="card__img"
                   ><Photo src={[PHOTO_ARMCHAIR, PHOTO_LAMP, PHOTO_SIDE_TABLE][i]?.url ?? ""} /></span
@@ -42,7 +43,9 @@
             {/each}
           </div>
         </Hotspot>
-        <Hotspot id="footer-link" inline><span class="more">See all new arrivals →</span></Hotspot>
+        <Hotspot id="footer-link" inline
+          ><span class="more">{t("See all new arrivals →", "Voir toutes les nouveautés →")}</span></Hotspot
+        >
       </div>
     </TabletShell>
   </div>

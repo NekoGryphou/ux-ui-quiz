@@ -1,5 +1,6 @@
 <script lang="ts">
   import { BrandMark, BrandTheme, Icon, MockButton, PhoneShell, Skeleton } from "../mock";
+  import { t } from "../shared/locale.svelte";
 </script>
 
 <BrandTheme brand="editorial">
@@ -13,11 +14,18 @@
     </div>
     <div class="sheet">
       <span class="app-icon"><BrandMark name="Sketchpad" size={64} /></span>
-      <strong class="sheet__title">Sketchpad is better in the app</strong>
-      <span class="sheet__body">Faster, smoother, and your files sync everywhere.</span>
-      <span class="rating"><Icon name="star" size={12} /> 4.8 · 120k ratings</span>
-      <MockButton variant="primary" size="lg" block>Get the app</MockButton>
-      <span class="decline">No thanks, I prefer a worse experience</span>
+      <strong class="sheet__title">{t("Sketchpad is better in the app", "Sketchpad est mieux dans l’appli")}</strong>
+      <span class="sheet__body"
+        >{t(
+          "Faster, smoother, and your files sync everywhere.",
+          "Plus rapide, plus fluide, et vos fichiers synchronisés partout."
+        )}</span
+      >
+      <span class="rating"><Icon name="star" size={12} /> {t("4.8 · 120k ratings", "4,8 · 120 k notes")}</span>
+      <MockButton variant="primary" size="lg" block>{t("Get the app", "Télécharger l’appli")}</MockButton>
+      <span class="decline"
+        >{t("No thanks, I prefer a worse experience", "Non merci, je préfère une expérience dégradée")}</span
+      >
     </div>
   </PhoneShell>
 </BrandTheme>

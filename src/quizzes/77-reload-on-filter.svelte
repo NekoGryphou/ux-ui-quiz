@@ -1,11 +1,12 @@
 <script lang="ts">
   import { BrandTheme, BrowserShell, Spinner } from "../mock";
+  import { t } from "../shared/locale.svelte";
   import type { FilterGroup } from "./types/quiz-mocks.types";
 
   const hues: number[] = [200, 140, 20, 260, 45, 330];
-  const groups: FilterGroup[] = [
+  const groups: FilterGroup[] = $derived([
     {
-      title: "Size",
+      title: t("Size", "Pointure"),
       items: [
         { label: "42 (31)", step: 0 },
         { label: "43 (28)", step: 1 },
@@ -13,7 +14,7 @@
       ]
     },
     {
-      title: "Brand",
+      title: t("Brand", "Marque"),
       items: [
         { label: "Altra (12)", step: 0 },
         { label: "Hoka (19)", step: 0 },
@@ -21,13 +22,13 @@
       ]
     },
     {
-      title: "Colour",
+      title: t("Colour", "Couleur"),
       items: [
-        { label: "Blue (14)", step: 3 },
-        { label: "Black (22)", step: 0 }
+        { label: t("Blue (14)", "Bleu (14)"), step: 3 },
+        { label: t("Black (22)", "Noir (22)"), step: 0 }
       ]
     }
-  ];
+  ]);
 </script>
 
 <BrandTheme brand="eco">
@@ -59,7 +60,7 @@
         {/each}
       </aside>
       <div class="results">
-        <p class="results__title">Trail shoes</p>
+        <p class="results__title">{t("Trail shoes", "Chaussures de trail")}</p>
         <div class="results__grid">
           {#each hues as hue (hue)}
             <span class="card" style:background="hsl({hue} 45% 80%)"><i style:background="hsl({hue} 50% 42%)"></i></span

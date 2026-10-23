@@ -1,32 +1,33 @@
 <script lang="ts">
   import type { VisualProps } from "../engine/types/quiz.types";
   import { BrandTheme, MockButton } from "../mock";
+  import { t } from "../shared/locale.svelte";
 
   let { variant = "a" }: VisualProps = $props();
 </script>
 
 <BrandTheme brand="luxury">
   <div class="card card--{variant}">
-    <p class="title">Delivery address</p>
+    <p class="title">{t("Delivery address", "Adresse de livraison")}</p>
     <div class="group">
-      <span class="label">Full name</span>
+      <span class="label">{t("Full name", "Nom complet")}</span>
       <span class="input">Camille Durand</span>
     </div>
     <div class="group">
-      <span class="label">Street address</span>
+      <span class="label">{t("Street address", "Adresse")}</span>
       <span class="input">12 rue des Lilas</span>
     </div>
     <div class="pair">
       <div class="group">
-        <span class="label">Postcode</span>
+        <span class="label">{t("Postcode", "Code postal")}</span>
         <span class="input">75011</span>
       </div>
       <div class="group">
-        <span class="label">City</span>
+        <span class="label">{t("City", "Ville")}</span>
         <span class="input">Paris</span>
       </div>
     </div>
-    <MockButton variant="primary" block>Continue</MockButton>
+    <MockButton variant="primary" block>{t("Continue", "Continuer")}</MockButton>
   </div>
 </BrandTheme>
 

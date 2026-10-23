@@ -1,12 +1,17 @@
 <script lang="ts">
   import { BrandTheme, Icon } from "../mock";
+  import { t } from "../shared/locale.svelte";
 </script>
 
 <BrandTheme brand="eco">
   <div class="site">
     <div class="nav">
       <span class="nav__logo">peakpass</span>
-      <span class="nav__links"><span>Resorts</span><span>Deals</span><span>Lessons</span></span>
+      <span class="nav__links"
+        ><span>{t("Resorts", "Stations")}</span><span>{t("Deals", "Bons plans")}</span><span
+          >{t("Lessons", "Cours")}</span
+        ></span
+      >
     </div>
     <div class="hero">
       <div class="hero__photo" aria-hidden="true">
@@ -18,12 +23,14 @@
         <span class="snowfield"></span>
       </div>
       <div class="hero__copy">
-        <p class="hero__title">Fresh powder, all season long</p>
-        <p class="hero__tagline">Lift passes, chalets and lessons in 120 resorts</p>
+        <p class="hero__title">{t("Fresh powder, all season long", "De la poudreuse toute la saison")}</p>
+        <p class="hero__tagline">
+          {t("Lift passes, chalets and lessons in 120 resorts", "Forfaits, chalets et cours dans 120 stations")}
+        </p>
         <div class="search">
           <Icon name="search" size={16} />
-          <span>Where do you want to ski?</span>
-          <span class="search__btn">Search</span>
+          <span>{t("Where do you want to ski?", "Où voulez-vous skier ?")}</span>
+          <span class="search__btn">{t("Search", "Rechercher")}</span>
         </div>
       </div>
     </div>

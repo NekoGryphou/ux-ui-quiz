@@ -1,24 +1,27 @@
 <script lang="ts">
   import type { VisualProps } from "../engine/types/quiz.types";
   import { BrandTheme, MockButton, Spinner } from "../mock";
+  import { t } from "../shared/locale.svelte";
 
   let { variant = "a" }: VisualProps = $props();
 </script>
 
 <BrandTheme brand="fintech">
   <div class="dialog">
-    <p class="dialog__title">Exporting “Summer trip.mp4”</p>
+    <p class="dialog__title">{t("Exporting “Summer trip.mp4”", "Export de « Summer trip.mp4 »")}</p>
     <p class="dialog__meta">1080p · H.264 · 12:04</p>
     {#if variant === "a"}
-      <div class="dialog__spin"><Spinner size={32} /><span>Exporting…</span></div>
+      <div class="dialog__spin"><Spinner size={32} /><span>{t("Exporting…", "Export en cours…")}</span></div>
     {:else}
       <div class="progress">
-        <div class="progress__row"><span>Encoding video</span><strong>63%</strong></div>
+        <div class="progress__row">
+          <span>{t("Encoding video", "Encodage vidéo")}</span><strong>{t("63%", "63 %")}</strong>
+        </div>
         <span class="progress__track"><i></i></span>
-        <span class="progress__left">About 45 seconds left</span>
+        <span class="progress__left">{t("About 45 seconds left", "Environ 45 secondes restantes")}</span>
       </div>
     {/if}
-    <MockButton variant="secondary">Cancel</MockButton>
+    <MockButton variant="secondary">{t("Cancel", "Annuler")}</MockButton>
   </div>
 </BrandTheme>
 

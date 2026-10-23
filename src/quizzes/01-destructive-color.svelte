@@ -1,22 +1,28 @@
 <script lang="ts">
   import { Breadcrumbs, BrowserShell, Card, MockButton, Modal, Skeleton, TopBar } from "../mock";
+  import { t } from "../shared/locale.svelte";
 </script>
 
 <BrowserShell url="app.orbit.io/projects/atlas/settings">
   <TopBar brand="Orbit">
-    <Breadcrumbs items={["Projects", "Atlas", "Settings"]} />
+    <Breadcrumbs items={[t("Projects", "Projets"), "Atlas", t("Settings", "Paramètres")]} />
   </TopBar>
   <div class="page">
-    <Card title="General"><Skeleton lines={2} /></Card>
-    <Card title="Danger zone" subtitle="Irreversible actions"><Skeleton lines={1} /></Card>
+    <Card title={t("General", "Général")}><Skeleton lines={2} /></Card>
+    <Card title={t("Danger zone", "Zone de danger")} subtitle={t("Irreversible actions", "Actions irréversibles")}
+      ><Skeleton lines={1} /></Card
+    >
 
-    <Modal title="Delete project Atlas?" floating>
+    <Modal title={t("Delete project Atlas?", "Supprimer le projet Atlas ?")} floating>
       <span
-        >All 214 files, 12 boards and the full activity history will be permanently removed. This can’t be undone.</span
+        >{t(
+          "All 214 files, 12 boards and the full activity history will be permanently removed. This can’t be undone.",
+          "Les 214 fichiers, les 12 tableaux et tout l’historique d’activité seront définitivement supprimés. Cette action est irréversible."
+        )}</span
       >
       {#snippet actions()}
-        <MockButton>Cancel</MockButton>
-        <MockButton variant="success" icon="trash">Delete project</MockButton>
+        <MockButton>{t("Cancel", "Annuler")}</MockButton>
+        <MockButton variant="success" icon="trash">{t("Delete project", "Supprimer le projet")}</MockButton>
       {/snippet}
     </Modal>
   </div>

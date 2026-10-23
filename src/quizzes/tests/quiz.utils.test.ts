@@ -26,12 +26,15 @@ describe("registry helpers", (): void => {
 
 describe("content helpers", (): void => {
   it("builds WCAG links and photo credits", (): void => {
-    expect(wcag("1.4.3", "Contrast (Minimum)", "contrast-minimum")).toEqual({
-      label: "WCAG 1.4.3 Contrast (Minimum)",
+    expect(wcag("1.4.3", { en: "Contrast (Minimum)", fr: "Contraste (minimum)" }, "contrast-minimum")).toEqual({
+      label: { en: "WCAG 1.4.3 Contrast (Minimum)", fr: "WCAG 1.4.3 Contraste (minimum)" },
       url: `${WCAG_UNDERSTANDING_BASE}contrast-minimum.html`
     });
-    expect(photoCredits([PHOTO_HONEY, PHOTO_HONEY])).toBe(
+    expect(photoCredits([PHOTO_HONEY, PHOTO_HONEY], "en")).toBe(
       `Photos from Wikimedia Commons: ${PHOTO_HONEY.title} (${PHOTO_HONEY.license}).`
+    );
+    expect(photoCredits([PHOTO_HONEY], "fr")).toBe(
+      `Photos issues de Wikimedia Commons : ${PHOTO_HONEY.title} (${PHOTO_HONEY.license}).`
     );
   });
 });

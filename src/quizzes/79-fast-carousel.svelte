@@ -1,27 +1,40 @@
 <script lang="ts">
   import { BrandTheme, BrowserShell } from "../mock";
+  import { t } from "../shared/locale.svelte";
   import { PHOTO_CINEMA_SCREEN, PHOTO_CINEMA_SEATS, PHOTO_POPCORN } from "./const/photo.const";
   import type { HeroSlide } from "./types/quiz-mocks.types";
 
-  const slides: HeroSlide[] = [
+  const slides: HeroSlide[] = $derived([
     {
-      title: "Students: €6 every Tuesday",
-      body: "Show your student card at the box office. Not valid on 3D or premieres.",
+      title: t("Students: €6 every Tuesday", "Tarif étudiant : 6 € le mardi"),
+      body: t(
+        "Show your student card at the box office. Not valid on 3D or premieres.",
+        "Présentez votre carte étudiante en caisse. Non valable en 3D ni pour les avant-premières."
+      ),
       photo: PHOTO_CINEMA_SEATS.url
     },
     {
-      title: "Summer blockbusters",
-      body: "Book now for the biggest releases of the season.",
+      title: t("Summer blockbusters", "Les blockbusters de l’été"),
+      body: t(
+        "Book now for the biggest releases of the season.",
+        "Réservez dès maintenant les plus grosses sorties de la saison."
+      ),
       photo: PHOTO_CINEMA_SCREEN.url
     },
-    { title: "Popcorn menu −30%", body: "With any ticket bought online before 6 pm.", photo: PHOTO_POPCORN.url }
-  ];
+    {
+      title: t("Popcorn menu −30%", "Menu pop-corn −30 %"),
+      body: t("With any ticket bought online before 6 pm.", "Pour tout billet acheté en ligne avant 18 h."),
+      photo: PHOTO_POPCORN.url
+    }
+  ]);
 </script>
 
 <BrandTheme brand="playful">
   <BrowserShell url="cineplus.com">
     <div class="page">
-      <div class="nav"><span class="nav__logo">ciné+</span><span>Films · Cinemas · Offers</span></div>
+      <div class="nav">
+        <span class="nav__logo">ciné+</span><span>{t("Films · Cinemas · Offers", "Films · Cinémas · Offres")}</span>
+      </div>
       <div class="hero">
         {#each slides as slide, i (slide.title)}
           <div
@@ -38,7 +51,9 @@
         </div>
       </div>
       <div class="row">
-        {#each ["Now showing", "Coming soon", "Kids"] as item (item)}<span class="row__card">{item}</span>{/each}
+        {#each [t("Now showing", "À l’affiche"), t("Coming soon", "Prochainement"), t("Kids", "Enfants")] as item (item)}<span
+            class="row__card">{item}</span
+          >{/each}
       </div>
     </div>
   </BrowserShell>

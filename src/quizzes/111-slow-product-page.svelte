@@ -1,29 +1,32 @@
 <script lang="ts">
   import { CodeEditor, CodeLines } from "../mock";
+  import { t } from "../shared/locale.svelte";
   import { PHOTO_ARMCHAIR } from "./const/photo.const";
 
-  const frameTimes: string[] = ["0.5 s", "1.2 s", "3.1 s"];
   const photo: string = `url('${PHOTO_ARMCHAIR.url}')`;
-  const markup: string = [
-    '<link rel="preconnect" href="https://cdn.maisonoak.com" crossorigin>',
-    "<style>",
-    "  @font-face {",
-    '    font-family: "Oak Serif";',
-    '    src: url("https://cdn.maisonoak.com/oak-serif.woff2");',
-    "  }",
-    '  .title { font-family: "Oak Serif", Georgia, serif; }',
-    "</style>",
-    '<img src="/img/canopy.jpg" alt="Canopy armchair in red paisley"',
-    '     width="1200" height="800" loading="lazy">',
-    '<p class="title">Canopy armchair</p>',
-    '<p class="price">€890</p>',
-    '<img src="/img/fabric.jpg" alt="Close-up of the paisley fabric"',
-    '     decoding="async">',
-    '<img src="/img/legs-800.jpg" alt="Detail of the carved legs"',
-    '     srcset="/img/legs-400.jpg 400w, /img/legs-800.jpg 800w"',
-    '     sizes="50vw">',
-    '<button type="button">Add to cart</button>'
-  ].join("\n");
+  const frameTimes: string[] = $derived([t("0.5 s", "0,5 s"), t("1.2 s", "1,2 s"), t("3.1 s", "3,1 s")]);
+  const markup: string = $derived(
+    [
+      '<link rel="preconnect" href="https://cdn.maisonoak.com" crossorigin>',
+      "<style>",
+      "  @font-face {",
+      '    font-family: "Oak Serif";',
+      '    src: url("https://cdn.maisonoak.com/oak-serif.woff2");',
+      "  }",
+      '  .title { font-family: "Oak Serif", Georgia, serif; }',
+      "</style>",
+      `<img src="/img/canopy.jpg" alt="${t("Canopy armchair in red paisley", "Fauteuil Canopy cachemire rouge")}"`,
+      '     width="1200" height="800" loading="lazy">',
+      `<p class="title">${t("Canopy armchair", "Fauteuil Canopy")}</p>`,
+      `<p class="price">${t("€890", "890 €")}</p>`,
+      `<img src="/img/fabric.jpg" alt="${t("Close-up of the paisley fabric", "Gros plan sur le tissu cachemire")}"`,
+      '     decoding="async">',
+      `<img src="/img/legs-800.jpg" alt="${t("Detail of the carved legs", "Détail des pieds sculptés")}"`,
+      '     srcset="/img/legs-400.jpg 400w, /img/legs-800.jpg 800w"',
+      '     sizes="50vw">',
+      `<button type="button">${t("Add to cart", "Ajouter au panier")}</button>`
+    ].join("\n")
+  );
 </script>
 
 <div class="review">
@@ -36,15 +39,15 @@
         <span class="frame__time">{time}</span>
         <div class="page">
           <div class="hero" style:background-image={index === 2 ? photo : undefined}></div>
-          <p class="title" class:title--hidden={index < 2}>Canopy armchair</p>
-          <p class="price">€890</p>
+          <p class="title" class:title--hidden={index < 2}>{t("Canopy armchair", "Fauteuil Canopy")}</p>
+          <p class="price">{t("€890", "890 €")}</p>
           {#if index > 0}
             <div class="details">
               <span class="detail detail--fabric" style:background-image={photo}></span>
               <span class="detail detail--legs" style:background-image={photo}></span>
             </div>
           {/if}
-          <span class="cart">Add to cart</span>
+          <span class="cart">{t("Add to cart", "Ajouter au panier")}</span>
         </div>
       </div>
     {/each}

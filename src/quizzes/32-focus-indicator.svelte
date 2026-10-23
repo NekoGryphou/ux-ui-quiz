@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { VisualProps } from "../engine/types/quiz.types";
   import { Switch } from "../mock";
+  import { t } from "../shared/locale.svelte";
 
   let { variant = "a" }: VisualProps = $props();
 </script>
@@ -8,12 +9,12 @@
 <div class="card">
   <p class="title">Notifications</p>
   <div class="list">
-    <Switch label="Email digest" checked />
-    <Switch label="Push alerts" />
+    <Switch label={t("Email digest", "Récapitulatif par e-mail")} checked />
+    <Switch label={t("Push alerts", "Alertes push")} />
   </div>
   <div class="actions">
-    <span class="button">Cancel</span>
-    <span class="button button--primary button--focus-{variant}">Save</span>
+    <span class="button">{t("Cancel", "Annuler")}</span>
+    <span class="button button--primary button--focus-{variant}">{t("Save", "Enregistrer")}</span>
   </div>
 </div>
 

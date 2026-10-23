@@ -1,29 +1,31 @@
 <script lang="ts">
   import { BrandMark, BrandTheme, BrowserShell, Icon, MockButton, Skeleton } from "../mock";
+  import { t } from "../shared/locale.svelte";
 </script>
 
 <BrandTheme brand="brutalist">
   <BrowserShell url="www.taskloom.io">
     <div class="nav">
       <span class="brand"><BrandMark name="Taskloom" />Taskloom</span>
-      <span class="item">Platform <Icon name="chevron-down" size={12} /></span>
+      <span class="item">{t("Platform", "Plateforme")} <Icon name="chevron-down" size={12} /></span>
       <span class="item">Solutions <Icon name="chevron-down" size={12} /></span>
-      <span class="item">Products <Icon name="chevron-down" size={12} /></span>
-      <span class="item">Resources <Icon name="chevron-down" size={12} /></span>
+      <span class="item">{t("Products", "Produits")} <Icon name="chevron-down" size={12} /></span>
+      <span class="item">{t("Resources", "Ressources")} <Icon name="chevron-down" size={12} /></span>
       <span class="item item--open">
-        Company <Icon name="chevron-down" size={12} />
+        {t("Company", "Entreprise")}
+        <Icon name="chevron-down" size={12} />
         <span class="menu">
-          <span>About us</span>
-          <span>Careers</span>
-          <span>Pricing</span>
-          <span>Press</span>
+          <span>{t("About us", "À propos")}</span>
+          <span>{t("Careers", "Carrières")}</span>
+          <span>{t("Pricing", "Tarifs")}</span>
+          <span>{t("Press", "Presse")}</span>
         </span>
       </span>
       <span class="spacer"></span>
-      <MockButton variant="primary" size="sm">Get started</MockButton>
+      <MockButton variant="primary" size="sm">{t("Get started", "Essai")}</MockButton>
     </div>
     <div class="hero">
-      <p class="hero__title">Work that flows, together</p>
+      <p class="hero__title">{t("Work that flows, together", "Travailler ensemble, en toute fluidité")}</p>
       <Skeleton lines={2} />
     </div>
   </BrowserShell>

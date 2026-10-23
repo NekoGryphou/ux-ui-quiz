@@ -1,23 +1,27 @@
 <script lang="ts">
   import type { VisualProps } from "../engine/types/quiz.types";
   import { BrandTheme, Field, MockButton } from "../mock";
+  import { t } from "../shared/locale.svelte";
 
   let { variant = "a" }: VisualProps = $props();
 </script>
 
 <BrandTheme brand="brutalist">
   <div class="card">
-    <p class="title">Schedule delivery</p>
+    <p class="title">{t("Schedule delivery", "Planifier la livraison")}</p>
     <Field
-      label="Delivery date"
-      value="Today, 14 May"
+      label={t("Delivery date", "Date de livraison")}
+      value={t("Today, 14 May", "Aujourd’hui, 14 mai")}
       state="error"
       message={variant === "a"
-        ? "Error 422: invalid input."
-        : "Same-day delivery isn’t available. Pick a date from 15 May onwards."}
+        ? t("Error 422: invalid input.", "Erreur 422 : saisie invalide.")
+        : t(
+            "Same-day delivery isn’t available. Pick a date from 15 May onwards.",
+            "La livraison le jour même n’est pas disponible. Choisissez une date à partir du 15 mai."
+          )}
     />
-    <Field label="Time slot" type="select" value="18:00 – 20:00" />
-    <MockButton variant="primary" block>Confirm delivery</MockButton>
+    <Field label={t("Time slot", "Créneau")} type="select" value={t("18:00 – 20:00", "18 h – 20 h")} />
+    <MockButton variant="primary" block>{t("Confirm delivery", "Confirmer la livraison")}</MockButton>
   </div>
 </BrandTheme>
 

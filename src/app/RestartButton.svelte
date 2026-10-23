@@ -1,6 +1,8 @@
 <script lang="ts">
   import Button from "../components/Button.svelte";
   import ConfirmDialog from "../components/ConfirmDialog.svelte";
+  import { plural, t } from "../shared/locale.svelte";
+  import { ANSWER_FORMS } from "./const/run-label.const";
   import { router } from "./router.svelte";
   import { session } from "./session";
   import type { RestartButtonProps } from "./types/restart-button.types";
@@ -11,7 +13,10 @@
   let confirming: boolean = $state(false);
 
   const body: string = $derived(
-    `Your ${String(session.main.answeredCount)} ${session.main.answeredCount === 1 ? "answer" : "answers"} and score will be cleared, and the options reshuffled.`
+    t(
+      `Your ${String(session.main.answeredCount)} ${plural(session.main.answeredCount, ANSWER_FORMS)} and score will be cleared, and the options reshuffled.`,
+      `Vos réponses (${String(session.main.answeredCount)}) et votre score seront effacés, et l’ordre des options sera remélangé.`
+    )
   );
 
   /**
@@ -32,12 +37,12 @@
   };
 </script>
 
-<Button {variant} {size} iconStart="refresh" onclick={open}>Restart quiz</Button>
+<Button {variant} {size} iconStart="refresh" onclick={open}>{t("Restart quiz", "Recommencer le quiz")}</Button>
 
 <ConfirmDialog
   bind:open={confirming}
-  title="Restart the quiz?"
+  title={t("Restart the quiz?", "Recommencer le quiz ?")}
   {body}
-  confirmLabel="Clear progress"
+  confirmLabel={t("Clear progress", "Effacer la progression")}
   onconfirm={restart}
 />

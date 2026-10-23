@@ -1,49 +1,99 @@
 <script lang="ts">
+  import { t } from "../shared/locale.svelte";
   import type { PortalSection } from "./types/quiz-mocks.types";
 
-  const services: PortalSection[] = [
-    { title: "Consult", links: ["Tax account [+]", "Property notices"] },
+  const services: PortalSection[] = $derived([
     {
-      title: "Declare",
+      title: t("Consult", "Consulter"),
+      links: [t("Tax account [+]", "Compte fiscal [+]"), t("Property notices", "Avis fonciers")]
+    },
+    {
+      title: t("Declare", "Déclarer"),
       links: [
-        "VAT",
-        "Corporate tax",
-        "Payroll tax",
-        "Business rates",
-        "Property duty",
-        "Cross-border payments [+]",
-        "Result [+]"
+        t("VAT", "TVA"),
+        t("Corporate tax", "Impôt sur les sociétés"),
+        t("Payroll tax", "Taxe sur les salaires"),
+        t("Business rates", "CFE"),
+        t("Property duty", "Droits immobiliers"),
+        t("Cross-border payments [+]", "Paiements transfrontaliers [+]"),
+        t("Result [+]", "Résultat [+]")
       ]
     },
     {
-      title: "Pay",
-      links: ["VAT", "Corporate tax", "Payroll tax", "Business rates", "Property duty", "Withholding tax", "Fines [+]"]
+      title: t("Pay", "Payer"),
+      links: [
+        t("VAT", "TVA"),
+        t("Corporate tax", "Impôt sur les sociétés"),
+        t("Payroll tax", "Taxe sur les salaires"),
+        t("Business rates", "CFE"),
+        t("Property duty", "Droits immobiliers"),
+        t("Withholding tax", "Retenue à la source"),
+        t("Fines [+]", "Amendes [+]")
+      ]
     },
-    { title: "Requests", links: ["VAT refund", "Payment plan", "Change of address [+]"] }
-  ];
-  const boxes: PortalSection[] = [
-    { title: "MY FILES", links: ["Choose a file", "See all my files"] },
-    { title: "MY SPACE", links: ["Manage services", "Manage bank accounts [+]", "Manage direct debit mandates"] },
-    { title: "OTHER SERVICES", links: ["Tax calendar", "Declarant tests", "Contact details of your office"] }
-  ];
+    {
+      title: t("Requests", "Demandes"),
+      links: [
+        t("VAT refund", "Remboursement de TVA"),
+        t("Payment plan", "Plan de règlement"),
+        t("Change of address [+]", "Changement d’adresse [+]")
+      ]
+    }
+  ]);
+  const boxes: PortalSection[] = $derived([
+    {
+      title: t("MY FILES", "MES DOSSIERS"),
+      links: [t("Choose a file", "Choisir un dossier"), t("See all my files", "Voir tous mes dossiers")]
+    },
+    {
+      title: t("MY SPACE", "MON ESPACE"),
+      links: [
+        t("Manage services", "Gérer les services"),
+        t("Manage bank accounts [+]", "Gérer les comptes bancaires [+]"),
+        t("Manage direct debit mandates", "Gérer les mandats de prélèvement")
+      ]
+    },
+    {
+      title: t("OTHER SERVICES", "AUTRES SERVICES"),
+      links: [
+        t("Tax calendar", "Calendrier fiscal"),
+        t("Declarant tests", "Tests déclarants"),
+        t("Contact details of your office", "Coordonnées de votre service")
+      ]
+    }
+  ]);
+  const nav: string[] = $derived([
+    t("FILE", "DOSSIER"),
+    t("MANAGE", "GÉRER"),
+    t("CONSULT", "CONSULTER"),
+    t("DECLARE", "DÉCLARER"),
+    t("PAY", "PAYER"),
+    t("REQUESTS", "DEMANDES"),
+    t("MESSAGES", "MESSAGERIE")
+  ]);
 </script>
 
 <div class="portal">
   <div class="portal__head">
     <span class="portal__logo">RTS<small>republic tax service</small></span>
-    <span class="portal__space">PROFESSIONALS</span>
+    <span class="portal__space">{t("PROFESSIONALS", "PROFESSIONNELS")}</span>
     <nav class="portal__nav">
-      {#each ["FILE", "MANAGE", "CONSULT", "DECLARE", "PAY", "REQUESTS", "MESSAGES"] as item (item)}
+      {#each nav as item (item)}
         <span>{item}</span>
       {/each}
     </nav>
   </div>
   <div class="portal__body">
     <aside class="side">
-      <p><strong>Mrs ROSEMONT Lea</strong></p>
-      <p>Subscriber<br />26101570101919</p>
-      <p>Password expires:<br /><strong>10/11/2026</strong></p>
-      <p class="side__links">› Pro space<br />› taxes portal<br />› Log out</p>
+      <p><strong>{t("Mrs ROSEMONT Lea", "Mme ROSEMONT Lea")}</strong></p>
+      <p>{t("Subscriber", "Identifiant")}<br />26101570101919</p>
+      <p>{t("Password expires:", "Expiration du mot de passe :")}<br /><strong>10/11/2026</strong></p>
+      <p class="side__links">
+        › {t("Pro space", "Espace pro")}<br />› {t("taxes portal", "portail des impôts")}<br />› {t(
+          "Log out",
+          "Se déconnecter"
+        )}
+      </p>
     </aside>
     <div class="middle">
       {#each boxes as box (box.title)}
@@ -56,7 +106,7 @@
       {/each}
     </div>
     <section class="services">
-      <p class="box__title">MY SERVICES</p>
+      <p class="box__title">{t("MY SERVICES", "MES SERVICES")}</p>
       {#each services as section (section.title)}
         <p class="services__group">{section.title}</p>
         {#each section.links as link, i (`${section.title}-${String(i)}`)}

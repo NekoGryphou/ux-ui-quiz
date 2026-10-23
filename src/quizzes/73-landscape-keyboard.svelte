@@ -1,19 +1,33 @@
 <script lang="ts">
   import { BrandTheme } from "../mock";
+  import { t } from "../shared/locale.svelte";
 
-  const rows: string[] = ["qwertyuiop", "asdfghjkl", "zxcvbnm"];
+  const rows: string[] = $derived([
+    t("qwertyuiop", "azertyuiop"),
+    t("asdfghjkl", "qsdfghjklm"),
+    t("zxcvbnm", "wxcvbn")
+  ]);
 </script>
 
 <BrandTheme brand="playful">
   <div class="landscape">
     <div class="landscape__screen">
-      <div class="header"><span class="header__logo">parcelpal</span><span>Step 3 of 4</span></div>
-      <div class="promo">Free delivery on your next order with code HELLO</div>
-      <div class="content">
-        <p class="content__label">Delivery note for the driver</p>
-        <div class="content__field">Leave it with the neighbour at number 14 if</div>
+      <div class="header">
+        <span class="header__logo">parcelpal</span><span>{t("Step 3 of 4", "Étape 3 sur 4")}</span>
       </div>
-      <div class="chat"><span>💬 Questions? Chat with us</span></div>
+      <div class="promo">
+        {t(
+          "Free delivery on your next order with code HELLO",
+          "Livraison offerte sur votre prochaine commande avec le code BONJOUR"
+        )}
+      </div>
+      <div class="content">
+        <p class="content__label">{t("Delivery note for the driver", "Consigne pour le livreur")}</p>
+        <div class="content__field">
+          {t("Leave it with the neighbour at number 14 if", "Laissez-le chez le voisin du numéro 14 si")}
+        </div>
+      </div>
+      <div class="chat"><span>{t("💬 Questions? Chat with us", "💬 Une question ? Discutons")}</span></div>
       <div class="keyboard" aria-hidden="true">
         {#each rows as row (row)}
           <div class="keyboard__row">

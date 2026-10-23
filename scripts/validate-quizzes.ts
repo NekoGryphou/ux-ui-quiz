@@ -2,6 +2,7 @@ import { readFile } from "node:fs/promises";
 import type { render as svelteRender } from "svelte/server";
 import { createServer, type ViteDevServer } from "vite";
 import type { CompareChoice, Quiz, QuizMeta, QuizVisual, VisualProps } from "../src/engine/types/quiz.types";
+import type { Locale } from "../src/shared/types/locale.types";
 
 /**
  * @private
@@ -54,6 +55,23 @@ interface QuizConstModule {
 
 /**
  * @private
+ * @desc Shape of the SSR-loaded locale module.
+ *
+ * @property locale - App-wide language state.
+ */
+interface LocaleModule {
+  /** App-wide language state. */
+  locale: { set: (next: Locale) => void };
+}
+
+/**
+ * @private
+ * @desc Languages every quiz is checked in.
+ */
+const LOCALES: readonly Locale[] = ["en", "fr"];
+
+/**
+ * @private
  * @desc Shape of the SSR-loaded svelte/server module.
  *
  * @property render - Svelte server renderer.
@@ -76,6 +94,7 @@ const server: ViteDevServer = await createServer({
 try {
   const { quizzes, quizFiles } = (await server.ssrLoadModule("/src/quizzes/index.ts")) as QuizzesModule;
   const { render } = (await server.ssrLoadModule("svelte/server")) as ServerModule;
+  const { locale } = (await server.ssrLoadModule("/src/shared/locale.svelte.ts")) as LocaleModule;
   const { COMPARE_OPTIONS } = (await server.ssrLoadModule("/src/engine/const/quiz.const.ts")) as QuizConstModule;
   const { validateQuizzes, markupRegionErrors, motionErrors, headingErrors } = (await server.ssrLoadModule(
     "/src/engine/utils/validate.utils.ts"
@@ -98,16 +117,51 @@ try {
   const renderedProps = (quiz: QuizMeta): VisualProps[] =>
     quiz.kind === "compare" ? COMPARE_OPTIONS.map((option): VisualProps => ({ variant: option.id })) : [{}];
 
+  /**
+   * @private
+   * @desc Checks the quiz data and rendered visuals in one language.
+   *
+   * @param language - Language to check.
+   *
+   * @returns One message per problem, prefixed with the language.
+   */
+  const errorsIn = (language: Locale): string[] => {
+    locale.set(language);
+    return [
+      ...validateQuizzes(quizzes),
+      ...quizzes.flatMap((quiz, index) => {
+        const visual: QuizVisual | undefined = visuals[index];
+        if (visual === undefined) return [];
+        return renderedProps(quiz).flatMap((props: VisualProps): string[] => {
+          const markup: string = render(visual, { props }).body;
+          return [...markupRegionErrors(quiz, markup), ...headingErrors(quiz, markup)];
+        });
+      })
+    ].map((error: string): string => `[${language}] ${error}`);
+  };
+
+  /**
+   * @private
+   * @desc Lists the long texts of a quiz in the current language.
+   *
+   * @param quiz - Quiz to read.
+   *
+   * @returns Scenario, prompt and explanation.
+   */
+  const longTexts = (quiz: QuizMeta): string[] => [quiz.scenario, quiz.prompt, quiz.explanation.join(" ")];
+
+  locale.set("en");
+  const english: string[][] = quizzes.map(longTexts);
+  locale.set("fr");
+  const untranslated: string[] = quizzes
+    .filter((quiz, index) =>
+      longTexts(quiz).some((text: string, field: number): boolean => text === english[index]?.[field])
+    )
+    .map((quiz): string => `${quiz.id}: French scenario, prompt or explanation is identical to the English one`);
+
   const errors: string[] = [
-    ...validateQuizzes(quizzes),
-    ...quizzes.flatMap((quiz, index) => {
-      const visual: QuizVisual | undefined = visuals[index];
-      if (visual === undefined) return [];
-      return renderedProps(quiz).flatMap((props: VisualProps): string[] => {
-        const markup: string = render(visual, { props }).body;
-        return [...markupRegionErrors(quiz, markup), ...headingErrors(quiz, markup)];
-      });
-    }),
+    ...LOCALES.flatMap(errorsIn),
+    ...untranslated,
     ...quizzes.flatMap((quiz, index) => motionErrors(quiz, sources[index] ?? ""))
   ];
 

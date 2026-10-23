@@ -1,9 +1,22 @@
 <script lang="ts">
   import { Badge, BrandTheme, BrowserShell, Hotspot, MockButton, Title, TopBar } from "../mock";
+  import { t } from "../shared/locale.svelte";
 
   const customers: string[] = ["North Peak", "Acme Dental", "River Labs", "Blue Harbor", "Kite & Co"];
-  const dates: string[] = ["Oct 02", "Oct 05", "Oct 09", "Oct 14", "Oct 21"];
-  const amounts: string[] = ["€1,240.5", "€89", "€12,000.00", "€430.10", "€2,315"];
+  const dates: string[] = $derived([
+    t("Oct 02", "02 oct."),
+    t("Oct 05", "05 oct."),
+    t("Oct 09", "09 oct."),
+    t("Oct 14", "14 oct."),
+    t("Oct 21", "21 oct.")
+  ]);
+  const amounts: string[] = $derived([
+    t("€1,240.5", "1 240,5 €"),
+    t("€89", "89 €"),
+    t("€12,000.00", "12 000,00 €"),
+    t("€430.10", "430,10 €"),
+    t("€2,315", "2 315 €")
+  ]);
 </script>
 
 <BrandTheme brand="corporate">
@@ -12,20 +25,20 @@
     <div class="page">
       <Hotspot id="page-header">
         <div class="head">
-          <Title>Invoices</Title>
-          <MockButton size="sm" icon="download">Export</MockButton>
+          <Title>{t("Invoices", "Factures")}</Title>
+          <MockButton size="sm" icon="download">{t("Export", "Exporter")}</MockButton>
         </div>
       </Hotspot>
       <Hotspot id="filters">
         <div class="filters">
-          <Badge tone="info">October 2025</Badge>
-          <Badge>Status: Paid</Badge>
+          <Badge tone="info">{t("October 2025", "Octobre 2025")}</Badge>
+          <Badge>{t("Status: Paid", "Statut : Payée")}</Badge>
         </div>
       </Hotspot>
       <div class="table">
         <Hotspot id="customer-column">
           <div class="column">
-            <span class="cell cell--head">Customer</span>
+            <span class="cell cell--head">{t("Customer", "Client")}</span>
             {#each customers as customer (customer)}<span class="cell">{customer}</span>{/each}
           </div>
         </Hotspot>
@@ -37,13 +50,15 @@
         </Hotspot>
         <Hotspot id="amount-column">
           <div class="column">
-            <span class="cell cell--head">Amount</span>
+            <span class="cell cell--head">{t("Amount", "Montant")}</span>
             {#each amounts as amount (amount)}<span class="cell">{amount}</span>{/each}
           </div>
         </Hotspot>
       </div>
       <Hotspot id="pagination">
-        <div class="pagination"><span>1–5 of 42</span><MockButton size="sm" icon="chevron-right" /></div>
+        <div class="pagination">
+          <span>{t("1–5 of 42", "1–5 sur 42")}</span><MockButton size="sm" icon="chevron-right" />
+        </div>
       </Hotspot>
     </div>
   </BrowserShell>

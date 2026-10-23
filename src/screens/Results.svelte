@@ -8,7 +8,8 @@
   import Button from "../components/Button.svelte";
   import Icon from "../components/Icon.svelte";
   import type { Attempt } from "../engine/types/run.types";
-  import { RING_LENGTH, RING_RADIUS, RUN_EYEBROWS } from "./const/results.const";
+  import { pick, plural, t } from "../shared/locale.svelte";
+  import { CORRECT_FORMS, RING_LENGTH, RING_RADIUS, RUN_EYEBROWS } from "./const/results.const";
   import type { ReviewRow, RingState } from "./types/results.types";
   import type { ResultsScreenProps } from "./types/results-screen.types";
   import { deltaText, previousFullAttempt, reviewStatus, ringState, verdict } from "./utils/results.utils";
@@ -90,12 +91,18 @@
     </svg>
 
     <div class="summary__copy">
-      <p class="summary__eyebrow">{run.isComplete ? RUN_EYEBROWS[run.kind] : "In progress"}</p>
+      <p class="summary__eyebrow">{run.isComplete ? pick(RUN_EYEBROWS[run.kind]) : t("In progress", "En cours")}</p>
       <h1 tabindex="-1">
         {#if run.isComplete}
-          {run.score} of {run.total} correct
+          {t(
+            `${String(run.score)} of ${String(run.total)} correct`,
+            `${String(run.score)} ${plural(run.score, CORRECT_FORMS)} sur ${String(run.total)}`
+          )}
         {:else}
-          {run.score} correct so far
+          {t(
+            `${String(run.score)} correct so far`,
+            `${String(run.score)} ${plural(run.score, CORRECT_FORMS)} pour l’instant`
+          )}
         {/if}
       </h1>
       <p class="summary__verdict">{summary}</p>
@@ -105,25 +112,31 @@
       <div class="summary__actions">
         {#if !run.isComplete}
           <Button variant="accent" href={href.quiz(target, run.resumeIndex)} iconEnd="arrow-right">
-            Continue at question {run.resumeIndex + 1}
+            {t("Continue at question", "Reprendre à la question")}
+            {run.resumeIndex + 1}
           </Button>
           {#if target === "main"}
             <RestartButton />
           {:else}
-            <Button onclick={finishPractice}>Stop practising</Button>
+            <Button onclick={finishPractice}>{t("Stop practising", "Arrêter l’entraînement")}</Button>
           {/if}
         {:else if target === "main"}
           {#if missed.length > 0}
             <Button variant="accent" onclick={retryMissed} iconStart="refresh">
-              Retry the {missed.length} you missed
+              {t(
+                `Retry the ${String(missed.length)} you missed`,
+                `Retenter ${missed.length === 1 ? "la question manquée" : `les ${String(missed.length)} questions manquées`}`
+              )}
             </Button>
           {/if}
-          <Button href={href.review(0)} iconStart="eye">Review all answers</Button>
+          <Button href={href.review(0)} iconStart="eye">{t("Review all answers", "Revoir toutes les réponses")}</Button>
           <RestartButton />
         {:else}
-          <Button variant="accent" onclick={finishPractice} iconEnd="arrow-right">Back to home</Button>
+          <Button variant="accent" onclick={finishPractice} iconEnd="arrow-right"
+            >{t("Back to home", "Retour à l’accueil")}</Button
+          >
           {#if run.kind === "quick"}
-            <Button onclick={quickAgain} iconStart="zap">Another Quick 10</Button>
+            <Button onclick={quickAgain} iconStart="zap">{t("Another Quick 10", "Un autre Quick 10")}</Button>
           {/if}
         {/if}
       </div>
@@ -133,7 +146,7 @@
   <RunGuardDialog {guard} />
 
   <section class="panel" aria-labelledby="review-heading">
-    <h2 id="review-heading" class="panel__title">To review <span>{missed.length}</span></h2>
+    <h2 id="review-heading" class="panel__title">{t("To review", "À revoir")} <span>{missed.length}</span></h2>
     {#if missed.length > 0}
       <ul class="review">
         {#each missed as row (row.quiz.id)}
@@ -144,7 +157,7 @@
               </span>
               <span class="review__copy">
                 <strong>{row.status === "wrong" ? row.quiz.title : `Question ${String(row.index + 1)}`}</strong>
-                <small>{row.status === "wrong" ? row.quiz.principle : "Not answered"}</small>
+                <small>{row.status === "wrong" ? row.quiz.principle : t("Not answered", "Sans réponse")}</small>
               </span>
               <Icon name="chevron-right" size={16} />
             </a>
@@ -152,7 +165,9 @@
         {/each}
       </ul>
     {:else}
-      <p class="panel__empty">Nothing to review. Every answer was right.</p>
+      <p class="panel__empty">
+        {t("Nothing to review. Every answer was right.", "Rien à revoir. Toutes vos réponses sont justes.")}
+      </p>
     {/if}
   </section>
 </div>

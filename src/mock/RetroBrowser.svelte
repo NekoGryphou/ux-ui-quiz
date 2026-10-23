@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { pick, t } from "../shared/locale.svelte";
   import { RETRO_BROWSER_BUTTONS, RETRO_BROWSER_MENU, RETRO_BROWSER_STATUS } from "./const/retro.const";
   import RetroField from "./RetroField.svelte";
   import RetroWindow from "./RetroWindow.svelte";
@@ -9,15 +10,15 @@
 
 <RetroWindow
   title="{title} - Microsoft Internet Explorer"
-  menu={RETRO_BROWSER_MENU}
-  status={RETRO_BROWSER_STATUS}
+  menu={pick(RETRO_BROWSER_MENU)}
+  status={pick(RETRO_BROWSER_STATUS)}
   {width}
 >
   {#snippet toolbar()}
-    {#each RETRO_BROWSER_BUTTONS as button (button)}
+    {#each pick(RETRO_BROWSER_BUTTONS) as button (button)}
       <span class="tool">{button}</span>
     {/each}
-    <span class="address">Address <RetroField value={url} grow /></span>
+    <span class="address">{t("Address", "Adresse")} <RetroField value={url} grow /></span>
   {/snippet}
   <div class="page">{@render children()}</div>
 </RetroWindow>

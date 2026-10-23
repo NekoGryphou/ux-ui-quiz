@@ -1,5 +1,6 @@
 import type { RunKind } from "../../engine/types/run.types";
-import { RUN_LABELS } from "../const/run-label.const";
+import { pick, plural, t } from "../../shared/locale.svelte";
+import { ANSWER_FORMS, RUN_LABELS } from "../const/run-label.const";
 
 /**
  * @export
@@ -12,7 +13,7 @@ import { RUN_LABELS } from "../const/run-label.const";
  * @returns Text such as "Resume Quick 10 · 3/10".
  */
 export const resumeLabel = (kind: RunKind, answered: number, total: number): string =>
-  `Resume ${RUN_LABELS[kind]} · ${String(answered)}/${String(total)}`;
+  `${t("Resume", "Reprendre")} ${pick(RUN_LABELS[kind])} · ${String(answered)}/${String(total)}`;
 
 /**
  * @export
@@ -22,7 +23,8 @@ export const resumeLabel = (kind: RunKind, answered: number, total: number): str
  *
  * @returns Text such as "Abandon your Quick 10?".
  */
-export const abandonTitle = (kind: RunKind): string => `Abandon your ${RUN_LABELS[kind]}?`;
+export const abandonTitle = (kind: RunKind): string =>
+  t(`Abandon your ${RUN_LABELS[kind].en}?`, `Abandonner ${RUN_LABELS[kind].fr} ?`);
 
 /**
  * @export
@@ -33,5 +35,10 @@ export const abandonTitle = (kind: RunKind): string => `Abandon your ${RUN_LABEL
  *
  * @returns What will be lost.
  */
-export const abandonBody = (kind: RunKind, answered: number): string =>
-  `Only one run can be in progress. Your ${String(answered)} ${answered === 1 ? "answer" : "answers"} in this ${RUN_LABELS[kind]} will be cleared.`;
+export const abandonBody = (kind: RunKind, answered: number): string => {
+  const answers: string = `${String(answered)} ${plural(answered, ANSWER_FORMS)}`;
+  return t(
+    `Only one run can be in progress. Your ${answers} in this ${RUN_LABELS[kind].en} will be cleared.`,
+    `Une seule session peut être en cours. ${answers} dans ${RUN_LABELS[kind].fr} ${answered > 1 ? "seront effacées" : "sera effacée"}.`
+  );
+};

@@ -1,4 +1,5 @@
 import type { Attempt } from "../../engine/types/run.types";
+import { t } from "../../shared/locale.svelte";
 import type { HistorySegment } from "../types/home.types";
 
 /**
@@ -35,6 +36,13 @@ const score = (attempt: Attempt): HistorySegment => ({
  */
 export const historyLine = (best: Attempt | null, last: Attempt | null): HistorySegment[] | null => {
   if (best === null || last === null) return null;
-  if (best.runId === last.runId) return [label("Best and last full run:"), score(best)];
-  return [label("Best full run:"), score(best), label("· Last:"), score(last)];
+  if (best.runId === last.runId) {
+    return [label(t("Best and last full run:", "Meilleur et dernier quiz complet :")), score(best)];
+  }
+  return [
+    label(t("Best full run:", "Meilleur quiz complet :")),
+    score(best),
+    label(t("· Last:", "· Dernier :")),
+    score(last)
+  ];
 };

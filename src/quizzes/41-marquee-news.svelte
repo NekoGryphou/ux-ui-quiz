@@ -1,20 +1,26 @@
 <script lang="ts">
   import { Hotspot, RetroBrowser, RetroButton } from "../mock";
+  import { t } from "../shared/locale.svelte";
   import { CLUB_MASCOT_GIF_URL } from "./const/media.const";
 </script>
 
 <!--suppress HttpUrlsUsage -->
-<RetroBrowser title="~*~ Riverside Chess Club ~*~" url="http://www.geocities.com/riverside_chess/">
+<RetroBrowser
+  title={t("~*~ Riverside Chess Club ~*~", "~*~ Club d’échecs de Riverside ~*~")}
+  url="http://www.geocities.com/riverside_chess/"
+>
   <div class="site">
     <Hotspot id="banner">
-      <p class="banner">♞ Welcome to the Riverside Chess Club!!! ♞</p>
+      <p class="banner">
+        {t("♞ Welcome to the Riverside Chess Club!!! ♞", "♞ Bienvenue au Club d’échecs de Riverside !!! ♞")}
+      </p>
     </Hotspot>
     <Hotspot id="menu">
       <div class="menu">
-        <RetroButton>Home</RetroButton>
-        <RetroButton>Members</RetroButton>
-        <RetroButton>Results</RetroButton>
-        <RetroButton>Links</RetroButton>
+        <RetroButton>{t("Home", "Accueil")}</RetroButton>
+        <RetroButton>{t("Members", "Membres")}</RetroButton>
+        <RetroButton>{t("Results", "Résultats")}</RetroButton>
+        <RetroButton>{t("Links", "Liens")}</RetroButton>
       </div>
     </Hotspot>
     <Hotspot id="ticker">
@@ -22,7 +28,10 @@
         <span class="ticker__track">
           {#each [0, 1] as copy (copy)}
             <span class="ticker__text"
-              >*** NEW *** This week’s tournament moves to SATURDAY 2 PM in the library hall · bring your own clock!</span
+              >{t(
+                "*** NEW *** This week’s tournament moves to SATURDAY 2 PM in the library hall · bring your own clock!",
+                "*** NOUVEAU *** Le tournoi de la semaine est déplacé au SAMEDI 14 H dans la salle de la bibliothèque · apportez votre pendule !"
+              )}</span
             >
           {/each}
         </span>
@@ -31,26 +40,31 @@
     <div class="columns">
       <Hotspot id="welcome">
         <div class="panel">
-          <p class="panel__title">About the club</p>
+          <p class="panel__title">{t("About the club", "À propos du club")}</p>
           <p>
-            We meet every Thursday evening in the back room of the library. Beginners are always welcome, and boards are
-            provided!
+            {t(
+              "We meet every Thursday evening in the back room of the library. Beginners are always welcome, and boards are provided!",
+              "Nous nous retrouvons chaque jeudi soir dans l’arrière-salle de la bibliothèque. Tous les niveaux sont les bienvenus, et les échiquiers sont fournis !"
+            )}
           </p>
-          <p class="construction"><i></i> Results page under construction <i></i></p>
+          <p class="construction">
+            <i></i>
+            {t("Results page under construction", "Page Résultats en construction")} <i></i>
+          </p>
         </div>
       </Hotspot>
       <div class="side">
         <Hotspot id="mascot">
-          <img class="mascot" src={CLUB_MASCOT_GIF_URL} alt="Animated cartoon" width="170" />
+          <img class="mascot" src={CLUB_MASCOT_GIF_URL} alt={t("Animated cartoon", "Personnage animé")} width="170" />
         </Hotspot>
         <Hotspot id="counter">
           <div class="counter">
-            <span>You are visitor</span>
+            <span>{t("You are visitor", "Nombre de visites")}</span>
             <span class="counter__digits">004217</span>
           </div>
         </Hotspot>
         <Hotspot id="guestbook">
-          <span class="guestbook">✍ Sign our Guestbook!</span>
+          <span class="guestbook">{t("✍ Sign our Guestbook!", "✍ Signez notre Livre d’or !")}</span>
         </Hotspot>
       </div>
     </div>

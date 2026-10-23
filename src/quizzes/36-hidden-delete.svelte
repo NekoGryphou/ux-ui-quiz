@@ -1,7 +1,14 @@
 <script lang="ts">
   import { Avatar, BrandTheme, BrowserShell, Icon, TopBar } from "../mock";
+  import { t } from "../shared/locale.svelte";
 
-  const items: string[] = ["Rename", "Duplicate", "Delete", "Move to…", "Download"];
+  const items: string[] = $derived([
+    t("Rename", "Renommer"),
+    t("Duplicate", "Dupliquer"),
+    t("Delete", "Supprimer"),
+    t("Move to…", "Déplacer vers…"),
+    t("Download", "Télécharger")
+  ]);
 </script>
 
 <BrandTheme brand="playful">

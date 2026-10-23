@@ -1,4 +1,5 @@
 import type { QuizKind } from "../../engine/types/quiz.types";
+import { t } from "../../shared/locale.svelte";
 import type { KindBadgeLook } from "../types/kind-badge.types";
 
 /**
@@ -13,12 +14,18 @@ import type { KindBadgeLook } from "../types/kind-badge.types";
 export const kindBadgeLook = (kind: QuizKind, several: boolean): KindBadgeLook => {
   switch (kind) {
     case "single":
-      return { icon: "circle-dot", text: "One answer", tone: "single" };
+      return { icon: "circle-dot", text: t("One answer", "Une réponse"), tone: "single" };
     case "multiple":
-      return { icon: "list-checks", text: "Multiple answers", tone: "multiple" };
+      return { icon: "list-checks", text: t("Multiple answers", "Plusieurs réponses"), tone: "multiple" };
     case "hotspot":
-      return { icon: "crosshair", text: several ? "Click every problem" : "Click the problem", tone: "hotspot" };
+      return {
+        icon: "crosshair",
+        text: several
+          ? t("Click every problem", "Cliquez sur chaque problème")
+          : t("Click the problem", "Cliquez sur le problème"),
+        tone: "hotspot"
+      };
     case "compare":
-      return { icon: "columns", text: "Pick the better one", tone: "compare" };
+      return { icon: "columns", text: t("Pick the better one", "Choisissez la meilleure"), tone: "compare" };
   }
 };

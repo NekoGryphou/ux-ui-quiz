@@ -2,6 +2,7 @@
   import Button from "../components/Button.svelte";
   import type { CompareChoice } from "../engine/types/quiz.types";
   import { isCompareChoice } from "../engine/utils/quiz.utils";
+  import { t } from "../shared/locale.svelte";
   import CompareStage from "./CompareStage.svelte";
   import type { QuizStageProps } from "./types/quiz-stage.types";
   import type { VisualState } from "./types/visual-cache.types";
@@ -35,10 +36,10 @@
 {:else}
   <div class="pending" aria-busy={loaded.status === "loading"}>
     {#if loaded.status === "failed"}
-      <p>The interface for this question didn’t load.</p>
-      <Button iconStart="refresh" onclick={retry}>Try again</Button>
+      <p>{t("The interface for this question didn’t load.", "L’interface de cette question n’a pas pu se charger.")}</p>
+      <Button iconStart="refresh" onclick={retry}>{t("Try again", "Réessayer")}</Button>
     {:else}
-      <span class="visually-hidden">Loading the interface</span>
+      <span class="visually-hidden">{t("Loading the interface", "Chargement de l’interface")}</span>
     {/if}
   </div>
 {/if}

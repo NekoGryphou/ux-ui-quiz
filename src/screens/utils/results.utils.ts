@@ -1,19 +1,9 @@
 import type { Answer, Quiz } from "../../engine/types/quiz.types";
 import type { Attempt } from "../../engine/types/run.types";
 import { isCorrect } from "../../engine/utils/scoring.utils";
-import { FALLBACK_VERDICT, VERDICTS } from "../const/results.const";
+import { pick, plural, t } from "../../shared/locale.svelte";
+import { FALLBACK_VERDICT, POINT_FORMS, QUESTION_FORMS, VERDICTS } from "../const/results.const";
 import type { ReviewStatus, RingState } from "../types/results.types";
-
-/**
- * @private
- * @desc Count followed by a word, pluralised with an s.
- *
- * @param count - Quantity.
- * @param word - Singular word.
- *
- * @returns Text such as 3 questions.
- */
-const plural = (count: number, word: string): string => `${String(count)} ${word}${count === 1 ? "" : "s"}`;
 
 /**
  * @export
@@ -28,13 +18,16 @@ const plural = (count: number, word: string): string => `${String(count)} ${word
  */
 export const ringState = (score: number, answered: number, total: number, complete: boolean): RingState => {
   if (complete) {
-    const percent: string = `${String(Math.round((score / total) * 100))}%`;
-    return { value: score / total, text: percent, label: `${percent} correct` };
+    const percent: string = t(
+      `${String(Math.round((score / total) * 100))}%`,
+      `${String(Math.round((score / total) * 100))} %`
+    );
+    return { value: score / total, text: percent, label: t(`${percent} correct`, `${percent} de bonnes réponses`) };
   }
   return {
     value: answered / total,
     text: `${String(answered)}/${String(total)}`,
-    label: `${String(answered)} of ${String(total)} answered`
+    label: t(`${String(answered)} of ${String(total)} answered`, `${String(answered)} sur ${String(total)} répondues`)
   };
 };
 
@@ -50,9 +43,12 @@ export const ringState = (score: number, answered: number, total: number, comple
  * @returns Summary sentence.
  */
 export const verdict = (score: number, answered: number, total: number, complete: boolean): string => {
-  if (!complete) return `${plural(total - answered, "question")} left. Pick up where you stopped.`;
+  if (!complete) {
+    const left: string = `${String(total - answered)} ${plural(total - answered, QUESTION_FORMS)}`;
+    return t(`${left} left. Pick up where you stopped.`, `Encore ${left}. Reprenez là où vous en étiez.`);
+  }
   const ratio: number = score / total;
-  return VERDICTS.find((entry) => ratio >= entry.minRatio)?.text ?? FALLBACK_VERDICT;
+  return pick(VERDICTS.find((entry) => ratio >= entry.minRatio)?.text ?? FALLBACK_VERDICT);
 };
 
 /**
@@ -81,8 +77,14 @@ export const reviewStatus = (quiz: Quiz, answer: Answer | undefined): ReviewStat
 export const deltaText = (current: Attempt | null, previous: Attempt | null): string | null => {
   if (current === null || previous === null) return null;
   const delta: number = Math.round((current.score / current.total - previous.score / previous.total) * 100);
-  if (delta === 0) return "Same score as your previous full run.";
-  return `${delta > 0 ? "+" : ""}${String(delta)} points vs your previous full run (${String(previous.score)}/${String(previous.total)}).`;
+  if (delta === 0)
+    return t("Same score as your previous full run.", "Même score que lors de votre précédent quiz complet.");
+  const points: string = `${delta > 0 ? "+" : ""}${String(delta)} ${plural(Math.abs(delta), POINT_FORMS)}`;
+  const previousScore: string = `${String(previous.score)}/${String(previous.total)}`;
+  return t(
+    `${points} vs your previous full run (${previousScore}).`,
+    `${points} par rapport à votre précédent quiz complet (${previousScore}).`
+  );
 };
 
 /**

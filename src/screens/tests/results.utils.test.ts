@@ -19,7 +19,7 @@ describe("ringState and verdict", (): void => {
     expect(ringState(2, 4, 10, false)).toEqual({ value: 0.4, text: "4/10", label: "4 of 10 answered" });
     expect(ringState(9, 10, 10, true)).toEqual({ value: 0.9, text: "90%", label: "90% correct" });
     expect(verdict(0, 9, 10, false)).toBe("1 question left. Pick up where you stopped.");
-    expect(verdict(2, 10, 10, true)).toBe(FALLBACK_VERDICT);
+    expect(verdict(2, 10, 10, true)).toBe(FALLBACK_VERDICT.en);
   });
 });
 

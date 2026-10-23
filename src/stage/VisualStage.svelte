@@ -1,6 +1,7 @@
 <script lang="ts">
   import Button from "../components/Button.svelte";
   import IconButton from "../components/IconButton.svelte";
+  import { t } from "../shared/locale.svelte";
   import { ENLARGE_BELOW_SCALE } from "./const/stage.const";
   import MockFrame from "./MockFrame.svelte";
   import type { VisualStageProps } from "./types/visual-stage.types";
@@ -70,7 +71,7 @@
   });
 </script>
 
-<figure class="stage" class:stage--compact={compact} aria-label="Interface under review">
+<figure class="stage" class:stage--compact={compact} aria-label={t("Interface under review", "Interface à analyser")}>
   <div class="stage__canvas">
     <div class="stage__frame" bind:this={frame} style:height="{naturalHeight * scale}px">
       <div class="stage__scaler" bind:this={scaler} style:transform="translateX(-50%) scale({scale})">
@@ -81,18 +82,28 @@
 
   {#if scale < ENLARGE_BELOW_SCALE}
     <div class="stage__footer">
-      <Button iconStart="maximize" onclick={openViewer}>Enlarge</Button>
+      <Button iconStart="maximize" onclick={openViewer}>{t("Enlarge", "Agrandir")}</Button>
     </div>
   {/if}
 </figure>
 
-<dialog class="viewer" bind:this={dialog} aria-label="{label}, actual size" onclose={onViewerClose}>
+<dialog
+  class="viewer"
+  bind:this={dialog}
+  aria-label="{label}, {t('actual size', 'taille réelle')}"
+  onclose={onViewerClose}
+>
   <div class="viewer__bar">
-    <span><strong>{label}</strong> · Actual size</span>
-    <IconButton icon="x" label="Close" variant="ghost" onclick={closeViewer} />
+    <span><strong>{label}</strong> · {t("Actual size", "Taille réelle")}</span>
+    <IconButton icon="x" label={t("Close", "Fermer")} variant="ghost" onclick={closeViewer} />
   </div>
   <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
-  <div class="viewer__canvas" tabindex="0" role="region" aria-label="Interface, scrollable">
+  <div
+    class="viewer__canvas"
+    tabindex="0"
+    role="region"
+    aria-label={t("Interface, scrollable", "Interface, défilable")}
+  >
     {#if enlarged}<MockFrame visual={Visual} {variant} />{/if}
   </div>
 </dialog>

@@ -1,32 +1,33 @@
 <script lang="ts">
   import { BrandTheme, BrowserShell, KeyboardSandbox, KeyTarget, MockButton } from "../mock";
   import type { KeyStop } from "../mock/types/keyboard.types";
+  import { t } from "../shared/locale.svelte";
 
-  const links: string[] = [
-    "Product",
-    "Features",
-    "Pricing",
-    "Customers",
-    "Integrations",
+  const links: string[] = $derived([
+    t("Product", "Produit"),
+    t("Features", "Fonctionnalités"),
+    t("Pricing", "Tarifs"),
+    t("Customers", "Clients"),
+    t("Integrations", "Intégrations"),
     "Docs",
     "API",
     "Blog",
-    "Events",
-    "Careers",
-    "Press",
-    "Status",
-    "Log in",
-    "Sign up"
-  ];
+    t("Events", "Événements"),
+    t("Careers", "Carrières"),
+    t("Press", "Presse"),
+    t("Status", "Statut"),
+    t("Log in", "Se connecter"),
+    t("Sign up", "S’inscrire")
+  ]);
 
-  const stops: KeyStop[] = [
-    ...links.map((link): KeyStop => ({ id: link, label: `${link} link` })),
-    { id: "email", label: "Email field" },
-    { id: "send", label: "Send button" },
-    { id: "name", label: "Name field" },
-    { id: "company", label: "Company field" },
-    { id: "message", label: "Message field" }
-  ];
+  const stops: KeyStop[] = $derived([
+    ...links.map((link, index): KeyStop => ({ id: `link-${String(index)}`, label: t(`${link} link`, `Lien ${link}`) })),
+    { id: "email", label: t("Email field", "Champ E-mail") },
+    { id: "send", label: t("Send button", "Bouton Envoyer") },
+    { id: "name", label: t("Name field", "Champ Nom") },
+    { id: "company", label: t("Company field", "Champ Entreprise") },
+    { id: "message", label: t("Message field", "Champ Message") }
+  ]);
 </script>
 
 <BrandTheme brand="corporate">
@@ -35,20 +36,20 @@
       <div class="header">
         <span class="brand">Relaykit</span>
         <div class="links">
-          {#each links as link (link)}
-            <KeyTarget id={link} inline><span class="link">{link}</span></KeyTarget>
+          {#each links as link, index (index)}
+            <KeyTarget id="link-{index}" inline><span class="link">{link}</span></KeyTarget>
           {/each}
         </div>
       </div>
       <div class="page">
-        <p class="title">Contact sales</p>
+        <p class="title">{t("Contact sales", "Contacter l’équipe commerciale")}</p>
         <div class="row">
-          <KeyTarget id="name"><span class="field">Name</span></KeyTarget>
-          <KeyTarget id="company"><span class="field">Company</span></KeyTarget>
+          <KeyTarget id="name"><span class="field">{t("Name", "Nom")}</span></KeyTarget>
+          <KeyTarget id="company"><span class="field">{t("Company", "Entreprise")}</span></KeyTarget>
         </div>
-        <KeyTarget id="email"><span class="field">Email</span></KeyTarget>
+        <KeyTarget id="email"><span class="field">{t("Email", "E-mail")}</span></KeyTarget>
         <KeyTarget id="message"><span class="field field--area">Message</span></KeyTarget>
-        <KeyTarget id="send" inline><MockButton variant="primary">Send</MockButton></KeyTarget>
+        <KeyTarget id="send" inline><MockButton variant="primary">{t("Send", "Envoyer")}</MockButton></KeyTarget>
       </div>
     </BrowserShell>
   </KeyboardSandbox>

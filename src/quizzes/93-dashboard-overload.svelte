@@ -1,20 +1,26 @@
 <script lang="ts">
+  import { t } from "../shared/locale.svelte";
   import type { DashboardTile } from "./types/quiz-mocks.types";
 
   const bars: number[] = [62, 74, 55, 80, 68, 90, 72];
-  const ticker: string = "EU +2.1% · US −0.4% · APAC +5.7% · LATAM +1.2% · MEA −1.9% · ONLINE +3.3% · RETAIL −0.8%";
-  const tiles: DashboardTile[] = [
-    { label: "Sessions", value: "1,284,331" },
-    { label: "Bounce", value: "41.2%" },
+  const ticker: string = $derived(
+    t(
+      "EU +2.1% · US −0.4% · APAC +5.7% · LATAM +1.2% · MEA −1.9% · ONLINE +3.3% · RETAIL −0.8%",
+      "UE +2,1 % · US −0,4 % · APAC +5,7 % · LATAM +1,2 % · MEA −1,9 % · EN LIGNE +3,3 % · MAGASINS −0,8 %"
+    )
+  );
+  const tiles: DashboardTile[] = $derived([
+    { label: "Sessions", value: t("1,284,331", "1 284 331") },
+    { label: t("Bounce", "Rebond"), value: t("41.2%", "41,2 %") },
     { label: "NPS", value: "37" },
-    { label: "CAC", value: "€48.20" },
-    { label: "Churn", value: "2.9%" },
-    { label: "Tickets", value: "1,042" },
-    { label: "ARPU", value: "€31.70" },
-    { label: "MRR Δ", value: "+0.4%" },
-    { label: "Sales MoM", value: "+8.1%" },
-    { label: "Refunds", value: "312" }
-  ];
+    { label: "CAC", value: t("€48.20", "48,20 €") },
+    { label: t("Churn", "Attrition"), value: t("2.9%", "2,9 %") },
+    { label: "Tickets", value: t("1,042", "1 042") },
+    { label: "ARPU", value: t("€31.70", "31,70 €") },
+    { label: "MRR Δ", value: t("+0.4%", "+0,4 %") },
+    { label: t("Sales MoM", "Ventes M/M-1"), value: t("+8.1%", "+8,1 %") },
+    { label: t("Refunds", "Rembours."), value: "312" }
+  ]);
   const slices: string[] = [
     "#5b8def",
     "#6ea0f2",
@@ -36,7 +42,12 @@
 
 <div class="dash">
   <div class="dash__head">
-    <span>EXECUTIVE OVERVIEW · ALL REGIONS · ALL CHANNELS · LIVE</span>
+    <span
+      >{t(
+        "EXECUTIVE OVERVIEW · ALL REGIONS · ALL CHANNELS · LIVE",
+        "SYNTHÈSE DIRECTION · TOUTES RÉGIONS · TOUS CANAUX · EN DIRECT"
+      )}</span
+    >
     <span class="dash__ticker">{ticker}</span>
   </div>
   <div class="dash__grid">
@@ -47,23 +58,23 @@
       </div>
     {/each}
     <div class="panel panel--pie">
-      <span class="tile__label">Revenue by product line (12)</span>
+      <span class="tile__label">{t("Revenue by product line (12)", "CA par gamme de produits (12)")}</span>
       <span class="pie" style:background="conic-gradient({gradient})"></span>
     </div>
     <div class="panel panel--bars">
-      <span class="tile__label">Orders / weekday (3D)</span>
+      <span class="tile__label">{t("Orders / weekday (3D)", "Commandes / jour (3D)")}</span>
       <div class="bars">
         {#each bars as bar, i (i)}<i style:height="{bar}%"></i>{/each}
       </div>
     </div>
-    {#each ["Uptime", "Stock", "Quota"] as gauge, i (gauge)}
+    {#each [t("Uptime", "Disponibilité"), "Stock", "Quota"] as gauge, i (gauge)}
       <div class="panel panel--gauge">
         <span class="tile__label">{gauge}</span>
         <span class="gauge" style:--angle="{[160, 95, 130][i]}deg"></span>
       </div>
     {/each}
     <div class="panel panel--spark">
-      <span class="tile__label">Visitors · 90 days</span>
+      <span class="tile__label">{t("Visitors · 90 days", "Visiteurs · 90 jours")}</span>
       <svg viewBox="0 0 120 30" aria-hidden="true">
         <polyline
           points="0,20 8,14 16,22 24,10 32,18 40,8 48,16 56,12 64,24 72,6 80,15 88,9 96,19 104,11 112,17 120,7"

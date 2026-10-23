@@ -1,3 +1,4 @@
+import { t } from "../../shared/locale.svelte";
 import { APP_NAME } from "../const/app.const";
 import type { QuizScreen, Screen } from "../types/screen.types";
 
@@ -10,9 +11,9 @@ import type { QuizScreen, Screen } from "../types/screen.types";
  * @returns The heading, e.g. "Question 3 of 20".
  */
 const quizHeading = (screen: QuizScreen): string => {
-  const position: string = `${String(screen.index + 1)} of ${String(screen.run.total)}`;
-  if (screen.mode === "review") return `Review ${position}`;
-  return `${screen.target === "main" ? "Question" : "Practice question"} ${position}`;
+  const position: string = `${String(screen.index + 1)} ${t("of", "sur")} ${String(screen.run.total)}`;
+  if (screen.mode === "review") return `${t("Review", "Revue")} ${position}`;
+  return `${screen.target === "main" ? "Question" : t("Practice question", "Question d’entraînement")} ${position}`;
 };
 
 /**
@@ -33,6 +34,6 @@ export const pageTitle = (screen: Screen): string => {
     case "quiz":
       return `${quizHeading(screen)} · ${APP_NAME}`;
     case "results":
-      return `${screen.target === "main" ? "Results" : "Practice results"} · ${APP_NAME}`;
+      return `${screen.target === "main" ? t("Results", "Résultats") : t("Practice results", "Résultats de l’entraînement")} · ${APP_NAME}`;
   }
 };

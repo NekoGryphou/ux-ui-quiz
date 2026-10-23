@@ -1,15 +1,25 @@
 <script lang="ts">
   import { BrandTheme } from "../mock";
+  import { t } from "../shared/locale.svelte";
 </script>
 
 <BrandTheme brand="playful">
   <div class="page">
     <div class="mascot" aria-hidden="true"><span>🥺</span></div>
-    <p class="page__title">Wait… are you sure you want to leave us?</p>
-    <p class="page__copy">You’ll miss exclusive deals, early access and up to 40% off your favourite brands.</p>
-    <span class="page__keep">Keep me in the loop!</span>
-    <span class="page__alt">Send me fewer emails instead</span>
-    <span class="page__leave">No thanks, I don’t like saving money</span>
+    <p class="page__title">
+      {t("Wait… are you sure you want to leave us?", "Attendez… vous voulez vraiment nous quitter ?")}
+    </p>
+    <p class="page__copy">
+      {t(
+        "You’ll miss exclusive deals, early access and up to 40% off your favourite brands.",
+        "Vous allez manquer des offres exclusives, des avant-premières et jusqu’à 40 % de réduction sur vos marques préférées."
+      )}
+    </p>
+    <span class="page__keep">{t("Keep me in the loop!", "Je veux rester au courant !")}</span>
+    <span class="page__alt">{t("Send me fewer emails instead", "Plutôt recevoir moins d’e-mails")}</span>
+    <span class="page__leave"
+      >{t("No thanks, I don’t like saving money", "Non merci, je n’aime pas faire des économies")}</span
+    >
   </div>
 </BrandTheme>
 

@@ -1,5 +1,6 @@
 <script lang="ts">
   import { RetroButton, RetroField, RetroWindow } from "../mock";
+  import { t } from "../shared/locale.svelte";
 
   const columns: string[] = ["ORD_NO", "CUST_REF", "ST", "SHP_DT", "CRR", "FLG"];
   const rows: string[][] = [
@@ -15,15 +16,15 @@
 </script>
 
 <RetroWindow
-  title="ORDTRK32 - Order Tracking v2.3"
-  menu={["File", "Edit", "Query", "Window", "Help"]}
-  status={["8 record(s) found", "READY"]}
+  title={t("ORDTRK32 - Order Tracking v2.3", "ORDTRK32 - Suivi des commandes v2.3")}
+  menu={[t("File", "Fichier"), t("Edit", "Édition"), t("Query", "Requête"), t("Window", "Fenêtre"), t("Help", "Aide")]}
+  status={[t("8 record(s) found", "8 enregistrement(s) trouvé(s)"), t("READY", "PRÊT")]}
   width={600}
 >
   {#snippet toolbar()}
-    <span>Order no.:</span>
+    <span>{t("Order no.:", "N° de commande :")}</span>
     <RetroField value="100482" width={90} />
-    <RetroButton primary>Find</RetroButton>
+    <RetroButton primary>{t("Find", "Rechercher")}</RetroButton>
   {/snippet}
   <div class="grid">
     <table>

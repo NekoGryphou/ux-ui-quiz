@@ -1,15 +1,16 @@
 <script lang="ts">
   import { BrandTheme, BrowserShell, Icon } from "../mock";
+  import { t } from "../shared/locale.svelte";
 
-  const speech: string[] = [
-    "Inbox, heading level 1",
-    "button",
-    "button",
-    "Weekly report from Ana, link",
-    "click here, link",
-    "Archive, button",
-    "click here, link"
-  ];
+  const speech: string[] = $derived([
+    t("Inbox, heading level 1", "Boîte de réception, titre niveau 1"),
+    t("button", "bouton"),
+    t("button", "bouton"),
+    t("Weekly report from Ana, link", "Rapport hebdomadaire d’Ana, lien"),
+    t("click here, link", "cliquez ici, lien"),
+    t("Archive, button", "Archiver, bouton"),
+    t("click here, link", "cliquez ici, lien")
+  ]);
 </script>
 
 <BrandTheme brand="eco">
@@ -17,21 +18,29 @@
     <div class="layout">
       <div class="mail">
         <div class="toolbar">
-          <p class="title">Inbox</p>
+          <p class="title">{t("Inbox", "Boîte de réception")}</p>
           <span class="tool"><Icon name="search" size={16} /></span>
           <span class="tool"><Icon name="filter" size={16} /></span>
         </div>
         <div class="message">
-          <strong>Weekly report from Ana</strong>
-          <span>The numbers are in. To see the full dashboard, <u>click here</u>.</span>
+          <strong>{t("Weekly report from Ana", "Rapport hebdomadaire d’Ana")}</strong>
+          <span
+            >{t(
+              "The numbers are in. To see the full dashboard,",
+              "Les chiffres sont là. Pour voir le tableau de bord complet,"
+            )} <u>{t("click here", "cliquez ici")}</u>.</span
+          >
           <div class="message__actions">
-            <span class="archive">Archive</span>
-            <span>Unsubscribe from these reports: <u>click here</u></span>
+            <span class="archive">{t("Archive", "Archiver")}</span>
+            <span
+              >{t("Unsubscribe from these reports:", "Se désabonner de ces rapports :")}
+              <u>{t("click here", "cliquez ici")}</u></span
+            >
           </div>
         </div>
       </div>
       <div class="reader">
-        <p class="reader__title">Screen reader</p>
+        <p class="reader__title">{t("Screen reader", "Lecteur d’écran")}</p>
         <ol>
           {#each speech as line, index (index)}
             <li>{line}</li>

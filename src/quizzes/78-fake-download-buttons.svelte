@@ -1,5 +1,6 @@
 <script lang="ts">
   import { Hotspot, RetroBrowser } from "../mock";
+  import { t } from "../shared/locale.svelte";
 </script>
 
 <!--suppress HttpUrlsUsage -->
@@ -8,14 +9,19 @@
     <div class="head">
       <Hotspot id="logo" inline><span class="logo">FreeSoft<b>Zone</b>.net</span></Hotspot>
       <Hotspot id="nav" inline>
-        <span class="nav">Audio · Graphics · Games · Utilities · Drivers</span>
+        <span class="nav"
+          >{t(
+            "Audio · Graphics · Games · Utilities · Drivers",
+            "Audio · Graphisme · Jeux · Utilitaires · Pilotes"
+          )}</span
+        >
       </Hotspot>
     </div>
     <Hotspot id="ad-top">
       <div class="banner">
         <span class="banner__arrow">⬇</span>
-        <span class="banner__text">DOWNLOAD NOW</span>
-        <span class="banner__sub">Fast &amp; Free · Click Here!</span>
+        <span class="banner__text">{t("DOWNLOAD NOW", "TÉLÉCHARGER")}</span>
+        <span class="banner__sub">{t("Fast & Free · Click Here!", "Rapide et gratuit · Cliquez ici !")}</span>
       </div>
     </Hotspot>
     <div class="main">
@@ -23,24 +29,38 @@
         <Hotspot id="details">
           <div class="details">
             <p class="details__title">PixelPaint 3.2</p>
-            <p>Free image editor with layers, brushes and filters.</p>
-            <p class="details__meta">Size: 8.4 MB · Windows 98/ME/XP · License: Freeware</p>
+            <p>
+              {t(
+                "Free image editor with layers, brushes and filters.",
+                "Éditeur d’images gratuit avec calques, pinceaux et filtres."
+              )}
+            </p>
+            <p class="details__meta">
+              {t(
+                "Size: 8.4 MB · Windows 98/ME/XP · License: Freeware",
+                "Taille : 8,4 Mo · Windows 98/ME/XP · Licence : Freeware"
+              )}
+            </p>
           </div>
         </Hotspot>
-        <Hotspot id="real" inline><span class="real">pixelpaint32_setup.exe (8.4 MB)</span></Hotspot>
+        <Hotspot id="real" inline
+          ><span class="real">{t("pixelpaint32_setup.exe (8.4 MB)", "pixelpaint32_setup.exe (8,4 Mo)")}</span></Hotspot
+        >
       </div>
       <div class="side">
         <Hotspot id="ad-side">
           <div class="side__btn">
-            <span>▶ Start Download</span>
-            <small>Your file is ready</small>
+            <span>{t("▶ Start Download", "▶ Lancer le téléchargement")}</span>
+            <small>{t("Your file is ready", "Votre fichier est prêt")}</small>
           </div>
         </Hotspot>
         <Hotspot id="ad-scan">
           <div class="scan">
-            <p class="scan__title">⚠ WARNING</p>
-            <p>Your PC may be infected! 3 errors found.</p>
-            <span class="scan__btn">Scan now</span>
+            <p class="scan__title">{t("⚠ WARNING", "⚠ ATTENTION")}</p>
+            <p>
+              {t("Your PC may be infected! 3 errors found.", "Votre PC est peut-être infecté ! 3 erreurs détectées.")}
+            </p>
+            <span class="scan__btn">{t("Scan now", "Analyser")}</span>
           </div>
         </Hotspot>
       </div>

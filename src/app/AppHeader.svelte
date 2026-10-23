@@ -1,5 +1,6 @@
 <script lang="ts">
   import IconButton from "../components/IconButton.svelte";
+  import { locale, t } from "../shared/locale.svelte";
   import { APP_NAME } from "./const/app.const";
   import { theme } from "./theme.svelte";
   import type { AppHeaderProps } from "./types/app-header.types";
@@ -21,6 +22,14 @@
     const rect: DOMRect = event.currentTarget.getBoundingClientRect();
     theme.toggle({ x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 });
   };
+
+  /**
+   * @private
+   * @desc Switches between English and French.
+   */
+  const toggleLocale = (): void => {
+    locale.set(locale.current === "fr" ? "en" : "fr");
+  };
 </script>
 
 <header class="header">
@@ -38,18 +47,29 @@
       {#if run !== null}
         <div class="header__stats">
           {#if target === "practice"}
-            <span class="header__mode">Practice</span>
+            <span class="header__mode">{t("Practice", "Entraînement")}</span>
           {/if}
-          <span><strong>{run.answeredCount}</strong>/{run.total}<span class="header__wide">&nbsp;answered</span></span>
-          <span class="header__score"><strong>{run.score}</strong> correct</span>
+          <span
+            ><strong>{run.answeredCount}</strong>/{run.total}<span class="header__wide"
+              >&nbsp;{t("answered", "répondues")}</span
+            ></span
+          >
+          <span class="header__score"><strong>{run.score}</strong> {t("correct", "justes")}</span>
           {#if run.answeredCount > 0}
-            <a class="header__link" href={href.results(target)}>Results</a>
+            <a class="header__link" href={href.results(target)}>{t("Results", "Résultats")}</a>
           {/if}
         </div>
       {/if}
       <IconButton
+        text={locale.current.toUpperCase()}
+        label={t("EN, language: English. Switch to French", "FR, langue : français. Passer en anglais")}
+        onclick={toggleLocale}
+      />
+      <IconButton
         icon={theme.current === "dark" ? "sun" : "moon"}
-        label={theme.current === "dark" ? "Switch to light theme" : "Switch to dark theme"}
+        label={theme.current === "dark"
+          ? t("Switch to light theme", "Passer au thème clair")
+          : t("Switch to dark theme", "Passer au thème sombre")}
         onclick={toggleTheme}
       />
     </div>
@@ -58,11 +78,14 @@
       <div
         class="header__progress"
         role="progressbar"
-        aria-label="Quiz progress"
+        aria-label={t("Quiz progress", "Progression du quiz")}
         aria-valuemin={0}
         aria-valuemax={100}
         aria-valuenow={percent}
-        aria-valuetext="{run.answeredCount} of {run.total} answered"
+        aria-valuetext={t(
+          `${String(run.answeredCount)} of ${String(run.total)} answered`,
+          `${String(run.answeredCount)} sur ${String(run.total)} répondues`
+        )}
       >
         <span style="width: {percent}%"></span>
       </div>

@@ -1,18 +1,22 @@
 <script lang="ts">
   import { BrandTheme, Field, MockButton } from "../mock";
+  import { t } from "../shared/locale.svelte";
 </script>
 
 <BrandTheme brand="corporate">
   <div class="card">
-    <p class="card__title">Delivery contact</p>
-    <Field label="Full name" value="Léa Martin" />
+    <p class="card__title">{t("Delivery contact", "Contact pour la livraison")}</p>
+    <Field label={t("Full name", "Nom complet")} value="Léa Martin" />
     <Field
-      label="Mobile phone"
+      label={t("Mobile phone", "Téléphone portable")}
       value="06 12 34 56 78"
       state="error"
-      message="Please enter a valid phone number, e.g. (555) 123-4567."
+      message={t(
+        "Please enter a valid phone number, e.g. (555) 123-4567.",
+        "Veuillez saisir un numéro de téléphone valide, ex. : (555) 123-4567."
+      )}
     />
-    <MockButton variant="primary" block>Continue to payment</MockButton>
+    <MockButton variant="primary" block>{t("Continue to payment", "Continuer vers le paiement")}</MockButton>
   </div>
 </BrandTheme>
 

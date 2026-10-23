@@ -1,20 +1,21 @@
 <script lang="ts">
   import { Badge, BrandTheme, BrowserShell, MockButton, Skeleton, Title, TopBar } from "../mock";
+  import { t } from "../shared/locale.svelte";
 </script>
 
 <BrandTheme brand="corporate">
   <BrowserShell url="cms.northwind.blog/posts/451/edit">
     <TopBar brand="Northwind CMS">
-      <Badge tone="warning">Draft</Badge>
-      <span class="saved">Saved 2 min ago</span>
+      <Badge tone="warning">{t("Draft", "Brouillon")}</Badge>
+      <span class="saved">{t("Saved 2 min ago", "Enregistré il y a 2 min")}</span>
       <span class="spacer"></span>
-      <MockButton variant="ghost" icon="eye">Preview</MockButton>
-      <MockButton variant="link">Publish</MockButton>
-      <MockButton variant="primary">Save draft</MockButton>
+      <MockButton variant="ghost" icon="eye">{t("Preview", "Aperçu")}</MockButton>
+      <MockButton variant="link">{t("Publish", "Publier")}</MockButton>
+      <MockButton variant="primary">{t("Save draft", "Enregistrer le brouillon")}</MockButton>
     </TopBar>
     <article class="doc">
-      <Title size="lg">Designing calmer notifications</Title>
-      <p class="meta">By Inès Martin · 6 min read</p>
+      <Title size="lg">{t("Designing calmer notifications", "Concevoir des notifications plus apaisées")}</Title>
+      <p class="meta">{t("By Inès Martin · 6 min read", "Par Inès Martin · 6 min de lecture")}</p>
       <Skeleton lines={3} />
       <div class="figure"></div>
       <Skeleton lines={3} />

@@ -1,22 +1,23 @@
 <script lang="ts">
   import { BrandTheme, BrowserShell, Field, MockButton, Title } from "../mock";
+  import { t } from "../shared/locale.svelte";
 </script>
 
 <BrandTheme brand="playful">
   <BrowserShell url="accounts.fitnest.app/create">
     <div class="page">
       <div class="form">
-        <Title>Create your password</Title>
-        <p class="account">Signing up as <strong>sam.ortiz@mail.com</strong></p>
+        <Title>{t("Create your password", "Créez votre mot de passe")}</Title>
+        <p class="account">{t("Signing up as", "Inscription avec")} <strong>sam.ortiz@mail.com</strong></p>
         <Field
-          label="Password"
+          label={t("Password", "Mot de passe")}
           type="password"
           value="sunsetrun"
           state="error"
-          message="Password doesn’t meet requirements."
+          message={t("Password doesn’t meet requirements.", "Le mot de passe ne respecte pas les exigences.")}
         />
-        <Field label="Confirm password" type="password" value="sunsetrun" />
-        <MockButton variant="primary" block>Create account</MockButton>
+        <Field label={t("Confirm password", "Confirmer le mot de passe")} type="password" value="sunsetrun" />
+        <MockButton variant="primary" block>{t("Create account", "Créer un compte")}</MockButton>
       </div>
     </div>
   </BrowserShell>

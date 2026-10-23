@@ -1,14 +1,26 @@
 <script lang="ts">
   import type { VisualProps } from "../engine/types/quiz.types";
   import { CodeEditor, CodeLines, Field } from "../mock";
+  import { t } from "../shared/locale.svelte";
 
   let { variant = "a" }: VisualProps = $props();
 
-  const message: string = "Add the part after @, like camille@example.com.";
-  const unlinkedVersion: string =
-    '<label for="email">Email</label>\n<input\n  id="email"\n  type="email"\n  value="camille@"\n>\n<p class="error">\n  Add the part after @, like\n  camille@example.com.\n</p>';
-  const linkedVersion: string =
-    '<label for="email">Email</label>\n<input\n  id="email"\n  type="email"\n  value="camille@"\n  aria-invalid="true"\n  aria-describedby="email-error"\n>\n<p id="email-error" class="error">\n  Add the part after @, like\n  camille@example.com.\n</p>';
+  const label: string = $derived(t("Email", "E-mail"));
+  const message: string = $derived(
+    t("Add the part after @, like camille@example.com.", "Ajoutez la partie après @, par exemple camille@example.com.")
+  );
+  const errorLines: string = $derived(
+    t(
+      "  Add the part after @, like\n  camille@example.com.",
+      "  Ajoutez la partie après @,\n  par exemple camille@example.com."
+    )
+  );
+  const unlinkedVersion: string = $derived(
+    `<label for="email">${label}</label>\n<input\n  id="email"\n  type="email"\n  value="camille@"\n>\n<p class="error">\n${errorLines}\n</p>`
+  );
+  const linkedVersion: string = $derived(
+    `<label for="email">${label}</label>\n<input\n  id="email"\n  type="email"\n  value="camille@"\n  aria-invalid="true"\n  aria-describedby="email-error"\n>\n<p id="email-error" class="error">\n${errorLines}\n</p>`
+  );
 </script>
 
 <div class="version">
@@ -16,7 +28,7 @@
     <CodeLines code={variant === "a" ? unlinkedVersion : linkedVersion} start={1} />
   </CodeEditor>
   <div class="preview">
-    <Field label="Email" value="camille@" state="error" {message} />
+    <Field {label} value="camille@" state="error" {message} />
   </div>
 </div>
 

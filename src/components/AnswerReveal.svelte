@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t } from "../shared/locale.svelte";
   import Icon from "./Icon.svelte";
   import type { AnswerRevealProps, RevealSegment } from "./types/answer-reveal.types";
   import { outcomeSentence } from "./utils/answer-reveal.utils";
@@ -8,11 +9,13 @@
   const sentence: RevealSegment[] = $derived(results === null ? [] : outcomeSentence(results, several));
 </script>
 
-<section class="reveal" class:reveal--correct={correct} aria-label="Explanation">
+<section class="reveal" class:reveal--correct={correct} aria-label={t("Explanation", "Explication")}>
   <div class="reveal__head">
     <span class="reveal__icon"><Icon name={correct ? "check" : "x"} size={16} strokeWidth={3} /></span>
     <div class="reveal__verdict">
-      <strong class="reveal__status">{correct ? "Correct" : "Not quite"}</strong>
+      <strong class="reveal__status"
+        >{correct ? t("Correct", "Bonne réponse") : t("Not quite", "Pas tout à fait")}</strong
+      >
       {#if sentence.length > 0}
         <p class="reveal__outcome">
           {#each sentence as segment, i (i)}{#if segment.strong}<strong>{segment.text}</strong
@@ -33,7 +36,7 @@
 
   {#if quiz.links !== undefined && quiz.links.length > 0}
     <div class="reveal__links">
-      <h3 class="reveal__links-title">Learn more</h3>
+      <h3 class="reveal__links-title">{t("Learn more", "En savoir plus")}</h3>
       <ul class="reveal__list">
         {#each quiz.links as link (link.url)}
           <li>

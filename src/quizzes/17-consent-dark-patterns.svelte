@@ -1,21 +1,39 @@
 <script lang="ts">
   import { BrandTheme, BrowserShell, Checkbox, Field, MockButton, Title } from "../mock";
+  import { t } from "../shared/locale.svelte";
 </script>
 
 <BrandTheme brand="playful">
   <BrowserShell url="app.billfold.io/signup">
     <div class="page">
       <div class="form">
-        <Title>Create your account</Title>
-        <Field label="Full name" value="Priya Nair" />
-        <Field label="Work email" value="priya@nairstudio.com" />
-        <Field label="Password" type="password" value="correcthorse" />
+        <Title>{t("Create your account", "Créez votre compte")}</Title>
+        <Field label={t("Full name", "Nom complet")} value="Priya Nair" />
+        <Field label={t("Work email", "E-mail professionnel")} value="priya@nairstudio.com" />
+        <Field label={t("Password", "Mot de passe")} type="password" value="correcthorse" />
         <div class="consents">
-          <Checkbox checked label="Send me product tips and offers from partners" />
-          <Checkbox checked label="Share my usage data to improve recommendations" />
+          <Checkbox
+            checked
+            label={t(
+              "Send me product tips and offers from partners",
+              "Recevoir des conseils produit et des offres de partenaires"
+            )}
+          />
+          <Checkbox
+            checked
+            label={t(
+              "Share my usage data to improve recommendations",
+              "Partager mes données d’usage pour améliorer les recommandations"
+            )}
+          />
         </div>
-        <MockButton variant="primary" block>Create account</MockButton>
-        <p class="terms">By creating an account you agree to our Terms and Privacy Policy.</p>
+        <MockButton variant="primary" block>{t("Create account", "Créer un compte")}</MockButton>
+        <p class="terms">
+          {t(
+            "By creating an account you agree to our Terms and Privacy Policy.",
+            "En créant un compte, vous acceptez nos CGU et notre politique de confidentialité."
+          )}
+        </p>
       </div>
     </div>
   </BrowserShell>

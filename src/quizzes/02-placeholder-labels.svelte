@@ -1,17 +1,18 @@
 <script lang="ts">
   import { BrandMark, BrowserShell, MockButton, Title } from "../mock";
+  import { t } from "../shared/locale.svelte";
 </script>
 
 <BrowserShell url="app.ledgerly.com/sign-in">
   <div class="page">
     <div class="panel">
       <BrandMark name="Ledgerly" size={36} />
-      <Title>Welcome back</Title>
-      <p class="muted">Sign in to your workspace</p>
+      <Title>{t("Welcome back", "Bon retour parmi nous")}</Title>
+      <p class="muted">{t("Sign in to your workspace", "Connectez-vous à votre espace de travail")}</p>
       <div class="input input--typing">camille.durand@</div>
-      <div class="input input--placeholder">Password</div>
-      <MockButton variant="primary" block>Sign in</MockButton>
-      <span class="forgot">Forgot your password?</span>
+      <div class="input input--placeholder">{t("Password", "Mot de passe")}</div>
+      <MockButton variant="primary" block>{t("Sign in", "Se connecter")}</MockButton>
+      <span class="forgot">{t("Forgot your password?", "Mot de passe oublié ?")}</span>
     </div>
   </div>
 </BrowserShell>

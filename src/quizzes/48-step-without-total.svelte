@@ -1,24 +1,25 @@
 <script lang="ts">
   import { AppBar, BrandTheme, Checkbox, Field, MockButton, PhoneShell } from "../mock";
+  import { t } from "../shared/locale.svelte";
 </script>
 
 <BrandTheme brand="playful">
   <PhoneShell>
-    <AppBar title="Delivery" back />
+    <AppBar title={t("Delivery", "Livraison")} back />
     <div class="screen">
-      <p class="step">Step 2</p>
-      <Field label="Street address" value="12 rue des Lilas" />
+      <p class="step">{t("Step 2", "Étape 2")}</p>
+      <Field label={t("Street address", "Adresse")} value="12 rue des Lilas" />
       <div class="pair">
-        <Field label="Postcode" value="75011" />
-        <Field label="City" value="Paris" />
+        <Field label={t("Postcode", "Code postal")} value="75011" />
+        <Field label={t("City", "Ville")} value="Paris" />
       </div>
       <div class="options">
-        <p class="options__title">Delivery method</p>
-        <Checkbox radio label="Standard · 3–5 days · Free" checked />
-        <Checkbox radio label="Express · next day · €6.90" />
+        <p class="options__title">{t("Delivery method", "Mode de livraison")}</p>
+        <Checkbox radio label={t("Standard · 3–5 days · Free", "Standard · 3 à 5 jours · Gratuit")} checked />
+        <Checkbox radio label={t("Express · next day · €6.90", "Express · lendemain · 6,90 €")} />
       </div>
       <div class="footer">
-        <MockButton variant="primary" block>Continue</MockButton>
+        <MockButton variant="primary" block>{t("Continue", "Continuer")}</MockButton>
       </div>
     </div>
   </PhoneShell>

@@ -1,8 +1,12 @@
 <script lang="ts">
   import { Card, CodeEditor, CodeLines, Field, MockButton } from "../mock";
+  import { t } from "../shared/locale.svelte";
 
-  const code: string =
-    'function showSaved() {\n  const toast = document.createElement("div");\n  toast.className = "toast";\n  toast.textContent = "Address saved";\n  document.body.append(toast);\n  setTimeout(() => toast.remove(), 5000);\n}\n\nsaveButton.addEventListener("click", async () => {\n  await saveAddress(form);\n  showSaved();\n});';
+  const code: string = $derived(
+    'function showSaved() {\n  const toast = document.createElement("div");\n  toast.className = "toast";\n  toast.textContent = "' +
+      t("Address saved", "Adresse enregistrée") +
+      '";\n  document.body.append(toast);\n  setTimeout(() => toast.remove(), 5000);\n}\n\nsaveButton.addEventListener("click", async () => {\n  await saveAddress(form);\n  showSaved();\n});'
+  );
 </script>
 
 <div class="review">
@@ -10,14 +14,14 @@
     <CodeLines {code} start={1} />
   </CodeEditor>
   <div class="page">
-    <Card title="Delivery address">
+    <Card title={t("Delivery address", "Adresse de livraison")}>
       <div class="form">
-        <Field label="Street address" value="14 Rosemary Lane" />
-        <Field label="City" value="Bristol" />
-        <div class="actions"><MockButton variant="primary">Save</MockButton></div>
+        <Field label={t("Street address", "Adresse")} value={t("14 Rosemary Lane", "14 rue des Romarins")} />
+        <Field label={t("City", "Ville")} value={t("Bristol", "Nantes")} />
+        <div class="actions"><MockButton variant="primary">{t("Save", "Enregistrer")}</MockButton></div>
       </div>
     </Card>
-    <div class="toast">Address saved</div>
+    <div class="toast">{t("Address saved", "Adresse enregistrée")}</div>
   </div>
 </div>
 

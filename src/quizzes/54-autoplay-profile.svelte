@@ -1,5 +1,6 @@
 <script lang="ts">
   import { Hotspot, Photo } from "../mock";
+  import { t } from "../shared/locale.svelte";
   import { pixelAvatar } from "./utils/avatar.utils";
 
   const friends: string[] = ["Tom", "Kiki", "Max", "Jade", "Leo", "Nina", "Sam", "Zoé"];
@@ -16,23 +17,28 @@
             {#each [0, 1, 2, 3, 4] as bar (bar)}<i style:animation-delay="{bar * 120}ms"></i>{/each}
           </span>
           <span class="player__copy">
-            <strong>♫ Now playing</strong>
-            <span>Starlight Riot — “Bring the Night”</span>
+            <strong>{t("♫ Now playing", "♫ En écoute")}</strong>
+            <span>{t("Starlight Riot — “Bring the Night”", "Starlight Riot — « Bring the Night »")}</span>
           </span>
           <span class="player__time">0:07</span>
         </div>
       </Hotspot>
       <Hotspot id="about">
         <div class="about">
-          <p class="about__title">About me</p>
-          <p>Pixel art, dial-up nostalgia and way too much eyeliner. PARTY AT MINE SATURDAY 9PM!!! bring snacks ♥</p>
+          <p class="about__title">{t("About me", "À propos de moi")}</p>
+          <p>
+            {t(
+              "Pixel art, dial-up nostalgia and way too much eyeliner. PARTY AT MINE SATURDAY 9PM!!! bring snacks ♥",
+              "Pixel art, nostalgie du modem 56k et beaucoup trop d’eye-liner. SOIRÉE CHEZ MOI SAMEDI 21H!!! ramenez des chips ♥"
+            )}
+          </p>
         </div>
       </Hotspot>
     </div>
     <div class="space__right">
       <Hotspot id="friends">
         <div class="friends">
-          <p class="friends__title">StarLite’s Top 8</p>
+          <p class="friends__title">{t("StarLite’s Top 8", "Top 8 de StarLite")}</p>
           <div class="friends__grid">
             {#each friends as friend (friend)}
               <span class="friend"><i><Photo src={pixelAvatar(friend)} /></i>{friend}</span>
@@ -42,12 +48,17 @@
       </Hotspot>
       <Hotspot id="comments">
         <div class="comments">
-          <p class="friends__title">Comments (128)</p>
+          <p class="friends__title">{t("Comments (128)", "Commentaires (128)")}</p>
           <p class="comment">
-            <i><Photo src={pixelAvatar("Kiki")} /></i><span><strong>Kiki:</strong> omg ur layout is so cute!!!</span>
+            <i><Photo src={pixelAvatar("Kiki")} /></i><span
+              ><strong>{t("Kiki:", "Kiki :")}</strong>
+              {t("omg ur layout is so cute!!!", "omg ton profil é tro mimi!!!")}</span
+            >
           </p>
           <p class="comment">
-            <i><Photo src={pixelAvatar("Max")} /></i><span><strong>Max:</strong> thx 4 the add ;)</span>
+            <i><Photo src={pixelAvatar("Max")} /></i><span
+              ><strong>{t("Max:", "Max :")}</strong> {t("thx 4 the add ;)", "merci pr l’ajout ;)")}</span
+            >
           </p>
         </div>
       </Hotspot>

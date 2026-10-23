@@ -1,21 +1,34 @@
 <script lang="ts">
   import { Alert, BrandTheme, Field, MockButton } from "../mock";
+  import { t } from "../shared/locale.svelte";
 </script>
 
 <BrandTheme brand="fintech">
   <div class="bank">
     <div class="card">
       <p class="card__logo">◆ Northbank</p>
-      <p class="card__title">Sign in</p>
-      <Field label="Customer number" value="0048 2291 7735" />
-      <Field label="Password" type="password" value="" state="focus" />
-      <Alert tone="warning" title="Pasting is not allowed" body="For your security, please type your password." />
-      <MockButton variant="primary" block>Sign in</MockButton>
-      <span class="card__link">Forgot password?</span>
+      <p class="card__title">{t("Sign in", "Connexion")}</p>
+      <Field label={t("Customer number", "Numéro client")} value="0048 2291 7735" />
+      <Field label={t("Password", "Mot de passe")} type="password" value="" state="focus" />
+      <Alert
+        tone="warning"
+        title={t("Pasting is not allowed", "Le collage n’est pas autorisé")}
+        body={t(
+          "For your security, please type your password.",
+          "Pour votre sécurité, veuillez saisir votre mot de passe."
+        )}
+      />
+      <MockButton variant="primary" block>{t("Sign in", "Se connecter")}</MockButton>
+      <span class="card__link">{t("Forgot password?", "Mot de passe oublié ?")}</span>
     </div>
     <div class="side">
-      <p class="side__title">Banking that keeps up with you</p>
-      <p>Instant transfers, card controls and savings goals in one place.</p>
+      <p class="side__title">{t("Banking that keeps up with you", "La banque qui suit votre rythme")}</p>
+      <p>
+        {t(
+          "Instant transfers, card controls and savings goals in one place.",
+          "Virements instantanés, contrôle de la carte et objectifs d’épargne réunis au même endroit."
+        )}
+      </p>
     </div>
   </div>
 </BrandTheme>

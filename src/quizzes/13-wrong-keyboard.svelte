@@ -1,16 +1,23 @@
 <script lang="ts">
   import { AppBar, BrandTheme, Field, PhoneShell } from "../mock";
+  import { t } from "../shared/locale.svelte";
 
-  const rows: string[] = ["qwertyuiop", "asdfghjkl", "zxcvbnm"];
+  const rows: string[] = $derived([
+    t("qwertyuiop", "azertyuiop"),
+    t("asdfghjkl", "qsdfghjklm"),
+    t("zxcvbnm", "wxcvbn")
+  ]);
 </script>
 
 <BrandTheme brand="fintech">
   <PhoneShell>
-    <AppBar title="Payment" back />
+    <AppBar title={t("Payment", "Paiement")} back />
     <div class="form">
-      <div class="summary"><span>2 × Standing tickets</span><strong>€96.00</strong></div>
-      <Field label="Name on card" value="Jonas Weber" />
-      <Field label="Card number" value="4970 1012" state="focus" />
+      <div class="summary">
+        <span>{t("2 × Standing tickets", "2 × Billets fosse")}</span><strong>{t("€96.00", "96,00 €")}</strong>
+      </div>
+      <Field label={t("Name on card", "Titulaire de la carte")} value="Jonas Weber" />
+      <Field label={t("Card number", "Numéro de carte")} value="4970 1012" state="focus" />
     </div>
     <div class="keyboard" aria-hidden="true">
       {#each rows as row, r (row)}
@@ -24,8 +31,8 @@
       {/each}
       <div class="keyboard__row">
         <span class="key key--wide">123</span>
-        <span class="key key--space">space</span>
-        <span class="key key--wide">return</span>
+        <span class="key key--space">{t("space", "espace")}</span>
+        <span class="key key--wide">{t("return", "retour")}</span>
       </div>
     </div>
   </PhoneShell>

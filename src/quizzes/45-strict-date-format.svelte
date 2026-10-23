@@ -1,39 +1,48 @@
 <script lang="ts">
   import { RetroButton, RetroField, RetroWindow } from "../mock";
+  import { t } from "../shared/locale.svelte";
 
-  const days: string[] = ["Mon", "Tue", "Wed", "Thu", "Fri"];
-  const hours: string[] = ["7.5", "8", "7.5", "8", "6"];
+  const days: string[] = $derived([
+    t("Mon", "Lun"),
+    t("Tue", "Mar"),
+    t("Wed", "Mer"),
+    t("Thu", "Jeu"),
+    t("Fri", "Ven")
+  ]);
+  const hours: string[] = $derived([t("7.5", "7,5"), "8", t("7.5", "7,5"), "8", "6"]);
 </script>
 
 <RetroWindow
-  title="TimeTrack 4.1 - Weekly Timesheet"
-  menu={["File", "Edit", "Entry", "Reports", "Help"]}
-  status={["Entry mode", "User: MDUPONT"]}
+  title={t("TimeTrack 4.1 - Weekly Timesheet", "TimeTrack 4.1 - Feuille de temps hebdo")}
+  menu={[t("File", "Fichier"), t("Edit", "Édition"), t("Entry", "Saisie"), t("Reports", "Rapports"), t("Help", "Aide")]}
+  status={[t("Entry mode", "Mode saisie"), t("User: MDUPONT", "Utilisateur : MDUPONT")]}
   width={540}
 >
   <div class="form">
     <div class="row">
-      <span class="label">Employee:</span>
+      <span class="label">{t("Employee:", "Nom :")}</span>
       <RetroField value="DUPONT, Marie" width={180} />
     </div>
     <div class="row">
-      <span class="label">Project code:</span>
+      <span class="label">{t("Project code:", "Code projet :")}</span>
       <RetroField value="PRJ-0457 Harbour Bank" width={180} />
     </div>
     <div class="row">
-      <span class="label">Week start (DDMMYYYY):</span>
+      <span class="label">{t("Week start (DDMMYYYY):", "Semaine du (JJMMAAAA) :")}</span>
       <RetroField value="14/05/2025" width={110} />
-      <span class="error">⊗ Invalid date. Use the format DDMMYYYY.</span>
+      <span class="error"
+        >{t("⊗ Invalid date. Use the format DDMMYYYY.", "⊗ Date invalide. Utilisez le format JJMMAAAA.")}</span
+      >
     </div>
     <fieldset class="hours">
-      <legend>Hours</legend>
+      <legend>{t("Hours", "Heures")}</legend>
       {#each days as day, i (day)}
         <span class="day">{day}<RetroField value={hours[i] ?? ""} width={58} /></span>
       {/each}
     </fieldset>
     <div class="actions">
-      <RetroButton primary>Save</RetroButton>
-      <RetroButton>Close</RetroButton>
+      <RetroButton primary>{t("Save", "Enregistrer")}</RetroButton>
+      <RetroButton>{t("Close", "Fermer")}</RetroButton>
     </div>
   </div>
 </RetroWindow>

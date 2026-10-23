@@ -1,23 +1,27 @@
 <script lang="ts">
   import { Hotspot, MockButton, PhoneShell } from "../mock";
+  import { t } from "../shared/locale.svelte";
 </script>
 
 <PhoneShell>
   <div class="screen">
-    <Hotspot id="skip"><span class="skip">Skip</span></Hotspot>
+    <Hotspot id="skip"><span class="skip">{t("Skip", "Passer")}</span></Hotspot>
     <Hotspot id="illustration"
       ><div class="art" aria-hidden="true"><span></span><span></span><span></span></div></Hotspot
     >
-    <Hotspot id="headline"><p class="headline">See where every euro goes</p></Hotspot>
+    <Hotspot id="headline"
+      ><p class="headline">{t("See where every euro goes", "Voyez où part chaque euro")}</p></Hotspot
+    >
     <Hotspot id="body">
       <p class="body">
-        Pennywise automatically sorts every transaction from all of your linked accounts into clear categories, builds a
-        monthly budget from your real spending patterns, warns you before you go over a limit, and lets you set savings
-        goals that adjust themselves as your income and expenses change over time.
+        {t(
+          "Pennywise automatically sorts every transaction from all of your linked accounts into clear categories, builds a monthly budget from your real spending patterns, warns you before you go over a limit, and lets you set savings goals that adjust themselves as your income and expenses change over time.",
+          "Pennywise classe automatiquement chaque transaction de tous vos comptes liés dans des catégories claires, établit un budget mensuel à partir de vos dépenses réelles, vous prévient avant que vous ne dépassiez une limite et vous permet de fixer des objectifs d’épargne qui s’ajustent d’eux-mêmes à mesure que vos revenus et vos dépenses évoluent."
+        )}
       </p>
     </Hotspot>
     <Hotspot id="progress"><div class="dots"><i class="on"></i><i></i><i></i><i></i></div></Hotspot>
-    <Hotspot id="next"><MockButton variant="primary" size="lg" block>Next</MockButton></Hotspot>
+    <Hotspot id="next"><MockButton variant="primary" size="lg" block>{t("Next", "Suivant")}</MockButton></Hotspot>
   </div>
 </PhoneShell>
 

@@ -1,11 +1,12 @@
 <script lang="ts">
   import { BrandMark, BrowserShell, Hotspot, Icon } from "../mock";
+  import { t } from "../shared/locale.svelte";
 
-  const rows: string[][] = [
-    ["INV-1042", "Northwind", "1,250.00", "PAID"],
-    ["INV-1043", "Bloomyard", "480.00", "OPEN"],
-    ["INV-1044", "Tallybooks", "2,010.50", "OPEN"]
-  ];
+  const rows: string[][] = $derived([
+    ["INV-1042", "Northwind", t("1,250.00", "1 250,00"), t("PAID", "PAYÉE")],
+    ["INV-1043", "Bloomyard", t("480.00", "480,00"), t("OPEN", "OUVERTE")],
+    ["INV-1044", "Tallybooks", t("2,010.50", "2 010,50"), t("OPEN", "OUVERTE")]
+  ]);
 </script>
 
 <BrowserShell url="app.orbit.io/invoices">
@@ -13,33 +14,42 @@
     <Hotspot id="header">
       <div class="header">
         <span class="header__brand"><BrandMark name="Orbit" />Orbit</span>
-        <span class="header__search"><Icon name="search" size={14} /> Search</span>
+        <span class="header__search"><Icon name="search" size={14} /> {t("Search", "Rechercher")}</span>
         <span class="header__avatar">LM</span>
       </div>
     </Hotspot>
     <div class="body">
       <Hotspot id="nav">
         <nav class="nav">
-          {#each ["Dashboard", "Invoices", "Clients", "Settings"] as item (item)}
-            <span class="nav__item" class:nav__item--on={item === "Invoices"}>{item}</span>
+          {#each [t("Dashboard", "Tableau de bord"), t("Invoices", "Factures"), "Clients", t("Settings", "Paramètres")] as item, i (item)}
+            <span class="nav__item" class:nav__item--on={i === 1}>{item}</span>
           {/each}
         </nav>
       </Hotspot>
       <div class="main">
         <Hotspot id="summary">
           <div class="summary">
-            <span>Revenue this month</span>
-            <strong>€3,740.50</strong>
-            <span class="summary__actions"><span class="btn btn--ghost">Cancel</span><span class="btn">Save</span></span
+            <span>{t("Revenue this month", "Chiffre d’affaires du mois")}</span>
+            <strong>{t("€3,740.50", "3 740,50 €")}</strong>
+            <span class="summary__actions"
+              ><span class="btn btn--ghost">{t("Cancel", "Annuler")}</span><span class="btn"
+                >{t("Save", "Enregistrer")}</span
+              ></span
             >
           </div>
         </Hotspot>
         <Hotspot id="invoices">
           <div class="embed">
             <div class="legacy">
-              <div class="legacy__bar"><b>ORBIT</b> Billing Module v2.4</div>
+              <div class="legacy__bar"><b>ORBIT</b> {t("Billing Module v2.4", "Module Facturation v2.4")}</div>
               <table>
-                <thead><tr><th>No.</th><th>CUSTOMER</th><th>AMOUNT (EUR)</th><th>STATUS</th></tr></thead>
+                <thead
+                  ><tr
+                    ><th>{t("No.", "N°")}</th><th>{t("CUSTOMER", "CLIENT")}</th><th
+                      >{t("AMOUNT (EUR)", "MONTANT (EUR)")}</th
+                    ><th>{t("STATUS", "STATUT")}</th></tr
+                  ></thead
+                >
                 <tbody>
                   {#each rows as row (row[0])}
                     <tr
@@ -49,7 +59,9 @@
                 </tbody>
               </table>
               <div class="legacy__actions">
-                <span class="old-btn">Submit</span><span class="old-link">Reset form</span>
+                <span class="old-btn">{t("Submit", "Valider")}</span><span class="old-link"
+                  >{t("Reset form", "Réinitialiser le formulaire")}</span
+                >
               </div>
             </div>
           </div>
@@ -59,10 +71,12 @@
     <div class="dialog">
       <Hotspot id="export">
         <div class="old-dialog">
-          <div class="old-dialog__title">Export invoices</div>
+          <div class="old-dialog__title">{t("Export invoices", "Exporter les factures")}</div>
           <div class="old-dialog__body">
-            Format: <span class="old-select">CSV ▾</span>
-            <div class="old-dialog__actions"><span class="old-btn">OK</span><span class="old-btn">Cancel</span></div>
+            {t("Format:", "Format :")} <span class="old-select">CSV ▾</span>
+            <div class="old-dialog__actions">
+              <span class="old-btn">OK</span><span class="old-btn">{t("Cancel", "Annuler")}</span>
+            </div>
           </div>
         </div>
       </Hotspot>

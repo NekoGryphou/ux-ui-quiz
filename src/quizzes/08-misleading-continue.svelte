@@ -1,5 +1,6 @@
 <script lang="ts">
   import { BrandTheme, BrowserShell, Checkbox, Field, Icon, MockButton, Photo, Stepper } from "../mock";
+  import { t } from "../shared/locale.svelte";
   import { PHOTO_SHOE_TRAIL } from "./const/photo.const";
 </script>
 
@@ -8,34 +9,49 @@
     <div class="page">
       <Stepper
         steps={[
-          { label: "Shipping", state: "complete" },
-          { label: "Payment", state: "current" },
-          { label: "Review", state: "upcoming" }
+          { label: t("Shipping", "Livraison"), state: "complete" },
+          { label: t("Payment", "Paiement"), state: "current" },
+          { label: t("Review", "Vérification"), state: "upcoming" }
         ]}
       />
       <div class="columns">
         <div class="form">
           <div class="methods">
-            <Checkbox radio checked label="Credit card" hint="Visa ending in 4242" />
+            <Checkbox
+              radio
+              checked
+              label={t("Credit card", "Carte bancaire")}
+              hint={t("Visa ending in 4242", "Visa se terminant par 4242")}
+            />
             <Checkbox radio label="PayPal" />
           </div>
-          <Field label="Billing address" type="select" value="Same as shipping" />
+          <Field
+            label={t("Billing address", "Adresse de facturation")}
+            type="select"
+            value={t("Same as shipping", "Identique à la livraison")}
+          />
           <div class="footer">
-            <span class="back"><Icon name="chevron-left" size={14} /> Shipping</span>
-            <MockButton variant="primary" size="lg">Continue</MockButton>
+            <span class="back"><Icon name="chevron-left" size={14} /> {t("Shipping", "Livraison")}</span>
+            <MockButton variant="primary" size="lg">{t("Continue", "Continuer")}</MockButton>
           </div>
-          <p class="fine">By clicking Continue, your order is placed and your card is charged.</p>
+          <p class="fine">
+            {t(
+              "By clicking Continue, your order is placed and your card is charged.",
+              "En cliquant sur Continuer, votre commande est passée et votre carte est débitée."
+            )}
+          </p>
         </div>
 
         <aside class="summary">
-          <strong>Order summary</strong>
+          <strong>{t("Order summary", "Récapitulatif")}</strong>
           <div class="item">
             <span class="thumb"><Photo src={PHOTO_SHOE_TRAIL.url} /></span>
-            <span class="item__name">Trail runner 2 <small>Size 42 · Slate</small></span>
-            <span>€79.90</span>
+            <span class="item__name">Trail runner 2 <small>{t("Size 42 · Slate", "Pointure 42 · Ardoise")}</small></span
+            >
+            <span>{t("€79.90", "79,90 €")}</span>
           </div>
-          <div class="line"><span>Shipping</span><span>€5.00</span></div>
-          <div class="line total"><span>Total</span><span>€84.90</span></div>
+          <div class="line"><span>{t("Shipping", "Livraison")}</span><span>{t("€5.00", "5,00 €")}</span></div>
+          <div class="line total"><span>Total</span><span>{t("€84.90", "84,90 €")}</span></div>
         </aside>
       </div>
     </div>

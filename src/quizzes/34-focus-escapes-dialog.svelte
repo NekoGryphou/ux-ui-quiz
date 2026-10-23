@@ -11,14 +11,24 @@
     TopBar
   } from "../mock";
   import type { KeyStop } from "../mock/types/keyboard.types";
+  import { t } from "../shared/locale.svelte";
 
-  const stops: KeyStop[] = [
-    { id: "name", label: "File name field, in the dialog" },
-    { id: "cancel", label: "Cancel button, in the dialog" },
-    { id: "rename", label: "Rename button, in the dialog" },
-    { id: "share", label: "Share link, on the page behind the dialog" },
-    { id: "file", label: "Q3 roadmap.pdf link, on the page behind the dialog" }
-  ];
+  const stops: KeyStop[] = $derived([
+    { id: "name", label: t("File name field, in the dialog", "Champ Nom du fichier, dans la boîte de dialogue") },
+    { id: "cancel", label: t("Cancel button, in the dialog", "Bouton Annuler, dans la boîte de dialogue") },
+    { id: "rename", label: t("Rename button, in the dialog", "Bouton Renommer, dans la boîte de dialogue") },
+    {
+      id: "share",
+      label: t("Share link, on the page behind the dialog", "Lien Partager, sur la page derrière la boîte de dialogue")
+    },
+    {
+      id: "file",
+      label: t(
+        "Q3 roadmap.pdf link, on the page behind the dialog",
+        "Lien Q3 roadmap.pdf, sur la page derrière la boîte de dialogue"
+      )
+    }
+  ]);
 </script>
 
 <BrandTheme brand="fintech">
@@ -26,16 +36,18 @@
     <BrowserShell url="drive.northwind.io/files/q3-roadmap">
       <TopBar brand="Northwind Drive">
         <span class="spacer"></span>
-        <KeyTarget id="share" inline><span class="share">Share</span></KeyTarget>
+        <KeyTarget id="share" inline><span class="share">{t("Share", "Partager")}</span></KeyTarget>
       </TopBar>
       <div class="page">
         <KeyTarget id="file" inline><p class="file">Q3 roadmap.pdf</p></KeyTarget>
         <Skeleton lines={4} />
-        <Modal title="Rename file" floating>
-          <KeyTarget id="name"><Field label="File name" value="Q3 roadmap.pdf" /></KeyTarget>
+        <Modal title={t("Rename file", "Renommer le fichier")} floating>
+          <KeyTarget id="name"><Field label={t("File name", "Nom du fichier")} value="Q3 roadmap.pdf" /></KeyTarget>
           {#snippet actions()}
-            <KeyTarget id="cancel" inline><MockButton>Cancel</MockButton></KeyTarget>
-            <KeyTarget id="rename" inline><MockButton variant="primary">Rename</MockButton></KeyTarget>
+            <KeyTarget id="cancel" inline><MockButton>{t("Cancel", "Annuler")}</MockButton></KeyTarget>
+            <KeyTarget id="rename" inline
+              ><MockButton variant="primary">{t("Rename", "Renommer")}</MockButton></KeyTarget
+            >
           {/snippet}
         </Modal>
       </div>

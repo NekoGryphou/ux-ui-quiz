@@ -8,6 +8,7 @@
   import { resumeLabel } from "../app/utils/run-label.utils";
   import Button from "../components/Button.svelte";
   import type { Run } from "../engine/run.svelte";
+  import { pick, t } from "../shared/locale.svelte";
   import { HOME_STEPS } from "./const/home.const";
   import type { HistorySegment } from "./types/home.types";
   import { historyLine } from "./utils/home.utils";
@@ -41,10 +42,16 @@
 
 <div class="home">
   <section class="hero">
-    <p class="hero__eyebrow">UX · UI · Accessibility</p>
-    <h1 class="hero__title" tabindex="-1">Spot the UX/UI issue <span>before it ships.</span></h1>
+    <p class="hero__eyebrow">UX · UI · {t("Accessibility", "Accessibilité")}</p>
+    <h1 class="hero__title" tabindex="-1">
+      {t("Spot the UX/UI issue", "Repérez le problème d’UX/UI")}
+      <span>{t("before it ships.", "avant la mise en prod.")}</span>
+    </h1>
     <p class="hero__lede">
-      Realistic interface critiques covering accessibility, hierarchy, feedback, microcopy, dark patterns and more.
+      {t(
+        "Realistic interface critiques covering accessibility, hierarchy, feedback, microcopy, dark patterns and more.",
+        "Des critiques d’interfaces réalistes : accessibilité, hiérarchie, feedback, microcopy, dark patterns et plus encore."
+      )}
     </p>
 
     <div class="hero__actions">
@@ -56,7 +63,7 @@
             href={href.results("main")}
             iconEnd="arrow-right"
           >
-            View results
+            {t("View results", "Voir les résultats")}
           </Button>
           <RestartButton size="lg" />
         {:else if session.main.hasStarted && practice === null}
@@ -73,18 +80,20 @@
           >
             {session.main.hasStarted
               ? resumeLabel("full", session.main.answeredCount, session.main.total)
-              : "Start the quiz"}
+              : t("Start the quiz", "Commencer le quiz")}
           </Button>
         {/if}
       </div>
-      <span class="hero__or" aria-hidden="true">or</span>
+      <span class="hero__or" aria-hidden="true">{t("or", "ou")}</span>
       <div class="hero__group">
         {#if practice !== null}
           <Button variant="accent" size="lg" href={href.quiz("practice", practice.resumeIndex)} iconEnd="arrow-right">
             {resumeLabel(practice.kind, practice.answeredCount, practice.total)}
           </Button>
           {#if practice.kind === "quick"}
-            <Button size="lg" onclick={quick} iconStart="refresh">Restart Quick 10</Button>
+            <Button size="lg" onclick={quick} iconStart="refresh"
+              >{t("Restart Quick 10", "Relancer un Quick 10")}</Button
+            >
           {:else}
             <Button size="lg" onclick={quick} iconStart="zap">Quick 10</Button>
           {/if}
@@ -106,13 +115,13 @@
   </section>
 
   <ol class="steps">
-    {#each HOME_STEPS as step, i (step.title)}
+    {#each HOME_STEPS as step, i (step.title.en)}
       <li class="steps__item">
         <div class="steps__head">
           <span class="steps__index">{i + 1}</span>
-          <h2>{step.title}</h2>
+          <h2>{pick(step.title)}</h2>
         </div>
-        <p>{step.body}</p>
+        <p>{pick(step.body)}</p>
       </li>
     {/each}
   </ol>

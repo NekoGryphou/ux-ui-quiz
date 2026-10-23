@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { VisualProps } from "../engine/types/quiz.types";
   import { CodeEditor, CodeLines, Icon } from "../mock";
+  import { t } from "../shared/locale.svelte";
 
   let { variant = "a" }: VisualProps = $props();
 
@@ -15,9 +16,16 @@
     <CodeLines code={variant === "a" ? remVersion : pxVersion} start={1} />
   </CodeEditor>
   <div class="preview" class:preview--rem={variant === "a"}>
-    <span class="setting"><Icon name="settings" size={12} />Default font size: 24px</span>
-    <p class="recipe-title">Tomato soup</p>
-    <p class="recipe-text">Simmer the tomatoes for twenty minutes, then blend until smooth.</p>
+    <span class="setting"
+      ><Icon name="settings" size={12} />{t("Default font size: 24px", "Taille de police par défaut : 24px")}</span
+    >
+    <p class="recipe-title">{t("Tomato soup", "Soupe de tomates")}</p>
+    <p class="recipe-text">
+      {t(
+        "Simmer the tomatoes for twenty minutes, then blend until smooth.",
+        "Faites mijoter les tomates vingt minutes, puis mixez finement."
+      )}
+    </p>
   </div>
 </div>
 

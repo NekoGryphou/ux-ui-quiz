@@ -1,21 +1,31 @@
 <script lang="ts">
   import type { VisualProps } from "../engine/types/quiz.types";
   import { BrandTheme, Field, MockButton } from "../mock";
+  import { t } from "../shared/locale.svelte";
 
   let { variant = "a" }: VisualProps = $props();
 </script>
 
 <BrandTheme brand="editorial">
   <div class="card">
-    <p class="title">Create your account</p>
-    <Field label="Full name" value="Camille Durand" />
+    <p class="title">{t("Create your account", "Créez votre compte")}</p>
+    <Field label={t("Full name", "Nom complet")} value="Camille Durand" />
     {#if variant === "a"}
-      <Field label="Email" value="camille.du" state="error" message="Enter a valid email address." />
+      <Field
+        label={t("Email", "E-mail")}
+        value="camille.du"
+        state="error"
+        message={t("Enter a valid email address.", "Saisissez une adresse e-mail valide.")}
+      />
     {:else}
-      <Field label="Email" value="camille.du" state="focus" />
+      <Field label={t("Email", "E-mail")} value="camille.du" state="focus" />
     {/if}
-    <Field label="Password" type="password" placeholder="At least 8 characters" />
-    <MockButton variant="primary" block>Create account</MockButton>
+    <Field
+      label={t("Password", "Mot de passe")}
+      type="password"
+      placeholder={t("At least 8 characters", "8 caractères minimum")}
+    />
+    <MockButton variant="primary" block>{t("Create account", "Créer un compte")}</MockButton>
   </div>
 </BrandTheme>
 

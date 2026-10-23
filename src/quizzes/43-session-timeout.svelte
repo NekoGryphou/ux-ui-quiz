@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { VisualProps } from "../engine/types/quiz.types";
   import { RetroButton, RetroField, RetroWindow } from "../mock";
+  import { t } from "../shared/locale.svelte";
 
   let { variant = "a" }: VisualProps = $props();
 </script>
@@ -8,21 +9,24 @@
 <div class="bank">
   <div class="bank__header">
     <span class="bank__logo">FIRST UNION</span>
-    <span>Online Banking</span>
+    <span>{t("Online Banking", "Banque en ligne")}</span>
   </div>
   {#if variant === "a"}
     <div class="bank__body">
-      <p class="bank__title">Transfer funds</p>
-      <label>To account<RetroField value="FR76 3000 4000 0312" width={190} /></label>
-      <label>Amount (EUR)<RetroField value="1,240.00" width={90} /></label>
-      <label>Reference<RetroField value="Invoice 2025-" width={190} /></label>
+      <p class="bank__title">{t("Transfer funds", "Effectuer un virement")}</p>
+      <label>{t("To account", "Compte bénéficiaire")}<RetroField value="FR76 3000 4000 0312" width={190} /></label>
+      <label>{t("Amount (EUR)", "Montant (EUR)")}<RetroField value={t("1,240.00", "1 240,00")} width={90} /></label>
+      <label>{t("Reference", "Référence")}<RetroField value={t("Invoice 2025-", "Facture 2025-")} width={190} /></label>
       <div class="dialog">
-        <RetroWindow title="Session timeout" width={250}>
+        <RetroWindow title={t("Session timeout", "Expiration de session")} width={250}>
           <div class="dialog__body">
-            <p>Your session will end in <strong>1:52</strong> because of inactivity.</p>
+            <p>
+              {t("Your session will end in", "Votre session prendra fin dans")} <strong>1:52</strong>
+              {t("because of inactivity.", "pour cause d’inactivité.")}
+            </p>
             <div class="dialog__actions">
-              <RetroButton primary>Stay signed in</RetroButton>
-              <RetroButton>Log out</RetroButton>
+              <RetroButton primary>{t("Stay signed in", "Prolonger la session")}</RetroButton>
+              <RetroButton>{t("Log out", "Déconnexion")}</RetroButton>
             </div>
           </div>
         </RetroWindow>
@@ -30,10 +34,20 @@
     </div>
   {:else}
     <div class="bank__body">
-      <p class="bank__title">Session expired</p>
-      <p>For your security, you have been logged out after a period of inactivity.</p>
-      <p>Information you entered has not been saved.</p>
-      <span class="bank__link">» Log in again</span>
+      <p class="bank__title">{t("Session expired", "Session expirée")}</p>
+      <p>
+        {t(
+          "For your security, you have been logged out after a period of inactivity.",
+          "Pour votre sécurité, votre session a été fermée après une période d’inactivité."
+        )}
+      </p>
+      <p>
+        {t(
+          "Information you entered has not been saved.",
+          "Les informations que vous avez saisies n’ont pas été enregistrées."
+        )}
+      </p>
+      <span class="bank__link">{t("» Log in again", "» Se reconnecter")}</span>
     </div>
   {/if}
 </div>

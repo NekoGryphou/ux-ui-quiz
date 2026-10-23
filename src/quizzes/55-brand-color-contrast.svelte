@@ -1,15 +1,21 @@
 <script lang="ts">
   import type { VisualProps } from "../engine/types/quiz.types";
+  import { t } from "../shared/locale.svelte";
 
   let { variant = "a" }: VisualProps = $props();
 </script>
 
 <div class="card">
   <span class="card__logo">zest!</span>
-  <p class="card__title">Fresh news, freshly squeezed</p>
-  <p class="card__copy">New flavours and summer pop-ups, once a month. No pulp, no spam.</p>
+  <p class="card__title">{t("Fresh news, freshly squeezed", "Des nouvelles fraîches, pressées minute")}</p>
+  <p class="card__copy">
+    {t(
+      "New flavours and summer pop-ups, once a month. No pulp, no spam.",
+      "Nouveaux parfums et pop-up stores d’été, une fois par mois. Sans pulpe, sans spam."
+    )}
+  </p>
   <span class="card__field">sam@example.com</span>
-  <span class="card__button" class:card__button--dark={variant === "b"}>Squeeze me in</span>
+  <span class="card__button" class:card__button--dark={variant === "b"}>{t("Squeeze me in", "Un zeste pour moi")}</span>
 </div>
 
 <style lang="scss">

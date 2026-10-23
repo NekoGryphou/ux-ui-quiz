@@ -1,5 +1,6 @@
 <script lang="ts">
   import { RetroBrowser } from "../mock";
+  import { t } from "../shared/locale.svelte";
 </script>
 
 <!--suppress HttpUrlsUsage -->
@@ -7,14 +8,26 @@
   <div class="frameset">
     <div class="frameset__menu">
       <p class="frameset__title">Menu</p>
-      <span>Home</span><span class="frameset__active">Trails</span><span>Events</span><span>Photos</span>
-      <span>Join us</span>
+      <span>{t("Home", "Accueil")}</span><span class="frameset__active">{t("Trails", "Randonnées")}</span><span
+        >{t("Events", "Événements")}</span
+      ><span>Photos</span>
+      <span>{t("Join us", "Adhérer")}</span>
     </div>
     <div class="frameset__main">
-      <p class="frameset__h">Ben Lomond via the Ptarmigan Ridge</p>
-      <p>11 km · 6 hours · moderate. Start at Rowardennan car park and follow the ridge north for the best views.</p>
-      <p><u>Download the map (GIF, 84 KB)</u></p>
-      <p class="frameset__note">To link to this trail, please link to our homepage.</p>
+      <p class="frameset__h">{t("Ben Lomond via the Ptarmigan Ridge", "Le Ben Lomond par la crête du Ptarmigan")}</p>
+      <p>
+        {t(
+          "11 km · 6 hours · moderate. Start at Rowardennan car park and follow the ridge north for the best views.",
+          "11 km · 6 heures · difficulté moyenne. Partez du parking de Rowardennan et suivez la crête vers le nord pour les plus belles vues."
+        )}
+      </p>
+      <p><u>{t("Download the map (GIF, 84 KB)", "Télécharger la carte (GIF, 84 Ko)")}</u></p>
+      <p class="frameset__note">
+        {t(
+          "To link to this trail, please link to our homepage.",
+          "Pour faire un lien vers cette randonnée, merci de pointer vers notre page d’accueil."
+        )}
+      </p>
     </div>
   </div>
 </RetroBrowser>

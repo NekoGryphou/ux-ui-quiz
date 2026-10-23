@@ -1,5 +1,6 @@
 <script lang="ts">
   import { BrandTheme, BrowserShell, Field, Hotspot, MockButton, SideNav, Switch, Title } from "../mock";
+  import { t } from "../shared/locale.svelte";
 </script>
 
 <BrandTheme brand="luxury">
@@ -9,44 +10,50 @@
         <div class="side">
           <SideNav
             items={[
-              { label: "General", icon: "settings", active: true },
-              { label: "Members", icon: "user" },
-              { label: "Billing", icon: "cart" }
+              { label: t("General", "Général"), icon: "settings", active: true },
+              { label: t("Members", "Membres"), icon: "user" },
+              { label: t("Billing", "Facturation"), icon: "cart" }
             ]}
           />
         </div>
       </Hotspot>
       <div class="content">
-        <Hotspot id="page-title" inline><Title>Workspace settings</Title></Hotspot>
+        <Hotspot id="page-title" inline
+          ><Title>{t("Workspace settings", "Paramètres de l’espace de travail")}</Title></Hotspot
+        >
         <div class="grid">
           <section class="card">
-            <strong>Profile</strong>
+            <strong>{t("Profile", "Profil")}</strong>
             <Field value="Northpeak Studio" />
             <Hotspot id="profile-actions"
               ><div class="actions actions--end">
-                <MockButton variant="primary" size="sm">Save</MockButton>
+                <MockButton variant="primary" size="sm">{t("Save", "Enregistrer")}</MockButton>
               </div></Hotspot
             >
           </section>
           <section class="card">
-            <strong>Billing</strong>
+            <strong>{t("Billing", "Facturation")}</strong>
             <Field value="finance@northpeak.io" />
             <Hotspot id="billing-actions"
               ><div class="actions actions--end">
-                <MockButton variant="primary" size="sm">Save</MockButton>
+                <MockButton variant="primary" size="sm">{t("Save", "Enregistrer")}</MockButton>
               </div></Hotspot
             >
           </section>
           <section class="card">
-            <strong>Security</strong>
-            <Switch label="Require 2FA" checked />
-            <Hotspot id="security-actions"><div class="actions"><span class="outline">Update</span></div></Hotspot>
+            <strong>{t("Security", "Sécurité")}</strong>
+            <Switch label={t("Require 2FA", "Exiger la 2FA")} checked />
+            <Hotspot id="security-actions"
+              ><div class="actions"><span class="outline">{t("Update", "Mettre à jour")}</span></div></Hotspot
+            >
           </section>
           <section class="card">
-            <strong>Team</strong>
-            <Switch label="Allow guests" />
+            <strong>{t("Team", "Équipe")}</strong>
+            <Switch label={t("Allow guests", "Autoriser l’accès invité")} />
             <Hotspot id="team-actions"
-              ><div class="actions actions--end"><span class="link">Save changes</span></div></Hotspot
+              ><div class="actions actions--end">
+                <span class="link">{t("Save changes", "Enregistrer les modifications")}</span>
+              </div></Hotspot
             >
           </section>
         </div>
